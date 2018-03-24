@@ -4,7 +4,11 @@
   "description": "app to track golf rounds",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint src",
+    "build": "webpack",
+    "test": "jest",
+    "test:watch": "npm run test -- --watch",
+    "start": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
