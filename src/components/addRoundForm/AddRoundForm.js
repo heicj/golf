@@ -4,7 +4,11 @@ import { connect } from 'react-redux';
 class AddRoundForm extends PureComponent{
 
   state = {
-    hole: 1,
+    player: '',
+    course: '',
+    date: '',
+    tee: '',
+    hole: 0,
     score: '',
     putts: ''
   };
@@ -13,16 +17,27 @@ class AddRoundForm extends PureComponent{
     this.setState({ [target.name ]: target.value });
   }
   render(){
-    const { hole, score, putts } = this.state;
+    const { hole, score, putts, course } = this.state;
     return (
       <form>
-        <h2>HOLE {hole}</h2>
-        <label htmlFor="score">
-          Score:<input required name="score" type="number" onChange={this.handleChange} value={score}/>
-        </label>
-        <label htmlFor="putts">
-          Putts:<input required name="putts" type="number" onChange={this.handleChange} value={putts}/>
-        </label>
+        {hole === 0 ?
+          <section>
+            <div>Enter New Round</div>
+            <label htmlFor="course">
+            Course:<input required name="course" type="text" onChange={this.handleChange} value={course}/>
+            </label>
+          </section>
+          :
+          <section>
+            <h2>HOLE {hole}</h2>
+            <label htmlFor="score">
+              Score:<input required name="score" type="number" onChange={this.handleChange} value={score}/>
+            </label>
+            <label htmlFor="putts">
+              Putts:<input required name="putts" type="number" onChange={this.handleChange} value={putts}/>
+            </label>
+          </section>
+        }
       </form>
     );
   }
