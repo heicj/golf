@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import HoleForm from './HoleForm';
+import TeeSelector from './TeeSelector';
 
 class AddRoundForm extends PureComponent{
 
@@ -8,7 +10,7 @@ class AddRoundForm extends PureComponent{
     course: '',
     date: '',
     tee: '',
-    hole: 0,
+    hole: 1,
     score: '',
     putts: ''
   };
@@ -17,27 +19,29 @@ class AddRoundForm extends PureComponent{
     this.setState({ [target.name ]: target.value });
   }
   render(){
-    const { hole, score, putts, course } = this.state;
+    const { hole, score, putts, course, date } = this.state;
+    const round = Array(18).fill('');
     return (
       <form>
-        {hole === 0 ?
-          <section>
-            <div>Enter New Round</div>
-            <label htmlFor="course">
+        <section>
+          <h2>Enter New Round</h2>
+          <h3>Player name will go here</h3>
+
+          <label htmlFor="course">
             Course:<input required name="course" type="text" onChange={this.handleChange} value={course}/>
-            </label>
-          </section>
-          :
-          <section>
-            <h2>HOLE {hole}</h2>
-            <label htmlFor="score">
-              Score:<input required name="score" type="number" onChange={this.handleChange} value={score}/>
-            </label>
-            <label htmlFor="putts">
-              Putts:<input required name="putts" type="number" onChange={this.handleChange} value={putts}/>
-            </label>
-          </section>
-        }
+          </label>
+          <label htmlFor="date">
+            Date:<input type="date" onChange={this.handleChange} value={date}/>
+          </label>
+          <label htmlFor="tee">
+            <TeeSelector />
+          </label>
+        </section>
+          
+        <section>
+          {round.map((h, i) => <HoleForm key={i} id={i} hole={`hole${i}`}/>)}
+        </section>
+        
       </form>
     );
   }
