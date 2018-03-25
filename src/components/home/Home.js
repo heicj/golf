@@ -1,10 +1,13 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-
+import AddRoundForm from '../addRoundForm/AddRoundForm';
 class Home extends PureComponent{
   render(){
     return (
-      <div>hello</div>
+      <div>
+        <div>hello</div>
+        <AddRoundForm/>
+      </div>
     );
   }
 }
