@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { connect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class Home extends PureComponent{
   render(){

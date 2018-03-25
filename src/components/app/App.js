@@ -10,10 +10,10 @@ export default class App extends PureComponent{
         <Router>
           <Switch>
             <Route exact path='/' component={Home}/>
-            <Redirect pathc='/'/>
+            <Redirect to='/'/>
           </Switch>
         </Router>
       </div>
-    )
+    );
   }
 }
