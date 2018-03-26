@@ -3,8 +3,10 @@ import React, { PureComponent } from 'react';
 export default class HoleForm extends PureComponent{
 
   render(){
+    const { id } = this.props;
     return (
       <li>
+        Hole { id + 1 } &nbsp;
         <label htmlFor="score">
       Score:<input required name="score" type="number" onChange={this.handleChange}/>
         </label>
