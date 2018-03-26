@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 export default class HoleForm extends PureComponent{
 
   render(){
-    const { id } = this.props;
+    const { id, onChange } = this.props;
     return (
       <li>
         Hole { id + 1 } &nbsp;
