@@ -1,4 +1,4 @@
-import { ADD_HOLE_SCORE, ADD_PUTT_SCORE, CHOOSE_TEE, holes, player, putts, SELECT_PLAYER, tee, UPDATE_HOLE_SCORE, UPDATE_PUTT_SCORE } from './reducers';
+import { ADD_HOLE_SCORE, ADD_PUTT_SCORE, CHOOSE_TEE, hole, holes, NEXT_HOLE, player, putts, PREV_HOLE, SELECT_PLAYER, tee, UPDATE_HOLE_SCORE, UPDATE_PUTT_SCORE } from './reducers';
 
 
 describe('tests adding hole score and updating score', () => {
@@ -65,6 +65,25 @@ describe('tests player state', () => {
   it('adds player to player state', () => {
     const state = player(undefined, { type: SELECT_PLAYER, payload: 'Charlie' });
     expect(state).toEqual('Charlie');
+  });
+});
+
+describe('tests tracking current hole', () => {
+  it('hole initializing at 1', () => {
+    const state = hole(undefined, {});
+    expect(state).toEqual(1);
+  });
+
+  it('increments current hole by one', () => {
+    const state = hole(undefined, { type: NEXT_HOLE });
+    expect(state).toEqual(2);
+    const anotherHole = hole(state, { type: NEXT_HOLE });
+    expect(anotherHole).toEqual(3);
+  });
+
+  it('decreases current hole by one', () => {
+    const state = hole(3, { type: PREV_HOLE });
+    expect(state).toEqual(2);
   });
 });
 
