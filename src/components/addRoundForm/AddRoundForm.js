@@ -9,10 +9,10 @@ class AddRoundForm extends PureComponent{
     player: '',
     course: '',
     date: '',
-    tee: '',
+    tee: 'white',
     hole: 1,
-    score: '',
-    putts: ''
+    score: [],
+    putts: []
   };
 
   handleChange = ({ target }) => {
@@ -35,12 +35,12 @@ class AddRoundForm extends PureComponent{
             Date:<input type="date" name="date" onChange={this.handleChange} value={date}/>
           </label>
           <label htmlFor="tee">
-            <TeeSelector onChange={this.handleChange}/>
+            <TeeSelector selectChange={this.handleChange}/>
           </label>
         </section>
           
         <section>
-          {round.map((h, i) => <HoleForm key={i} id={i} hole={`hole${i}`} onSelect={this.handleChange}/>)}
+          {round.map((h, i) => <HoleForm key={i} id={i} name={`${i}`} onSelect={this.handleChange}/>)}
         </section>
         
       </form>
