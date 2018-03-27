@@ -1,4 +1,4 @@
-import { ADD_HOLE_SCORE, ADD_PUTT_SCORE, holes,  putts, UPDATE_HOLE_SCORE, UPDATE_PUTT_SCORE } from './reducers';
+import { ADD_HOLE_SCORE, ADD_PUTT_SCORE, CHOOSE_TEE, holes, player, putts, SELECT_PLAYER, tee, UPDATE_HOLE_SCORE, UPDATE_PUTT_SCORE } from './reducers';
 
 
 describe('tests adding hole score and updating score', () => {
@@ -41,6 +41,30 @@ describe('tests adding putt total and updating putt total', () => {
     const state = ['', '', '', 4, '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
     const update = putts(state, { type: UPDATE_PUTT_SCORE, payload: { id: 3, value: 5 } });
     expect(update).toEqual(['', '', '', 5, '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
+  });
+});
+
+describe('changes tee selection to desired tee', () => {
+  it('default state is white tees', () => {
+    const state = tee(undefined, {});
+    expect(state).toEqual('white');
+  });
+
+  it('changes to tee to selection', () => {
+    const state = tee(undefined, { type: CHOOSE_TEE, payload: 'red' });
+    expect(state).toEqual('red');
+  });
+});
+
+describe('tests player state', () => {
+  it('player state initializes as empty string', () => {
+    const state = player(undefined, {});
+    expect(state).toEqual('');
+  });
+
+  it('adds player to player state', () => {
+    const state = player(undefined, { type: SELECT_PLAYER, payload: 'Charlie' });
+    expect(state).toEqual('Charlie');
   });
 });
 
