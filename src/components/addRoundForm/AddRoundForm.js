@@ -2,11 +2,9 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import HoleForm from './HoleForm';
 import TeeSelector from './TeeSelector';
-import { nextHole, teeSelection, holeScore } from './actions';
+import { nextHole, teeSelection, holeScore, addRound } from './actions';
 
 class AddRoundForm extends PureComponent{
-
-
 
   state = {
     player: '',
@@ -41,6 +39,7 @@ class AddRoundForm extends PureComponent{
   handleSubmit = (event) => {
     event.preventDefault();
     console.log(this.state);
+    addRound(this.state);
   };
 
   
@@ -78,5 +77,5 @@ class AddRoundForm extends PureComponent{
 
 export default connect(
   state => ({ hole: state.hole }),
-  { nextHole, teeSelection, holeScore }
+  { nextHole, teeSelection, holeScore, addRound }
 )(AddRoundForm);
