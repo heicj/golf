@@ -6,15 +6,22 @@ import { nextHole, teeSelection, holeScore } from './actions';
 
 class AddRoundForm extends PureComponent{
 
+
+
   state = {
     player: '',
     course: '',
     date: '',
-    tee: 'white',
-    hole: 1,
-    score: [],
-    putts: [],
+    tee: 'white'
   };
+  
+  componentDidMount(){
+    const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+    array.map((m, i) => this.setState({ ['fir' + i]: false }));
+    array.map((m, i) => this.setState({ ['gir' + i]: false }));
+
+  }
+
 
   handleChange = ({ target }) => {
     this.setState({ [target.name ]: target.value });
@@ -26,9 +33,14 @@ class AddRoundForm extends PureComponent{
     } else {
       this.setState({ [target.name]: false });
     }
-  }
+  };
   handleNext = () => {
     this.props.nextHole();
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(this.state);
   };
 
   
@@ -37,18 +49,18 @@ class AddRoundForm extends PureComponent{
     const { course, date } = this.state;
     const round = Array(18).fill('');
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <section>
           <h2>Enter New Round</h2>
           <h3>Player name will go here</h3>
 
           <label htmlFor="course">
-            Course:<input required name="course" type="text" onChange={this.handleChange} value={course}/>
+            Course:<input name="course" type="text" onChange={this.handleChange} value={course}/>
           </label>
           <label htmlFor="date">
             Date:<input type="date" name="date" onChange={this.handleChange} value={date}/>
           </label>
-          
+
           <label htmlFor="tee">
             <TeeSelector selectChange={this.handleChange}/>
           </label>
@@ -57,6 +69,7 @@ class AddRoundForm extends PureComponent{
         <section>
           {round.map((h, i) => <HoleForm key={i} id={i} name={`${i}`} onSelect={this.handleChange} checkbox={this.handleCheckbox}/>)}
         </section>
+        <button>Submit</button>
         
       </form>
     );
