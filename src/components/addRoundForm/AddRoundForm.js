@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import HoleForm from './HoleForm';
 import TeeSelector from './TeeSelector';
-import { nextHole, teeSelection, holeScore, addRound, puttScore } from './actions';
+import { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir } from './actions';
 
 class AddRoundForm extends PureComponent{
 
@@ -34,11 +34,17 @@ class AddRoundForm extends PureComponent{
   };
 
   handleCheckbox = ({ target }) => {
-    if(target.checked){
-      this.setState({ [target.name]: true });
-    } else {
-      this.setState({ [target.name]: false });
+    const id = Number(target.id);
+    if(target.name.includes('fir')){
+      this.props.toggleFir(id);
+    } else if(target.name.includes('gir')){
+      this.props.toggleGir(id);
     }
+    // if(target.checked){
+    //   this.setState({ [target.name]: true });
+    // } else {
+    //   this.setState({ [target.name]: false });
+    // }
   };
   handleNext = () => {
     this.props.nextHole();
@@ -85,5 +91,5 @@ class AddRoundForm extends PureComponent{
 
 export default connect(
   state => ({ hole: state.hole }),
-  { nextHole, teeSelection, holeScore, addRound, puttScore }
+  { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir }
 )(AddRoundForm);

@@ -7,7 +7,7 @@ export const SELECT_PLAYER = 'SELECT_PLAYER';
 export const NEXT_HOLE = 'NEXT_HOLE';
 export const PREV_HOLE = 'PREV_HOLE';
 export const TOGGLE_FIR = 'TOGGLE_FIR';
-
+export const TOGGLE_GIR = 'TOGGLE_GIR';
 
 const initialState = Array(18).fill('');
 
@@ -39,6 +39,15 @@ const firGirInitialState = Array(18).fill(false);
 export function fir(state = firGirInitialState, { type, payload }){
   switch(type){
     case TOGGLE_FIR:
+      return state.map((h, i) => payload === i ? !state[i] : h);
+    default:
+      return state;
+  }
+}
+
+export function gir(state = firGirInitialState, { type, payload}){
+  switch(type){
+    case TOGGLE_GIR:
       return state.map((h, i) => payload === i ? !state[i] : h);
     default:
       return state;

@@ -1,5 +1,5 @@
 import { db } from '../../services/firebase';
-import { NEXT_HOLE, CHOOSE_TEE, ADD_HOLE_SCORE, ADD_PUTT_SCORE } from './reducers';
+import { NEXT_HOLE, CHOOSE_TEE, ADD_HOLE_SCORE, ADD_PUTT_SCORE, TOGGLE_FIR, TOGGLE_GIR } from './reducers';
 
 const players = db.ref('players');
 
@@ -31,6 +31,19 @@ export function puttScore({ id, value }){
   };
 }
 
+export function toggleFir(id){
+  return {
+    type: TOGGLE_FIR,
+    payload: id
+  };
+}
+
+export function toggleGir(id){
+  return {
+    type: TOGGLE_GIR,
+    payload: id
+  };
+}
 export function addRound(round){
   players.child('Charlie').push(round);
 }

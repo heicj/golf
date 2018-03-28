@@ -1,7 +1,7 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import promiseMiddleware from './PromiseMiddleware';
-import { putts, holes, hole, player, tee } from '../components/addRoundForm/reducers';
+import { putts, holes, hole, player, tee, fir, gir } from '../components/addRoundForm/reducers';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -10,7 +10,9 @@ const reducer = combineReducers({
   putts,
   hole,
   player,
-  tee
+  tee,
+  fir,
+  gir
 });
 
 const store = createStore(
