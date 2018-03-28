@@ -1,4 +1,4 @@
-import { ADD_HOLE_SCORE, ADD_PUTT_SCORE, CHOOSE_TEE, hole, holes, NEXT_HOLE, player, putts, PREV_HOLE, SELECT_PLAYER, tee, UPDATE_HOLE_SCORE, UPDATE_PUTT_SCORE } from './reducers';
+import { ADD_HOLE_SCORE, ADD_PUTT_SCORE, CHOOSE_TEE, fir,  hole, holes, NEXT_HOLE, player, putts, PREV_HOLE, SELECT_PLAYER, tee, TOGGLE_FIR, UPDATE_HOLE_SCORE, UPDATE_PUTT_SCORE } from './reducers';
 
 
 describe('tests adding hole score and updating score', () => {
@@ -87,3 +87,18 @@ describe('tests tracking current hole', () => {
   });
 });
 
+describe('tests fir initial state and handling', () => {
+  it('fir initial state is all false', () => {
+    const state = fir(undefined, {});
+    expect(state).toEqual([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
+  });
+
+  it('toggles fir status', () => {
+    const state = fir(undefined, { type: TOGGLE_FIR, payload: 3 });
+    expect(state).toEqual([false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false])
+    const newState = fir(state, { type: TOGGLE_FIR, payload: 2 });
+    expect(newState).toEqual([false, false, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false])
+    const newState2 = fir(newState, { type: TOGGLE_FIR, payload: 3 });
+    expect(newState2).toEqual([false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false])
+  });
+});

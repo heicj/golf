@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import HoleForm from './HoleForm';
 import TeeSelector from './TeeSelector';
-import { nextHole, teeSelection, holeScore, addRound } from './actions';
+import { nextHole, teeSelection, holeScore, addRound, puttScore } from './actions';
 
 class AddRoundForm extends PureComponent{
 
@@ -27,7 +27,10 @@ class AddRoundForm extends PureComponent{
     const value = Number(target.value);
     if(target.name.includes('score')){
       this.props.holeScore({ id: id, value: value });
+    } else if(target.name.includes('putts')){
+      this.props.puttScore({ id: id, value: value });
     }
+    
   };
 
   handleCheckbox = ({ target }) => {
@@ -82,5 +85,5 @@ class AddRoundForm extends PureComponent{
 
 export default connect(
   state => ({ hole: state.hole }),
-  { nextHole, teeSelection, holeScore, addRound }
+  { nextHole, teeSelection, holeScore, addRound, puttScore }
 )(AddRoundForm);
