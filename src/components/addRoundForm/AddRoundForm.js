@@ -12,17 +12,13 @@ class AddRoundForm extends PureComponent{
     date: '',
     tee: 'white'
   };
-  
-  componentDidMount(){
-    const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
-    array.map((m, i) => this.setState({ ['fir' + i]: false }));
-    array.map((m, i) => this.setState({ ['gir' + i]: false }));
 
-  }
-
-
-  handleChange = ({ target }) => {
+  handleLocalState = ({ target }) => {
     this.setState({ [target.name ]: target.value });
+  }
+  
+  handleChange = ({ target }) => {
+    // this.setState({ [target.name ]: target.value });
     const id = Number(target.id);
     const value = Number(target.value);
     if(target.name.includes('score')){
@@ -40,11 +36,6 @@ class AddRoundForm extends PureComponent{
     } else if(target.name.includes('gir')){
       this.props.toggleGir(id);
     }
-    // if(target.checked){
-    //   this.setState({ [target.name]: true });
-    // } else {
-    //   this.setState({ [target.name]: false });
-    // }
   };
   handleNext = () => {
     this.props.nextHole();
@@ -53,7 +44,7 @@ class AddRoundForm extends PureComponent{
   handleSubmit = (event) => {
     event.preventDefault();
     console.log(this.state);
-    addRound(this.state);
+    this.props.addRound(this.state);
   };
 
   
@@ -68,14 +59,14 @@ class AddRoundForm extends PureComponent{
           <h3>Player name will go here</h3>
 
           <label htmlFor="course">
-            Course:<input name="course" type="text" onChange={this.handleChange} value={course}/>
+            Course:<input name="course" type="text" onChange={this.handleLocalState} value={course}/>
           </label>
           <label htmlFor="date">
-            Date:<input type="date" name="date" onChange={this.handleChange} value={date}/>
+            Date:<input type="date" name="date" onChange={this.handleLocalState} value={date}/>
           </label>
 
           <label htmlFor="tee">
-            <TeeSelector selectChange={this.handleChange}/>
+            <TeeSelector selectChange={this.handleLocalState}/>
           </label>
         </section>
 

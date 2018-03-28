@@ -11,7 +11,7 @@ export const TOGGLE_GIR = 'TOGGLE_GIR';
 
 const initialState = Array(18).fill('');
 
-export function holes(state = initialState, { type, payload }){
+export function holesScore(state = initialState, { type, payload }){
   switch(type){
     case ADD_HOLE_SCORE:
       return state.map((hole, i) => payload.id === i ? payload.value : hole);

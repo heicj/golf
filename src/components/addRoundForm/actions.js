@@ -45,5 +45,14 @@ export function toggleGir(id){
   };
 }
 export function addRound(round){
-  players.child('Charlie').push(round);
+
+  return (dispatch, getState) => {
+    let completeRd = round;
+    completeRd.holesScore = getState().holesScore,
+    completeRd.fir = getState().fir,
+    completeRd.gir = getState().gir,
+    completeRd.putts = getState().putts;
+    
+    players.child('Charlie').push(completeRd);
+  };
 }

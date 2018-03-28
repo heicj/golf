@@ -1,24 +1,24 @@
-import { ADD_HOLE_SCORE, ADD_PUTT_SCORE, CHOOSE_TEE, fir,  hole, holes, NEXT_HOLE, player, putts, PREV_HOLE, SELECT_PLAYER, tee, TOGGLE_FIR, UPDATE_HOLE_SCORE, UPDATE_PUTT_SCORE } from './reducers';
+import { ADD_HOLE_SCORE, ADD_PUTT_SCORE, CHOOSE_TEE, fir,  hole, holesScore, NEXT_HOLE, player, putts, PREV_HOLE, SELECT_PLAYER, tee, TOGGLE_FIR, UPDATE_HOLE_SCORE, UPDATE_PUTT_SCORE } from './reducers';
 
 
 describe('tests adding hole score and updating score', () => {
 
   it('default state is array ', () => {
-    const state = holes(undefined, {});
+    const state = holesScore(undefined, {});
     expect(state).toEqual(Array(18).fill(''));
   });
     
   it('adds score value to array at index', () => {
-    const state = holes(undefined, { type: ADD_HOLE_SCORE, payload: { id: 3, value: 4 } });
+    const state = holesScore(undefined, { type: ADD_HOLE_SCORE, payload: { id: 3, value: 4 } });
     expect(state).toEqual(['', '', '', 4, '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
     
-    const newState = holes(state, { type: ADD_HOLE_SCORE, payload: { id: 2, value: 3 } });
+    const newState = holesScore(state, { type: ADD_HOLE_SCORE, payload: { id: 2, value: 3 } });
     expect(newState).toEqual(['', '', 3, 4, '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
   });
     
   it('updates hole score when given index and value', () => {
     const state = ['', '', '', 4, '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
-    const update = holes(state, { type: UPDATE_HOLE_SCORE, payload: { id: 3, value: 5 } });
+    const update = holesScore(state, { type: UPDATE_HOLE_SCORE, payload: { id: 3, value: 5 } });
     expect(update).toEqual(['', '', '', 5, '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
   });
 });
