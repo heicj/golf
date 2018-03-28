@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import HoleForm from './HoleForm';
 import TeeSelector from './TeeSelector';
+import { nextHole, teeSelection, holeScore } from './actions';
 
 class AddRoundForm extends PureComponent{
 
@@ -12,12 +13,25 @@ class AddRoundForm extends PureComponent{
     tee: 'white',
     hole: 1,
     score: [],
-    putts: []
+    putts: [],
   };
 
   handleChange = ({ target }) => {
     this.setState({ [target.name ]: target.value });
+  };
+
+  handleCheckbox = ({ target }) => {
+    if(target.checked){
+      this.setState({ [target.name]: true });
+    } else {
+      this.setState({ [target.name]: false });
+    }
   }
+  handleNext = () => {
+    this.props.nextHole();
+  };
+
+  
 
   render(){
     const { course, date } = this.state;
@@ -34,13 +48,14 @@ class AddRoundForm extends PureComponent{
           <label htmlFor="date">
             Date:<input type="date" name="date" onChange={this.handleChange} value={date}/>
           </label>
+          
           <label htmlFor="tee">
             <TeeSelector selectChange={this.handleChange}/>
           </label>
         </section>
-          
+
         <section>
-          {round.map((h, i) => <HoleForm key={i} id={i} name={`${i}`} onSelect={this.handleChange}/>)}
+          {round.map((h, i) => <HoleForm key={i} id={i} name={`${i}`} onSelect={this.handleChange} checkbox={this.handleCheckbox}/>)}
         </section>
         
       </form>
@@ -49,6 +64,6 @@ class AddRoundForm extends PureComponent{
 }
 
 export default connect(
-  null,
-  null
+  state => ({ hole: state.hole }),
+  { nextHole, teeSelection, holeScore }
 )(AddRoundForm);

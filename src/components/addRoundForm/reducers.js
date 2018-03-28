@@ -1,13 +1,9 @@
 export const ADD_HOLE_SCORE = 'ADD_HOLE_SCORE';
 export const UPDATE_HOLE_SCORE = 'UPDATE_HOLE_SCORE';
-
 export const ADD_PUTT_SCORE = 'ADD_PUTT_SCORE';
 export const UPDATE_PUTT_SCORE = 'UPDATE_PUTT_SCORE';
-
 export const CHOOSE_TEE = 'CHOOSE_TEE';
-
 export const SELECT_PLAYER = 'SELECT_PLAYER';
-
 export const NEXT_HOLE = 'NEXT_HOLE';
 export const PREV_HOLE = 'PREV_HOLE';
 
