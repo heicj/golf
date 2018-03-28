@@ -23,6 +23,11 @@ class AddRoundForm extends PureComponent{
 
   handleChange = ({ target }) => {
     this.setState({ [target.name ]: target.value });
+    const id = Number(target.id);
+    const value = Number(target.value);
+    if(target.name.includes('score')){
+      this.props.holeScore({ id: id, value: value });
+    }
   };
 
   handleCheckbox = ({ target }) => {
