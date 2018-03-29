@@ -1,15 +1,13 @@
 import firebase from 'firebase';
 
 const config = {
-  apiKey: 'AIzaSyA8_2T5a74Xyclol1IPSHC3l7dxbRtM_bM',
-  authDomain: 'golf-app-52154.firebaseapp.com',
-  databaseURL: 'https://golf-app-52154.firebaseio.com',
-  projectId: 'golf-app-52154',
-  storageBucket: 'golf-app-52154.appspot.com',
-  messagingSenderId: '341093415332'
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  databaseURL: process.env.DATA_BASE_URL,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID
 };
-
-
 
 const firebaseApp = firebase.initializeApp(config);
 
