@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import HoleForm from './HoleForm';
 import TeeSelector from './TeeSelector';
-import { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir } from './actions';
+import { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir, calcFirGirTotal } from './actions';
+import './addRoundForm.css';
 
 class AddRoundForm extends PureComponent{
 
@@ -15,7 +16,7 @@ class AddRoundForm extends PureComponent{
 
   handleLocalState = ({ target }) => {
     this.setState({ [target.name ]: target.value });
-  }
+  };
   
   handleChange = ({ target }) => {
     // this.setState({ [target.name ]: target.value });
@@ -43,7 +44,6 @@ class AddRoundForm extends PureComponent{
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state);
     this.props.addRound(this.state);
   };
 
@@ -51,13 +51,22 @@ class AddRoundForm extends PureComponent{
 
   render(){
     const { course, date } = this.state;
+    const { fir, gir, rdScore, putts } = this.props;
+    const totFir = calcFirGirTotal(fir);
+    const totGir = calcFirGirTotal(gir);
+    const totScore = rdScore.reduce((acc, curr) => acc + curr, 0);
+    const totPutts = putts.reduce((acc, curr) => acc + curr, 0);
+    // const totFir = fir.reduce((acc, curr) => curr === true ? acc + 1 : acc, 0);
     const round = Array(18).fill('');
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="roundForm" onSubmit={this.handleSubmit}>
         <section>
           <h2>Enter New Round</h2>
           <h3>Player name will go here</h3>
-
+          <p>Score: {totScore}</p>
+          <p>Fir total: {totFir}</p>
+          <p>Gir total: {totGir}</p>
+          <p>Putts: {totPutts}</p>
           <label htmlFor="course">
             Course:<input name="course" type="text" onChange={this.handleLocalState} value={course}/>
           </label>
@@ -81,6 +90,12 @@ class AddRoundForm extends PureComponent{
 }
 
 export default connect(
-  state => ({ hole: state.hole }),
+  state => ({ 
+    hole: state.hole,
+    fir: state.fir,
+    gir: state.gir,
+    rdScore: state.holesScore,
+    putts: state.putts
+  }),
   { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir }
 )(AddRoundForm);

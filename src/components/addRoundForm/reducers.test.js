@@ -1,4 +1,4 @@
-import { ADD_HOLE_SCORE, ADD_PUTT_SCORE, CHOOSE_TEE, fir,  hole, holesScore, NEXT_HOLE, player, putts, PREV_HOLE, SELECT_PLAYER, tee, TOGGLE_FIR, UPDATE_HOLE_SCORE, UPDATE_PUTT_SCORE } from './reducers';
+import { ADD_HOLE_SCORE, ADD_PUTT_SCORE, CHOOSE_TEE, fir,  hole, holesScore, NEXT_HOLE, player, putts, PREV_HOLE, SELECT_PLAYER, tee, TOGGLE_FIR, rdFirTotal, TOTAL_FIR, UPDATE_HOLE_SCORE, UPDATE_PUTT_SCORE } from './reducers';
 
 
 describe('tests adding hole score and updating score', () => {
@@ -100,5 +100,17 @@ describe('tests fir initial state and handling', () => {
     expect(newState).toEqual([false, false, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false])
     const newState2 = fir(newState, { type: TOGGLE_FIR, payload: 3 });
     expect(newState2).toEqual([false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false])
+  });
+});
+
+describe('tests total fir calc', () => {
+  it('totalFir total starts at zero', () => {
+    const state = rdFirTotal(undefined, {});
+    expect(state).toBe(0);
+  });
+
+  it('sets total fir to number given', () => {
+    const state = rdFirTotal(undefined, { type: TOTAL_FIR, payload: 7 });
+    expect(state).toBe(7);
   });
 });

@@ -8,6 +8,7 @@ export const NEXT_HOLE = 'NEXT_HOLE';
 export const PREV_HOLE = 'PREV_HOLE';
 export const TOGGLE_FIR = 'TOGGLE_FIR';
 export const TOGGLE_GIR = 'TOGGLE_GIR';
+export const TOTAL_FIR = 'TOTAL_FIR';
 
 const initialState = Array(18).fill('');
 
@@ -45,7 +46,7 @@ export function fir(state = firGirInitialState, { type, payload }){
   }
 }
 
-export function gir(state = firGirInitialState, { type, payload}){
+export function gir(state = firGirInitialState, { type, payload }){
   switch(type){
     case TOGGLE_GIR:
       return state.map((h, i) => payload === i ? !state[i] : h);
@@ -78,6 +79,15 @@ export function hole(state = 1, { type }){
       return state + 1;
     case PREV_HOLE: 
       return state - 1;
+    default:
+      return state;
+  }
+}
+
+export function rdFirTotal(state = 0, { type, payload }){
+  switch(type){
+    case TOTAL_FIR:
+      return payload;
     default:
       return state;
   }
