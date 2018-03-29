@@ -5,42 +5,42 @@ describe('tests adding hole score and updating score', () => {
 
   it('default state is array ', () => {
     const state = holesScore(undefined, {});
-    expect(state).toEqual(Array(18).fill(''));
+    expect(state).toEqual(Array(18).fill(0));
   });
     
   it('adds score value to array at index', () => {
     const state = holesScore(undefined, { type: ADD_HOLE_SCORE, payload: { id: 3, value: 4 } });
-    expect(state).toEqual(['', '', '', 4, '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
+    expect(state).toEqual([0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
     
     const newState = holesScore(state, { type: ADD_HOLE_SCORE, payload: { id: 2, value: 3 } });
-    expect(newState).toEqual(['', '', 3, 4, '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
+    expect(newState).toEqual([0, 0, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   });
     
   it('updates hole score when given index and value', () => {
-    const state = ['', '', '', 4, '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
+    const state = [0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     const update = holesScore(state, { type: UPDATE_HOLE_SCORE, payload: { id: 3, value: 5 } });
-    expect(update).toEqual(['', '', '', 5, '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
+    expect(update).toEqual([0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   });
 });
 
 describe('tests adding putt total and updating putt total', () => {
   it('default state is array', () => {
     const state = putts(undefined, {});
-    expect(state).toEqual(Array(18).fill(''));
+    expect(state).toEqual(Array(18).fill(0));
   });
 
   it('adds putt score to array when given index and value', () => {
     const state = putts(undefined, { type: ADD_PUTT_SCORE, payload: { id: 3, value: 4 } });
-    expect(state).toEqual(['', '', '', 4, '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
+    expect(state).toEqual([0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
     
     const newState = putts(state, { type: ADD_PUTT_SCORE, payload: { id: 2, value: 3 } });
-    expect(newState).toEqual(['', '', 3, 4, '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
+    expect(newState).toEqual([0, 0, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   });
 
   it('updates putt score when given index and value', () => {
-    const state = ['', '', '', 4, '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
+    const state = [0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     const update = putts(state, { type: UPDATE_PUTT_SCORE, payload: { id: 3, value: 5 } });
-    expect(update).toEqual(['', '', '', 5, '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
+    expect(update).toEqual([0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   });
 });
 
@@ -95,11 +95,11 @@ describe('tests fir initial state and handling', () => {
 
   it('toggles fir status', () => {
     const state = fir(undefined, { type: TOGGLE_FIR, payload: 3 });
-    expect(state).toEqual([false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false])
+    expect(state).toEqual([false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
     const newState = fir(state, { type: TOGGLE_FIR, payload: 2 });
-    expect(newState).toEqual([false, false, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false])
+    expect(newState).toEqual([false, false, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
     const newState2 = fir(newState, { type: TOGGLE_FIR, payload: 3 });
-    expect(newState2).toEqual([false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false])
+    expect(newState2).toEqual([false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
   });
 });
 

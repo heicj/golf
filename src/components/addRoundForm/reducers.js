@@ -10,7 +10,7 @@ export const TOGGLE_FIR = 'TOGGLE_FIR';
 export const TOGGLE_GIR = 'TOGGLE_GIR';
 export const TOTAL_FIR = 'TOTAL_FIR';
 
-const initialState = Array(18).fill('');
+const initialState = Array(18).fill(0);
 
 export function holesScore(state = initialState, { type, payload }){
   switch(type){
