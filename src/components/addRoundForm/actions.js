@@ -48,10 +48,24 @@ export function addRound(round){
 
   return (dispatch, getState) => {
     let completeRd = round;
-    completeRd.holesScore = getState().holesScore,
-    completeRd.fir = getState().fir,
-    completeRd.gir = getState().gir,
-    completeRd.putts = getState().putts;
+    const puttsArray = getState().putts;
+    const scoresArray = getState().holesScore;
+    const firArray = getState().fir;
+    const girArray = getState().gir;
+
+    const totalScore = scoresArray.reduce((acc, curr) => acc + curr, 0);
+    const totalPutts = puttsArray.reduce((acc, curr) => acc + curr, 0);
+    const totalFir = calcFirGirTotal(firArray);
+    const totalGir = calcFirGirTotal(girArray);
+
+    completeRd.holesScore = scoresArray,
+    completeRd.fir = firArray,
+    completeRd.gir = girArray,
+    completeRd.putts = puttsArray;
+    completeRd.totalScore = totalScore;
+    completeRd.totalPutts = totalPutts;
+    completeRd.totalFir = totalFir;
+    completeRd.totalGir = totalGir;
 
     //compute round totals for score, fir, gir, putts and append to round 
     
