@@ -1,12 +1,15 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import AddRoundForm from '../addRoundForm/AddRoundForm';
+import { Link } from 'react-router-dom';
+// import AddRoundForm from '../addRoundForm/AddRoundForm';
 class Home extends PureComponent{
   render(){
     return (
       <div>
-        <div>hello</div>
-        <AddRoundForm/>
+        <div>Charlie</div>
+        <Link to={'/newRound/Charlie'}>Add Round</Link>
+        <div>Jeremy</div>
+        <Link to={'/newRound/Jeremy'}>Add Round</Link>
       </div>
     );
   }

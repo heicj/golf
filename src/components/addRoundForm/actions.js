@@ -66,10 +66,8 @@ export function addRound(round){
     completeRd.totalPutts = totalPutts;
     completeRd.totalFir = totalFir;
     completeRd.totalGir = totalGir;
-
-    //compute round totals for score, fir, gir, putts and append to round 
     
-    players.child('Charlie').push(completeRd);
+    players.child(round.player).push(completeRd);
   };
 }
 
