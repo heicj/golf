@@ -9,7 +9,7 @@ export function getRounds(name){
     payload: players.child(name).once('value').then(data => {
       const rounds = data.val();
       console.log(rounds);
-      Object.keys(rounds).map(key => {
+      return Object.keys(rounds).map(key => {
         let round = rounds[key];
         round.key = key;
         return round;
