@@ -6,15 +6,17 @@ import { getRounds } from './actions';
 class Home extends PureComponent{
 
   componentDidMount(){
-    this.props.getRounds('Charlie');
+    // this.props.getRounds('Charlie');
   }
   render(){
     return (
       <div>
         <div>Charlie</div>
         <Link to={'/newRound/Charlie'}>Add Round</Link>
+        <Link to={'/rounds/Charlie'}>View Rounds</Link>
         <div>Jeremy</div>
         <Link to={'/newRound/Jeremy'}>Add Round</Link>
+        <Link to={'/rounds/Jeremy'}>View Rounds</Link>
       </div>
     );
   }
