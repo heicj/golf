@@ -1,8 +1,13 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getRounds } from './actions';
 // import AddRoundForm from '../addRoundForm/AddRoundForm';
 class Home extends PureComponent{
+
+  componentDidMount(){
+    this.props.getRounds('Charlie');
+  }
   render(){
     return (
       <div>
@@ -17,5 +22,5 @@ class Home extends PureComponent{
 
 export default connect(
   null,
-  null
+  { getRounds }
 )(Home);
