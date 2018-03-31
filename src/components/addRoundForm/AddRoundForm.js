@@ -8,7 +8,7 @@ import './addRoundForm.css';
 class AddRoundForm extends PureComponent{
 
   state = {
-    player: '',
+    player: this.props.name,
     course: '',
     date: '',
     tee: 'white'
@@ -62,7 +62,7 @@ class AddRoundForm extends PureComponent{
       <form className="roundForm" onSubmit={this.handleSubmit}>
         <section>
           <h2>Enter New Round</h2>
-          <h3>Player name will go here</h3>
+          <h3>{this.props.name}</h3>
           <p>Score: {totScore}</p>
           <p>Fir total: {totFir}</p>
           <p>Gir total: {totGir}</p>
@@ -90,12 +90,13 @@ class AddRoundForm extends PureComponent{
 }
 
 export default connect(
-  state => ({ 
+  (state, props) => ({ 
     hole: state.hole,
     fir: state.fir,
     gir: state.gir,
     rdScore: state.holesScore,
-    putts: state.putts
+    putts: state.putts,
+    name: props.match.params.name
   }),
   { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir }
 )(AddRoundForm);

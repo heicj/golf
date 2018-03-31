@@ -1,12 +1,23 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import AddRoundForm from '../addRoundForm/AddRoundForm';
+import { Link } from 'react-router-dom';
+import { getScoreAvg } from './actions';
+// import AddRoundForm from '../addRoundForm/AddRoundForm';
 class Home extends PureComponent{
+
+  componentDidMount(){
+    // this.props.getRounds('Charlie');
+    this.props.getScoreAvg('Charlie');
+  }
   render(){
     return (
       <div>
-        <div>hello</div>
-        <AddRoundForm/>
+        <div>Charlie</div>
+        <Link to={'/newRound/Charlie'}>Add Round</Link>
+        <Link to={'/rounds/Charlie'}>View Rounds</Link>
+        <div>Jeremy</div>
+        <Link to={'/newRound/Jeremy'}>Add Round</Link>
+        <Link to={'/rounds/Jeremy'}>View Rounds</Link>
       </div>
     );
   }
@@ -14,5 +25,5 @@ class Home extends PureComponent{
 
 export default connect(
   null,
-  null
+  { getScoreAvg }
 )(Home);
