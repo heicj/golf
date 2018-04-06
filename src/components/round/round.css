@@ -24,6 +24,17 @@
   }
 }
 
+#editButtons{
+  display: flex;
+  width: 30px;
+  justify-content: space-between;
+  font-size: 1.25rem;
+
+  :hover{
+    background-color: lightgray;
+  }
+}
+
 #date{
   font-size: .75rem;
   margin: 0;
