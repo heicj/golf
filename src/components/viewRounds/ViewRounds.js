@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getRounds } from '../home/actions';
+import Round from '../round/Round';
 
 class ViewRounds extends Component{
 
@@ -10,14 +11,19 @@ class ViewRounds extends Component{
     this.props.getRounds(name);
   }
   render(){
+    const { rounds } = this.props;
     return (
-      <div>viewRounds</div>
+      <section>
+        <h2>{this.props.name}'s Rounds</h2>
+        {rounds.map((r, i) => <Round key={i} id={r.key}  roundStats={r}/>)}
+      </section>
     );
   }
 }
 
 export default connect(
   (state, props) => ({
+    rounds: state.rounds,
     name: props.match.params.name
   }),
   { getRounds }
