@@ -2,9 +2,16 @@ import React, { Component } from 'react';
 import './round.css';
 
 export default class Round extends Component{
+  handleClick = () => {
+    if(confirm('Delete Round?')){
+      this.props.deleteRound(this.props.name, this.props.roundStats.key);
+    } else {
+      return;
+    }
+  };
 
   render(){
-    const { roundStats, deleteRound, name } = this.props;
+    const { roundStats } = this.props;
     const holes = Array(18).fill('');
     return (
       <div>
@@ -12,8 +19,8 @@ export default class Round extends Component{
           <h1>{roundStats.course}</h1>
           <p id="date">{roundStats.date}</p>
           <div id='editButtons'>
-            <div>✎ round</div>
-            <button onClick={() => deleteRound(name, roundStats.key)}>🗑 round</button>
+            <div>✎</div>
+            <div onClick={this.handleClick}>🗑</div>
           </div>
         </div>
         <div id="item1">
