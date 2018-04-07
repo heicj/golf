@@ -3,12 +3,8 @@ import './round.css';
 
 export default class Round extends Component{
 
-  handleDelete(id){
-
-  }
-
   render(){
-    const { roundStats } = this.props;
+    const { roundStats, deleteRound, name } = this.props;
     const holes = Array(18).fill('');
     return (
       <div>
@@ -17,7 +13,7 @@ export default class Round extends Component{
           <p id="date">{roundStats.date}</p>
           <div id='editButtons'>
             <div>✎ round</div>
-            <div onClick={this.handleDelete(roundStats.key)}>🗑 round</div>
+            <button onClick={() => deleteRound(name, roundStats.key)}>🗑 round</button>
           </div>
         </div>
         <div id="item1">
