@@ -8,7 +8,6 @@ export function getRounds(name){
     type: LOAD_ROUNDS,
     payload: players.child(name).once('value').then(data => {
       const rounds = data.val();
-      console.log(rounds);
       return Object.keys(rounds).map(key => {
         let round = rounds[key];
         round.key = key;
@@ -53,8 +52,7 @@ export function getScoreAvg(name){
   
 }
 
-const avg = getScoreAvg('Charlie');
-console.log(avg);
+// const avg = getScoreAvg('Charlie');
 
 
 
