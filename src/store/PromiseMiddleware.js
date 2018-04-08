@@ -1,4 +1,4 @@
-// import { LOAD_START, LOAD_END } from '../components/app/reducers';
+import { LOAD_START, LOAD_END } from '../components/app/reducers';
 
 const isPromise = val => val && typeof val.then === 'function';
 
@@ -8,7 +8,7 @@ export default ({ dispatch }) => next => action => {
   const { type, payload } = action;
   if(!isPromise(payload)) return next(action);
 
-  // dispatch({ type: LOAD_START });
+  dispatch({ type: LOAD_START });
 
   return payload
     .then(
@@ -18,10 +18,10 @@ export default ({ dispatch }) => next => action => {
           payload: result
         });
 
-        // dispatch({ type: LOAD_END });
+        dispatch({ type: LOAD_END });
       },
       err => {
-        // dispatch({ type: LOAD_END });
+        dispatch({ type: LOAD_END });
         // dispatch({ type: ERROR, payload: err });
         throw err;
       }

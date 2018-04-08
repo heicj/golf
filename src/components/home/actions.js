@@ -38,21 +38,23 @@ export function getRounds(name){
 
 export function getScoreAvg(name){
   if(name === '') return;
-  const totalScore = players.child(name).once('value').then(data => {
+  players.child(name).once('value').then(data => {
     const rounds = data.val();
-    Object.keys(rounds).length;
-    // let totalScore = 0;
-    return Object.keys(rounds).map(key => {
+    const totalRounds = Object.keys(rounds).length;
+    let totalScore = 0;
+    Object.keys(rounds).map(key => {
       let round = rounds[key];
-      let score = round.totalScore;
-      return score;
+      let scoreArray = round.totalScore;
+      totalScore = totalScore + scoreArray;
     });
-  
+    return totalScore / totalRounds;
   });
-  
 }
 
-// const avg = getScoreAvg('Charlie');
 
+
+
+const avg = getScoreAvg('Charlie');
+console.log(avg);
 
 
