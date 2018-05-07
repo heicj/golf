@@ -11,12 +11,13 @@ class ViewRounds extends Component{
     const { name } = this.props;
     this.props.getRounds(name);
   }
+
   render(){
     const { rounds, deleteRd, name } = this.props;
     return (
       <section>
-        <h2>{this.props.name}'s Rounds</h2>
-        {rounds.map((r, i) => <Round name={name} deleteRound={deleteRd} key={i} id={r.key}  roundStats={r}/>)}
+        <h2>{this.props.name + "'s"} Rounds</h2>
+        {rounds.reverse().map((r, i) => <Round name={name} deleteRound={deleteRd} key={i} id={r.key}  roundStats={r}/>)}
       </section>
     );
   }

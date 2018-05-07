@@ -36,7 +36,7 @@ export function getRounds(name){
 //   };
 // }
 
-export function getScoreAvg(name){
+export function getScoreAvg(name, handler){
   if(name === '') return;
   players.child(name).once('value').then(data => {
     const rounds = data.val();
@@ -47,7 +47,7 @@ export function getScoreAvg(name){
       let scoreArray = round.totalScore;
       totalScore = totalScore + scoreArray;
     });
-    return totalScore / totalRounds;
+    return handler(totalScore / totalRounds);
   });
 }
 

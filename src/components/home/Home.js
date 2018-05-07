@@ -6,25 +6,35 @@ import { getScoreAvg } from './actions';
 class Home extends PureComponent{
 
   state = {
-    charlieScore: 23
+    charlieAvgScore: '',
+    jeremyAvgScore: ''
+  };
+
+  handleCharlieAvg = (avgScore) => {
+    this.setState({ charlieAvgScore: avgScore });
+  };
+
+  handleJeremyAvg = (avgScore) => {
+    this.setState({ jeremyAvgScore: avgScore });
   };
 
   componentDidMount(){
     // this.props.getRounds('Charlie');
-    const avgScore = this.props.getScoreAvg('Charlie');
-    this.setState({ charlieScore: avgScore });
+    this.props.getScoreAvg('Charlie', this.handleCharlieAvg);
+    this.props.getScoreAvg('Jeremy', this.handleJeremyAvg);
   }
   render(){
-    const { charlieScore } = this.state;
+    const { charlieAvgScore, jeremyAvgScore } = this.state;
     return (
       <div>
         <div>Charlie</div>
         <Link to={'/newRound/Charlie'}>Add Round</Link>
         <Link to={'/rounds/Charlie'}>View Rounds</Link>
-        <div>Avg Score: {charlieScore} </div>
+        <div>Avg Score: {charlieAvgScore} </div>
         <div>Jeremy</div>
         <Link to={'/newRound/Jeremy'}>Add Round</Link>
         <Link to={'/rounds/Jeremy'}>View Rounds</Link>
+        <div>Avg Score: {jeremyAvgScore}</div>
       </div>
     );
   }
