@@ -19,7 +19,6 @@ class Home extends PureComponent{
   };
 
   componentDidMount(){
-    // this.props.getRounds('Charlie');
     this.props.getScoreAvg('Charlie', this.handleCharlieAvg);
     this.props.getScoreAvg('Jeremy', this.handleJeremyAvg);
   }
