@@ -47,6 +47,7 @@ class Home extends PureComponent{
       <div>
         <div>Charlie</div>
         <Link to={'/newRound/Charlie'}>Add Round</Link>
+        &nbsp;
         <Link to={'/rounds/Charlie'}>View Rounds</Link>
         <div>Avg Score: {charlieAvgScore} </div>
         <div>Avg Fir: {charlieFirAvg}</div>
@@ -54,6 +55,7 @@ class Home extends PureComponent{
         <div>Avg Putts: {charliePuttsAvg}</div>
         <div>Jeremy</div>
         <Link to={'/newRound/Jeremy'}>Add Round</Link>
+        &nbsp;
         <Link to={'/rounds/Jeremy'}>View Rounds</Link>
         <div>Avg Score: {jeremyAvgScore}</div>
       </div>
