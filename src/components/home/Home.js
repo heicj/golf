@@ -11,11 +11,11 @@ class Home extends PureComponent{
   };
 
   handleCharlieAvg = (avgScore) => {
-    this.setState({ charlieAvgScore: avgScore });
+    this.setState({ charlieAvgScore: avgScore.toFixed(2) });
   };
 
   handleJeremyAvg = (avgScore) => {
-    this.setState({ jeremyAvgScore: avgScore });
+    this.setState({ jeremyAvgScore: avgScore.toFixed(2) });
   };
 
   componentDidMount(){
