@@ -8,6 +8,8 @@ class Home extends PureComponent{
   state = {
     charlieAvgScore: '',
     charlieFirAvg: '',
+    charlieGirAvg: '',
+    charliePuttsAvg: '',
     jeremyAvgScore: ''
   };
 
@@ -23,6 +25,10 @@ class Home extends PureComponent{
     this.setState({ charlieGirAvg: avgScore.toFixed(2) });
   };
 
+  handleCharliePuttsAvg = (avgScore) => {
+    this.setState({ charliePuttsAvg: avgScore.toFixed(2) });
+  };
+
   handleJeremyAvg = (avgScore) => {
     this.setState({ jeremyAvgScore: avgScore.toFixed(2) });
   };
@@ -31,11 +37,12 @@ class Home extends PureComponent{
     this.props.getScoreAvg('Charlie', 'totalScore', this.handleCharlieAvg);
     this.props.getScoreAvg('Charlie', 'totalFir', this.handleCharlieFirAvg);
     this.props.getScoreAvg('Charlie', 'totalGir', this.handleCharlieGirAvg);
+    this.props.getScoreAvg('Charlie', 'totalPutts', this.handleCharliePuttsAvg);
 
     this.props.getScoreAvg('Jeremy', 'totalScore', this.handleJeremyAvg);
   }
   render(){
-    const { charlieAvgScore, charlieFirAvg, charlieGirAvg, jeremyAvgScore } = this.state;
+    const { charlieAvgScore, charlieFirAvg, charlieGirAvg, charliePuttsAvg, jeremyAvgScore } = this.state;
     return (
       <div>
         <div>Charlie</div>
@@ -44,6 +51,7 @@ class Home extends PureComponent{
         <div>Avg Score: {charlieAvgScore} </div>
         <div>Avg Fir: {charlieFirAvg}</div>
         <div>Avg Gir: {charlieGirAvg}</div>
+        <div>Avg Putts: {charliePuttsAvg}</div>
         <div>Jeremy</div>
         <Link to={'/newRound/Jeremy'}>Add Round</Link>
         <Link to={'/rounds/Jeremy'}>View Rounds</Link>
