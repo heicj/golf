@@ -8,7 +8,6 @@ export function getRounds(name){
     type: LOAD_ROUNDS,
     payload: players.child(name).once('value').then(data => {
       const rounds = data.val();
-      console.log(rounds);
       return Object.keys(rounds).map(key => {
         let round = rounds[key];
         round.key = key;
@@ -19,20 +18,43 @@ export function getRounds(name){
   };
 }
 
-export function getScoreAvg(name){
+// export function getScoreAvg(name){
+//   if(name === '') return;
+//   return {
+//     type: LOAD_SCORE_AVG,
+//     payload: players.child(name).once('value').then(data => {
+//       const rounds = data.val();
+//       const totalRounds = Object.keys(rounds).length;
+//       let totalScore = 0;
+//       Object.keys(rounds).map(key => {
+//         let round = rounds[key];
+//         let scoreArray = round.totalScore;
+//         totalScore = totalScore + scoreArray;
+//       });
+//       return totalScore / totalRounds;
+//     })
+//   };
+// }
+
+export function getScoreAvg(name, stat, handler){
   if(name === '') return;
-  return {
-    type: LOAD_SCORE_AVG,
-    payload: players.child(name).once('value').then(data => {
-      const rounds = data.val();
-      const totalRounds = Object.keys(rounds).length;
-      let totalScore = 0;
-      Object.keys(rounds).map(key => {
-        let round = rounds[key];
-        let scoreArray = round.totalScore;
-        totalScore = totalScore + scoreArray;
-      });
-      return totalScore / totalRounds;
-    })
-  };
+  players.child(name).once('value').then(data => {
+    const rounds = data.val();
+    const totalRounds = Object.keys(rounds).length;
+    let totalScore = 0;
+    Object.keys(rounds).map(key => {
+      let round = rounds[key];
+      let rdTotal = round[stat];
+      totalScore = totalScore + rdTotal;
+    });
+    return handler(totalScore / totalRounds);
+  });
 }
+
+
+
+
+const avg = getScoreAvg('Charlie');
+console.log(avg);
+
+

@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import HoleForm from './HoleForm';
-import TeeSelector from './TeeSelector';
+import HoleForm from '../addRoundForm/HoleForm';
+import TeeSelector from '../addRoundForm/TeeSelector';
 import { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir, calcFirGirTotal } from './actions';
-import './addRoundForm.css';
+import './editForm.css';
 
-class AddRoundForm extends PureComponent{
+class EditForm extends PureComponent{
 
   componentDidMount(){
 
@@ -13,9 +13,9 @@ class AddRoundForm extends PureComponent{
 
   state = {
     player: this.props.name,
-    course: '',
-    date: '',
-    tee: 'white'
+    course: this.props.course,
+    date: this.props.date,
+    tee: this.props.tee 
   };
 
   handleLocalState = ({ target }) => {
@@ -55,7 +55,7 @@ class AddRoundForm extends PureComponent{
 
   render(){
     const { course, date } = this.state;
-    const { fir, gir, rdScore, putts } = this.props;
+    const { roundStats } = this.props;
     const totFir = calcFirGirTotal(fir);
     const totGir = calcFirGirTotal(gir);
     const totScore = rdScore.reduce((acc, curr) => acc + curr, 0);
@@ -65,8 +65,8 @@ class AddRoundForm extends PureComponent{
     return (
       <form className="roundForm" onSubmit={this.handleSubmit}>
         <section>
-          <h2>Enter New Round</h2>
-          <h3>{this.props.name}</h3>
+          <h2>Edit Round</h2>
+          <h3>{roundStats.name}</h3>
           <p>Score: {totScore}</p>
           <p>Fir total: {totFir}</p>
           <p>Gir total: {totGir}</p>
@@ -79,7 +79,7 @@ class AddRoundForm extends PureComponent{
           </label>
 
           <label htmlFor="tee">
-            <TeeSelector selectChange={this.handleLocalState}/>
+            <TeeSelector value={this.state.tee}selectChange={this.handleLocalState}/>
           </label>
         </section>
 
@@ -103,4 +103,4 @@ export default connect(
     name: props.match.params.name
   }),
   { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir }
-)(AddRoundForm);
+)(EditForm);

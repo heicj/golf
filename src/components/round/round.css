@@ -1,0 +1,41 @@
+#grid{
+  display: grid;
+  width: 60%;
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
+  grid-template-columns: repeat(19, auto);
+  background-color: lightgray;
+
+  .title{
+    background-color: white;
+    text-align: center;
+    font-size: 1rem;  
+  }
+}
+
+#item1{
+  /* grid-column: 1 / 5 */
+  display: flex;
+  width: 15%;
+  justify-content: space-between;
+
+  h5{
+    margin: 5px 0px 5px 0px;
+  }
+}
+
+#editButtons{
+  display: flex;
+  width: 30px;
+  justify-content: space-between;
+  font-size: 1.25rem;
+
+  :hover{
+    background-color: lightgray;
+  }
+}
+
+#date{
+  font-size: .75rem;
+  margin: 0;
+}
