@@ -16,6 +16,8 @@ class Home extends PureComponent{
     jeremyPuttsAvg: ''
   };
 
+  names = ['charlieAvgScore', 'charlieFirAvg', 'charlieGirAvg', 'charliePuttsAvg', 'jeremyAvgScore', 'jeremyFirAvg', 'jeremyGirAvg', 'jeremyPuttsAvg']
+    
   handleCharlieAvg = (avgScore) => {
     this.setState({ charlieAvgScore: avgScore.toFixed(2) });
   };
@@ -76,7 +78,7 @@ class Home extends PureComponent{
         <Link to={'/rounds/Jeremy'}>View Rounds</Link>
         <div>Avg Score: {jeremyAvgScore}</div>
         <div>Avg Fir: {jeremyFirAvg}</div>
-        <div>Avg Fir: {jeremyGirAvg}</div>
+        <div>Avg Gir: {jeremyGirAvg}</div>
         <div>Avg Putts: {jeremyPuttsAvg}</div>
       </div>
     );

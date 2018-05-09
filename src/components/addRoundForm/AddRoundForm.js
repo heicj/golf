@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import HoleForm from './HoleForm';
 import TeeSelector from './TeeSelector';
 import { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir, calcFirGirTotal } from './actions';
@@ -55,7 +56,7 @@ class AddRoundForm extends PureComponent{
 
   render(){
     const { course, date } = this.state;
-    const { fir, gir, rdScore, putts } = this.props;
+    const { fir, gir, rdScore, putts, name } = this.props;
     const totFir = calcFirGirTotal(fir);
     const totGir = calcFirGirTotal(gir);
     const totScore = rdScore.reduce((acc, curr) => acc + curr, 0);
