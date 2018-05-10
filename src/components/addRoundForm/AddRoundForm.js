@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import HoleForm from './HoleForm';
 import TeeSelector from './TeeSelector';
 import { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir, calcFirGirTotal } from './actions';
@@ -50,13 +50,25 @@ class AddRoundForm extends PureComponent{
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.addRound(this.state);
+    const { name, history } = this.props;
+    history.push(`/rounds/${name}`);
+    this.setState({
+      fir: '',
+      gir: '',
+      rdScore: '',
+      putts: '',
+      course: '',
+      date: ''
+    });
+    // this.props.gir();
+    // this.props.fir();
   };
 
   
 
   render(){
     const { course, date } = this.state;
-    const { fir, gir, rdScore, putts, name } = this.props;
+    const { fir, gir, rdScore, putts } = this.props;
     const totFir = calcFirGirTotal(fir);
     const totGir = calcFirGirTotal(gir);
     const totScore = rdScore.reduce((acc, curr) => acc + curr, 0);
@@ -94,7 +106,7 @@ class AddRoundForm extends PureComponent{
   }
 }
 
-export default connect(
+export default withRouter(connect(
   (state, props) => ({ 
     hole: state.hole,
     fir: state.fir,
@@ -104,4 +116,4 @@ export default connect(
     name: props.match.params.name
   }),
   { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir }
-)(AddRoundForm);
+)(AddRoundForm));
