@@ -10,9 +10,14 @@ class Home extends PureComponent{
     charlieFirAvg: '',
     charlieGirAvg: '',
     charliePuttsAvg: '',
-    jeremyAvgScore: ''
+    jeremyAvgScore: '',
+    jeremyFirAvg: '',
+    jeremyGirAvg: '',
+    jeremyPuttsAvg: ''
   };
 
+  names = ['charlieAvgScore', 'charlieFirAvg', 'charlieGirAvg', 'charliePuttsAvg', 'jeremyAvgScore', 'jeremyFirAvg', 'jeremyGirAvg', 'jeremyPuttsAvg']
+    
   handleCharlieAvg = (avgScore) => {
     this.setState({ charlieAvgScore: avgScore.toFixed(2) });
   };
@@ -33,6 +38,17 @@ class Home extends PureComponent{
     this.setState({ jeremyAvgScore: avgScore.toFixed(2) });
   };
 
+  handleJeremyFirAvg = (avgScore) => {
+    this.setState({ jeremyFirAvg: avgScore.toFixed(2) });
+  };
+  
+  handleJeremyGirAvg = (avgScore) => {
+    this.setState({ jeremyGirAvg: avgScore.toFixed(2) });
+  };
+  handleJeremyPuttsAvg = (avgScore) => {
+    this.setState({ jeremyPuttsAvg: avgScore.toFixed(2) });
+  };
+
   componentDidMount(){
     this.props.getScoreAvg('Charlie', 'totalScore', this.handleCharlieAvg);
     this.props.getScoreAvg('Charlie', 'totalFir', this.handleCharlieFirAvg);
@@ -40,13 +56,17 @@ class Home extends PureComponent{
     this.props.getScoreAvg('Charlie', 'totalPutts', this.handleCharliePuttsAvg);
 
     this.props.getScoreAvg('Jeremy', 'totalScore', this.handleJeremyAvg);
+    this.props.getScoreAvg('Jeremy', 'totalFir', this.handleJeremyFirAvg);
+    this.props.getScoreAvg('Jeremy', 'totalGir', this.handleJeremyGirAvg);
+    this.props.getScoreAvg('Jeremy', 'totalPutts', this.handleJeremyPuttsAvg);
   }
   render(){
-    const { charlieAvgScore, charlieFirAvg, charlieGirAvg, charliePuttsAvg, jeremyAvgScore } = this.state;
+    const { charlieAvgScore, charlieFirAvg, charlieGirAvg, charliePuttsAvg, jeremyAvgScore, jeremyFirAvg, jeremyGirAvg, jeremyPuttsAvg } = this.state;
     return (
       <div>
         <div>Charlie</div>
         <Link to={'/newRound/Charlie'}>Add Round</Link>
+        &nbsp;
         <Link to={'/rounds/Charlie'}>View Rounds</Link>
         <div>Avg Score: {charlieAvgScore} </div>
         <div>Avg Fir: {charlieFirAvg}</div>
@@ -54,8 +74,12 @@ class Home extends PureComponent{
         <div>Avg Putts: {charliePuttsAvg}</div>
         <div>Jeremy</div>
         <Link to={'/newRound/Jeremy'}>Add Round</Link>
+        &nbsp;
         <Link to={'/rounds/Jeremy'}>View Rounds</Link>
         <div>Avg Score: {jeremyAvgScore}</div>
+        <div>Avg Fir: {jeremyFirAvg}</div>
+        <div>Avg Gir: {jeremyGirAvg}</div>
+        <div>Avg Putts: {jeremyPuttsAvg}</div>
       </div>
     );
   }

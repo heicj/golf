@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import HoleForm from './HoleForm';
 import TeeSelector from './TeeSelector';
 import { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir, calcFirGirTotal } from './actions';
+import { putts } from './reducers';
 import './addRoundForm.css';
 
 class AddRoundForm extends PureComponent{
@@ -49,6 +51,20 @@ class AddRoundForm extends PureComponent{
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.addRound(this.state);
+    const { name, history } = this.props;
+    history.push(`/rounds/${name}`);
+    this.props.putts();
+    // this.setState({
+    //   fir: '',
+    //   gir: '',
+    //   rdScore: '',
+    //   putts: '',
+    //   course: '',
+    //   date: '',
+    //   holeScore: [],
+    //   puttScore: []
+    // });
+
   };
 
   
@@ -58,8 +74,8 @@ class AddRoundForm extends PureComponent{
     const { fir, gir, rdScore, putts } = this.props;
     const totFir = calcFirGirTotal(fir);
     const totGir = calcFirGirTotal(gir);
-    const totScore = rdScore.reduce((acc, curr) => acc + curr, 0);
-    const totPutts = putts.reduce((acc, curr) => acc + curr, 0);
+    // const totScore = rdScore.reduce((acc, curr) => acc + curr, 0);
+    // const totPutts = putts.reduce((acc, curr) => acc + curr, 0);
     // const totFir = fir.reduce((acc, curr) => curr === true ? acc + 1 : acc, 0);
     const round = Array(18).fill('');
     return (
@@ -67,10 +83,10 @@ class AddRoundForm extends PureComponent{
         <section>
           <h2>Enter New Round</h2>
           <h3>{this.props.name}</h3>
-          <p>Score: {totScore}</p>
+          {/* <p>Score: {totScore}</p> */}
           <p>Fir total: {totFir}</p>
           <p>Gir total: {totGir}</p>
-          <p>Putts: {totPutts}</p>
+          {/* <p>Putts: {totPutts}</p> */}
           <label htmlFor="course">
             Course:<input name="course" type="text" onChange={this.handleLocalState} value={course}/>
           </label>
@@ -93,7 +109,7 @@ class AddRoundForm extends PureComponent{
   }
 }
 
-export default connect(
+export default withRouter(connect(
   (state, props) => ({ 
     hole: state.hole,
     fir: state.fir,
@@ -102,5 +118,5 @@ export default connect(
     putts: state.putts,
     name: props.match.params.name
   }),
-  { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir }
-)(AddRoundForm);
+  { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir, putts }
+)(AddRoundForm));

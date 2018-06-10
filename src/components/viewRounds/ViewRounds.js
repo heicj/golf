@@ -10,6 +10,8 @@ class ViewRounds extends Component{
   componentDidMount(){
     const { name } = this.props;
     this.props.getRounds(name);
+    
+    window.scrollTo(0, 0);  
   }
 
   render(){

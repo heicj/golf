@@ -18,24 +18,6 @@ export function getRounds(name){
   };
 }
 
-// export function getScoreAvg(name){
-//   if(name === '') return;
-//   return {
-//     type: LOAD_SCORE_AVG,
-//     payload: players.child(name).once('value').then(data => {
-//       const rounds = data.val();
-//       const totalRounds = Object.keys(rounds).length;
-//       let totalScore = 0;
-//       Object.keys(rounds).map(key => {
-//         let round = rounds[key];
-//         let scoreArray = round.totalScore;
-//         totalScore = totalScore + scoreArray;
-//       });
-//       return totalScore / totalRounds;
-//     })
-//   };
-// }
-
 export function getScoreAvg(name, stat, handler){
   if(name === '') return;
   players.child(name).once('value').then(data => {
@@ -54,7 +36,5 @@ export function getScoreAvg(name, stat, handler){
 
 
 
-const avg = getScoreAvg('Charlie');
-console.log(avg);
 
 
