@@ -8,7 +8,7 @@ class Header extends PureComponent{
     return (
       <div>
         <h1>Golf Stats</h1>
-        <Link to='/'>Home</Link>
+        <Link to='/home'>Home</Link>
         {/* <Link to='/rounds/Jeremy'>Jeremy's Rounds</Link>
         <Link to='/rounds/Charlie'>Charlie's Rounds</Link> */}
       </div>
