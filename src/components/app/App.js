@@ -6,6 +6,7 @@ import Header from '../header/Header';
 import Login from '../login/Login';
 import AddRoundForm from '../addRoundForm/AddRoundForm';
 import ViewRounds from '../viewRounds/ViewRounds';
+import PrivateRoute from '../privateRoute/PrivateRoute';
 
 export default class App extends PureComponent{
 
@@ -17,7 +18,7 @@ export default class App extends PureComponent{
             <Header/>
             <Switch>
               <Route exact path='/' component={Login}/>
-              <Route path='/home' component={Home}/>
+              <PrivateRoute path='/home' component={Home}/>
               <Route path='/newRound/:name' component={AddRoundForm}/>
               <Route path='/rounds/:name' component={ViewRounds}/>
               <Redirect to='/'/>

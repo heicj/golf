@@ -1,8 +1,14 @@
 import React, { PureComponent } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userSignin } from './actions';
 
 class Login extends PureComponent{
+
+  state = {
+    redirectToReferrer: false,
+    auth: this.props,
+  };
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -11,13 +17,22 @@ class Login extends PureComponent{
 
     if(name.value == 'charlie' || 'jeremy' && password.value == 'letmein'){
       this.props.userSignin();
+      this.setState({ redirectToReferrer: true });
     }
-    console.log(name.value, password.value);
-  }
+  };
+
   render() {
+    const { from } = this.props.location.state || { from: { pathname: '/home' } };
+    const { redirectToReferrer } = this.state;
+
+    if(redirectToReferrer) {
+      return <Redirect to={from} />;
+    }
+
     return (
       <form className='singinForm' onSubmit={this.handleSubmit}>
         sign in page
+        
         <label htmlFor='name'>
           Name:<input type='text' name='name'/>
         </label>
@@ -32,6 +47,8 @@ class Login extends PureComponent{
 }
 
 export default connect(
-  null,
+  (state) => ({
+    auth: state.auth
+  }),
   { userSignin }
 )(Login);
