@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "app to track golf rounds",
   "main": "index.js",
+  "browser": {
+    "fs": false,
+    "net": false,
+    "tls": false
+  },
   "scripts": {
     "lint": "eslint src",
     "build": "webpack",

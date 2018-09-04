@@ -1,6 +1,6 @@
-const excel = require('excel4node');
+import excel4node from 'excel4node';
 
-const workbook = new excel.Workbook();
+const workbook = new excel4node.Workbook();
 const worksheet = workbook.addWorksheet('Sheet 1');
 
 export function excelFunc(rounds) {
