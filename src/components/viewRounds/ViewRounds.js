@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { getRounds } from '../home/actions';
 import { deleteRd } from './actions';
 import Round from '../round/Round';
-import excelFunc from '../../services/excelFunc';
+// import excelFunc from '../../services/excelFunc';
 
 class ViewRounds extends Component{
 
@@ -15,16 +15,18 @@ class ViewRounds extends Component{
     window.scrollTo(0, 0);  
   }
 
-  handleClick(){
-    excelFunc(this.props.rounds);
-  }
+  //commented out until I figure out excel4node build issue
+  // handleClick(){
+  //   excelFunc(this.props.rounds);
+  // }
 
   render(){
     const { rounds, deleteRd, name } = this.props;
     return (
       <section>
         <h2>{this.props.name + "'s"} Rounds</h2>
-        <button onClick={this.handleClick}>download rounds</button>
+        {/* need to fix excel4node build issue */}
+        {/* <button onClick={this.handleClick}>download rounds</button> */}
         {rounds.reverse().map((r, i) => <Round name={name} deleteRound={deleteRd} key={i} id={r.key}  roundStats={r}/>)}
       </section>
     );
