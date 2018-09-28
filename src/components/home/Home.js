@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getScoreAvg } from './actions';
 // import AddRoundForm from '../addRoundForm/AddRoundForm';
+import './home.css';
+
 class Home extends PureComponent{
 
   state = {

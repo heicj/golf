@@ -1,0 +1,10 @@
+@import '../../styles/variables.css';
+
+
+body{
+  color: red;
+}
+.button{
+  font-size: 4rem;
+  background-color: red;
+}

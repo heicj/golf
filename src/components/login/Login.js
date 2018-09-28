@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userSignin } from './actions';
+import './login.css';
 
 class Login extends PureComponent{
 
@@ -39,7 +40,7 @@ class Login extends PureComponent{
         <label htmlFor='password'>
           Password:<input type='password' name='password'/>
         </label>
-        <button>Submit</button>
+        <button className="button">Submit</button>
       </form>
 
     );
