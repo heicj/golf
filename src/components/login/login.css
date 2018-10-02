@@ -2,7 +2,10 @@
 
 
 body{
-  color: red;
+  background: $darkGreen;
+  color: $lightGreen;
+  background: url('../../img/st-andrews-old-course.jpg') no-repeat;
+  background-size: cover;
 }
 .button{
   font-size: 4rem;
