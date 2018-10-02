@@ -2,12 +2,24 @@
 
 
 body{
+  width: 100%;
   background: $darkGreen;
   color: $lightGreen;
+  font-size: 2rem;
   background: url('../../img/st-andrews-old-course.jpg') no-repeat;
   background-size: cover;
 }
+
 .button{
   font-size: 4rem;
   background-color: red;
+}
+
+.signinForm{
+  display: block
+}
+
+.inputs{
+  margin: auto;
+  width: 50%;
 }
