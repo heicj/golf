@@ -19,6 +19,7 @@ class Header extends PureComponent{
           auth ? 
             <div>
               <Link to='/home'>Home</Link> 
+              &nbsp;
               <Link onClick={this.handleLogOut} to='/'>Sign Out</Link>
             </div>
             : 
