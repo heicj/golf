@@ -1,0 +1,20 @@
+#title{
+  text-align: center;
+  font-size: 4rem;
+  text-shadow: 4px 6px 2px grey;
+}
+
+a{
+  font-size: 1rem;
+}
+a:link{
+  color: blue;
+}
+
+a:visited{
+  color: lightblue;
+}
+
+a:hover{
+  color: red;
+}

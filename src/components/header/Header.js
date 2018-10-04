@@ -1,14 +1,31 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import './header.css';
+import { signOut } from '../login/actions';
 
 class Header extends PureComponent{
-  render(){
 
+  handleLogOut = event => {
+    event.preventDefault();
+    this.props.signOut();
+  }
+
+  render(){
+    const auth = this.props.auth;
     return (
       <div>
-        <h1>Golf Stats</h1>
-        <Link to='/home'>Home</Link>
+        {
+          auth ? 
+            <div>
+              <Link to='/home'>Home</Link> 
+              <Link onClick={this.handleLogOut} to='/'>Sign Out</Link>
+            </div>
+            : 
+            null
+
+        }
+        <h1 id='title'>Golf Stats</h1>
         
       </div>
     );
@@ -16,6 +33,8 @@ class Header extends PureComponent{
 }
 
 export default connect(
-  null,
-  null
+  state => ({
+    auth: state.auth
+  }),
+  {signOut}
 )(Header);
