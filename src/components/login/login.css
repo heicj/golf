@@ -6,7 +6,7 @@ body{
   background: $darkGreen;
   color: $lightGreen;
   font-size: 2rem;
-  background: url('../../img/st-andrews-old-course.jpg') no-repeat;
+  /* background: url('../../img/st-andrews-old-course.jpg') no-repeat; */
   background-size: cover;
 }
 

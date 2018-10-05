@@ -14,7 +14,7 @@ class Header extends PureComponent{
   render(){
     const auth = this.props.auth;
     return (
-      <div>
+      <div className='image-container'>
         {
           auth ? 
             <div>
