@@ -13,13 +13,25 @@ body{
 .button{
   font-size: 4rem;
   background-color: red;
+  margin: 0 auto;
 }
 
 .signinForm{
-  display: block
+  font-size: 3rem;
+  font-family: 'Times New Roman', Times, serif;
+  width: 80%;
+  display: block;
+  justify-content: space-around;
 }
 
 .inputs{
   margin: auto;
-  width: 50%;
+  width: 75%;
+}
+
+.inputBox{
+  border: none;
+  background-color: darkgreen;
+  color: white;
+  
 }

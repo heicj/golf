@@ -31,16 +31,16 @@ class Login extends PureComponent{
     }
 
     return (
-      <form className='singinForm' onSubmit={this.handleSubmit}>
-        sign in page
+      <form className='signinForm' onSubmit={this.handleSubmit}>
+        SIGN IN
         <div className='inputs'>
           <label htmlFor='name'>
-            Name:<input type='text' name='name'/>
+            Name:<input className='inputBox' type='text' name='name'/>
           </label>
         </div>
         <div className='inputs'>
           <label htmlFor='password'>
-            Password:<input type='password' name='password'/>
+            Password:<input className='inputBox' type='password' name='password'/>
           </label>
         </div>
 
