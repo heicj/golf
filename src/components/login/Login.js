@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userSignin } from './actions';
+import './login.css';
 
 class Login extends PureComponent{
 
@@ -15,7 +16,7 @@ class Login extends PureComponent{
     const { target: { elements } } = event;
     const { name, password } = elements;
 
-    if(name.value == 'charlie' || 'jeremy' && password.value == 'letmein'){
+    if(name.value == 'charlie' || 'jeremy' && password.value == process.env.PASSWORD){
       this.props.userSignin();
       this.setState({ redirectToReferrer: true });
     }
@@ -30,17 +31,23 @@ class Login extends PureComponent{
     }
 
     return (
-      <form className='singinForm' onSubmit={this.handleSubmit}>
-        sign in page
-        
-        <label htmlFor='name'>
-          Name:<input type='text' name='name'/>
-        </label>
-        <label htmlFor='password'>
-          Password:<input type='password' name='password'/>
-        </label>
-        <button>Submit</button>
-      </form>
+
+      <div className='form-wrapper'>
+        <h1 className='signIn'>Sign In</h1>
+        <form onSubmit={this.handleSubmit}>
+          <div className='form-item'>
+            <label htmlFor='name'></label>
+            <input type='text' name='name' placeholder='Name'/>
+          </div>
+          <div className='form-item'>
+            <label htmlFor='password'></label>
+            <input type='password' name='password' required='required' placeholder='Password'></input>
+          </div>
+          <div className='button-panel'>
+            <input type='submit' className='button' title='Sign In' value='Sign In'></input>
+          </div>
+        </form>
+      </div>
 
     );
   }

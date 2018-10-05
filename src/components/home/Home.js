@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getScoreAvg } from './actions';
 // import AddRoundForm from '../addRoundForm/AddRoundForm';
+import './home.css';
+
 class Home extends PureComponent{
 
   state = {
@@ -64,7 +66,7 @@ class Home extends PureComponent{
     const { charlieAvgScore, charlieFirAvg, charlieGirAvg, charliePuttsAvg, jeremyAvgScore, jeremyFirAvg, jeremyGirAvg, jeremyPuttsAvg } = this.state;
     return (
       <div>
-        <div>Charlie</div>
+        <div className='player'>Charlie</div>
         <Link to={'/newRound/Charlie'}>Add Round</Link>
         &nbsp;
         <Link to={'/rounds/Charlie'}>View Rounds</Link>
@@ -72,7 +74,7 @@ class Home extends PureComponent{
         <div>Avg Fir: {charlieFirAvg}</div>
         <div>Avg Gir: {charlieGirAvg}</div>
         <div>Avg Putts: {charliePuttsAvg}</div>
-        <div>Jeremy</div>
+        <div className='player'>Jeremy</div>
         <Link to={'/newRound/Jeremy'}>Add Round</Link>
         &nbsp;
         <Link to={'/rounds/Jeremy'}>View Rounds</Link>
