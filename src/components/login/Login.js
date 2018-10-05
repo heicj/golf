@@ -6,6 +6,12 @@ import './login.css';
 
 class Login extends PureComponent{
 
+  componentDidMount(){
+    let user = null;
+    if(localStorage.getItem('golfstats') == 'signedin'){
+      this.setState({ redirectToReferrer: true });
+    }
+  }
   state = {
     redirectToReferrer: false,
     auth: this.props,
@@ -19,6 +25,10 @@ class Login extends PureComponent{
     if(name.value == 'charlie' || 'jeremy' && password.value == process.env.PASSWORD){
       this.props.userSignin();
       this.setState({ redirectToReferrer: true });
+
+      // const user = { golfstats: 'signedin' };
+
+      localStorage.setItem('golfstats', 'signedin');
     }
   };
 
