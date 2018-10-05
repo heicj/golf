@@ -33,7 +33,7 @@ class Login extends PureComponent{
     return (
 
       <div className='form-wrapper'>
-        <h1>Sign In</h1>
+        <h1 className='signIn'>Sign In</h1>
         <form onSubmit={this.handleSubmit}>
           <div className='form-item'>
             <label htmlFor='name'></label>

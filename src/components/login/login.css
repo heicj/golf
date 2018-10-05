@@ -15,9 +15,12 @@ body{
   max-width: 370px;
 }
 
-h1{
+.signIn{
+  font-size: 1.5rem;
+  margin-top: 1em;
   text-align: center;
-  padding: 1em 0;
+  /* padding: 1em 0; */
+  padding-top: 1em;
 }
 
 form{
@@ -63,7 +66,8 @@ form{
   text-align: center;
   text-transform: uppercase;
   transition: background 0.3s ease-in-out;
-  width: 100%
+  width: 100%;
+  margin-bottom: 1em;
 }
 
 .button:hover{
