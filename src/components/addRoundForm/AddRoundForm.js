@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import HoleForm from './HoleForm';
 import TeeSelector from './TeeSelector';
-import { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir, calcFirGirTotal } from './actions';
+import { nextHole, teeSelection, holeScore, addRound, puttScore, puttReset, toggleFir, toggleGir, calcFirGirTotal } from './actions';
 import { putts } from './reducers';
 import './addRoundForm.css';
 
@@ -53,7 +53,7 @@ class AddRoundForm extends PureComponent{
     this.props.addRound(this.state);
     const { name, history } = this.props;
     history.push(`/rounds/${name}`);
-    this.props.putts();
+    this.props.puttReset();
     // this.setState({
     //   fir: '',
     //   gir: '',
@@ -118,5 +118,5 @@ export default withRouter(connect(
     putts: state.putts,
     name: props.match.params.name
   }),
-  { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir, putts }
+  { nextHole, teeSelection, holeScore, addRound, puttScore, puttReset, toggleFir, toggleGir, putts }
 )(AddRoundForm));

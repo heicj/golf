@@ -1,5 +1,5 @@
 import { db } from '../../services/firebase';
-import { NEXT_HOLE, CHOOSE_TEE, ADD_HOLE_SCORE, ADD_PUTT_SCORE, TOGGLE_FIR, TOGGLE_GIR, TOTAL_FIR } from './reducers';
+import { NEXT_HOLE, CHOOSE_TEE, ADD_HOLE_SCORE, ADD_PUTT_SCORE, TOGGLE_FIR, TOGGLE_GIR, TOTAL_FIR, RESET_PUTTS } from './reducers';
 import { ADD_ROUND } from '../home/reducers';
 
 const players = db.ref('players');
@@ -29,6 +29,12 @@ export function puttScore({ id, value }){
   return {
     type: ADD_PUTT_SCORE,
     payload: { id, value }
+  };
+}
+
+export function puttReset(){
+  return {
+    type: RESET_PUTTS
   };
 }
 
