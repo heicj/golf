@@ -1,5 +1,5 @@
 import { db } from '../../services/firebase';
-import { NEXT_HOLE, CHOOSE_TEE, ADD_HOLE_SCORE, ADD_PUTT_SCORE, TOGGLE_FIR, TOGGLE_GIR, TOTAL_FIR, RESET_PUTTS } from './reducers';
+import { NEXT_HOLE, CHOOSE_TEE, ADD_HOLE_SCORE, ADD_PUTT_SCORE, TOGGLE_FIR, TOGGLE_GIR, TOTAL_FIR, RESET_PUTTS, RESET_HOLE_SCORE } from './reducers';
 import { ADD_ROUND } from '../home/reducers';
 
 const players = db.ref('players');
@@ -7,6 +7,12 @@ const players = db.ref('players');
 export function nextHole(){
   return {
     type: NEXT_HOLE
+  };
+}
+
+export function resetHoleScore(){
+  return {
+    type: RESET_HOLE_SCORE
   };
 }
 
