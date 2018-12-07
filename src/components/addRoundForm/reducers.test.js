@@ -1,4 +1,4 @@
-import { ADD_HOLE_SCORE, ADD_PUTT_SCORE, CHOOSE_TEE, fir,  hole, holesScore, NEXT_HOLE, player, putts, PREV_HOLE, SELECT_PLAYER, tee, TOGGLE_FIR, rdFirTotal, TOTAL_FIR, UPDATE_HOLE_SCORE, UPDATE_PUTT_SCORE } from './reducers';
+import { ADD_HOLE_SCORE, ADD_PUTT_SCORE, CHOOSE_TEE, fir,  hole, holesScore, NEXT_HOLE, player, putts, RESET_PUTTS, RESET_HOLE_SCORE, PREV_HOLE, SELECT_PLAYER, tee, TOGGLE_FIR, rdFirTotal, TOTAL_FIR, UPDATE_HOLE_SCORE, UPDATE_PUTT_SCORE } from './reducers';
 
 
 describe('tests adding hole score and updating score', () => {
@@ -21,6 +21,12 @@ describe('tests adding hole score and updating score', () => {
     const update = holesScore(state, { type: UPDATE_HOLE_SCORE, payload: { id: 3, value: 5 } });
     expect(update).toEqual([0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   });
+
+  it('resets hole score to initial state', () => {
+    const state = [0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    const reset = holesScore(state, { type: RESET_HOLE_SCORE });
+    expect(reset).toEqual((Array(18).fill(0)));
+  });
 });
 
 describe('tests adding putt total and updating putt total', () => {
@@ -41,6 +47,12 @@ describe('tests adding putt total and updating putt total', () => {
     const state = [0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     const update = putts(state, { type: UPDATE_PUTT_SCORE, payload: { id: 3, value: 5 } });
     expect(update).toEqual([0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  });
+
+  it('resets putts to initial state', () => {
+    const state =  [0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    const reset = putts(state, { type: RESET_PUTTS });
+    expect(reset).toEqual(Array(18).fill(0));
   });
 });
 

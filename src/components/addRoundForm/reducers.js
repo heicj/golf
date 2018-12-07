@@ -1,6 +1,8 @@
 export const ADD_HOLE_SCORE = 'ADD_HOLE_SCORE';
 export const UPDATE_HOLE_SCORE = 'UPDATE_HOLE_SCORE';
+export const RESET_HOLE_SCORE = 'RESET_HOLE_SCORE';
 export const ADD_PUTT_SCORE = 'ADD_PUTT_SCORE';
+export const RESET_PUTTS = 'RESET_PUTTS';
 export const UPDATE_PUTT_SCORE = 'UPDATE_PUTT_SCORE';
 export const CHOOSE_TEE = 'CHOOSE_TEE';
 export const SELECT_PLAYER = 'SELECT_PLAYER';
@@ -19,7 +21,8 @@ export function holesScore(state = initialState, { type, payload }){
     
     case UPDATE_HOLE_SCORE:
       return state.map((hole, i) => payload.id === i ? payload.value : hole);
-      
+    case RESET_HOLE_SCORE:
+      return initialState;  
     default:
       return state;
   }
@@ -31,6 +34,8 @@ export function putts(state = initialState, { type, payload }){
       return state.map((hole, i) => payload.id === i ? payload.value : hole);
     case UPDATE_PUTT_SCORE:
       return state.map((hole, i) => payload.id === i ? payload.value : hole);
+    case RESET_PUTTS:
+      return initialState;
     default:
       return state;
   }
