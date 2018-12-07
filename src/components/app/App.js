@@ -1,15 +1,24 @@
 
 import React, { PureComponent } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Home from '../home/Home';
 import Header from '../header/Header';
 import Login from '../login/Login';
 import AddRoundForm from '../addRoundForm/AddRoundForm';
 import ViewRounds from '../viewRounds/ViewRounds';
 import PrivateRoute from '../privateRoute/PrivateRoute';
+import { userSignin } from '../login/actions';
 
-export default class App extends PureComponent{
 
+class App extends PureComponent{
+
+  componentDidMount(){
+    let auth = null;
+    if(localStorage.getItem('golfstats')){
+      this.props.userSignin();
+    }
+  }
   render(){
     return (
       <div>
@@ -30,3 +39,8 @@ export default class App extends PureComponent{
     );
   }
 }
+
+export default connect(
+  null,
+  { userSignin }
+)(App);

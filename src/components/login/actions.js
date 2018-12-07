@@ -7,6 +7,7 @@ export function userSignin() {
 }
 
 export function signOut(){
+  localStorage.removeItem('golfstats');
   return {
     type: SIGNOUT
   };
