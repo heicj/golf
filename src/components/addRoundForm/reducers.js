@@ -11,6 +11,7 @@ export const PREV_HOLE = 'PREV_HOLE';
 export const TOGGLE_FIR = 'TOGGLE_FIR';
 export const TOGGLE_GIR = 'TOGGLE_GIR';
 export const TOTAL_FIR = 'TOTAL_FIR';
+export const FIR_RESET = 'FIR_RESET';
 
 const initialState = Array(18).fill(0);
 
@@ -42,10 +43,13 @@ export function putts(state = initialState, { type, payload }){
 }
 
 const firGirInitialState = Array(18).fill(false); 
+
 export function fir(state = firGirInitialState, { type, payload }){
   switch(type){
     case TOGGLE_FIR:
       return state.map((h, i) => payload === i ? !state[i] : h);
+    case FIR_RESET:
+      return firGirInitialState;
     default:
       return state;
   }
