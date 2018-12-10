@@ -1,5 +1,5 @@
 import { db } from '../../services/firebase';
-import { NEXT_HOLE, CHOOSE_TEE, ADD_HOLE_SCORE, ADD_PUTT_SCORE, TOGGLE_FIR, TOGGLE_GIR, TOTAL_FIR, RESET_PUTTS, RESET_HOLE_SCORE, FIR_RESET } from './reducers';
+import { NEXT_HOLE, CHOOSE_TEE, ADD_HOLE_SCORE, ADD_PUTT_SCORE, TOGGLE_FIR, TOGGLE_GIR, TOTAL_FIR, RESET_PUTTS, RESET_HOLE_SCORE, FIR_RESET, GIR_RESET } from './reducers';
 import { ADD_ROUND } from '../home/reducers';
 
 const players = db.ref('players');
@@ -63,6 +63,13 @@ export function toggleGir(id){
     payload: id
   };
 }
+
+export function girReset(){
+  return {
+    type: GIR_RESET
+  };
+}
+
 export function addRound(round){
 
   return (dispatch, getState) => {

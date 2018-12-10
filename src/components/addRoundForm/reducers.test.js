@@ -1,4 +1,4 @@
-import { ADD_HOLE_SCORE, ADD_PUTT_SCORE, CHOOSE_TEE, fir,  FIR_RESET, hole, holesScore, NEXT_HOLE, player, putts, RESET_PUTTS, RESET_HOLE_SCORE, PREV_HOLE, SELECT_PLAYER, tee, TOGGLE_FIR, rdFirTotal, TOTAL_FIR, UPDATE_HOLE_SCORE, UPDATE_PUTT_SCORE } from './reducers';
+import { ADD_HOLE_SCORE, ADD_PUTT_SCORE, CHOOSE_TEE, fir, gir, GIR_RESET, FIR_RESET, hole, holesScore, NEXT_HOLE, player, putts, RESET_PUTTS, RESET_HOLE_SCORE, PREV_HOLE, SELECT_PLAYER, tee, TOGGLE_FIR, rdFirTotal, TOTAL_FIR, UPDATE_HOLE_SCORE, UPDATE_PUTT_SCORE } from './reducers';
 
 
 describe('tests adding hole score and updating score', () => {
@@ -117,6 +117,24 @@ describe('tests fir initial state and handling', () => {
   it('resets fir to initial state', () => {
     const state = [false, false, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
     const reset = fir(state, { type: FIR_RESET });
+    expect(reset).toEqual([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
+  });
+});
+
+describe('test gir initial state and handling', () => {
+  it('gir initial state array of false', () => {
+    const state = gir(undefined, {});
+    expect(state).toEqual([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
+  });
+
+  it('toggles gir state', () => {
+    const state = fir(undefined, { type: TOGGLE_FIR, payload: 3 });
+    expect(state).toEqual([false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
+  });
+
+  it('resets gir to initial state', () => {
+    const state = [false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+    const reset = gir(state, { type: GIR_RESET });
     expect(reset).toEqual([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
   });
 });
