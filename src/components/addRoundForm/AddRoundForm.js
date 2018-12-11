@@ -75,16 +75,17 @@ class AddRoundForm extends PureComponent{
         <section>
           <h2>Enter New Round</h2>
           <h3>{this.props.name}</h3>
-          {/* <p>Score: {totScore}</p> */}
           <p>Fir total: {totFir}</p>
           <p>Gir total: {totGir}</p>
-          {/* <p>Putts: {totPutts}</p> */}
-          <label htmlFor="course">
-            Course:<input name="course" type="text" onChange={this.handleLocalState} value={course}/>
-          </label>
-          <label htmlFor="date">
-            Date:<input type="date" name="date" onChange={this.handleLocalState} value={date}/>
-          </label>
+
+          <div id="courseDate">
+            <label htmlFor="course">
+              Course:<input name="course" id="course" type="text" onChange={this.handleLocalState} value={course}/>
+            </label>
+            <label htmlFor="date">
+              Date:<input type="date" name="date" id="date" onChange={this.handleLocalState} value={date}/>
+            </label>
+          </div>
 
           <label htmlFor="tee">
             <TeeSelector selectChange={this.handleLocalState}/>
