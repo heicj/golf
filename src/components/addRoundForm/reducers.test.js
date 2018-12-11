@@ -1,4 +1,4 @@
-import { ADD_HOLE_SCORE, ADD_PUTT_SCORE, CHOOSE_TEE, fir,  hole, holesScore, NEXT_HOLE, player, putts, PREV_HOLE, SELECT_PLAYER, tee, TOGGLE_FIR, rdFirTotal, TOTAL_FIR, UPDATE_HOLE_SCORE, UPDATE_PUTT_SCORE } from './reducers';
+import { ADD_HOLE_SCORE, ADD_PUTT_SCORE, CHOOSE_TEE, fir, gir, GIR_RESET, FIR_RESET, hole, holesScore, NEXT_HOLE, player, putts, RESET_PUTTS, RESET_HOLE_SCORE, PREV_HOLE, SELECT_PLAYER, tee, TOGGLE_FIR, rdFirTotal, TOTAL_FIR, UPDATE_HOLE_SCORE, UPDATE_PUTT_SCORE } from './reducers';
 
 
 describe('tests adding hole score and updating score', () => {
@@ -21,6 +21,12 @@ describe('tests adding hole score and updating score', () => {
     const update = holesScore(state, { type: UPDATE_HOLE_SCORE, payload: { id: 3, value: 5 } });
     expect(update).toEqual([0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   });
+
+  it('resets hole score to initial state', () => {
+    const state = [0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    const reset = holesScore(state, { type: RESET_HOLE_SCORE });
+    expect(reset).toEqual((Array(18).fill(0)));
+  });
 });
 
 describe('tests adding putt total and updating putt total', () => {
@@ -41,6 +47,12 @@ describe('tests adding putt total and updating putt total', () => {
     const state = [0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     const update = putts(state, { type: UPDATE_PUTT_SCORE, payload: { id: 3, value: 5 } });
     expect(update).toEqual([0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  });
+
+  it('resets putts to initial state', () => {
+    const state =  [0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    const reset = putts(state, { type: RESET_PUTTS });
+    expect(reset).toEqual(Array(18).fill(0));
   });
 });
 
@@ -100,6 +112,30 @@ describe('tests fir initial state and handling', () => {
     expect(newState).toEqual([false, false, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
     const newState2 = fir(newState, { type: TOGGLE_FIR, payload: 3 });
     expect(newState2).toEqual([false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
+  });
+
+  it('resets fir to initial state', () => {
+    const state = [false, false, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+    const reset = fir(state, { type: FIR_RESET });
+    expect(reset).toEqual([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
+  });
+});
+
+describe('test gir initial state and handling', () => {
+  it('gir initial state array of false', () => {
+    const state = gir(undefined, {});
+    expect(state).toEqual([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
+  });
+
+  it('toggles gir state', () => {
+    const state = fir(undefined, { type: TOGGLE_FIR, payload: 3 });
+    expect(state).toEqual([false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
+  });
+
+  it('resets gir to initial state', () => {
+    const state = [false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+    const reset = gir(state, { type: GIR_RESET });
+    expect(reset).toEqual([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
   });
 });
 

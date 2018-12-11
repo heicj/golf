@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import HoleForm from './HoleForm';
 import TeeSelector from './TeeSelector';
-import { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir, calcFirGirTotal } from './actions';
+import { nextHole, teeSelection, holeScore, resetHoleScore, addRound, puttScore, puttReset, toggleFir, firReset, toggleGir, girReset, calcFirGirTotal } from './actions';
 import { putts } from './reducers';
 import './addRoundForm.css';
 
@@ -53,18 +53,10 @@ class AddRoundForm extends PureComponent{
     this.props.addRound(this.state);
     const { name, history } = this.props;
     history.push(`/rounds/${name}`);
-    this.props.putts();
-    // this.setState({
-    //   fir: '',
-    //   gir: '',
-    //   rdScore: '',
-    //   putts: '',
-    //   course: '',
-    //   date: '',
-    //   holeScore: [],
-    //   puttScore: []
-    // });
-
+    this.props.puttReset();
+    this.props.resetHoleScore();
+    this.props.firReset();
+    this.props.girReset();
   };
 
   
@@ -83,16 +75,17 @@ class AddRoundForm extends PureComponent{
         <section>
           <h2>Enter New Round</h2>
           <h3>{this.props.name}</h3>
-          {/* <p>Score: {totScore}</p> */}
           <p>Fir total: {totFir}</p>
           <p>Gir total: {totGir}</p>
-          {/* <p>Putts: {totPutts}</p> */}
-          <label htmlFor="course">
-            Course:<input name="course" type="text" onChange={this.handleLocalState} value={course}/>
-          </label>
-          <label htmlFor="date">
-            Date:<input type="date" name="date" onChange={this.handleLocalState} value={date}/>
-          </label>
+
+          <div id="courseDate">
+            <label htmlFor="course">
+              Course:<input name="course" id="course" type="text" onChange={this.handleLocalState} value={course}/>
+            </label>
+            <label htmlFor="date">
+              Date:<input type="date" name="date" id="date" onChange={this.handleLocalState} value={date}/>
+            </label>
+          </div>
 
           <label htmlFor="tee">
             <TeeSelector selectChange={this.handleLocalState}/>
@@ -118,5 +111,5 @@ export default withRouter(connect(
     putts: state.putts,
     name: props.match.params.name
   }),
-  { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir, putts }
+  { nextHole, teeSelection, holeScore, resetHoleScore, addRound, puttScore, puttReset, toggleFir, firReset, toggleGir, girReset, putts }
 )(AddRoundForm));
