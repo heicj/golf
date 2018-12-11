@@ -17,9 +17,6 @@ module.exports = {
     historyApiFallback: true
   },
   devtool: 'inline-source-map',
-  node: {
-    fs: 'empty'
-  },
   plugins: [
     new CleanWebpackPlugin(`${path}/bundle.*.js`), 
     new HtmlPlugin({ template: './src/index.html' }),

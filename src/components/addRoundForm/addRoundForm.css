@@ -1,5 +1,26 @@
 .roundForm{
+  margin: 20px;
+  list-style-type: none;
+  min-width: 640px;
+  
   input{
     width: 3rem;
   };
+}
+
+#courseDate{
+  width: 50%;
+  display: block;
+}
+
+#course{
+  width: 30%;
+  margin: 0;
+  display: block;
+}
+
+#date{
+  width: 20%;
+  margin: 0;
+  display: block;
 }
