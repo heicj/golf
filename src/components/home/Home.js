@@ -68,27 +68,27 @@ class Home extends PureComponent{
       <div id="mainSection">
         <div className='playerBox'>
           <div className='player'>Charlie</div>
-          <div>
+          <div className='statDiv'>
             <Link to={'/newRound/Charlie'}>Add Round</Link>
             &nbsp;
             <Link to={'/rounds/Charlie'}>View Rounds</Link>
           </div>
-          <div>Avg Score: {charlieAvgScore} </div>
-          <div>Avg Fir: {charlieFirAvg}</div>
-          <div>Avg Gir: {charlieGirAvg}</div>
-          <div>Avg Putts: {charliePuttsAvg}</div>
+          <div className='statDiv'>Avg Score: {charlieAvgScore} </div>
+          <div className='statDiv'>Avg Fir: {charlieFirAvg}</div>
+          <div className='statDiv'>Avg Gir: {charlieGirAvg}</div>
+          <div className='statDiv'>Avg Putts: {charliePuttsAvg}</div>
         </div>
         <div className='playerBox'>
           <div className='player'>Jeremy</div>
-          <div>
+          <div className='statDiv'>
             <Link to={'/newRound/Jeremy'}>Add Round</Link>
             &nbsp;
             <Link to={'/rounds/Jeremy'}>View Rounds</Link>
           </div>
-          <div>Avg Score: {jeremyAvgScore}</div>
-          <div>Avg Fir: {jeremyFirAvg}</div>
-          <div>Avg Gir: {jeremyGirAvg}</div>
-          <div>Avg Putts: {jeremyPuttsAvg}</div>
+          <div className='statDiv'>Avg Score: {jeremyAvgScore}</div>
+          <div className='statDiv'>Avg Fir: {jeremyFirAvg}</div>
+          <div className='statDiv'>Avg Gir: {jeremyGirAvg}</div>
+          <div className='statDiv'>Avg Putts: {jeremyPuttsAvg}</div>
         </div>
       </div>
     );
