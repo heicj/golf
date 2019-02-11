@@ -1,5 +1,23 @@
-body{
-    background: #e9e9e9;
-    color: #5e5e5e;
-    font: 400 87.5%/1.5em 'Open Sans', sans-serif;
-  }
+
+#mainSection{
+  text-align: center;
+  margin-top: 2rem;
+      
+    div{
+        margin-top: .3rem;
+      }
+
+    a{
+      font-style: italic;
+    }
+}
+
+.playerBox{
+  margin-top: 1rem;
+}
+
+
+.player{
+  font-size: 2rem;
+  font-weight: bold;
+}
