@@ -22,20 +22,30 @@
   margin: 2em;
   border: 1px solid;
   padding: 10px;
-  box-shadow: 5px 10px #888888;
+  box-shadow: 5px 10px rgb(240, 235, 235);
+  background-color: rgba(3, 63, 50, 0.425);
 }
 
 #rdStats{
   /* grid-column: 1 / 5 */
+  width: 100%;
+  padding-bottom: .2rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-evenly;
   font-size: 1rem;
   text-transform: uppercase;
-  display: block;
-  width: 15%;
-  justify-content: space-between;
 
   h5{
     margin: 5px 0px 5px 0px;
   }
+}
+
+#course{
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
 #editButtons{
@@ -50,6 +60,8 @@
 }
 
 #date{
+  width: 100%;
+  text-align: center;
+  margin: .5rem 0 .5rem 0;
   font-size: .75rem;
-  margin: 0;
 }
