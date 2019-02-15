@@ -14,9 +14,17 @@
 }
 
 .playerBox{
-  margin-top: 2rem;
+  /* margin-top: 2rem;
   font-size: 1.3rem;
-  font-style: bold;
+  font-style: bold; */
+  border: outset 5px;
+  padding: 1rem;
+  width: 40%;
+  margin: 1rem auto;
+  border-radius: 30px;
+  background-color: rgba(3, 63, 50, 0.425);
+
+
 }
 
 
