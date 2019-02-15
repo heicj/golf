@@ -9,18 +9,23 @@
 }
 
 #courseDate{
+  margin: 1rem 0 1rem 0;
+  font-size: 1.2rem;
+  font-weight: bold;
   width: 50%;
   display: block;
-}
+  
+    #course{
+      width: 40%;
+      margin: 0;
+      margin-bottom: 1rem;
+      display: block;
+    }
 
-#course{
-  width: 30%;
-  margin: 0;
-  display: block;
-}
-
-#date{
-  width: 20%;
-  margin: 0;
-  display: block;
+    #date{
+      width: 15%;
+      margin: 0;
+      margin-bottom: 1rem;
+      display: block;
+    }
 }
