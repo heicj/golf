@@ -2,6 +2,12 @@
   margin: 20px;
   list-style-type: none;
   min-width: 640px;
+  border: outset 5px;
+  padding: 1rem;
+  width: 50%;
+  margin: 1rem auto;
+  border-radius: 30px;
+  background-color: rgba(3, 63, 50, 0.425);
   
   input{
     width: 3rem;
@@ -28,4 +34,11 @@
       margin-bottom: 1rem;
       display: block;
     }
+}
+
+.formHoles{
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: .5rem auto;
 }
