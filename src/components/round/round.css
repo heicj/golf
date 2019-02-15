@@ -20,9 +20,14 @@
   min-width: 420px;
   width: 80%;
   margin: 2em;
-  border: 1px solid;
+  /* border: 1px solid;
   padding: 10px;
-  box-shadow: 5px 10px rgb(240, 235, 235);
+  box-shadow: 5px 10px rgb(240, 235, 235); */
+  border: outset 5px;
+  padding: 1rem;
+  width: 60%;
+  margin: 1rem auto;
+  border-radius: 30px;
   background-color: rgba(3, 63, 50, 0.425);
 }
 
