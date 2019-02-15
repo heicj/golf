@@ -17,14 +17,14 @@ export default class Round extends Component{
       <div>
         <section className='round'>
           <div>
-            <h1>{roundStats.course}</h1>
+            <h1 id="course">{roundStats.course}</h1>
             <p id="date">{roundStats.date}</p>
           </div>
           <div id="rdStats">
-            <h5>Score:{roundStats.totalScore}</h5>
-            <h5>FIR:{roundStats.totalFir}</h5>
-            <h5>GIR:{roundStats.totalGir}</h5>
-            <h5>Putts:{roundStats.totalPutts}</h5>
+            <h5>Score: {roundStats.totalScore}</h5>
+            <h5>FIR: {roundStats.totalFir}</h5>
+            <h5>GIR: {roundStats.totalGir}</h5>
+            <h5>Putts: {roundStats.totalPutts}</h5>
           </div>
           <div id="grid">
             <div className="title">Hole</div>{holes.map((h, i) => <div className="title" key={i} id={i}>{i + 1}</div>)}
