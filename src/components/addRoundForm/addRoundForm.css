@@ -12,7 +12,14 @@
   input{
     width: 3rem;
   };
+
 }
+    #titleNewRound{
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    
 
 #courseDate{
   margin: 1rem 0 1rem 0;
@@ -22,10 +29,12 @@
   display: block;
   
     #course{
-      width: 40%;
+      width: 100%;
       margin: 0;
       margin-bottom: 1rem;
       display: block;
+      font-size: 1rem;
+      font-weight: normal;
     }
 
     #date{
@@ -34,6 +43,22 @@
       margin-bottom: 1rem;
       display: block;
     }
+}
+
+#formTop{
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+
+  h3{
+    margin: 1rem 0 1rem 0;
+  }
+}
+
+#teeSelector{
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 15%;
 }
 
 .formHoles{
