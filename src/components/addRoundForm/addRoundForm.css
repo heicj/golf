@@ -14,19 +14,23 @@
   };
 
 }
-    #titleNewRound{
-      text-align: center;
-      font-size: 2rem;
-      font-weight: bold;
-    }
+
+#titleNewRound{
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
     
 
 #courseDate{
-  margin: 1rem 0 1rem 0;
+  /* margin: 1rem 0 1rem 0; */
   font-size: 1.2rem;
   font-weight: bold;
   width: 50%;
   display: block;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: .5rem;
   
     #course{
       width: 100%;
@@ -39,7 +43,7 @@
 
     #date{
       width: 15%;
-      margin: 0;
+      margin: 0 auto;
       margin-bottom: 1rem;
       display: block;
     }
@@ -59,11 +63,29 @@
   font-size: 1.2rem;
   font-weight: bold;
   width: 15%;
+  text-align: center;
 }
 
 .formHoles{
-  display: flex;
-  justify-content: space-between;
+  display: block;
   width: 80%;
   margin: .5rem auto;
+  text-align: center;
+  font-weight: bold;
+  border: outset 5px;
+  border-radius: 30px;
+  background-color: rgba(3, 63, 50, 0.425);
+
+    #hole{
+      margin: .25rem 0 0 0;
+    }
+
+    #holeDetails{
+      display: flex;
+      /* width: 50%;
+      font-weight: normal; */
+      justify-content: space-around;
+      margin: .5rem 0 1rem 0;
+    }
 }
+

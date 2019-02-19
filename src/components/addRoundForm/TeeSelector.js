@@ -6,7 +6,7 @@ export default class TeeSelector extends PureComponent{
     const { selectChange } = this.props;
     return (
       <div>
-      Tee:
+      Tee: 
         <select name="tee" onChange={selectChange}>
           <option value="white">White</option>
           <option value="red">Red</option>

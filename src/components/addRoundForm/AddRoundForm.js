@@ -97,7 +97,10 @@ class AddRoundForm extends PureComponent{
         <section>
           {round.map((h, i) => <HoleForm key={i} id={i} name={`${i}`} onSelect={this.handleChange} checkbox={this.handleCheckbox}/>)}
         </section>
-        <button>Submit</button>
+        
+        <div id="buttonDiv">
+          <button id="submitButton">Submit</button>
+        </div>
         
       </form>
     );
