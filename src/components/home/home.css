@@ -5,6 +5,7 @@
       
   a{
     font-style: italic;
+    padding: .5rem;
   }
 }
 
@@ -19,7 +20,7 @@
   font-style: bold; */
   border: outset 5px;
   padding: 1rem;
-  width: 50%;
+  width: 70%;
   margin: 1rem auto;
   border-radius: 30px;
   background-color: rgba(3, 63, 50, 0.425);
