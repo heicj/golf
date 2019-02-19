@@ -73,10 +73,12 @@ class AddRoundForm extends PureComponent{
     return (
       <form className="roundForm" onSubmit={this.handleSubmit}>
         <section>
-          <h2>Enter New Round</h2>
-          <h3>{this.props.name}</h3>
-          <p>Fir total: {totFir}</p>
-          <p>Gir total: {totGir}</p>
+          <div id='formTop'>
+            <h2 id="titleNewRound">Enter New Round</h2>
+            <h3>{this.props.name}</h3>
+            <p>Fir total: {totFir}</p>
+            <p>Gir total: {totGir}</p>
+          </div>
 
           <div id="courseDate">
             <label htmlFor="course">
@@ -87,7 +89,7 @@ class AddRoundForm extends PureComponent{
             </label>
           </div>
 
-          <label htmlFor="tee">
+          <label id="teeSelector" htmlFor="tee">
             <TeeSelector selectChange={this.handleLocalState}/>
           </label>
         </section>
@@ -95,7 +97,10 @@ class AddRoundForm extends PureComponent{
         <section>
           {round.map((h, i) => <HoleForm key={i} id={i} name={`${i}`} onSelect={this.handleChange} checkbox={this.handleCheckbox}/>)}
         </section>
-        <button>Submit</button>
+        
+        <div id="buttonDiv">
+          <button id="submitButton">Submit</button>
+        </div>
         
       </form>
     );
