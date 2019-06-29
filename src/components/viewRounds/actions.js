@@ -1,5 +1,5 @@
 import { db } from '../../services/firebase';
-import { DELETE_ROUND } from '../home/reducers';
+import { DELETE_ROUND, rounds } from '../home/reducers';
 
 const players = db.ref('players');
 
@@ -10,3 +10,4 @@ export function deleteRd(name, id){
       .then(() => id)
   };
 }
+
