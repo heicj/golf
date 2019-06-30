@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { getRound } from './actions';
 // import HoleForm from '../addRoundForm/HoleForm';
 // import TeeSelector from '../addRoundForm/TeeSelector';
 // import { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir, calcFirGirTotal } from './actions';
@@ -8,7 +9,7 @@ import './editForm.css';
 class EditForm extends PureComponent{
 
   componentDidMount(){
-
+    this.props.getRound('charlie', 'test');
   }
 
   state = {
@@ -89,7 +90,7 @@ class EditForm extends PureComponent{
 
 export default connect(
   (state, props) => ({ 
-  
+    round: state.editRound
   }),
-  { }
+  { getRound }
 )(EditForm);
