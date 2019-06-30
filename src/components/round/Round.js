@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './round.css';
 
 export default class Round extends Component{
@@ -9,6 +10,7 @@ export default class Round extends Component{
       return;
     }
   };
+
 
   render(){
     const { roundStats } = this.props;
@@ -34,7 +36,7 @@ export default class Round extends Component{
             <div className="title" id="labels">Putts</div>{roundStats.putts.map((p, i) => <div className="data" key={i} id={i}>{p}</div>)}
           </div>
           <div id='editButtons'>
-            {/* <div>✎</div> */}
+            <div ><Link to={`/edit/${roundStats.key}`}>✎</Link></div>
             <div onClick={this.handleClick}>Delete Rd 🗑</div>
           </div>
         </section>

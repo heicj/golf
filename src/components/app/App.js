@@ -6,6 +6,7 @@ import Home from '../home/Home';
 import Header from '../header/Header';
 import Login from '../login/Login';
 import AddRoundForm from '../addRoundForm/AddRoundForm';
+import EditForm from '../editForm/EditForm';
 import ViewRounds from '../viewRounds/ViewRounds';
 import PrivateRoute from '../privateRoute/PrivateRoute';
 import { userSignin } from '../login/actions';
@@ -30,6 +31,7 @@ class App extends PureComponent{
               <PrivateRoute path='/home' component={Home}/>
               <Route path='/newRound/:name' component={AddRoundForm}/>
               <Route path='/rounds/:name' component={ViewRounds}/>
+              <Route exact path='/edit/:id' render ={({ match }) => <EditForm id={match.params.id}/>}/>
               <Redirect to='/'/>
               
             </Switch>

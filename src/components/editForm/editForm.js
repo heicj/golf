@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import HoleForm from '../addRoundForm/HoleForm';
-import TeeSelector from '../addRoundForm/TeeSelector';
-import { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir, calcFirGirTotal } from './actions';
+// import HoleForm from '../addRoundForm/HoleForm';
+// import TeeSelector from '../addRoundForm/TeeSelector';
+// import { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir, calcFirGirTotal } from './actions';
 import './editForm.css';
 
 class EditForm extends PureComponent{
@@ -54,18 +54,12 @@ class EditForm extends PureComponent{
   
 
   render(){
-    const { course, date } = this.state;
-    const { roundStats } = this.props;
-    const totFir = calcFirGirTotal(fir);
-    const totGir = calcFirGirTotal(gir);
-    const totScore = rdScore.reduce((acc, curr) => acc + curr, 0);
-    const totPutts = putts.reduce((acc, curr) => acc + curr, 0);
-    // const totFir = fir.reduce((acc, curr) => curr === true ? acc + 1 : acc, 0);
+   
     const round = Array(18).fill('');
     return (
       <form className="roundForm" onSubmit={this.handleSubmit}>
-        <section>
-          <h2>Edit Round</h2>
+        {/* <section> */}
+          {/* <h2>Edit Round</h2>
           <h3>{roundStats.name}</h3>
           <p>Score: {totScore}</p>
           <p>Fir total: {totFir}</p>
@@ -86,7 +80,7 @@ class EditForm extends PureComponent{
         <section>
           {round.map((h, i) => <HoleForm key={i} id={i} name={`${i}`} onSelect={this.handleChange} checkbox={this.handleCheckbox}/>)}
         </section>
-        <button>Submit</button>
+        <button>Submit</button> */}
         
       </form>
     );
@@ -95,12 +89,7 @@ class EditForm extends PureComponent{
 
 export default connect(
   (state, props) => ({ 
-    hole: state.hole,
-    fir: state.fir,
-    gir: state.gir,
-    rdScore: state.holesScore,
-    putts: state.putts,
-    name: props.match.params.name
+  
   }),
-  { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir }
+  { }
 )(EditForm);
