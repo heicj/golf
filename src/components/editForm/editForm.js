@@ -9,14 +9,25 @@ import './editForm.css';
 class EditForm extends PureComponent{
 
   componentDidMount(){
-    this.props.getRound('charlie', 'test');
+    let round = this.props.rounds.filter(round => round.key == this.props.id);
+    this.props.getRound(round[0]);
   }
 
   state = {
-    player: this.props.name,
-    course: this.props.course,
-    date: this.props.date,
-    tee: this.props.tee 
+    course: this.props.editRound.course,
+    date: this.props.editRound.date,
+    fir: this.props.editRound.fir,
+    gir: this.props.editRound.gir,
+    holeScore: this.props.editRound.holeScore,
+    player: this.props.editRound.name,
+    putts: this.props.editRound.putts,
+    tee: this.props.editRound.tee,
+    totalPutts: this.props.editRound.totalPutts,
+    totalFir: this.props.editRound.totalFir,
+    totalGir: this.props.editRound.totalGir,
+    totalScore: this.props.editRound.totalScore,
+    key: this.props.editRound.key
+    
   };
 
   handleLocalState = ({ target }) => {
@@ -90,7 +101,8 @@ class EditForm extends PureComponent{
 
 export default connect(
   (state, props) => ({ 
-    round: state.editRound
+    editRound: state.editRound,
+    rounds: state.rounds
   }),
   { getRound }
 )(EditForm);
