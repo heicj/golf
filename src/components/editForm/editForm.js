@@ -10,23 +10,23 @@ class EditForm extends PureComponent{
 
   componentDidMount(){
     let round = this.props.rounds.filter(round => round.key == this.props.id);
-    this.props.getRound(round);
+    this.props.getRound(round[0]);
   }
 
   state = {
-    course: this.props.editRound.course,
-    date: this.props.editRound.date,
-    fir: this.props.editRound.fir,
-    gir: this.props.editRound.gir,
-    holeScore: this.props.editRound.holeScore,
-    player: this.props.editRound.name,
-    putts: this.props.editRound.putts,
-    tee: this.props.editRound.tee,
-    totalPutts: this.props.editRound.totalPutts,
-    totalFir: this.props.editRound.totalFir,
-    totalGir: this.props.editRound.totalGir,
-    totalScore: this.props.editRound.totalScore,
-    key: this.props.editRound.key
+    // course: this.props.editRound.course,
+    // date: this.props.editRound.date,
+    // fir: this.props.editRound.fir,
+    // gir: this.props.editRound.gir,
+    // holesScore: this.props.editRound.holesScore,
+    // player: this.props.editRound.name,
+    // putts: this.props.editRound.putts,
+    // tee: this.props.editRound.tee,
+    // totalPutts: this.props.editRound.totalPutts,
+    // totalFir: this.props.editRound.totalFir,
+    // totalGir: this.props.editRound.totalGir,
+    // totalScore: this.props.editRound.totalScore,
+    // key: this.props.editRound.key
     
   };
 
