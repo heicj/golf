@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from '../img/pixilGolfer.ico';
+const logo = require('../img/pixil-frame-0(1).png');
 
-export default class Logo extends Component {
+export default class LogoImg extends Component {
   render() {
     return (
       <div className="row">
@@ -12,3 +12,4 @@ export default class Logo extends Component {
     );
   }
 } 
+
