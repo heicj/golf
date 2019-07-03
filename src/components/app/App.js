@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Home from '../home/Home';
 import Header from '../header/Header';
 import Login from '../login/Login';
+import Logo from '../logo/Logo';
 import AddRoundForm from '../addRoundForm/AddRoundForm';
 import ViewRounds from '../viewRounds/ViewRounds';
 import PrivateRoute from '../privateRoute/PrivateRoute';
@@ -30,6 +31,7 @@ class App extends PureComponent{
               <PrivateRoute path='/home' component={Home}/>
               <Route path='/newRound/:name' component={AddRoundForm}/>
               <Route path='/rounds/:name' component={ViewRounds}/>
+              <Route path = '/logo' component={Logo}/>
               <Redirect to='/'/>
               
             </Switch>
