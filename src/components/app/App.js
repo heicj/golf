@@ -10,7 +10,6 @@ import ViewRounds from '../viewRounds/ViewRounds';
 import PrivateRoute from '../privateRoute/PrivateRoute';
 import { userSignin } from '../login/actions';
 
-import LogoImg from '../logo/Logo';
 
 class App extends PureComponent{
 
@@ -31,7 +30,7 @@ class App extends PureComponent{
               <PrivateRoute path='/home' component={Home}/>
               <Route path='/newRound/:name' component={AddRoundForm}/>
               <Route path='/rounds/:name' component={ViewRounds}/>
-              <Route path = '/logo' component={LogoImg}/>
+              <Route path='/favicon.ico'/>
               <Redirect to='/'/>
               
             </Switch>

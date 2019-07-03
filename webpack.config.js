@@ -20,7 +20,9 @@ module.exports = {
   devtool: 'inline-source-map',
   plugins: [
     new CleanWebpackPlugin(`${path}/bundle.*.js`), 
-    new HtmlPlugin({ template: './src/index.html' }),
+    new HtmlPlugin({ 
+      template: './src/index.html',
+      favicon: './src/favicon.ico' }),
     new Dotenv()
   ],
   module: {
@@ -51,7 +53,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(jpg|png|svg)$/,
+        test: /\.(jpg|png|svg|ico)$/,
         use: {
           loader: 'url-loader',
           options: { limit: 5000 },
