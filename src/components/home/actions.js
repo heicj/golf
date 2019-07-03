@@ -15,7 +15,7 @@ export function getRounds(name){
         return round;
       });
     }).then(arr => arr.sort(function(a, b){
-      return a.date > b.date ? 1 : a.date < b.date ? -1 : 0;
+      return a.date < b.date ? 1 : a.date > b.date ? -1 : 0;
     }))
   };
     
