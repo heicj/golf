@@ -1,5 +1,6 @@
 #title{
   height: 100%;
+  width: 100%;
   margin: 0 0 0 0;
   padding-bottom: 1rem;
   text-align: center;
@@ -14,7 +15,7 @@
   margin: 0 0 0 0;
   /* background: url('../../img/golf-ball.jpg') no-repeat center; */
   background-color: rgba(3, 63, 50, 0.425);
-  object-fit: fill;
+  /* object-fit: fill; */
 }
 
 a{
@@ -23,10 +24,6 @@ a{
 a:link{
   color: black;
 }
-
-/* a:visited{
-  color: lightblue;
-} */
 
 a:hover{
   color: red;
@@ -41,13 +38,14 @@ a:hover{
 }
 
 #menuSection{
-  position: fixed;
-  top: 3.5rem;
+  position: relative;
+  top: 5rem;
+  
 } 
 
 #menuLinks{
   position: fixed;
   background-color: white;
-  top: 6rem;
+  top: 7rem;
   display: block
 }
