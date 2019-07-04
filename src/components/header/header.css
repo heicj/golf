@@ -1,6 +1,7 @@
 #title{
   height: 100%;
   margin: 0 0 0 0;
+  padding-bottom: 1rem;
   text-align: center;
   font-size: 4rem;
   font-weight: bold;
@@ -12,6 +13,7 @@
   width: 100%;
   margin: 0 0 0 0;
   /* background: url('../../img/golf-ball.jpg') no-repeat center; */
+  background-color: rgba(3, 63, 50, 0.425);
   object-fit: fill;
 }
 
@@ -19,13 +21,33 @@ a{
   font-size: 1rem;
 }
 a:link{
-  color: blue;
+  color: black;
 }
 
-a:visited{
+/* a:visited{
   color: lightblue;
-}
+} */
 
 a:hover{
   color: red;
+}
+
+.menu{
+  border-radius: 20px;
+  width: 35px;
+  height: 5px;
+  background-color: black;
+  margin: 0 0 .2rem 0;
+}
+
+#menuSection{
+  position: fixed;
+  top: 3.5rem;
+} 
+
+#menuLinks{
+  position: fixed;
+  background-color: white;
+  top: 6rem;
+  display: block
 }
