@@ -51,6 +51,14 @@ class Header extends PureComponent{
                   </div>
                   &nbsp;
                   <div>
+                    <Link to='/newRound/Charlie'>Charlie add round</Link>
+                  </div>
+                  &nbsp;
+                  <div>
+                    <Link to='/newRound/Jeremy'>Jeremy add round</Link>
+                  </div>
+                  &nbsp;
+                  <div>
                     <Link onClick={this.handleLogOut} to='/'>Sign Out</Link>
                   </div>
                 </section> :
