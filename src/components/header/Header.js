@@ -7,7 +7,7 @@ import { signOut } from '../login/actions';
 class Header extends PureComponent{
 
   state={
-    menu: true
+    menu: false
   }
 
   handleClick = () => {

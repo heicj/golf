@@ -21,12 +21,12 @@ a{
   font-size: 1rem;
 }
 a:link{
-  color: blue;
+  color: black;
 }
 
-a:visited{
+/* a:visited{
   color: lightblue;
-}
+} */
 
 a:hover{
   color: red;
@@ -41,11 +41,13 @@ a:hover{
 }
 
 #menuSection{
-  /* position: fixed; */
-}
-
-#menduLinks{
   position: fixed;
-  top: 100px;
+  top: 3.5rem;
+} 
+
+#menuLinks{
+  position: fixed;
+  background-color: white;
+  top: 6rem;
   display: block
 }
