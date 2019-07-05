@@ -30,6 +30,7 @@ class App extends PureComponent{
               <PrivateRoute path='/home' component={Home}/>
               <Route path='/newRound/:name' component={AddRoundForm}/>
               <Route path='/rounds/:name' component={ViewRounds}/>
+              <Route path='/favicon.ico'/>
               <Redirect to='/'/>
               
             </Switch>

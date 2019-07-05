@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getRounds } from '../home/actions';
-import { deleteRd } from './actions';
+import { deleteRd, changeName } from './actions';
 import Round from '../round/Round';
 import './viewrounds.css';
 // import excelFunc from '../../services/excelFunc';
@@ -11,10 +11,19 @@ class ViewRounds extends Component{
 
   componentDidMount(){
     const { name } = this.props;
+    this.props.changeName(name);
     this.props.getRounds(name);
-    
     window.scrollTo(0, 0);  
   }
+  
+  componentDidUpdate(prevProps, prevState){
+    if(prevProps.name !== this.props.name){
+      this.props.changeName(this.props.name);
+      this.props.getRounds(this.props.name);
+    }
+  }
+
+ 
 
   //commented out until I figure out excel4node build issue
   // handleClick(){
@@ -39,5 +48,5 @@ export default connect(
     rounds: state.rounds,
     name: props.match.params.name
   }),
-  { getRounds, deleteRd }
+  { getRounds, deleteRd, changeName }
 )(ViewRounds);
