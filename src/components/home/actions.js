@@ -52,21 +52,38 @@ export function getScoreAvg(name, stat, handler){
   });
 }
 
-export function getLowest(name, stat, handler){
+export function getMinMax(name, stat, minMax, handler){
   if(name === '') return;
-  players.child(name).once('value').then(data => {
-    const rounds = data.val();
-    let lowScore = 0;
-    let counter = 1;
-
-    Object.keys(rounds).map(key => {
-      let round = rounds[key];
-      if(counter == 1) lowScore = round[stat];
-      if(round[stat] < lowScore) lowScore = round[stat];
-      counter++;
+  if(minMax == 'min'){
+    players.child(name).once('value').then(data => {
+      const rounds = data.val();
+      let lowScore = 0;
+      let counter = 1;
+  
+      Object.keys(rounds).map(key => {
+        let round = rounds[key];
+        if(counter == 1) lowScore = round[stat];
+        if(round[stat] < lowScore) lowScore = round[stat];
+        counter++;
+      });
+      return handler(lowScore);
     });
-    return handler(lowScore);
-  });
+  }
+  if(minMax == 'max'){
+    players.child(name).once('value').then(data => {
+      const rounds = data.val();
+      let highScore = 0;
+      let counter = 1;
+  
+      Object.keys(rounds).map(key => {
+        let round = rounds[key];
+        if(counter == 1) highScore = round[stat];
+        if(round[stat] > highScore) highScore = round[stat];
+        counter++;
+      });
+      return handler(highScore);
+    });
+  }
 }
 
 

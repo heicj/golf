@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getScoreAvg, getLowest } from './actions';
+import { getScoreAvg, getMinMax } from './actions';
 // import AddRoundForm from '../addRoundForm/AddRoundForm';
 import './home.css';
 
@@ -46,6 +46,24 @@ class Home extends PureComponent{
     this.setState({ charlieLowGir: gir });
   }
 
+  handleCharlieLowPutts = (putts) => {
+    this.setState({ charlieLowPutts: putts });
+  }
+
+  handleCharlieHighScore = (highScore) => {
+    this.setState({ charlieHighScore: highScore });
+  }
+  handleCharlieHighFir = (fir) => {
+    this.setState({ charlieHighFir: fir });
+  }
+  handleCharlieHighGir = (gir) => {
+    this.setState({ charlieHighGir: gir });
+  }
+
+  handleCharlieHighPutts = (putts) => {
+    this.setState({ charlieHighPutts: putts });
+  }
+
   handleJeremyAvg = (avgScore) => {
     this.setState({ jeremyAvgScore: avgScore.toFixed(2) });
   };
@@ -71,25 +89,53 @@ class Home extends PureComponent{
     this.setState({ jeremyLowGir: gir });
   }
 
+  handleJeremyLowPutts = (putts) => {
+    this.setState({ jeremyLowPutts: putts });
+  }
+
+  handleJeremyHighScore = (highScore) => {
+    this.setState({ jeremyHighScore: highScore });
+  }
+  handleJeremyHighFir = (fir) => {
+    this.setState({ jeremyHighFir: fir });
+  }
+  handleJeremyHighGir = (gir) => {
+    this.setState({ jeremyHighGir: gir });
+  }
+
+  handleJeremyHighPutts = (putts) => {
+    this.setState({ jeremyHighPutts: putts });
+  }
+
   componentDidMount(){
     this.props.getScoreAvg('Charlie', 'totalScore', this.handleCharlieAvg);
     this.props.getScoreAvg('Charlie', 'totalFir', this.handleCharlieFirAvg);
     this.props.getScoreAvg('Charlie', 'totalGir', this.handleCharlieGirAvg);
     this.props.getScoreAvg('Charlie', 'totalPutts', this.handleCharliePuttsAvg);
-    this.props.getLowest('Charlie', 'totalScore', this.handleCharlieLowScore);
-    this.props.getLowest('Charlie', 'totalFir', this.handleCharlieLowFir);
-    this.props.getLowest('Charlie', 'totalGir', this.handleCharlieLowGir);
+    this.props.getMinMax('Charlie', 'totalScore', 'min', this.handleCharlieLowScore);
+    this.props.getMinMax('Charlie', 'totalFir', 'min', this.handleCharlieLowFir);
+    this.props.getMinMax('Charlie', 'totalGir', 'min', this.handleCharlieLowGir);
+    this.props.getMinMax('Charlie', 'totalPutts', 'min', this.handleCharlieLowPutts);
+    this.props.getMinMax('Charlie', 'totalScore', 'max', this.handleCharlieHighScore);
+    this.props.getMinMax('Charlie', 'totalFir', 'max', this.handleCharlieHighFir);
+    this.props.getMinMax('Charlie', 'totalGir', 'max', this.handleCharlieHighGir);
+    this.props.getMinMax('Charlie', 'totalPutts', 'max', this.handleCharlieHighPutts);
 
     this.props.getScoreAvg('Jeremy', 'totalScore', this.handleJeremyAvg);
     this.props.getScoreAvg('Jeremy', 'totalFir', this.handleJeremyFirAvg);
     this.props.getScoreAvg('Jeremy', 'totalGir', this.handleJeremyGirAvg);
     this.props.getScoreAvg('Jeremy', 'totalPutts', this.handleJeremyPuttsAvg);
-    this.props.getLowest('Jeremy', 'totalScore', this.handleJeremyLowScore);
-    this.props.getLowest('Jeremy', 'totalFir', this.handleJeremyLowFir);
-    this.props.getLowest('Jeremy', 'totalGir', this.handleJeremyLowGir);
+    this.props.getMinMax('Jeremy', 'totalScore', 'min', this.handleJeremyLowScore);
+    this.props.getMinMax('Jeremy', 'totalFir', 'min', this.handleJeremyLowFir);
+    this.props.getMinMax('Jeremy', 'totalGir', 'min', this.handleJeremyLowGir);
+    this.props.getMinMax('Jeremy', 'totalPutts', 'min', this.handleJeremyLowPutts);
+    this.props.getMinMax('Jeremy', 'totalScore', 'max', this.handleJeremyHighScore);
+    this.props.getMinMax('Jeremy', 'totalFir', 'max', this.handleJeremyHighFir);
+    this.props.getMinMax('Jeremy', 'totalGir', 'max', this.handleJeremyHighGir);
+    this.props.getMinMax('Jeremy', 'totalPutts', 'max', this.handleJeremyHighPutts);
   }
   render(){
-    const { charlieAvgScore, charlieFirAvg, charlieGirAvg, charliePuttsAvg, jeremyAvgScore, jeremyFirAvg, jeremyGirAvg, jeremyPuttsAvg, charlieLowFir, charlieLowGir, charlieLowScore, jeremyLowScore, jeremyLowGir, jeremyLowFir } = this.state;
+    const { charlieAvgScore, charlieFirAvg, charlieGirAvg, charliePuttsAvg, jeremyAvgScore, jeremyFirAvg, jeremyGirAvg, jeremyPuttsAvg, charlieLowFir, charlieLowGir, charlieLowPutts, charlieLowScore, jeremyLowScore, jeremyLowGir, jeremyLowFir, jeremyLowPutts, charlieHighScore, charlieHighFir, charlieHighGir, charlieHighPutts, jeremyHighScore, jeremyHighFir, jeremyHighGir, jeremyHighPutts } = this.state;
     return (
       <div id="mainSection">
         <div className='playerBox'>
@@ -106,6 +152,12 @@ class Home extends PureComponent{
           <div className ='statDiv'>Low Score: {charlieLowScore}</div>
           <div className ='statDiv'>Low FIR: {charlieLowFir}</div>
           <div className ='statDiv'>Low GIR: {charlieLowGir}</div>
+          <div className ='statDiv'>Low Putts: {charlieLowPutts}</div>
+
+          <div className ='statDiv'>High Score: {charlieHighScore}</div>
+          <div className ='statDiv'>High FIR: {charlieHighFir}</div>
+          <div className ='statDiv'>High GIR: {charlieHighGir}</div>
+          <div className ='statDiv'>High Putts: {charlieHighPutts}</div>
 
         </div>
         <div className='playerBox'>
@@ -122,6 +174,12 @@ class Home extends PureComponent{
           <div className ='statDiv'>Low Score: {jeremyLowScore}</div>
           <div className ='statDiv'>Low FIR: {jeremyLowFir}</div>
           <div className ='statDiv'>Low GIR: {jeremyLowGir}</div>
+          <div className ='statDiv'>Low Putts: {jeremyLowPutts}</div>
+          <div className ='statDiv'>High Score: {jeremyHighScore}</div>
+          <div className ='statDiv'>High FIR: {jeremyHighFir}</div>
+          <div className ='statDiv'>High GIR: {jeremyHighGir}</div>
+          <div className ='statDiv'>High Putts: {jeremyHighPutts}</div>
+
         </div>
       </div>
     );
@@ -130,5 +188,5 @@ class Home extends PureComponent{
 
 export default connect(
   null,
-  { getScoreAvg, getLowest }
+  { getScoreAvg, getMinMax }
 )(Home);
