@@ -145,20 +145,29 @@ class Home extends PureComponent{
             &nbsp;
             <Link to={'/rounds/Charlie'}>View Rounds</Link>
           </div>
-          <div className='statDiv'>Avg Score: {charlieAvgScore} </div>
-          <div className='statDiv'>Avg Fir: {charlieFirAvg}</div>
-          <div className='statDiv'>Avg Gir: {charlieGirAvg}</div>
-          <div className='statDiv'>Avg Putts: {charliePuttsAvg}</div>
-          <div className ='statDiv'>Low Score: {charlieLowScore}</div>
-          <div className ='statDiv'>Low FIR: {charlieLowFir}</div>
-          <div className ='statDiv'>Low GIR: {charlieLowGir}</div>
-          <div className ='statDiv'>Low Putts: {charlieLowPutts}</div>
-
-          <div className ='statDiv'>High Score: {charlieHighScore}</div>
-          <div className ='statDiv'>High FIR: {charlieHighFir}</div>
-          <div className ='statDiv'>High GIR: {charlieHighGir}</div>
-          <div className ='statDiv'>High Putts: {charlieHighPutts}</div>
-
+          <section className='statsSection'>
+            <div className='statColumn'>
+              <h2>Averages</h2>
+              <div className='statDiv'>Score: {charlieAvgScore} </div>
+              <div className='statDiv'>Fir: {charlieFirAvg}</div>
+              <div className='statDiv'>Gir: {charlieGirAvg}</div>
+              <div className='statDiv'>Putts: {charliePuttsAvg}</div>
+            </div>
+            <div className='statColumn'>
+              <h2>Lows</h2>
+              <div className ='statDiv'>Score: {charlieLowScore}</div>
+              <div className ='statDiv'>FIR: {charlieLowFir}</div>
+              <div className ='statDiv'>GIR: {charlieLowGir}</div>
+              <div className ='statDiv'>Putts: {charlieLowPutts}</div>
+            </div>
+            <div className='statColumn'>
+              <h2>Highs</h2>
+              <div className ='statDiv'>Score: {charlieHighScore}</div>
+              <div className ='statDiv'>FIR: {charlieHighFir}</div>
+              <div className ='statDiv'>GIR: {charlieHighGir}</div>
+              <div className ='statDiv'>Putts: {charlieHighPutts}</div>
+            </div>
+          </section>
         </div>
         <div className='playerBox'>
           <div className='player'>Jeremy</div>
@@ -167,19 +176,29 @@ class Home extends PureComponent{
             &nbsp;
             <Link to={'/rounds/Jeremy'}>View Rounds</Link>
           </div>
-          <div className='statDiv'>Avg Score: {jeremyAvgScore}</div>
-          <div className='statDiv'>Avg Fir: {jeremyFirAvg}</div>
-          <div className='statDiv'>Avg Gir: {jeremyGirAvg}</div>
-          <div className='statDiv'>Avg Putts: {jeremyPuttsAvg}</div>
-          <div className ='statDiv'>Low Score: {jeremyLowScore}</div>
-          <div className ='statDiv'>Low FIR: {jeremyLowFir}</div>
-          <div className ='statDiv'>Low GIR: {jeremyLowGir}</div>
-          <div className ='statDiv'>Low Putts: {jeremyLowPutts}</div>
-          <div className ='statDiv'>High Score: {jeremyHighScore}</div>
-          <div className ='statDiv'>High FIR: {jeremyHighFir}</div>
-          <div className ='statDiv'>High GIR: {jeremyHighGir}</div>
-          <div className ='statDiv'>High Putts: {jeremyHighPutts}</div>
-
+          <section className='statsSection'>
+            <div className='statColumn'>
+              <h2>Averages</h2>
+              <div className='statDiv'>Score: {jeremyAvgScore}</div>
+              <div className='statDiv'>Fir: {jeremyFirAvg}</div>
+              <div className='statDiv'>Gir: {jeremyGirAvg}</div>
+              <div className='statDiv'>Putts: {jeremyPuttsAvg}</div>
+            </div>
+            <div className='statColumn'>
+              <h2>Lows</h2>
+              <div className ='statDiv'>Score: {jeremyLowScore}</div>
+              <div className ='statDiv'>FIR: {jeremyLowFir}</div>
+              <div className ='statDiv'>GIR: {jeremyLowGir}</div>
+              <div className ='statDiv'>Putts: {jeremyLowPutts}</div>
+            </div>
+            <div className='statColumn'>
+              <h2>Highs</h2>
+              <div className ='statDiv'>Score: {jeremyHighScore}</div>
+              <div className ='statDiv'>FIR: {jeremyHighFir}</div>
+              <div className ='statDiv'>GIR: {jeremyHighGir}</div>
+              <div className ='statDiv'>Putts: {jeremyHighPutts}</div>
+            </div>
+          </section>
         </div>
       </div>
     );

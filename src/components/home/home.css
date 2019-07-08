@@ -11,6 +11,7 @@
 
 .statDiv{
       margin-top: .5rem;
+      font-size: .6rem;
 
 }
 
@@ -31,4 +32,15 @@
 .player{
   font-size: 2rem;
   font-weight: bold;
+}
+
+.statsSection{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 1rem;
+
+  h2{
+    font-weight: bold;
+    text-decoration: underline;
+  }
 }
