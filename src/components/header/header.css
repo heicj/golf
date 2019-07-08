@@ -4,7 +4,7 @@
   margin: 0 0 0 0;
   padding-bottom: 1rem;
   text-align: center;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: bold;
   text-shadow: 4px 6px 2px rgb(240, 235, 235);
 }
@@ -13,13 +13,21 @@
   height: 100%;
   width: 100%;
   margin: 0 0 0 0;
+  position: relative;
   /* background: url('../../img/golf-ball.jpg') no-repeat center; */
   background-color: rgba(3, 63, 50, 0.425);
   /* object-fit: fill; */
 }
 
+#menuDiv{
+  position: absolute;
+  bottom: 0px;
+  left: 5px;
+
+}
+
 a{
-  font-size: 1rem;
+  font-size: 2rem;
 }
 a:link{
   color: black;
@@ -37,15 +45,11 @@ a:hover{
   margin: 0 0 .2rem 0;
 }
 
-#menuSection{
-  position: relative;
-  top: 5rem;
-  
-} 
-
 #menuLinks{
-  position: fixed;
-  background-color: white;
-  top: 7rem;
+  position: absolute;
+  top: 1.75rem;
+  width: 100px;
+  left: 5px;
+  background-color:  white;
   display: block
 }
