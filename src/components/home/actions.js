@@ -135,9 +135,9 @@ export function getStats(name, handler){
     avgPutts = (totalPutts / totalRounds).toFixed(2);
   
     let stats = [
-      { 'avgScore': avgScore }, { 'avgFir': avgFir }, { 'avgGir': avgGir }, { 'avgPutts': avgPutts },
-      { 'highScore': highScore }, { 'highFir': highFir }, { 'highGir': highGir }, { 'highPutts': highPutts },
-      { 'lowScore': lowScore }, { 'lowFir': lowFir }, { 'lowGir': lowGir }, { 'lowPutts': lowPutts },
+      { 'AvgScore': avgScore }, { 'AvgFir': avgFir }, { 'AvgGir': avgGir }, { 'AvgPutts': avgPutts },
+      { 'HighScore': highScore }, { 'HighFir': highFir }, { 'HighGir': highGir }, { 'HighPutts': highPutts },
+      { 'LowScore': lowScore }, { 'LowFir': lowFir }, { 'LowGir': lowGir }, { 'LowPutts': lowPutts },
     ];
 
     return handler(stats);

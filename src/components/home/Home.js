@@ -111,20 +111,38 @@ class Home extends PureComponent{
     this.setState({ jeremyHighPutts: putts });
   }
 
+  handleCharlieStats = (arr) => {
+    arr.map(stat => {
+      let key = Object.keys(stat);
+      let newKey = 'charlie' + key[0];
+      this.setState({ newKey: stat[key] });
+    });
+  };
+
+  // handleJeremyStats = (arr) => {
+  //   arr.forEach(obj => {
+  //     let key = Object.keys(obj);
+  //     let newKey = 'jeremy' + key[0];
+  //     this.setState({ newKey: obj[key] });
+  //   });
+  // }
+
   componentDidMount(){
-    this.props.getStats('Charlie', this.handleStats);
-    this.props.getScoreAvg('Charlie', 'totalScore', this.handleCharlieAvg);
-    this.props.getScoreAvg('Charlie', 'totalFir', this.handleCharlieFirAvg);
-    this.props.getScoreAvg('Charlie', 'totalGir', this.handleCharlieGirAvg);
-    this.props.getScoreAvg('Charlie', 'totalPutts', this.handleCharliePuttsAvg);
-    this.props.getMinMax('Charlie', 'totalScore', 'min', this.handleCharlieLowScore);
-    this.props.getMinMax('Charlie', 'totalFir', 'min', this.handleCharlieLowFir);
-    this.props.getMinMax('Charlie', 'totalGir', 'min', this.handleCharlieLowGir);
-    this.props.getMinMax('Charlie', 'totalPutts', 'min', this.handleCharlieLowPutts);
-    this.props.getMinMax('Charlie', 'totalScore', 'max', this.handleCharlieHighScore);
-    this.props.getMinMax('Charlie', 'totalFir', 'max', this.handleCharlieHighFir);
-    this.props.getMinMax('Charlie', 'totalGir', 'max', this.handleCharlieHighGir);
-    this.props.getMinMax('Charlie', 'totalPutts', 'max', this.handleCharlieHighPutts);
+    this.props.getStats('Charlie', this.handleCharlieStats);
+    // this.props.getStats('Jeremy', this.handleJeremyStats);
+   
+    // this.props.getScoreAvg('Charlie', 'totalScore', this.handleCharlieAvg);
+    // this.props.getScoreAvg('Charlie', 'totalFir', this.handleCharlieFirAvg);
+    // this.props.getScoreAvg('Charlie', 'totalGir', this.handleCharlieGirAvg);
+    // this.props.getScoreAvg('Charlie', 'totalPutts', this.handleCharliePuttsAvg);
+    // this.props.getMinMax('Charlie', 'totalScore', 'min', this.handleCharlieLowScore);
+    // this.props.getMinMax('Charlie', 'totalFir', 'min', this.handleCharlieLowFir);
+    // this.props.getMinMax('Charlie', 'totalGir', 'min', this.handleCharlieLowGir);
+    // this.props.getMinMax('Charlie', 'totalPutts', 'min', this.handleCharlieLowPutts);
+    // this.props.getMinMax('Charlie', 'totalScore', 'max', this.handleCharlieHighScore);
+    // this.props.getMinMax('Charlie', 'totalFir', 'max', this.handleCharlieHighFir);
+    // this.props.getMinMax('Charlie', 'totalGir', 'max', this.handleCharlieHighGir);
+    // this.props.getMinMax('Charlie', 'totalPutts', 'max', this.handleCharlieHighPutts);
 
     this.props.getScoreAvg('Jeremy', 'totalScore', this.handleJeremyAvg);
     this.props.getScoreAvg('Jeremy', 'totalFir', this.handleJeremyFirAvg);
