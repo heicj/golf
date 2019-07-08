@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getScoreAvg, getMinMax } from './actions';
+import { getScoreAvg, getMinMax, getStats } from './actions';
 // import AddRoundForm from '../addRoundForm/AddRoundForm';
 import './home.css';
 
@@ -19,7 +19,11 @@ class Home extends PureComponent{
   };
 
   names = ['charlieAvgScore', 'charlieFirAvg', 'charlieGirAvg', 'charliePuttsAvg', 'jeremyAvgScore', 'jeremyFirAvg', 'jeremyGirAvg', 'jeremyPuttsAvg']
-    
+   
+  
+  handleStats = (arr) => {
+    console.log(arr);
+  }
   handleCharlieAvg = (avgScore) => {
     this.setState({ charlieAvgScore: avgScore.toFixed(2) });
   };
@@ -108,6 +112,7 @@ class Home extends PureComponent{
   }
 
   componentDidMount(){
+    this.props.getStats('Charlie', this.handleStats);
     this.props.getScoreAvg('Charlie', 'totalScore', this.handleCharlieAvg);
     this.props.getScoreAvg('Charlie', 'totalFir', this.handleCharlieFirAvg);
     this.props.getScoreAvg('Charlie', 'totalGir', this.handleCharlieGirAvg);
@@ -207,5 +212,5 @@ class Home extends PureComponent{
 
 export default connect(
   null,
-  { getScoreAvg, getMinMax }
+  { getScoreAvg, getMinMax, getStats }
 )(Home);
