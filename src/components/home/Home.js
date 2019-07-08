@@ -115,7 +115,8 @@ class Home extends PureComponent{
     arr.map(stat => {
       let key = Object.keys(stat);
       let newKey = 'charlie' + key[0];
-      this.setState({ newKey: stat[key] });
+      let stateObj = { newKey: stat[key] };
+      this.setState(stateObj);
     });
   };
 
