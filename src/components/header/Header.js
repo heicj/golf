@@ -29,13 +29,10 @@ class Header extends PureComponent{
       <div className='image-container'>
         {
           auth ? 
-            <div onClick={this.handleClick}>
-            
-              <section id='menuSection'>
-                <div className='menu'></div>
-                <div className='menu'></div>
-                <div className='menu'></div>
-              </section>
+            <div id='menuDiv' onClick={this.handleClick}>
+              <div className='menu'></div>
+              <div className='menu'></div>
+              <div className='menu'></div>
               { menu ?
                 <section id='menuLinks'>
                   <div>

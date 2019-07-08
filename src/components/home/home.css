@@ -5,13 +5,14 @@
       
   a{
     font-style: italic;
+    font-size: 1rem;
     padding: .5rem;
   }
 }
 
 .statDiv{
       margin-top: .5rem;
-      font-size: .6rem;
+      font-size: .7rem;
 
 }
 
