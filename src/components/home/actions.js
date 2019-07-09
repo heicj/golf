@@ -1,5 +1,8 @@
 import { LOAD_ROUNDS, LOAD_SCORE_AVG } from './reducers';
 import { db } from '../../services/firebase';
+import { TOTAL_FIR } from '../addRoundForm/reducers';
+
+
 
 const players = db.ref('players');
 
@@ -86,6 +89,60 @@ export function getMinMax(name, stat, minMax, handler){
   }
 }
 
+export function getStats(name, handler){
+  players.child(name).once('value').then(data => {
+    const rounds = data.val();
+    let avgScore, avgFir, avgGir, avgPutts, highScore, highFir, highGir, highPutts, lowScore, lowFir, lowGir, lowPutts, totalScore = 0, totalFir = 0, totalGir = 0, totalPutts = 0;
+   
+    let counter = 1;
+    const totalRounds = Object.keys(rounds).length;
+    Object.keys(rounds).forEach(key => {
+      let round = rounds[key];
+      if(counter == 1){
+        highScore = round.totalScore;
+        highFir = round.totalFir;
+        highGir = round.totalGir;
+        highPutts = round.totalPutts;
+        lowScore = round.totalScore;
+        lowFir = round.totalFir;
+        lowGir = round.totalGir;
+        lowPutts = round.totalPutts;
+        totalScore += round.totalScore;
+        totalFir += round.totalFir;
+        totalGir += round.totalGir;
+        totalPutts += round.totalPutts;
+        counter++;
+      } else {
+        if(round.totalScore > highScore) highScore = round.totalScore;
+        if(round.totalFir > highFir) highFir = round.totalFir;
+        if(round.totalGir > highGir) highGir = round.totalGir;
+        if(round.totalPutts > highPutts) highPutts = round.totalPutts;
+
+        if(round.totalScore < lowScore) lowScore = round.totalScore;
+        if(round.totalFir < lowFir) lowFir = round.totalFir;
+        if(round.totalGir < lowGir) lowGir = round.totalGir;
+        if(round.totalPutts < lowPutts) lowPutts = round.totalPutts;
+
+        totalScore += round.totalScore;
+        totalFir += round.totalFir;
+        totalGir += round.totalGir;
+        totalPutts += round.totalPutts;
+      } 
+    });
+    avgScore = (totalScore / totalRounds).toFixed(2);
+    avgFir = (totalFir / totalRounds).toFixed(2);
+    avgGir = (totalGir / totalRounds).toFixed(2);
+    avgPutts = (totalPutts / totalRounds).toFixed(2);
+  
+    let stats = [
+      { 'AvgScore': avgScore }, { 'FirAvg': avgFir }, { 'GirAvg': avgGir }, { 'PuttsAvg': avgPutts },
+      { 'HighScore': highScore }, { 'HighFir': highFir }, { 'HighGir': highGir }, { 'HighPutts': highPutts },
+      { 'LowScore': lowScore }, { 'LowFir': lowFir }, { 'LowGir': lowGir }, { 'LowPutts': lowPutts },
+    ];
+
+    return handler(stats);
+  });
+}
 
 
 
