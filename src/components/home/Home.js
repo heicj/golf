@@ -18,145 +18,32 @@ class Home extends PureComponent{
     jeremyPuttsAvg: ''
   };
 
-  names = ['charlieAvgScore', 'charlieFirAvg', 'charlieGirAvg', 'charliePuttsAvg', 'jeremyAvgScore', 'jeremyFirAvg', 'jeremyGirAvg', 'jeremyPuttsAvg']
-   
-  
-  handleStats = (arr) => {
-    console.log(arr);
-  }
-  handleCharlieAvg = (avgScore) => {
-    this.setState({ charlieAvgScore: avgScore.toFixed(2) });
-  };
 
-  handleCharlieFirAvg = (avgScore) => {
-    this.setState({ charlieFirAvg: avgScore.toFixed(2) });
-  };
-
-  handleCharlieGirAvg = (avgScore) => {
-    this.setState({ charlieGirAvg: avgScore.toFixed(2) });
-  };
-
-  handleCharliePuttsAvg = (avgScore) => {
-    this.setState({ charliePuttsAvg: avgScore.toFixed(2) });
-  };
-
-  handleCharlieLowScore = (lowScore) => {
-    this.setState({ charlieLowScore: lowScore });
-  }
-  handleCharlieLowFir = (fir) => {
-    this.setState({ charlieLowFir: fir });
-  }
-  handleCharlieLowGir = (gir) => {
-    this.setState({ charlieLowGir: gir });
-  }
-
-  handleCharlieLowPutts = (putts) => {
-    this.setState({ charlieLowPutts: putts });
-  }
-
-  handleCharlieHighScore = (highScore) => {
-    this.setState({ charlieHighScore: highScore });
-  }
-  handleCharlieHighFir = (fir) => {
-    this.setState({ charlieHighFir: fir });
-  }
-  handleCharlieHighGir = (gir) => {
-    this.setState({ charlieHighGir: gir });
-  }
-
-  handleCharlieHighPutts = (putts) => {
-    this.setState({ charlieHighPutts: putts });
-  }
-
-  handleJeremyAvg = (avgScore) => {
-    this.setState({ jeremyAvgScore: avgScore.toFixed(2) });
-  };
-
-  handleJeremyFirAvg = (avgScore) => {
-    this.setState({ jeremyFirAvg: avgScore.toFixed(2) });
-  };
-  
-  handleJeremyGirAvg = (avgScore) => {
-    this.setState({ jeremyGirAvg: avgScore.toFixed(2) });
-  };
-  handleJeremyPuttsAvg = (avgScore) => {
-    this.setState({ jeremyPuttsAvg: avgScore.toFixed(2) });
-  };
-
-  handleJeremyLowScore = (lowScore) => {
-    this.setState({ jeremyLowScore: lowScore });
-  }
-  handleJeremyLowFir = (fir) => {
-    this.setState({ jeremyLowFir: fir });
-  }
-  handleJeremyLowGir = (gir) => {
-    this.setState({ jeremyLowGir: gir });
-  }
-
-  handleJeremyLowPutts = (putts) => {
-    this.setState({ jeremyLowPutts: putts });
-  }
-
-  handleJeremyHighScore = (highScore) => {
-    this.setState({ jeremyHighScore: highScore });
-  }
-  handleJeremyHighFir = (fir) => {
-    this.setState({ jeremyHighFir: fir });
-  }
-  handleJeremyHighGir = (gir) => {
-    this.setState({ jeremyHighGir: gir });
-  }
-
-  handleJeremyHighPutts = (putts) => {
-    this.setState({ jeremyHighPutts: putts });
-  }
 
   handleCharlieStats = (arr) => {
-    arr.map(stat => {
-      let key = Object.keys(stat);
+    arr.forEach(obj => {
+      let stateObj = {};
+      let key = Object.keys(obj);
       let newKey = 'charlie' + key[0];
-      let stateObj = { newKey: stat[key] };
+      stateObj[newKey] = obj[key]; 
       this.setState(stateObj);
     });
   };
 
-  // handleJeremyStats = (arr) => {
-  //   arr.forEach(obj => {
-  //     let key = Object.keys(obj);
-  //     let newKey = 'jeremy' + key[0];
-  //     this.setState({ newKey: obj[key] });
-  //   });
-  // }
+  handleJeremyStats = (arr) => {
+    arr.forEach(obj => {
+      let stateObj = {};
+      let key = Object.keys(obj);
+      let newKey = 'jeremy' + key[0];
+      stateObj[newKey] = obj[key];
+      this.setState(stateObj);
+    });
+  }
 
   componentDidMount(){
     this.props.getStats('Charlie', this.handleCharlieStats);
-    // this.props.getStats('Jeremy', this.handleJeremyStats);
+    this.props.getStats('Jeremy', this.handleJeremyStats);
    
-    // this.props.getScoreAvg('Charlie', 'totalScore', this.handleCharlieAvg);
-    // this.props.getScoreAvg('Charlie', 'totalFir', this.handleCharlieFirAvg);
-    // this.props.getScoreAvg('Charlie', 'totalGir', this.handleCharlieGirAvg);
-    // this.props.getScoreAvg('Charlie', 'totalPutts', this.handleCharliePuttsAvg);
-    // this.props.getMinMax('Charlie', 'totalScore', 'min', this.handleCharlieLowScore);
-    // this.props.getMinMax('Charlie', 'totalFir', 'min', this.handleCharlieLowFir);
-    // this.props.getMinMax('Charlie', 'totalGir', 'min', this.handleCharlieLowGir);
-    // this.props.getMinMax('Charlie', 'totalPutts', 'min', this.handleCharlieLowPutts);
-    // this.props.getMinMax('Charlie', 'totalScore', 'max', this.handleCharlieHighScore);
-    // this.props.getMinMax('Charlie', 'totalFir', 'max', this.handleCharlieHighFir);
-    // this.props.getMinMax('Charlie', 'totalGir', 'max', this.handleCharlieHighGir);
-    // this.props.getMinMax('Charlie', 'totalPutts', 'max', this.handleCharlieHighPutts);
-
-    this.props.getScoreAvg('Jeremy', 'totalScore', this.handleJeremyAvg);
-    this.props.getScoreAvg('Jeremy', 'totalFir', this.handleJeremyFirAvg);
-    this.props.getScoreAvg('Jeremy', 'totalGir', this.handleJeremyGirAvg);
-    this.props.getScoreAvg('Jeremy', 'totalPutts', this.handleJeremyPuttsAvg);
-    this.props.getMinMax('Jeremy', 'totalScore', 'min', this.handleJeremyLowScore);
-    this.props.getMinMax('Jeremy', 'totalFir', 'min', this.handleJeremyLowFir);
-    this.props.getMinMax('Jeremy', 'totalGir', 'min', this.handleJeremyLowGir);
-    this.props.getMinMax('Jeremy', 'totalPutts', 'min', this.handleJeremyLowPutts);
-    this.props.getMinMax('Jeremy', 'totalScore', 'max', this.handleJeremyHighScore);
-    this.props.getMinMax('Jeremy', 'totalFir', 'max', this.handleJeremyHighFir);
-    this.props.getMinMax('Jeremy', 'totalGir', 'max', this.handleJeremyHighGir);
-    this.props.getMinMax('Jeremy', 'totalPutts', 'max', this.handleJeremyHighPutts);
   }
   render(){
     const { charlieAvgScore, charlieFirAvg, charlieGirAvg, charliePuttsAvg, jeremyAvgScore, jeremyFirAvg, jeremyGirAvg, jeremyPuttsAvg, charlieLowFir, charlieLowGir, charlieLowPutts, charlieLowScore, jeremyLowScore, jeremyLowGir, jeremyLowFir, jeremyLowPutts, charlieHighScore, charlieHighFir, charlieHighGir, charlieHighPutts, jeremyHighScore, jeremyHighFir, jeremyHighGir, jeremyHighPutts } = this.state;
