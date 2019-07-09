@@ -6,6 +6,7 @@ import TeeSelector from './TeeSelector';
 import { nextHole, teeSelection, holeScore, resetHoleScore, addRound, puttScore, puttReset, toggleFir, firReset, toggleGir, girReset, calcFirGirTotal } from './actions';
 import { putts } from './reducers';
 import './addRoundForm.css';
+import { totalmem } from 'os';
 
 class AddRoundForm extends PureComponent{
 
@@ -48,15 +49,33 @@ class AddRoundForm extends PureComponent{
     this.props.nextHole();
   };
 
+  count = (arr) => {
+    let total = 0;
+    for(let i = 0; i < arr. length; i++){
+      if(arr[i] == true) total += 1;
+    }
+    return total;
+  }
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.addRound(this.state);
-    const { name, history } = this.props;
-    history.push(`/rounds/${name}`);
-    this.props.puttReset();
-    this.props.resetHoleScore();
-    this.props.firReset();
-    this.props.girReset();
+    let score = this.props.rdScore.reduce(function(a, b){
+      return a + b; }, 0);
+    let putts = this.props.putts.reduce(function(a, b){
+      return a + b;}, 0);
+    let firs = this.count(this.props.fir);
+    let girs = this.count(this.props.gir);
+
+    if(confirm('Are these stats correct?' + '\n' + `Score ${score}` + '\n' + `FIR ${firs}` + '\n' + `GIR ${girs}` + '\n' + `Putts ${putts}`)){
+      this.props.addRound(this.state);
+      const { name, history } = this.props;
+      history.push(`/rounds/${name}`);
+      this.props.puttReset();
+      this.props.resetHoleScore();
+      this.props.firReset();
+      this.props.girReset();
+    } else {
+      return;
+    }
   };
 
   
@@ -116,5 +135,5 @@ export default withRouter(connect(
     putts: state.putts,
     name: props.match.params.name
   }),
-  { nextHole, teeSelection, holeScore, resetHoleScore, addRound, puttScore, puttReset, toggleFir, firReset, toggleGir, girReset, putts }
+  { nextHole, teeSelection, holeScore, resetHoleScore, addRound, puttScore, puttReset, toggleFir, firReset, toggleGir, girReset }
 )(AddRoundForm));
