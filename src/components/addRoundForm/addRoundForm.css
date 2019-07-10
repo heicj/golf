@@ -7,13 +7,27 @@
   width: 50%;
   margin: 1rem auto;
   border-radius: 30px;
-  background-color: rgba(3, 63, 50, 0.425);
+  background-color: rgba(5, 156, 124, 0.9);;
   
   input{
     width: 3rem;
-  };
-
+  }
+  
 }
+    
+#buttonDiv{
+    text-align: center;
+
+    #submitButton{
+      width: 50%;
+      height: 2rem;
+      font-weight: bold;
+      font-size: 1rem;
+      text-transform: uppercase;
+      
+    }
+  }
+
 
 #titleNewRound{
   text-align: center;
