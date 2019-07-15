@@ -6,8 +6,24 @@ import { signOut } from '../login/actions';
 
 class Header extends PureComponent{
 
+  componentDidMount(){
+    this.eventListener()
+  }
+
   state={
     menu: false
+  }
+
+  eventListener = () => {
+    document.addEventListener('click', () => {
+      if(this.state.menu == false){
+        return;
+      } else {
+        this.setState({
+          'menu': !this.state.menu
+        });
+      }
+    });
   }
 
   handleClick = () => {
