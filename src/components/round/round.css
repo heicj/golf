@@ -41,7 +41,7 @@
   /* grid-column: 1 / 5 */
   width: 65%;
   margin: 0 auto;
-  padding: 15px;
+  padding: .2rem;
   font-weight: bold;
   display: flex;
   justify-content: space-evenly;
