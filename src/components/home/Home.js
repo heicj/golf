@@ -66,17 +66,17 @@ class Home extends PureComponent{
               <div className='statDiv'>Putts: {charliePuttsAvg}</div>
             </div>
             <div className='statColumn'>
-              <h2>Lows</h2>
+              <h2>Best</h2>
               <div className ='statDiv'>Score: {charlieLowScore}</div>
-              <div className ='statDiv'>FIR: {charlieLowFir}</div>
-              <div className ='statDiv'>GIR: {charlieLowGir}</div>
+              <div className ='statDiv'>FIR: {charlieHighFir}</div>
+              <div className ='statDiv'>GIR: {charlieHighGir}</div>
               <div className ='statDiv'>Putts: {charlieLowPutts}</div>
             </div>
             <div className='statColumn'>
-              <h2>Highs</h2>
+              <h2>Worst</h2>
               <div className ='statDiv'>Score: {charlieHighScore}</div>
-              <div className ='statDiv'>FIR: {charlieHighFir}</div>
-              <div className ='statDiv'>GIR: {charlieHighGir}</div>
+              <div className ='statDiv'>FIR: {charlieLowFir}</div>
+              <div className ='statDiv'>GIR: {charlieLowGir}</div>
               <div className ='statDiv'>Putts: {charlieHighPutts}</div>
             </div>
           </section>
@@ -98,17 +98,17 @@ class Home extends PureComponent{
               <div className='statDiv'>Putts: {jeremyPuttsAvg}</div>
             </div>
             <div className='statColumn'>
-              <h2>Lows</h2>
+              <h2>Best</h2>
               <div className ='statDiv'>Score: {jeremyLowScore}</div>
-              <div className ='statDiv'>FIR: {jeremyLowFir}</div>
-              <div className ='statDiv'>GIR: {jeremyLowGir}</div>
+              <div className ='statDiv'>FIR: {jeremyHighFir}</div>
+              <div className ='statDiv'>GIR: {jeremyHighGir}</div>
               <div className ='statDiv'>Putts: {jeremyLowPutts}</div>
             </div>
             <div className='statColumn'>
-              <h2>Highs</h2>
+              <h2>Worst</h2>
               <div className ='statDiv'>Score: {jeremyHighScore}</div>
-              <div className ='statDiv'>FIR: {jeremyHighFir}</div>
-              <div className ='statDiv'>GIR: {jeremyHighGir}</div>
+              <div className ='statDiv'>FIR: {jeremyLowFir}</div>
+              <div className ='statDiv'>GIR: {jeremyLowGir}</div>
               <div className ='statDiv'>Putts: {jeremyHighPutts}</div>
             </div>
           </section>
