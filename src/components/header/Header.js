@@ -15,15 +15,15 @@ class Header extends PureComponent{
   }
 
   eventListener = () => {
-    document.addEventListener('click', () => {
-      if(this.state.menu == false){
-        return;
-      } else {
-        this.setState({
-          'menu': !this.state.menu
-        });
-      }
-    });
+    // document.getElementById('root').addEventListener('click', () => {
+    //   if(this.state.menu == false){
+    //     return;
+    //   } else {
+    //     this.setState({
+    //       'menu': !this.state.menu
+    //     });
+    //   }
+    // });
   }
 
   handleClick = () => {
