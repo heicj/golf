@@ -9,12 +9,13 @@
   border-radius: 30px;
   background-color: rgba(5, 156, 124, 0.9);;
   
-  input{
-    width: 3rem;
-  }
   
 }
-    
+
+input{
+  width: 3rem;
+}
+
 #buttonDiv{
     text-align: center;
 
