@@ -13,6 +13,9 @@ module.exports = {
     filename: 'bundle.[hash].js',
     publicPath: '/'
   },
+  node: {
+    fs: 'empty'
+  },
   devServer: {
     contentBase: './${buildDir}',
     historyApiFallback: true
