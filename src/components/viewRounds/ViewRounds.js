@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getRounds } from '../home/actions';
+import { getRoundById } from '../editForm/actions';
 import { deleteRd, changeName } from './actions';
 import Round from '../round/Round';
 import './viewrounds.css';
@@ -37,7 +38,7 @@ class ViewRounds extends Component{
         <h2 id="playerH2">{this.props.name + "'s"} Rounds</h2>
         {/* need to fix excel4node build issue */}
         {/* <button onClick={this.handleClick}>download rounds</button> */}
-        {rounds.map((r, i) => <Round name={name} deleteRound={deleteRd} key={i} id={r.key}  roundStats={r}/>)}
+        {rounds.map((r, i) => <Round name={name} getRdById={getRoundById} deleteRound={deleteRd} key={i} id={r.key}  roundStats={r}/>)}
       </section>
     );
   }
@@ -48,5 +49,5 @@ export default connect(
     rounds: state.rounds,
     name: props.match.params.name
   }),
-  { getRounds, deleteRd, changeName }
+  { getRounds, deleteRd, changeName, getRoundById }
 )(ViewRounds);

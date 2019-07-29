@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './round.css';
 
+
 export default class Round extends Component{
   handleClick = () => {
     if(confirm('Delete Round?')){
@@ -9,6 +10,10 @@ export default class Round extends Component{
       return;
     }
   };
+
+  handleEdit = () => {
+    this.props.getRdById(this.props.roundStats.player, this.props.roundStats.key);
+  }
 
   render(){
     const { roundStats } = this.props;
@@ -34,7 +39,7 @@ export default class Round extends Component{
             <div className="title" id="labels">Putts</div>{roundStats.putts.map((p, i) => <div className="data" key={i} id={i}>{p}</div>)}
           </div>
           <div id='editButtons'>
-            {/* <div>✎</div> */}
+            <div onClick={this.handleEdit}>Edit ✎</div>
             <div onClick={this.handleClick}>Delete Rd 🗑</div>
           </div>
         </section>
@@ -42,3 +47,4 @@ export default class Round extends Component{
     );
   }
 }
+
