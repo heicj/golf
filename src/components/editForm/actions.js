@@ -6,6 +6,10 @@ const players = db.ref('players');
 export function getRoundById(name, id){
   return {
     type: LOAD_ROUND,
-    payload: players.child(name).child(id).once('value').then(data => data.val())
+    payload: players.child(name).child(id).once('value').then(data => {
+      let rd = data.val();
+      console.log(rd);
+      return rd;
+    })
   };
 }

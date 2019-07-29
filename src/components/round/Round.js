@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getRoundById } from '../editForm/actions';
 import './round.css';
 
-
-export default class Round extends Component{
+class Round extends Component{
   handleClick = () => {
     if(confirm('Delete Round?')){
       this.props.deleteRound(this.props.name, this.props.roundStats.key);
@@ -12,7 +13,7 @@ export default class Round extends Component{
   };
 
   handleEdit = () => {
-    this.props.getRdById(this.props.roundStats.player, this.props.roundStats.key);
+    this.props.getRoundById(this.props.roundStats.player, this.props.roundStats.key);
   }
 
   render(){
@@ -47,4 +48,9 @@ export default class Round extends Component{
     );
   }
 }
+
+export default connect(
+  null,
+  { getRoundById }
+)(Round);
 
