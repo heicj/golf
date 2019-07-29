@@ -55,19 +55,20 @@ class EditForm extends PureComponent{
   
 
   render(){
-    const { course, date } = this.state;
-    const { roundStats } = this.props;
-    const totFir = calcFirGirTotal(fir);
-    const totGir = calcFirGirTotal(gir);
-    const totScore = rdScore.reduce((acc, curr) => acc + curr, 0);
-    const totPutts = putts.reduce((acc, curr) => acc + curr, 0);
+    // const { course, date } = this.state;
+    // const { roundStats } = this.props;
+    // const totFir = calcFirGirTotal(fir);
+    // const totGir = calcFirGirTotal(gir);
+    // const totScore = rdScore.reduce((acc, curr) => acc + curr, 0);
+    // const totPutts = putts.reduce((acc, curr) => acc + curr, 0);
     // const totFir = fir.reduce((acc, curr) => curr === true ? acc + 1 : acc, 0);
     const round = Array(18).fill('');
     return (
       <form className="roundForm" onSubmit={this.handleSubmit}>
-        <section>
-          <h2>Edit Round</h2>
-          <h3>{roundStats.name}</h3>
+        <h2>hello edit</h2>
+        {/* <section>
+          <h2>Edit Round</h2> */}
+          {/* <h3>{roundStats.name}</h3>
           <p>Score: {totScore}</p>
           <p>Fir total: {totFir}</p>
           <p>Gir total: {totGir}</p>
@@ -87,7 +88,7 @@ class EditForm extends PureComponent{
         <section>
           {round.map((h, i) => <HoleForm key={i} id={i} name={`${i}`} onSelect={this.handleChange} checkbox={this.handleCheckbox}/>)}
         </section>
-        <button>Submit</button>
+        <button>Submit</button> */}
         
       </form>
     );
