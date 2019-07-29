@@ -3,58 +3,59 @@ import { connect } from 'react-redux';
 import HoleForm from '../addRoundForm/HoleForm';
 import TeeSelector from '../addRoundForm/TeeSelector';
 import { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir, calcFirGirTotal } from './actions';
-
+import { getRoundById } from './actions';
 import './editForm.css';
 
 class EditForm extends PureComponent{
 
   componentDidMount(){
-
+    this.props.getRoundById(this.props.player, this.props.id);
   }
 
-  state = {
-    player: this.props.name,
-    course: this.props.course,
-    date: this.props.date,
-    tee: this.props.tee 
-  };
+  // state = {
+  //   player: this.props.name,
+  //   course: this.props.course,
+  //   date: this.props.date,
+  //   tee: this.props.tee 
+  // };
 
-  handleLocalState = ({ target }) => {
-    this.setState({ [target.name ]: target.value });
-  };
+  // handleLocalState = ({ target }) => {
+  //   this.setState({ [target.name ]: target.value });
+  // };
   
-  handleChange = ({ target }) => {
-    // this.setState({ [target.name ]: target.value });
-    const id = Number(target.id);
-    const value = Number(target.value);
-    if(target.name.includes('score')){
-      this.props.holeScore({ id: id, value: value });
-    } else if(target.name.includes('putts')){
-      this.props.puttScore({ id: id, value: value });
-    }
+  // handleChange = ({ target }) => {
+  //   // this.setState({ [target.name ]: target.value });
+  //   const id = Number(target.id);
+  //   const value = Number(target.value);
+  //   if(target.name.includes('score')){
+  //     this.props.holeScore({ id: id, value: value });
+  //   } else if(target.name.includes('putts')){
+  //     this.props.puttScore({ id: id, value: value });
+  //   }
     
-  };
+  // };
 
-  handleCheckbox = ({ target }) => {
-    const id = Number(target.id);
-    if(target.name.includes('fir')){
-      this.props.toggleFir(id);
-    } else if(target.name.includes('gir')){
-      this.props.toggleGir(id);
-    }
-  };
-  handleNext = () => {
-    this.props.nextHole();
-  };
+  // handleCheckbox = ({ target }) => {
+  //   const id = Number(target.id);
+  //   if(target.name.includes('fir')){
+  //     this.props.toggleFir(id);
+  //   } else if(target.name.includes('gir')){
+  //     this.props.toggleGir(id);
+  //   }
+  // };
+  // handleNext = () => {
+  //   this.props.nextHole();
+  // };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    this.props.addRound(this.state);
-  };
+  // handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   this.props.addRound(this.state);
+  // };
 
   
 
   render(){
+    const { course, date, fir, gir, holesScore, player, putts, tee, totalFir, totalGir, totalPutts, totalScore } = this.props.singleRound;
     // const { course, date } = this.state;
     // const { roundStats } = this.props;
     // const totFir = calcFirGirTotal(fir);
@@ -65,7 +66,7 @@ class EditForm extends PureComponent{
     const round = Array(18).fill('');
     return (
       <form className="roundForm" onSubmit={this.handleSubmit}>
-        <h2>hello edit</h2>
+        <h2>hello {player}</h2>
         {/* <section>
           <h2>Edit Round</h2> */}
           {/* <h3>{roundStats.name}</h3>
@@ -97,12 +98,9 @@ class EditForm extends PureComponent{
 
 export default connect(
   (state, props) => ({ 
-    hole: state.hole,
-    fir: state.fir,
-    gir: state.gir,
-    rdScore: state.holesScore,
-    putts: state.putts,
-    name: props.match.params.name
+    singleRound: state.singleRound,
+    player: props.match.params.player,
+    id: props.match.params.id
   }),
-  { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir }
+  { getRoundById }
 )(EditForm);

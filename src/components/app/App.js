@@ -31,7 +31,7 @@ class App extends PureComponent{
               <PrivateRoute path='/home' component={Home}/>
               <Route path='/newRound/:name' component={AddRoundForm}/>
               <Route path='/rounds/:name' component={ViewRounds}/>
-              <Route path='/editRound' component={EditForm}/>
+              <Route path='/editRound/:player/:id' component={EditForm}/>
               <Redirect to='/'/>
               
             </Switch>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getRoundById } from '../editForm/actions';
 import './round.css';
 
 class Round extends Component{
@@ -14,9 +13,8 @@ class Round extends Component{
   };
 
   handleEdit = () => {
-    this.props.getRoundById(this.props.roundStats.player, this.props.roundStats.key);
     const { history } = this.props;
-    history.push('/editRound');
+    history.push(`/editRound/${this.props.roundStats.player}/${this.props.roundStats.key}`);
   }
 
   render(){
@@ -54,6 +52,6 @@ class Round extends Component{
 
 export default withRouter(connect(
   null,
-  { getRoundById }
+  null
 )(Round));
 
