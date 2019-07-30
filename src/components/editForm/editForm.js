@@ -8,24 +8,32 @@ import './editForm.css';
 
 class EditForm extends PureComponent{
 
-  componentDidMount(){
-    this.props.getRoundById(this.props.player, this.props.id);
+  state = {
+    // player: this.props.singleRound.name,
+    // course: this.props.singleRound.course,
+    // date: this.props.singleRound.date,
+    // tee: this.props.singleRound.tee,
+    // fir: this.props.singleRound.fir,
+    // gir: this.props.singleRound.gir,
+    // holesScore: this.props.singleRound.holesScore,
+    // putts: this.props.singleRound.putts,
+    // totalFir: this.props.singleRound.totalFir,
+    // totalGir: this.props.singleRound.totalGir,
+    // totalPutts: this.props.singleRound.totolPutts,
+    // totalScore: this.props.singleRound.totalScore
+  };
+
+  setStateHandler = (rd) => {
+    Object.keys(rd).forEach(stat => {
+      let stateObj = {};
+      stateObj[stat] = rd[stat];
+      this.setState(stateObj);
+    });
   }
 
-  state = {
-    player: this.props.singleRound.name,
-    course: this.props.singleRound.course,
-    date: this.props.singleRound.date,
-    tee: this.props.singleRound.tee,
-    fir: this.props.singleRound.fir,
-    gir: this.props.singleRound.gir,
-    holesScore: this.props.singleRound.holesScore,
-    putts: this.props.singleRound.putts,
-    totalFir: this.props.singleRound.totalFir,
-    totalGir: this.props.singleRound.totalGir,
-    totalPutts: this.props.singleRound.totolPutts,
-    totalScore: this.props.singleRound.totalScore
-  };
+  componentDidMount(){
+    this.props.getRoundById(this.props.player, this.props.id, this.setStateHandler);
+  }
 
   handleLocalState = ({ target }) => {
     this.setState({ [target.name ]: target.value });
@@ -63,7 +71,7 @@ class EditForm extends PureComponent{
   
 
   render(){
-    const { course, date, fir, gir, holesScore, player, putts, tee, totalFir, totalGir, totalPutts, totalScore } = this.props.singleRound;
+    const { course, date, fir, gir, holesScore, player, putts, tee, totalFir, totalGir, totalPutts, totalScore } = this.state;
     // const { course, date } = this.state;
     // const { roundStats } = this.props;
     // const totFir = calcFirGirTotal(fir);
@@ -74,7 +82,7 @@ class EditForm extends PureComponent{
     const round = Array(18).fill('');
     return (
       <form className="roundForm" onSubmit={this.handleSubmit}>
-        <h2>hello {player}</h2>
+        <h2>Edit {player}'s Round</h2>
         <section>
           {/* <h2>Edit Round</h2>
           <h3>{roundStats.name}</h3>
@@ -90,13 +98,15 @@ class EditForm extends PureComponent{
           </label>
 
           <label htmlFor="tee">
-            <TeeSelector value={this.state.tee}selectChange={this.handleLocalState}/>
+            <TeeSelector value={this.state.tee} selectChange={this.handleLocalState}/>
           </label>
         </section>
-
-        <section>
+        {/* <ul>
+          {round.map((h, i) => <li key={i} value={fir[i]} onChange={this.handleLocalState}></li>)}
+        </ul> */}
+        {/* <section>
           {round.map((h, i) => <HoleForm key={i} id={i} name={`${i}`} onSelect={this.handleChange} checkbox={this.handleCheckbox}/>)}
-        </section>
+        </section> */}
         <button>Submit</button>
         
       </form>
