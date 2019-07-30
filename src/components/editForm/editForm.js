@@ -12,37 +12,45 @@ class EditForm extends PureComponent{
     this.props.getRoundById(this.props.player, this.props.id);
   }
 
-  // state = {
-  //   player: this.props.name,
-  //   course: this.props.course,
-  //   date: this.props.date,
-  //   tee: this.props.tee 
-  // };
+  state = {
+    player: this.props.singleRound.name,
+    course: this.props.singleRound.course,
+    date: this.props.singleRound.date,
+    tee: this.props.singleRound.tee,
+    fir: this.props.singleRound.fir,
+    gir: this.props.singleRound.gir,
+    holesScore: this.props.singleRound.holesScore,
+    putts: this.props.singleRound.putts,
+    totalFir: this.props.singleRound.totalFir,
+    totalGir: this.props.singleRound.totalGir,
+    totalPutts: this.props.singleRound.totolPutts,
+    totalScore: this.props.singleRound.totalScore
+  };
 
-  // handleLocalState = ({ target }) => {
-  //   this.setState({ [target.name ]: target.value });
-  // };
+  handleLocalState = ({ target }) => {
+    this.setState({ [target.name ]: target.value });
+  };
   
-  // handleChange = ({ target }) => {
-  //   // this.setState({ [target.name ]: target.value });
-  //   const id = Number(target.id);
-  //   const value = Number(target.value);
-  //   if(target.name.includes('score')){
-  //     this.props.holeScore({ id: id, value: value });
-  //   } else if(target.name.includes('putts')){
-  //     this.props.puttScore({ id: id, value: value });
-  //   }
+  handleChange = ({ target }) => {
+    // this.setState({ [target.name ]: target.value });
+    const id = Number(target.id);
+    const value = Number(target.value);
+    if(target.name.includes('score')){
+      this.props.holeScore({ id: id, value: value });
+    } else if(target.name.includes('putts')){
+      this.props.puttScore({ id: id, value: value });
+    }
     
-  // };
+  };
 
-  // handleCheckbox = ({ target }) => {
-  //   const id = Number(target.id);
-  //   if(target.name.includes('fir')){
-  //     this.props.toggleFir(id);
-  //   } else if(target.name.includes('gir')){
-  //     this.props.toggleGir(id);
-  //   }
-  // };
+  handleCheckbox = ({ target }) => {
+    const id = Number(target.id);
+    if(target.name.includes('fir')){
+      this.props.toggleFir(id);
+    } else if(target.name.includes('gir')){
+      this.props.toggleGir(id);
+    }
+  };
   // handleNext = () => {
   //   this.props.nextHole();
   // };
@@ -67,13 +75,13 @@ class EditForm extends PureComponent{
     return (
       <form className="roundForm" onSubmit={this.handleSubmit}>
         <h2>hello {player}</h2>
-        {/* <section>
-          <h2>Edit Round</h2> */}
-          {/* <h3>{roundStats.name}</h3>
+        <section>
+          {/* <h2>Edit Round</h2>
+          <h3>{roundStats.name}</h3>
           <p>Score: {totScore}</p>
           <p>Fir total: {totFir}</p>
           <p>Gir total: {totGir}</p>
-          <p>Putts: {totPutts}</p>
+          <p>Putts: {totPutts}</p> */}
           <label htmlFor="course">
             Course:<input name="course" type="text" onChange={this.handleLocalState} value={course}/>
           </label>
@@ -89,7 +97,7 @@ class EditForm extends PureComponent{
         <section>
           {round.map((h, i) => <HoleForm key={i} id={i} name={`${i}`} onSelect={this.handleChange} checkbox={this.handleCheckbox}/>)}
         </section>
-        <button>Submit</button> */}
+        <button>Submit</button>
         
       </form>
     );
