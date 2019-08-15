@@ -38,6 +38,14 @@ class EditForm extends PureComponent{
   handleLocalState = ({ target }) => {
     this.setState({ [target.name ]: target.value });
   };
+
+  handleScoreChange = ({ target }) => {
+    let newValue = target.value == '' ? null : parseInt(target.value);
+    let scoreArray = this.state.holesScore;
+    let scoreCopy = scoreArray.slice(0);
+    scoreCopy.splice(target.id, 1, newValue);
+    this.setState({ 'holesScore': scoreCopy });
+  }
   
   handleChange = ({ target }) => {
     // this.setState({ [target.name ]: target.value });
@@ -72,8 +80,7 @@ class EditForm extends PureComponent{
 
   render(){
     const { course, date, fir, gir, holesScore, player, putts, tee, totalFir, totalGir, totalPutts, totalScore } = this.state;
-    // const { course, date } = this.state;
-    // const { roundStats } = this.props;
+   
     // const totFir = calcFirGirTotal(fir);
     // const totGir = calcFirGirTotal(gir);
     // const totScore = rdScore.reduce((acc, curr) => acc + curr, 0);
@@ -84,12 +91,6 @@ class EditForm extends PureComponent{
       <form className="roundForm" onSubmit={this.handleSubmit}>
         <h2>Edit {player}'s Round</h2>
         <section>
-          {/* <h2>Edit Round</h2>
-          <h3>{roundStats.name}</h3>
-          <p>Score: {totScore}</p>
-          <p>Fir total: {totFir}</p>
-          <p>Gir total: {totGir}</p>
-          <p>Putts: {totPutts}</p> */}
           <label htmlFor="course">
             Course:<input name="course" type="text" onChange={this.handleLocalState} value={course}/>
           </label>
@@ -101,9 +102,11 @@ class EditForm extends PureComponent{
             <TeeSelector value={this.state.tee} selectChange={this.handleLocalState}/>
           </label>
         </section>
-        {/* <ul>
-          {round.map((h, i) => <li key={i} value={fir[i]} onChange={this.handleLocalState}></li>)}
-        </ul> */}
+        { holesScore ?
+          <ul> Score
+            {holesScore.map((h, i) => <input key={i} id={i} value={h} onChange={this.handleScoreChange}></input>)}
+          </ul> : null
+        }
         {/* <section>
           {round.map((h, i) => <HoleForm key={i} id={i} name={`${i}`} onSelect={this.handleChange} checkbox={this.handleCheckbox}/>)}
         </section> */}
