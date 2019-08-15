@@ -66,7 +66,7 @@ class EditForm extends PureComponent{
 
   handleFirGirCheckbox = ({ target }) => {
     const name = target.name;
-    const value = target.checked;
+    const value = target.selectedIndex == '0' ? true : false;
 
     let arr = this.state[name];
     let copy = arr.slice(0);
@@ -85,11 +85,12 @@ class EditForm extends PureComponent{
 
     this.props.editRound(name, rdId, stats);
     this.props.history.push(`/rounds/${name}`);
+    this.setState({});
   }
  
 
   render(){
-    const { course, date, fir, gir, holesScore, player, putts, tee, totalFir, totalGir, totalPutts, totalScore } = this.state;
+    const { course, date, fir, gir, holesScore, player, putts, tee } = this.state;
    
     return (
       <form className="roundForm" onSubmit={this.handleSubmit}>
@@ -103,7 +104,7 @@ class EditForm extends PureComponent{
           </label>
 
           <label htmlFor="tee">
-            <TeeSelector value={this.state.tee} selectChange={this.handleLocalState}/>
+            <TeeSelector value={tee} selectChange={this.handleLocalState}/>
           </label>
         </section>
         { holesScore ?
@@ -115,13 +116,13 @@ class EditForm extends PureComponent{
         {
           fir ?
             <ul>FIR
-              {fir.map((f, i) => <div key={i}>{ i + 1}<input type='checkbox' key={i} id={i} value={f} name='fir' onChange={this.handleFirGirCheckbox}></input></div>)}
+              {fir.map((f, i) => <div key={i}>{ i + 1}<select type='checkbox' checked key={i} id={i} value={f} name='fir' onChange={this.handleFirGirCheckbox}><option value='true'>true</option><option value='false'>false</option></select></div>)}
             </ul> :
             null
         }
         {  gir ?
           <ul>GIR
-            {gir.map((g, i) => <div key={i}>{ i + 1}<input type='checkbox' key={i} id={i} value={g} name='gir' onChange={this.handleFirGirCheckbox}></input></div>)}
+            {gir.map((g, i) => <div key={i}>{ i + 1}<select type='checkbox' key={i} id={i} value={g} name='gir' onChange={this.handleFirGirCheckbox}><option value='true'>true</option><option value='false'>false</option></select></div>)}
           </ul> :
           null
         }
