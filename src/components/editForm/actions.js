@@ -13,3 +13,7 @@ export function getRoundById(name, id, handler){
     })
   };
 }
+
+export function editRound(name, id, round){
+  players.child(name).child(id).set(round);
+}

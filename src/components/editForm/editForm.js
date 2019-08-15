@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import HoleForm from '../addRoundForm/HoleForm';
 import TeeSelector from '../addRoundForm/TeeSelector';
-import { nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir, calcFirGirTotal } from './actions';
-import { getRoundById } from './actions';
+// import { editRound, nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir, calcFirGirTotal } from './actions';
+import { getRoundById, editRound } from './actions';
 import './editForm.css';
 
 class EditForm extends PureComponent{
@@ -75,6 +76,16 @@ class EditForm extends PureComponent{
     stateObj[name] = copy;
     this.setState(stateObj);
   };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const rdId = this.props.id;
+    const name = this.props.player;
+    const stats = this.state;
+
+    this.props.editRound(name, rdId, stats);
+    this.props.history.push(`/rounds/${name}`);
+  }
  
 
   render(){
@@ -128,11 +139,11 @@ class EditForm extends PureComponent{
   }
 }
 
-export default connect(
+export default withRouter(connect(
   (state, props) => ({ 
     singleRound: state.singleRound,
     player: props.match.params.player,
     id: props.match.params.id
   }),
-  { getRoundById }
-)(EditForm);
+  { getRoundById, editRound }
+)(EditForm));
