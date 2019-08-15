@@ -28,6 +28,7 @@ class Round extends Component{
             <p id="date">{roundStats.date}</p>
           </div>
           <div id="rdStats">
+            <h5>Tee: {roundStats.tee}</h5>
             <h5>Score: {roundStats.totalScore}</h5>
             <h5>FIR: {roundStats.totalFir}</h5>
             <h5>GIR: {roundStats.totalGir}</h5>
