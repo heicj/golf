@@ -40,12 +40,18 @@ class EditForm extends PureComponent{
   };
 
   handleScoreChange = ({ target }) => {
-    let newValue = target.value == '' ? null : parseInt(target.value);
-    let scoreArray = this.state.holesScore;
-    let scoreCopy = scoreArray.slice(0);
-    scoreCopy.splice(target.id, 1, newValue);
-    this.setState({ 'holesScore': scoreCopy });
-  }
+    const name = target.name;
+    const newValue = target.value == '' ? null : parseInt(target.value);
+    
+    let arr = this.state[name];
+    let copy = arr.slice(0);
+    copy.splice(target.id, 1, newValue);
+
+    let stateObj = {};
+    stateObj[name] = copy;
+    this.setState(stateObj);
+  };
+
   
   handleChange = ({ target }) => {
     // this.setState({ [target.name ]: target.value });
@@ -103,13 +109,18 @@ class EditForm extends PureComponent{
           </label>
         </section>
         { holesScore ?
-          <ul> Score
-            {holesScore.map((h, i) => <input key={i} id={i} value={h} onChange={this.handleScoreChange}></input>)}
-          </ul> : null
+          <ul>Score
+            {holesScore.map((h, i) => <div key={i}>{ i + 1}<input key={i} id={i} value={h} name='holesScore' onChange={this.handleScoreChange}></input></div>)}
+          </ul> : 
+          null
         }
-        {/* <section>
-          {round.map((h, i) => <HoleForm key={i} id={i} name={`${i}`} onSelect={this.handleChange} checkbox={this.handleCheckbox}/>)}
-        </section> */}
+        {
+          putts ? 
+          <ul>Putts
+            {putts.map((p, i ) => <div key={i}><input key={i} id={i} value={p} name='putts' onChange={this.handleScoreChange}></input></div>)}
+          </ul> :
+          null
+        }
         <button>Submit</button>
         
       </form>
