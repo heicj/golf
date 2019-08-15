@@ -116,10 +116,10 @@ class EditForm extends PureComponent{
         }
         {
           putts ? 
-          <ul>Putts
-            {putts.map((p, i ) => <div key={i}><input key={i} id={i} value={p} name='putts' onChange={this.handleScoreChange}></input></div>)}
-          </ul> :
-          null
+            <ul>Putts
+              {putts.map((p, i ) => <div key={i}><input key={i} id={i} value={p} name='putts' onChange={this.handleScoreChange}></input></div>)}
+            </ul> :
+            null
         }
         <button>Submit</button>
         
