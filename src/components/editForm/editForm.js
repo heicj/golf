@@ -30,6 +30,11 @@ class EditForm extends PureComponent{
       stateObj[stat] = rd[stat];
       this.setState(stateObj);
     });
+    this.setState({ 'totalFir': rd.totalFir });
+    this.setState({ 'totalGir': rd.totalGir });
+    this.setState({ 'totalPutts': rd.totalPutts });
+    this.setState({ 'totalScore': rd.totalScore });
+
   }
 
   componentDidMount(){
@@ -49,20 +54,15 @@ class EditForm extends PureComponent{
     copy.splice(target.id, 1, newValue);
 
     let stateObj = {};
+    if(name == 'holesScore'){
+      stateObj['totalScore'] = copy.reduce((a, c) => a + c, 0);
+    } else {
+      stateObj['totalPutts'] = copy.reduce((a, c) => a + c, 0);
+    }
     stateObj[name] = copy;
     this.setState(stateObj);
   };
 
-  handleChange = ({ target }) => {
-    const id = Number(target.id);
-    const value = Number(target.value);
-    if(target.name.includes('score')){
-      this.props.holeScore({ id: id, value: value });
-    } else if(target.name.includes('putts')){
-      this.props.puttScore({ id: id, value: value });
-    }
-    
-  };
 
   handleFirGirCheckbox = ({ target }) => {
     const name = target.name;
@@ -72,7 +72,14 @@ class EditForm extends PureComponent{
     let copy = arr.slice(0);
     copy.splice(target.id, 1, value);
 
+    let reducedArr = copy.reduce((acc, curr) => curr === true ? acc + 1 : acc, 0);
+
     let stateObj = {};
+    if(name == 'fir'){
+      stateObj['totalFir'] = reducedArr;
+    } else {
+      stateObj['totalGir'] = reducedArr;
+    }
     stateObj[name] = copy;
     this.setState(stateObj);
   };
@@ -90,7 +97,7 @@ class EditForm extends PureComponent{
  
 
   render(){
-    const { course, date, fir, gir, holesScore, player, putts, tee } = this.state;
+    const { course, date, fir, gir, holesScore, player, putts, tee, totalFir, totalGir, totalPutts, totalScore } = this.state;
    
     return (
       <form className="roundForm" onSubmit={this.handleSubmit}>
@@ -107,31 +114,28 @@ class EditForm extends PureComponent{
             <TeeSelector value={tee} selectChange={this.handleLocalState}/>
           </label>
         </section>
-        { holesScore ?
-          <ul>Score
-            {holesScore.map((h, i) => <div key={i}>{ i + 1}<input key={i} id={i} value={h} name='holesScore' onChange={this.handleScoreChange}></input></div>)}
-          </ul> : 
-          null
-        }
-        {
-          fir ?
+        <section>totals
+          <div>Score: {totalScore}</div>
+          <div>Fir: {totalFir}</div>
+          <div>Gir: {totalGir}</div>
+          <div>Putts: {totalPutts}</div>
+        </section>
+        { holesScore && fir && gir && putts ?
+          <section>
+            <ul>Score
+              {holesScore.map((h, i) => <div key={i}>{ i + 1}<input key={i} id={i} value={h} name='holesScore' onChange={this.handleScoreChange}></input></div>)}
+            </ul>
             <ul>FIR
               {fir.map((f, i) => <div key={i}>{ i + 1}<select type='checkbox' checked key={i} id={i} value={f} name='fir' onChange={this.handleFirGirCheckbox}><option value='true'>true</option><option value='false'>false</option></select></div>)}
-            </ul> :
-            null
-        }
-        {  gir ?
-          <ul>GIR
-            {gir.map((g, i) => <div key={i}>{ i + 1}<select type='checkbox' key={i} id={i} value={g} name='gir' onChange={this.handleFirGirCheckbox}><option value='true'>true</option><option value='false'>false</option></select></div>)}
-          </ul> :
-          null
-        }
-        {
-          putts ? 
+            </ul> 
+            <ul>GIR
+              {gir.map((g, i) => <div key={i}>{ i + 1}<select type='checkbox' key={i} id={i} value={g} name='gir' onChange={this.handleFirGirCheckbox}><option value='true'>true</option><option value='false'>false</option></select></div>)}
+            </ul> 
             <ul>Putts
               {putts.map((p, i) => <div key={i}>{ i + 1}<input key={i} id={i} value={p} name='putts' onChange={this.handleScoreChange}></input></div>)}
-            </ul> :
-            null
+            </ul> 
+          </section> :
+          null
         }
         <button>Submit</button>
         
