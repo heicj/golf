@@ -52,9 +52,7 @@ class EditForm extends PureComponent{
     this.setState(stateObj);
   };
 
-  
   handleChange = ({ target }) => {
-    // this.setState({ [target.name ]: target.value });
     const id = Number(target.id);
     const value = Number(target.value);
     if(target.name.includes('score')){
@@ -65,34 +63,23 @@ class EditForm extends PureComponent{
     
   };
 
-  handleCheckbox = ({ target }) => {
-    const id = Number(target.id);
-    if(target.name.includes('fir')){
-      this.props.toggleFir(id);
-    } else if(target.name.includes('gir')){
-      this.props.toggleGir(id);
-    }
+  handleFirGirCheckbox = ({ target }) => {
+    const name = target.name;
+    const value = target.checked;
+
+    let arr = this.state[name];
+    let copy = arr.slice(0);
+    copy.splice(target.id, 1, value);
+
+    let stateObj = {};
+    stateObj[name] = copy;
+    this.setState(stateObj);
   };
-  // handleNext = () => {
-  //   this.props.nextHole();
-  // };
-
-  // handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   this.props.addRound(this.state);
-  // };
-
-  
+ 
 
   render(){
     const { course, date, fir, gir, holesScore, player, putts, tee, totalFir, totalGir, totalPutts, totalScore } = this.state;
    
-    // const totFir = calcFirGirTotal(fir);
-    // const totGir = calcFirGirTotal(gir);
-    // const totScore = rdScore.reduce((acc, curr) => acc + curr, 0);
-    // const totPutts = putts.reduce((acc, curr) => acc + curr, 0);
-    // const totFir = fir.reduce((acc, curr) => curr === true ? acc + 1 : acc, 0);
-    const round = Array(18).fill('');
     return (
       <form className="roundForm" onSubmit={this.handleSubmit}>
         <h2>Edit {player}'s Round</h2>
@@ -115,9 +102,22 @@ class EditForm extends PureComponent{
           null
         }
         {
+          fir ?
+            <ul>FIR
+              {fir.map((f, i) => <div key={i}>{ i + 1}<input type='checkbox' key={i} id={i} value={f} name='fir' onChange={this.handleFirGirCheckbox}></input></div>)}
+            </ul> :
+            null
+        }
+        {  gir ?
+          <ul>GIR
+            {gir.map((g, i) => <div key={i}>{ i + 1}<input type='checkbox' key={i} id={i} value={g} name='gir' onChange={this.handleFirGirCheckbox}></input></div>)}
+          </ul> :
+          null
+        }
+        {
           putts ? 
             <ul>Putts
-              {putts.map((p, i ) => <div key={i}><input key={i} id={i} value={p} name='putts' onChange={this.handleScoreChange}></input></div>)}
+              {putts.map((p, i) => <div key={i}>{ i + 1}<input key={i} id={i} value={p} name='putts' onChange={this.handleScoreChange}></input></div>)}
             </ul> :
             null
         }
