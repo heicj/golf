@@ -37,8 +37,8 @@ class ViewRounds extends Component{
       <section>
         <h2 id="playerH2">{this.props.name + "'s"} Rounds</h2>
         {/* need to fix excel4node build issue */}
-        <button onClick={this.handleClick}>download rounds</button>
-        {rounds.map((r, i) => <Round name={name} deleteRound={deleteRd} key={i} id={r.key}  roundStats={r}/>)}
+        {/* <button onClick={this.handleClick}>download rounds</button> */}
+        {rounds.map((r, i) => <Round name={name}  deleteRound={deleteRd} key={i} id={r.key}  roundStats={r}/>)}
       </section>
     );
   }

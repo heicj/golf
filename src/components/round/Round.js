@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import './round.css';
 
-export default class Round extends Component{
+class Round extends Component{
   handleClick = () => {
     if(confirm('Delete Round?')){
       this.props.deleteRound(this.props.name, this.props.roundStats.key);
@@ -9,6 +11,11 @@ export default class Round extends Component{
       return;
     }
   };
+
+  handleEdit = () => {
+    const { history } = this.props;
+    history.push(`/editRound/${this.props.roundStats.player}/${this.props.roundStats.key}`);
+  }
 
   render(){
     const { roundStats } = this.props;
@@ -34,7 +41,7 @@ export default class Round extends Component{
             <div className="title" id="labels">Putts</div>{roundStats.putts.map((p, i) => <div className="data" key={i} id={i}>{p}</div>)}
           </div>
           <div id='editButtons'>
-            {/* <div>✎</div> */}
+            <div onClick={this.handleEdit}>Edit ✎</div>
             <div onClick={this.handleClick}>Delete Rd 🗑</div>
           </div>
         </section>
@@ -42,3 +49,9 @@ export default class Round extends Component{
     );
   }
 }
+
+export default withRouter(connect(
+  null,
+  null
+)(Round));
+

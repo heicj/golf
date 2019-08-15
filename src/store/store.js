@@ -5,6 +5,8 @@ import { putts, holesScore, hole, player, tee, fir, gir, rdFirTotal } from '../c
 import { rounds } from '../components/home/reducers';
 import { auth } from '../components/login/reducers';
 import { name } from '../components/viewRounds/reducers';
+import { singleRound } from '../components/editForm/reducers';
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const reducer = combineReducers({
@@ -18,7 +20,8 @@ const reducer = combineReducers({
   gir,
   rdFirTotal,
   rounds,
-  name
+  name,
+  singleRound
 });
 
 const store = createStore(
