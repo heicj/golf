@@ -111,7 +111,12 @@ class EditForm extends PureComponent{
           </label>
 
           <label htmlFor="tee">
-            <TeeSelector value={tee} selectChange={this.handleLocalState}/>
+            <select name="tee" value={tee} onChange={this.handleLocalState}>
+              <option value="white">White</option>
+              <option value="red">Red</option>
+              <option value="blue">Blue</option>
+              <option value="black">Black</option>
+            </select>
           </label>
         </section>
         <section>totals
