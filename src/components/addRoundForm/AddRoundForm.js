@@ -6,7 +6,7 @@ import TeeSelector from './TeeSelector';
 import { nextHole, teeSelection, holeScore, resetHoleScore, addRound, puttScore, puttReset, toggleFir, firReset, toggleGir, girReset, calcFirGirTotal } from './actions';
 import { putts } from './reducers';
 import './addRoundForm.css';
-import { totalmem } from 'os';
+
 
 class AddRoundForm extends PureComponent{
 
