@@ -1,0 +1,15 @@
+#editRdStats{
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  font-weight: bold;
+}
+
+.statUl{
+  width: 20%;
+  justify-content: space-around;
+}
+
+.statDivs{
+  margin: .2rem;
+}

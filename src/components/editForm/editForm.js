@@ -126,18 +126,18 @@ class EditForm extends PureComponent{
           <div>Putts: {totalPutts}</div>
         </section>
         { holesScore && fir && gir && putts ?
-          <section>
-            <ul>Score
-              {holesScore.map((h, i) => <div key={i}>{ i + 1}<input key={i} id={i} value={h} name='holesScore' onChange={this.handleScoreChange}></input></div>)}
+          <section id='editRdStats'>
+            <ul className='statUl'>Score
+              {holesScore.map((h, i) => <div className='statDivs' key={i}>{ i + 1} <input key={i} id={i} value={h} name='holesScore' onChange={this.handleScoreChange}></input></div>)}
             </ul>
-            <ul>FIR
-              {fir.map((f, i) => <div key={i}>{ i + 1}<select type='checkbox' checked key={i} id={i} value={f} name='fir' onChange={this.handleFirGirCheckbox}><option value='true'>true</option><option value='false'>false</option></select></div>)}
+            <ul className='statUl'>FIR
+              {fir.map((f, i) => <div className='statDivs' key={i}>{ i + 1} <select type='checkbox' checked key={i} id={i} value={f} name='fir' onChange={this.handleFirGirCheckbox}><option value='true'>true</option><option value='false'>false</option></select></div>)}
             </ul> 
-            <ul>GIR
-              {gir.map((g, i) => <div key={i}>{ i + 1}<select type='checkbox' key={i} id={i} value={g} name='gir' onChange={this.handleFirGirCheckbox}><option value='true'>true</option><option value='false'>false</option></select></div>)}
+            <ul className='statUl'>GIR
+              {gir.map((g, i) => <div className='statDivs' key={i}>{ i + 1} <select type='checkbox' key={i} id={i} value={g} name='gir' onChange={this.handleFirGirCheckbox}><option value='true'>true</option><option value='false'>false</option></select></div>)}
             </ul> 
-            <ul>Putts
-              {putts.map((p, i) => <div key={i}>{ i + 1}<input key={i} id={i} value={p} name='putts' onChange={this.handleScoreChange}></input></div>)}
+            <ul className='statUl'>Putts
+              {putts.map((p, i) => <div className='statDivs' key={i}>{ i + 1} <input key={i} id={i} value={p} name='putts' onChange={this.handleScoreChange}></input></div>)}
             </ul> 
           </section> :
           null
