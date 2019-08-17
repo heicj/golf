@@ -26,11 +26,7 @@ class ViewRounds extends Component{
  
 
   // commented out until I figure out excel4node build issue
-<<<<<<< HEAD
-  handleClick =() => {
-=======
   handleClick = () => {
->>>>>>> master
     let rounds = this.props.rounds;
     this.props.excelFunc(rounds);
   }
