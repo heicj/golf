@@ -1,24 +1,5 @@
-<<<<<<< HEAD
-//dummy excelFunc just to use what is already set up 
-//using it to write to file.
-// const fs = require('fs');
-
-// export function excelFunc(rounds){
-//   fs.writeFile('test', 'this is a test', (err) => {
-//     if(err) throw err;
-//     console.log('lyric saved');
-//   })
-// }
-
-// import { storage } from '../services/firebase';
-import excel4node from 'excel4node';
-
-// let storageRef = storage.ref();
-// let golfRd = storageRef.child('golfRd.xlsx');
-=======
 import excel4node from 'excel4node';
 import fileSaver from 'file-saver';
->>>>>>> master
 
 const workbook = new excel4node.Workbook();
 const worksheet = workbook.addWorksheet('Sheet 1');
@@ -41,34 +22,17 @@ export function excelFunc(rounds) {
       worksheet.cell(startPoint + 3, j).number(rd.holesScore[j - 1]);
       worksheet.cell(startPoint + 4, j).bool(rd.fir[j - 1]);
       worksheet.cell(startPoint + 5, j).bool(rd.gir[j - 1]);
-<<<<<<< HEAD
-      worksheet.cell(startPoint + 6, j).number(rd.putts[j-1]);
-=======
       worksheet.cell(startPoint + 6, j).number(rd.putts[j - 1]);
->>>>>>> master
 
     } 
 
     startPoint = startPoint + 8;
     
   }
-<<<<<<< HEAD
-  workbook.write('golfRd.xlsx');
-}
-//   function(err, stats){
-//     if(err){
-//       console.log(err)
-//     } else {
-//       console.log(stats);
-//     }
-//   });
-// }
-=======
   
   workbook.writeToBuffer().then(function(buffer){
     var file = new File([buffer], 'rounds.xlsx', { type: 'application/vnd.ms-excel' });
     fileSaver.saveAs(file);
   });
 }
->>>>>>> master
 
