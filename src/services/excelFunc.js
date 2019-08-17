@@ -25,11 +25,6 @@ const worksheet = workbook.addWorksheet('Sheet 1');
 
 export function excelFunc(rounds) {
   let startPoint = 1;
-<<<<<<< HEAD
-   
-=======
-
->>>>>>> master
   for(let i = 0; i < rounds.length; i++){
     const rd = rounds[i];
     worksheet.cell(startPoint, 1).string(rd.player);
