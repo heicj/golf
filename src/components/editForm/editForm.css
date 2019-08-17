@@ -3,13 +3,43 @@
   justify-content: space-around;
   text-align: center;
   font-weight: bold;
+  margin: 2rem;
+
+}
+
+#header{
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 5px;
+}
+
+#rdMain{
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+}
+
+.nameDate{
+  width: 200px;
+  font-size: small;
 }
 
 .statUl{
   width: 20%;
+  height: 100%;
   justify-content: space-around;
 }
 
 .statDivs{
-  margin: .2rem;
+  padding: 4px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 60%;
+}
+
+#rdSummary{
+  text-align: center;
+  font-weight: bold;
 }

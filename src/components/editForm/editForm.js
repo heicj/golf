@@ -101,16 +101,16 @@ class EditForm extends PureComponent{
    
     return (
       <form className="roundForm" onSubmit={this.handleSubmit}>
-        <h2>Edit {player}'s Round</h2>
-        <section>
+        <h2 id='header'>Edit {player}'s Round</h2>
+        <section id='rdMain'>
           <label htmlFor="course">
-            Course:<input name="course" type="text" onChange={this.handleLocalState} value={course}/>
+            Course: <input className='nameDate' name="course" type="text" onChange={this.handleLocalState} value={course}/>
           </label>
           <label htmlFor="date">
-            Date:<input type="date" name="date" onChange={this.handleLocalState} value={date}/>
+            Date: <input className='nameDate' type="date" name="date" onChange={this.handleLocalState} value={date}/>
           </label>
 
-          <label htmlFor="tee">
+          <label htmlFor="tee">Tee: &nbsp;
             <select name="tee" value={tee} onChange={this.handleLocalState}>
               <option value="white">White</option>
               <option value="red">Red</option>
@@ -119,7 +119,7 @@ class EditForm extends PureComponent{
             </select>
           </label>
         </section>
-        <section>totals
+        <section id='rdSummary'>TOTALS
           <div>Score: {totalScore}</div>
           <div>Fir: {totalFir}</div>
           <div>Gir: {totalGir}</div>
@@ -128,16 +128,16 @@ class EditForm extends PureComponent{
         { holesScore && fir && gir && putts ?
           <section id='editRdStats'>
             <ul className='statUl'>Score
-              {holesScore.map((h, i) => <div className='statDivs' key={i}>{ i + 1} <input key={i} id={i} value={h} name='holesScore' onChange={this.handleScoreChange}></input></div>)}
+              {holesScore.map((h, i) => <div className='statDivs' key={i}><div>{ i + 1}</div> <input key={i} id={i} value={h} name='holesScore' onChange={this.handleScoreChange}></input></div>)}
             </ul>
             <ul className='statUl'>FIR
-              {fir.map((f, i) => <div className='statDivs' key={i}>{ i + 1} <select type='checkbox' checked key={i} id={i} value={f} name='fir' onChange={this.handleFirGirCheckbox}><option value='true'>true</option><option value='false'>false</option></select></div>)}
+              {fir.map((f, i) => <div className='statDivs' key={i}><div>{ i + 1}</div> <select type='checkbox' checked key={i} id={i} value={f} name='fir' onChange={this.handleFirGirCheckbox}><option value='true'>true</option><option value='false'>false</option></select></div>)}
             </ul> 
             <ul className='statUl'>GIR
-              {gir.map((g, i) => <div className='statDivs' key={i}>{ i + 1} <select type='checkbox' key={i} id={i} value={g} name='gir' onChange={this.handleFirGirCheckbox}><option value='true'>true</option><option value='false'>false</option></select></div>)}
+              {gir.map((g, i) => <div className='statDivs' key={i}><div>{ i + 1}</div> <select type='checkbox' key={i} id={i} value={g} name='gir' onChange={this.handleFirGirCheckbox}><option value='true'>true</option><option value='false'>false</option></select></div>)}
             </ul> 
             <ul className='statUl'>Putts
-              {putts.map((p, i) => <div className='statDivs' key={i}>{ i + 1} <input key={i} id={i} value={p} name='putts' onChange={this.handleScoreChange}></input></div>)}
+              {putts.map((p, i) => <div className='statDivs' key={i}><div>{ i + 1}</div> <input key={i} id={i} value={p} name='putts' onChange={this.handleScoreChange}></input></div>)}
             </ul> 
           </section> :
           null
