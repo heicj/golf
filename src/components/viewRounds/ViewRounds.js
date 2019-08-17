@@ -5,7 +5,7 @@ import { getRounds } from '../home/actions';
 import { deleteRd, changeName } from './actions';
 import Round from '../round/Round';
 import './viewrounds.css';
-// import excelFunc from '../../services/excelFunc';
+import { excelFunc } from '../../services/excelFunc';
 
 class ViewRounds extends Component{
 
@@ -25,10 +25,11 @@ class ViewRounds extends Component{
 
  
 
-  //commented out until I figure out excel4node build issue
-  // handleClick(){
-  //   excelFunc(this.props.rounds);
-  // }
+  // commented out until I figure out excel4node build issue
+  handleClick = () => {
+    let rounds = this.props.rounds;
+    this.props.excelFunc(rounds);
+  }
 
   render(){
     const { rounds, deleteRd, name } = this.props;
@@ -36,7 +37,7 @@ class ViewRounds extends Component{
       <section>
         <h2 id="playerH2">{this.props.name + "'s"} Rounds</h2>
         {/* need to fix excel4node build issue */}
-        {/* <button onClick={this.handleClick}>download rounds</button> */}
+        <button onClick={this.handleClick}>download rounds</button>
         {rounds.map((r, i) => <Round name={name}  deleteRound={deleteRd} key={i} id={r.key}  roundStats={r}/>)}
       </section>
     );
@@ -48,5 +49,5 @@ export default connect(
     rounds: state.rounds,
     name: props.match.params.name
   }),
-  { getRounds, deleteRd, changeName }
+  { getRounds, deleteRd, changeName, excelFunc }
 )(ViewRounds);
