@@ -15,7 +15,7 @@ class Round extends Component{
   handleEdit = () => {
     const { history } = this.props;
     history.push(`/editRound/${this.props.roundStats.player}/${this.props.roundStats.key}`);
-  }
+  };
 
   render(){
     const { roundStats } = this.props;
