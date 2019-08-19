@@ -5,3 +5,14 @@ font-weight: bold;
 margin-top: 1rem;
 margin-left: 2rem;
 }
+
+#buttonDiv{
+  width: 100%;
+  margin: 1rem;
+}
+
+button{
+  text-transform: uppercase;
+  height: 2rem;
+  background-color: rgba(5, 156, 124, 0.9);
+}

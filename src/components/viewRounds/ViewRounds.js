@@ -23,9 +23,6 @@ class ViewRounds extends Component{
     }
   }
 
- 
-
-  // commented out until I figure out excel4node build issue
   handleClick = () => {
     let rounds = this.props.rounds;
     this.props.excelFunc(rounds);
@@ -36,8 +33,9 @@ class ViewRounds extends Component{
     return (
       <section>
         <h2 id="playerH2">{this.props.name + "'s"} Rounds</h2>
-        {/* need to fix excel4node build issue */}
-        <button onClick={this.handleClick}>download rounds</button>
+        <div id="buttonDiv">
+          <button onClick={this.handleClick}>DOWNLOAD {name}'s ROUNDS</button>
+        </div>
         {rounds.map((r, i) => <Round name={name}  deleteRound={deleteRd} key={i} id={r.key}  roundStats={r}/>)}
       </section>
     );
