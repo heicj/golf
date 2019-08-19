@@ -3,12 +3,15 @@ import fileSaver from 'file-saver';
 
 const workbook = new excel4node.Workbook();
 
-var boldStyleCenter = workbook.createStyle({
+var boldStyle = workbook.createStyle({
   font: {
     bold: true
   },
-  alignment: {
-    horizontal: 'center',
+  border:{
+    right:{
+      style: 'thin',
+      color: 'black'
+    }
   }
 });
 
@@ -21,6 +24,15 @@ const headerFill = workbook.createStyle({
   }
 });
 
+const bodyFill = workbook.createStyle({
+  fill: {
+    type: 'pattern',
+    patternType: 'solid',
+    bgColor: 'white',
+    fgColor: 'D6DCF8'
+  }
+});
+
 const rdTitle = workbook.createStyle({
   alignment:{
     horizontal: 'center'
@@ -28,7 +40,32 @@ const rdTitle = workbook.createStyle({
   font: {
     bold: true
   }
-})
+});
+
+const holeLabel = workbook.createStyle({
+  font: {
+    bold: true
+  },
+
+  border:{
+    top:{
+      style: 'thin',
+      color: 'black'
+    },
+    bottom:{
+      style: 'thin',
+      color: 'black'
+    },
+    left:{
+      style: 'thin',
+      color: 'black'
+    },
+    right:{
+      style: 'thin',
+      color: 'black'
+    }
+  }
+});
 
 const rightAlignBold = workbook.createStyle({
   alignment:{
@@ -51,7 +88,41 @@ const centerAlign = workbook.createStyle({
   }
 });
 
+const boldBorderTop = workbook.createStyle({
+  border:{
+    top:{
+      style: 'thick',
+      color: 'black'
+    }
+  }
+});
 
+const boldBorderBottom = workbook.createStyle({
+  border:{
+    bottom:{
+      style: 'thick',
+      color: 'black'
+    }
+  }
+});
+
+const boldBorderLeft = workbook.createStyle({
+  border:{
+    left:{
+      style: 'thick',
+      color: 'black'
+    }
+  }
+});
+
+const boldBorderRight = workbook.createStyle({
+  border:{
+    right:{
+      style: 'thick',
+      color: 'black'
+    }
+  }
+});
 
 export function excelFunc(rounds) {
   const worksheet = workbook.addWorksheet(`${rounds[1].player}'s rounds`);
@@ -60,18 +131,29 @@ export function excelFunc(rounds) {
   for(let i = 0; i < rounds.length; i++){
     const rd = rounds[i];
     //cell arguments -> cell(row, column)
-    worksheet.cell(startPoint, 10).string(rd.course).style(centerAlign).style(rdTitle);
     worksheet.cell(startPoint, 1, startPoint + 2, 19).style(headerFill); //fills background of header of each card
+    worksheet.cell(startPoint + 3, 1, startPoint + 7, 19).style(bodyFill); //fills background of body of card
+    worksheet.cell(startPoint + 3, 2, startPoint + 7, 19).style(centerAlign); //centers numbers in body cells
+    worksheet.cell(startPoint + 3, 1, startPoint + 7, 1).style(boldStyle); //formats labels for stats in column 1 to bold
+    worksheet.cell(startPoint + 3, 1, startPoint + 3, 19).style(holeLabel);  //format hole numbers to bold and add border
+    worksheet.cell(startPoint, 1, startPoint, 19).style(boldBorderTop); //top rd border
+    worksheet.cell(startPoint + 7, 1, startPoint + 7, 19).style(boldBorderBottom);//bottom rd border
+    worksheet.cell(startPoint, 1, startPoint + 7, 1).style(boldBorderLeft); //left rd border
+    worksheet.cell(startPoint, 19, startPoint + 7, 19).style(boldBorderRight); //right rd border
 
+    worksheet.cell(startPoint, 10).string(rd.course).style(centerAlign).style(rdTitle);
     worksheet.cell(startPoint + 1, 10).string(`Date: ${rd.date} Tee: ${rd.tee}`).style(centerAlign);
     worksheet.cell(startPoint, 19).string(rd.player);
 
     worksheet.cell(startPoint + 2, 5).string('Score').style(rightAlignBold);
     worksheet.cell(startPoint + 2, 6).number(rd.totalScore).style(leftAlign);
+
     worksheet.cell(startPoint + 2, 8).string('FIR').style(rightAlignBold);
     worksheet.cell(startPoint + 2, 9).number(rd.totalFir).style(leftAlign);
+    
     worksheet.cell(startPoint + 2, 11).string('GIR').style(rightAlignBold);
     worksheet.cell(startPoint + 2, 12).number(rd.totalGir).style(leftAlign);
+
     worksheet.cell(startPoint + 2, 14). string('Putts').style(rightAlignBold);
     worksheet.cell(startPoint + 2, 15).number(rd.totalPutts).style(leftAlign);
 
