@@ -134,12 +134,12 @@ class EditForm extends PureComponent{
             </select>
           </label>
           <div id='slopeRating'>
-            <label htmlFor="slope">
-              Slope: <input name="slope" id="slope" type="text" onChange={this.handleSlope} value={slope}/>
-            </label> &nbsp;
             <label htmlFor="rating">
               Rating: <input name="rating" id="rating" type="text" onChange={this.handleRating} value={rating}/>
             </label>
+            <label htmlFor="slope">
+              Slope: <input name="slope" id="slope" type="text" onChange={this.handleSlope} value={slope}/>
+            </label> &nbsp;
           </div>
         </section>
         <section id='rdSummary'>TOTALS
