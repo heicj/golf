@@ -17,6 +17,8 @@ class AddRoundForm extends PureComponent{
   state = {
     player: this.props.name,
     course: '',
+    slope: '',
+    rating: '',
     date: '',
     tee: 'white'
   };
@@ -81,7 +83,7 @@ class AddRoundForm extends PureComponent{
   
 
   render(){
-    const { course, date } = this.state;
+    const { course, date, slope, rating } = this.state;
     const { fir, gir, rdScore, putts } = this.props;
     const totFir = calcFirGirTotal(fir);
     const totGir = calcFirGirTotal(gir);
@@ -102,6 +104,12 @@ class AddRoundForm extends PureComponent{
           <div id="courseDate">
             <label htmlFor="course">
               Course:<input name="course" id="course" type="text" onChange={this.handleLocalState} value={course}/>
+            </label>
+            <label htmlFor="slope">
+              Slope:<input name="slope" id="slope" type="text" onChange={this.handleLocalState} value={slope}/>
+            </label>
+            <label htmlFor="rating">
+              Rating:<input name="rating" id="rating" type="text" onChange={this.handleLocalState} value={rating}/>
             </label>
             <label htmlFor="date">
               Date:<input type="date" name="date" id="date" onChange={this.handleLocalState} value={date}/>

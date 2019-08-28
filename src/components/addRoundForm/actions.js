@@ -70,6 +70,15 @@ export function girReset(){
   };
 }
 
+function rdDifferential(score, rating, slope) {
+  const scoreInt = parseInt(score);
+  const ratingInt = parseInt(rating);
+  const slopeInt = parseInt(slope);
+
+  const rdDif = ((scoreInt - ratingInt) * 113) / slopeInt;
+  return rdDif;
+}
+
 export function addRound(round){
 
   return (dispatch, getState) => {
@@ -83,6 +92,8 @@ export function addRound(round){
     const totalPutts = puttsArray.reduce((acc, curr) => acc + curr, 0);
     const totalFir = calcFirGirTotal(firArray);
     const totalGir = calcFirGirTotal(girArray);
+    //subtract course rating from score and mulitiply by 113. divide product by the slope
+    const differential = rdDifferential(totalScore, round.rating, round.slope);
 
     completeRd.holesScore = scoresArray,
     completeRd.fir = firArray,
@@ -92,6 +103,7 @@ export function addRound(round){
     completeRd.totalPutts = totalPutts;
     completeRd.totalFir = totalFir;
     completeRd.totalGir = totalGir;
+    completeRd.differential = differential;
     
     dispatch({
       type: ADD_ROUND,
