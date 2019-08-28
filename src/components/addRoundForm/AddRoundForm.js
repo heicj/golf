@@ -105,14 +105,16 @@ class AddRoundForm extends PureComponent{
             <label htmlFor="course">
               Course:<input name="course" id="course" type="text" onChange={this.handleLocalState} value={course}/>
             </label>
-            <label htmlFor="slope">
-              Slope:<input name="slope" id="slope" type="text" onChange={this.handleLocalState} value={slope}/>
-            </label>
-            <label htmlFor="rating">
-              Rating:<input name="rating" id="rating" type="text" onChange={this.handleLocalState} value={rating}/>
-            </label>
             <label htmlFor="date">
               Date:<input type="date" name="date" id="date" onChange={this.handleLocalState} value={date}/>
+            </label>
+          </div>
+          <div id='slopeRatingDiv'>
+            <label htmlFor="slope">
+              Slope: <input name="slope" id="slope" type="text" onChange={this.handleLocalState} value={slope}/>
+            </label> &nbsp;
+            <label htmlFor="rating">
+              Rating: <input name="rating" id="rating" type="text" onChange={this.handleLocalState} value={rating}/>
             </label>
           </div>
 

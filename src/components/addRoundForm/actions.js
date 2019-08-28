@@ -70,13 +70,13 @@ export function girReset(){
   };
 }
 
-function rdDifferential(score, rating, slope) {
+export function rdDifferential(score, rating, slope) {
   const scoreInt = parseInt(score);
   const ratingInt = parseInt(rating);
   const slopeInt = parseInt(slope);
 
-  const rdDif = ((scoreInt - ratingInt) * 113) / slopeInt;
-  return rdDif;
+  return ((scoreInt - ratingInt) * 113) / slopeInt;
+  // return rdDif;
 }
 
 export function addRound(round){
