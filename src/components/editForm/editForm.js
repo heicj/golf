@@ -5,6 +5,7 @@ import HoleForm from '../addRoundForm/HoleForm';
 import TeeSelector from '../addRoundForm/TeeSelector';
 // import { editRound, nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir, calcFirGirTotal } from './actions';
 import { getRoundById, editRound } from './actions';
+import { rdDifferential } from '../addRoundForm/actions';
 import './editForm.css';
 
 class EditForm extends PureComponent{
@@ -43,6 +44,20 @@ class EditForm extends PureComponent{
 
   handleLocalState = ({ target }) => {
     this.setState({ [target.name ]: target.value });
+  };
+
+  handleSlope = ({ target }) => {
+    let value = target.value == '' ? null : target.value;
+    let diff = rdDifferential(this.state.totalScore, this.state.rating, value);
+    this.setState({ 'slope': value });
+    this.setState({ 'differential': diff });
+  };
+
+  handleRating = ({ target }) => {
+    let value = target.value == '' ? null : target.value;
+    let diff = rdDifferential(this.state.totalScore, value, this.state.slope);
+    this.setState({ 'rating': value });
+    this.setState({ 'differential': diff });
   };
 
   handleScoreChange = ({ target }) => {
@@ -97,19 +112,19 @@ class EditForm extends PureComponent{
  
 
   render(){
-    const { course, date, fir, gir, holesScore, player, putts, tee, totalFir, totalGir, totalPutts, totalScore } = this.state;
+    const { course, date, fir, gir, holesScore, player, putts, tee, totalFir, totalGir, totalPutts, totalScore, slope, rating } = this.state;
    
     return (
       <form className="roundForm" onSubmit={this.handleSubmit}>
         <h2 id='header'>Edit {player}'s Round</h2>
+
         <section id='rdMain'>
           <label htmlFor="course">
             Course: <input className='nameDate' name="course" type="text" onChange={this.handleLocalState} value={course}/>
-          </label>
+          </label>&nbsp;
           <label htmlFor="date">
             Date: <input className='nameDate' type="date" name="date" onChange={this.handleLocalState} value={date}/>
-          </label>
-
+          </label>&nbsp;
           <label htmlFor="tee">Tee: &nbsp;
             <select name="tee" value={tee} onChange={this.handleLocalState}>
               <option value="white">White</option>
@@ -118,6 +133,14 @@ class EditForm extends PureComponent{
               <option value="black">Black</option>
             </select>
           </label>
+          <div id='slopeRating'>
+            <label htmlFor="rating">
+              Rating: <input name="rating" id="rating" type="text" onChange={this.handleRating} value={rating}/>
+            </label>
+            <label htmlFor="slope">
+              Slope: <input name="slope" id="slope" type="text" onChange={this.handleSlope} value={slope}/>
+            </label> &nbsp;
+          </div>
         </section>
         <section id='rdSummary'>TOTALS
           <div>Score: {totalScore}</div>

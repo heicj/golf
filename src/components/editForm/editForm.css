@@ -14,9 +14,16 @@
   padding: 5px;
 }
 
+#slopeRating{
+  display: block;
+  text-align: center;
+  margin: 10px;
+}
+
 #rdMain{
-  display: flex;
+  display: block;
   justify-content: space-around;
+  text-align: center;
   margin: 10px;
 }
 
