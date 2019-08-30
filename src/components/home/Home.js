@@ -48,12 +48,13 @@ class Home extends PureComponent{
    
   }
   render(){
-    const { charlieAvgScore, charlieFirAvg, charlieGirAvg, charliePuttsAvg, jeremyAvgScore, jeremyFirAvg, jeremyGirAvg, jeremyPuttsAvg, charlieLowFir, charlieLowGir, charlieLowPutts, charlieLowScore, jeremyLowScore, jeremyLowGir, jeremyLowFir, jeremyLowPutts, charlieHighScore, charlieHighFir, charlieHighGir, charlieHighPutts, jeremyHighScore, jeremyHighFir, jeremyHighGir, jeremyHighPutts, charlieTotalRounds, jeremyTotalRounds } = this.state;
+    const { charlieAvgScore, charlieFirAvg, charlieGirAvg, charliePuttsAvg, charliehandicap, jeremyhandicap, jeremyAvgScore, jeremyFirAvg, jeremyGirAvg, jeremyPuttsAvg, charlieLowFir, charlieLowGir, charlieLowPutts, charlieLowScore, jeremyLowScore, jeremyLowGir, jeremyLowFir, jeremyLowPutts, charlieHighScore, charlieHighFir, charlieHighGir, charlieHighPutts, jeremyHighScore, jeremyHighFir, jeremyHighGir, jeremyHighPutts, charlieTotalRounds, jeremyTotalRounds } = this.state;
     return (
       <div id="mainSection">
         <div className='playerBox'>
           <div className='player'>Charlie</div>
           <div className='rdTotals'>Total Rounds: {charlieTotalRounds}</div>
+          <div>Handicap: {charliehandicap}</div>
           <div className='statDiv'>
             <Link to={'/newRound/Charlie'}>Add Round</Link>
             &nbsp;
@@ -86,6 +87,7 @@ class Home extends PureComponent{
         <div className='playerBox'>
           <div className='player'>Jeremy</div>
           <div className='rdTotals'>Total Rounds: {jeremyTotalRounds}</div>
+          <div>Handicap: {jeremyhandicap}</div>
           <div className='statDiv'>
             <Link to={'/newRound/Jeremy'}>Add Round</Link>
             &nbsp;
