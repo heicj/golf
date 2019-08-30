@@ -12,7 +12,9 @@ class Home extends PureComponent{
     charlieFirAvg: '',
     charlieGirAvg: '',
     charliePuttsAvg: '',
+    charlieHandicap: '',
     jeremyAvgScore: '',
+    jeremyHandicap: '',
     jeremyFirAvg: '',
     jeremyGirAvg: '',
     jeremyPuttsAvg: ''

@@ -1,5 +1,6 @@
 import { LOAD_ROUNDS, LOAD_SCORE_AVG } from './reducers';
 import { db } from '../../services/firebase';
+import { handicap } from '../../services/handicapFunc';
 import { TOTAL_FIR } from '../addRoundForm/reducers';
 
 
@@ -133,11 +134,11 @@ export function getStats(name, handler){
     avgFir = (totalFir / totalRounds).toFixed(2);
     avgGir = (totalGir / totalRounds).toFixed(2);
     avgPutts = (totalPutts / totalRounds).toFixed(2);
-  
+    const playerHandicap = handicap(rounds);
     let stats = [
       { 'AvgScore': avgScore }, { 'FirAvg': avgFir }, { 'GirAvg': avgGir }, { 'PuttsAvg': avgPutts },
       { 'HighScore': highScore }, { 'HighFir': highFir }, { 'HighGir': highGir }, { 'HighPutts': highPutts },
-      { 'LowScore': lowScore }, { 'LowFir': lowFir }, { 'LowGir': lowGir }, { 'LowPutts': lowPutts }, { 'TotalRounds': totalRounds }
+      { 'LowScore': lowScore }, { 'LowFir': lowFir }, { 'LowGir': lowGir }, { 'LowPutts': lowPutts }, { 'TotalRounds': totalRounds }, { 'handicap': playerHandicap }
     ];
 
     return handler(stats);

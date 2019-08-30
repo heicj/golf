@@ -2,13 +2,13 @@ import { handicap } from './handicapFunc';
 
 describe('tests handicap function', () => {
   it('tests when array of rounds is empty', () => {
-    const rounds = [];
+    const rounds = {};
     const handicapResult = handicap(rounds);
     expect(handicapResult).toEqual('NA');
   });
 
   it('test when rounds is less than 5', () => {
-    const rounds = [{ 'differential': 12 }, { 'differential': 8 }];
+    const rounds = { 123: { 'differential': 12 }, 456: { 'differential': 8 } };
     const handicapResult = handicap(rounds);
     expect(handicapResult).toEqual('7.68');
   });
