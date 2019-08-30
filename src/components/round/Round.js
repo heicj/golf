@@ -25,7 +25,9 @@ class Round extends Component{
         <section className='round'>
           <div>
             <h1 id="course">{roundStats.course}</h1>
-            <p id="date">{roundStats.date}</p>
+            <p className="rdDetails">{roundStats.date}</p>
+            <p className="rdDetails">Rating: {roundStats.rating}</p>
+            <p className="rdDetails">Slope: {roundStats.slope}</p>
           </div>
           <div id="rdStats">
             <h5>Tee: {roundStats.tee}</h5>
