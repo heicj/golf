@@ -1,9 +1,6 @@
 import { LOAD_ROUNDS, LOAD_SCORE_AVG } from './reducers';
 import { db } from '../../services/firebase';
 import { handicap } from '../../services/handicapFunc';
-import { TOTAL_FIR } from '../addRoundForm/reducers';
-
-
 
 const players = db.ref('players');
 
@@ -24,22 +21,6 @@ export function getRounds(name){
   };
     
 }
-
-// this old get rounds function. did not sort by date, returned them in order entered
-// export function getRounds(name){
-//   return {
-//     type: LOAD_ROUNDS,
-//     payload: players.child(name).once('value').then(data => {
-//       const rounds = data.val();
-//       return Object.keys(rounds).map(key => {
-//         let round = rounds[key];
-//         round.key = key;
-//         return round;
-//       });
-//     }
-//     )
-//   };
-// }
 
 export function getScoreAvg(name, stat, handler){
   if(name === '') return;

@@ -1,42 +1,28 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './header.css';
 import { signOut } from '../login/actions';
 
 class Header extends PureComponent{
 
-  componentDidMount(){
-    this.eventListener()
-  }
-
   state={
     menu: false
-  }
-
-  eventListener = () => {
-    // document.getElementById('root').addEventListener('click', () => {
-    //   if(this.state.menu == false){
-    //     return;
-    //   } else {
-    //     this.setState({
-    //       'menu': !this.state.menu
-    //     });
-    //   }
-    // });
-  }
+  };
 
   handleClick = () => {
     this.setState({
       'menu': !this.state.menu,
     });
-  }
-
+  };
 
   handleLogOut = event => {
     event.preventDefault();
+    const { history } = this.props;
+    history.push('/home');
     this.props.signOut();
-  }
+  };
 
   render(){
     const auth = this.props.auth;
@@ -89,9 +75,9 @@ class Header extends PureComponent{
   }
 }
 
-export default connect(
+export default withRouter(connect(
   state => ({
     auth: state.auth
   }),
-  {signOut}
-)(Header);
+  { signOut }
+)(Header));

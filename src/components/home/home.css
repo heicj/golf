@@ -17,9 +17,6 @@
 }
 
 .playerBox{
-  /* margin-top: 2rem;
-  font-size: 1.3rem;
-  font-style: bold; */
   border: outset 5px;
   padding: 1rem;
   width: 70%;
@@ -28,7 +25,6 @@
   background-color: rgba(5, 156, 124, 0.9);
 
 }
-
 
 .player{
   font-size: 2rem;
