@@ -24,6 +24,11 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(`${path}/bundle.*.js`), 
     new HtmlPlugin({ favicon: './favicon.ico' }),
+    new HtmlPlugin({ favicon: './android-chrome-192x192.png' }),
+    new HtmlPlugin({ favicon: './android-chrome-512x512.png' }),
+    new HtmlPlugin({ favicon: './apple-touch-icon.png' }),
+    new HtmlPlugin({ favicon: './favicon-16x16.png' }),
+    new HtmlPlugin({ favicon: './favicon-32x32.png' }),
     new HtmlPlugin({ template: './src/index.html' }),
     new Dotenv()
   ],
