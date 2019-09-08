@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { getRounds } from '../home/actions';
 import { deleteRd, changeName } from './actions';
 import Round from '../round/Round';

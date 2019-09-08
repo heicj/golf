@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import HoleForm from './HoleForm';
 import TeeSelector from './TeeSelector';
 import { nextHole, teeSelection, holeScore, resetHoleScore, addRound, puttScore, puttReset, toggleFir, firReset, toggleGir, girReset, calcFirGirTotal } from './actions';
-import { putts } from './reducers';
 import './addRoundForm.css';
 
 
@@ -28,7 +27,6 @@ class AddRoundForm extends PureComponent{
   };
   
   handleChange = ({ target }) => {
-    // this.setState({ [target.name ]: target.value });
     const id = Number(target.id);
     const value = Number(target.value);
     if(target.name.includes('score')){
@@ -84,12 +82,9 @@ class AddRoundForm extends PureComponent{
 
   render(){
     const { course, date, slope, rating } = this.state;
-    const { fir, gir, rdScore, putts } = this.props;
+    const { fir, gir } = this.props;
     const totFir = calcFirGirTotal(fir);
     const totGir = calcFirGirTotal(gir);
-    // const totScore = rdScore.reduce((acc, curr) => acc + curr, 0);
-    // const totPutts = putts.reduce((acc, curr) => acc + curr, 0);
-    // const totFir = fir.reduce((acc, curr) => curr === true ? acc + 1 : acc, 0);
     const round = Array(18).fill('');
     return (
       <form className="roundForm" onSubmit={this.handleSubmit}>
@@ -103,18 +98,18 @@ class AddRoundForm extends PureComponent{
 
           <div id="courseDate">
             <label htmlFor="course">
-              Course:<input name="course" id="course" type="text" onChange={this.handleLocalState} value={course}/>
+              Course:<input name="course" id="course" type="text" required onChange={this.handleLocalState} value={course}/>
             </label>
             <label htmlFor="date">
-              Date:<input type="date" name="date" id="date" onChange={this.handleLocalState} value={date}/>
+              Date:<input type="date" name="date" id="date" required onChange={this.handleLocalState} value={date}/>
             </label>
           </div>
           <div id='slopeRatingDiv'>
             <label htmlFor="rating">
-              Rating: <input name="rating" id="rating" type="text" onChange={this.handleLocalState} value={rating}/>
+              Rating: <input name="rating" id="rating" type="text" required onChange={this.handleLocalState} value={rating}/>
             </label>
             <label htmlFor="slope">
-              Slope: <input name="slope" id="slope" type="text" onChange={this.handleLocalState} value={slope}/>
+              Slope: <input name="slope" id="slope" type="text" required onChange={this.handleLocalState} value={slope}/>
             </label> &nbsp;
           </div>
 

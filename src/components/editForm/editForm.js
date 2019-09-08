@@ -1,9 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import HoleForm from '../addRoundForm/HoleForm';
-import TeeSelector from '../addRoundForm/TeeSelector';
-// import { editRound, nextHole, teeSelection, holeScore, addRound, puttScore, toggleFir, toggleGir, calcFirGirTotal } from './actions';
 import { getRoundById, editRound } from './actions';
 import { rdDifferential } from '../addRoundForm/actions';
 import './editForm.css';
@@ -11,18 +8,7 @@ import './editForm.css';
 class EditForm extends PureComponent{
 
   state = {
-    // player: this.props.singleRound.name,
-    // course: this.props.singleRound.course,
-    // date: this.props.singleRound.date,
-    // tee: this.props.singleRound.tee,
-    // fir: this.props.singleRound.fir,
-    // gir: this.props.singleRound.gir,
-    // holesScore: this.props.singleRound.holesScore,
-    // putts: this.props.singleRound.putts,
-    // totalFir: this.props.singleRound.totalFir,
-    // totalGir: this.props.singleRound.totalGir,
-    // totalPutts: this.props.singleRound.totolPutts,
-    // totalScore: this.props.singleRound.totalScore
+
   };
 
   setStateHandler = (rd) => {
