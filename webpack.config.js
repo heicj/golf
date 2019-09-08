@@ -23,6 +23,7 @@ module.exports = {
   devtool: 'inline-source-map',
   plugins: [
     new CleanWebpackPlugin(`${path}/bundle.*.js`), 
+    new HtmlPlugin({ favicon: './favicon.ico' }),
     new HtmlPlugin({ template: './src/index.html' }),
     new Dotenv()
   ],
