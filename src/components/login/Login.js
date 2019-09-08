@@ -26,8 +26,6 @@ class Login extends PureComponent{
       this.props.userSignin();
       this.setState({ redirectToReferrer: true });
 
-      // const user = { golfstats: 'signedin' };
-
       localStorage.setItem('golfstats', 'signedin');
     }
   };

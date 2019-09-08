@@ -31,8 +31,8 @@ export function handicap(rounds){
   let numberOfRounds = differentialCount;
 
   if(numberOfRounds < 10) roundsToUse = 1;
-  if(numberOfRounds > 10 && numberOfRounds < 20) roundsToUse = 5;
-  if(numberOfRounds > 20) roundsToUse = 10;
+  if(numberOfRounds >= 10 && numberOfRounds < 20) roundsToUse = 5;
+  if(numberOfRounds >= 20) roundsToUse = 10;
   
   const sortedDifferentials = mostRecentRounds.map(rd => rd.differential).sort(function(a, b){return a - b; });
   const differentialsToUse = sortedDifferentials.slice(0, roundsToUse);
