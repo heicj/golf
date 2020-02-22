@@ -14,13 +14,15 @@ class Courses extends PureComponent{
     const { coursesPlayed } = this.props;
     return (
       <section>
-        <h2>Courses Played</h2>
-        <div id='coursePlayedHeaders'>
-          <div>Course</div>
-          <div>Charlie</div>
-          <div>Jeremy</div>
-        </div>
-        { Object.keys(coursesPlayed).map(key => <Course key={key} courseName={key} players={coursesPlayed[key]} />)}
+        <h2 id='courseHeader'>Courses Played</h2>
+        <section id='listSection'>
+          <div id='coursePlayedHeaders'>
+            <div>Course</div>
+            <div>Charlie</div>
+            <div>Jeremy</div>
+          </div>
+          { Object.keys(coursesPlayed).map(key => <Course key={key} courseName={key} players={coursesPlayed[key]} />)}
+        </section>
       </section>
 
     );
