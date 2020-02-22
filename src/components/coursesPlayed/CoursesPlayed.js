@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import Course from '../course/Course';
 import { allData } from './actions';
+import './coursesPlayed.css';
 
 class Courses extends PureComponent{
   componentDidMount(){
@@ -13,8 +15,12 @@ class Courses extends PureComponent{
     return (
       <section>
         <h2>Courses Played</h2>
-        
-        { Object.keys(coursesPlayed).map(key => <ul key={key}>{key}</ul>)}
+        <div id='coursePlayedHeaders'>
+          <div>Course</div>
+          <div>Charlie</div>
+          <div>Jeremy</div>
+        </div>
+        { Object.keys(coursesPlayed).map(key => <Course key={key} courseName={key} players={coursesPlayed[key]} />)}
       </section>
 
     );
