@@ -1,0 +1,27 @@
+#courseHeader{
+  margin: 1.5rem auto;
+  text-align: center;
+  font-size: 3rem;
+}
+
+#coursePlayedHeaders{
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+  margin: 5px auto;
+  font-weight: bold;
+}
+
+#listSection{
+  min-width: 420px;
+  margin: 2em;
+  /* border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px rgb(240, 235, 235); */
+  border: outset 5px;
+  padding: 1rem;
+  width: 90%;
+  margin: 1rem auto;
+  border-radius: 30px;
+  background-color: rgba(5, 156, 124, 0.9);
+}

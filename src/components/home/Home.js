@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getScoreAvg, getMinMax, getStats } from './actions';
+import { coursesPlayedList } from '../coursesPlayed/actions';
 import './home.css';
 
 class Home extends PureComponent{
@@ -42,6 +43,7 @@ class Home extends PureComponent{
   }
 
   componentDidMount(){
+    // this.props.coursesPlayedList(['Charlie', 'Jeremy']);
     this.props.getStats('Charlie', this.handleCharlieStats);
     this.props.getStats('Jeremy', this.handleJeremyStats);
    
@@ -123,5 +125,5 @@ class Home extends PureComponent{
 
 export default connect(
   null,
-  { getScoreAvg, getMinMax, getStats }
+  { getScoreAvg, getMinMax, getStats, coursesPlayedList }
 )(Home);

@@ -6,6 +6,7 @@ import { rounds } from '../components/home/reducers';
 import { auth } from '../components/login/reducers';
 import { name } from '../components/viewRounds/reducers';
 import { singleRound } from '../components/editForm/reducers';
+import { coursesPlayed } from '../components/coursesPlayed/reducers';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -21,7 +22,8 @@ const reducer = combineReducers({
   rdFirTotal,
   rounds,
   name,
-  singleRound
+  singleRound,
+  coursesPlayed
 });
 
 const store = createStore(
