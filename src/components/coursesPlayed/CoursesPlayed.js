@@ -1,11 +1,10 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { coursesPlayedList, allData } from './actions';
+import { allData } from './actions';
 
 class Courses extends PureComponent{
   componentDidMount(){
     this.props.allData();
-    // this.props.coursesPlayedList(['Charlie', 'Jeremy']);
   }
 
 
@@ -15,8 +14,7 @@ class Courses extends PureComponent{
       <section>
         <h2>Courses Played</h2>
         
-        { Object.keys(coursesPlayed).forEach(course => <li key={course.course}>{course.course}</li>)}
-      
+        { Object.keys(coursesPlayed).map(key => <ul key={key}>{key}</ul>)}
       </section>
 
     );
@@ -27,5 +25,5 @@ export default connect(
   (state, props) => ({
     coursesPlayed: state.coursesPlayed
   }),
-  { coursesPlayedList, allData }
+  { allData }
 )(Courses);

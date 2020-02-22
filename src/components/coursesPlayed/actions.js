@@ -11,7 +11,6 @@ export function allData(){
       let played = {};
 
       const allRounds = data.val();
-      console.log(allRounds);
 
       Object.keys(allRounds).map(player => {
         let playerData = allRounds[player];
@@ -22,7 +21,6 @@ export function allData(){
           if(!played.hasOwnProperty([lowerRound])){
             played[lowerRound] = [round.player];
           } else {
-          //check if array has player name
             let players = played[lowerRound];
             if(!players.includes(round.player)){
               played[lowerRound].push(round.player);
@@ -37,37 +35,37 @@ export function allData(){
 }
 
 
-export function coursesPlayedList(arr){
-  if(arr.length == 0) return;
+// export function coursesPlayedList(arr){
+//   if(arr.length == 0) return;
 
-  let played = {};
+//   let played = {};
 
-  for(let i = 0; i < arr.length; i++){
-    players.child(arr[i]).once('value').then(data => {
-      const rounds = data.val();
+//   for(let i = 0; i < arr.length; i++){
+//     players.child(arr[i]).once('value').then(data => {
+//       const rounds = data.val();
 
-      Object.keys(rounds).map(key => {
-        let round = rounds[key];
-        let lowerRound = round.course.toLowerCase();
-        if(!played.hasOwnProperty([lowerRound])){
-          played[lowerRound] = [round.player];
-        } else {
-          //check if array has player name
-          let players = played[lowerRound];
-          if(!players.includes(round.player)){
-            played[lowerRound].push(round.player);
-          }
-        }
+//       Object.keys(rounds).map(key => {
+//         let round = rounds[key];
+//         let lowerRound = round.course.toLowerCase();
+//         if(!played.hasOwnProperty([lowerRound])){
+//           played[lowerRound] = [round.player];
+//         } else {
+//           //check if array has player name
+//           let players = played[lowerRound];
+//           if(!players.includes(round.player)){
+//             played[lowerRound].push(round.player);
+//           }
+//         }
 
-      });
+//       });
 
 
-    });
+//     });
 
-  }
-  return {
-    type: LOAD_COURSES_PLAYED,
-    payload: played
-  };
+//   }
+//   return {
+//     type: LOAD_COURSES_PLAYED,
+//     payload: played
+//   };
 
-}
+// }
