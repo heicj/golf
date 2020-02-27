@@ -3,7 +3,7 @@ import { coursesPlayed, LOAD_COURSES_PLAYED } from './reducers';
 describe('tests courses played initial state', () => {
   it('course played is empty obj initially', () => {
     const state = coursesPlayed(undefined, {});
-    expect(state).toEqual({});
+    expect(state).toEqual([]);
   });
 
   it('loads courses played obj', () => {

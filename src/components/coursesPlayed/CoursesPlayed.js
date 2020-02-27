@@ -21,7 +21,10 @@ class Courses extends PureComponent{
             <div>Charlie</div>
             <div>Jeremy</div>
           </div>
-          { Object.keys(coursesPlayed).map(key => <Course key={key} courseName={key} players={coursesPlayed[key]} />)}
+          { coursesPlayed.map((course, i) => {
+            let courseName = Object.keys(course)[0];
+            return <Course key={courseName} courseName={courseName} players={coursesPlayed[i][courseName]} />;
+          })}
         </section>
       </section>
 

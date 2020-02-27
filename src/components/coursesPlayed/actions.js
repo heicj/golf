@@ -3,6 +3,22 @@ import { LOAD_COURSES_PLAYED } from './reducers';
 
 const players = db.ref('players');
 
+function alphabatizeObj(object){
+  let arr = [];
+
+  Object.keys(object).map(key => {
+    let newObj = {};
+    newObj[key] = object[key];
+    arr.push(newObj);
+  });
+
+  arr.sort(function(a, b) {
+    return Object.keys(a)[0] > Object.keys(b)[0] ? 1 : Object.keys(a)[0] < Object.keys(b)[0] ? -1 : 0;
+  });
+
+  return arr;
+}
+
 export function allData(){
   return {
 
@@ -28,8 +44,8 @@ export function allData(){
           }
         });
       });
-
-      return played;
+      let orderedArray = alphabatizeObj(played);
+      return orderedArray;
     })
   };
 }
