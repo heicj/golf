@@ -79,6 +79,7 @@ export function rdDifferential(score, rating, slope) {
   // return rdDif;
 }
 
+
 export function addRound(round){
 
   return (dispatch, getState) => {
@@ -105,6 +106,7 @@ export function addRound(round){
     completeRd.totalGir = totalGir;
     completeRd.differential = differential;
     
+
     dispatch({
       type: ADD_ROUND,
       payload:  players.child(round.player).push(completeRd)
