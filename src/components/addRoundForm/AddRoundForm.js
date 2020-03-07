@@ -19,7 +19,8 @@ class AddRoundForm extends PureComponent{
     slope: '',
     rating: '',
     date: '',
-    tee: 'white'
+    tee: 'white',
+    comment: ''
   };
 
   handleLocalState = ({ target }) => {
@@ -81,7 +82,7 @@ class AddRoundForm extends PureComponent{
   
 
   render(){
-    const { course, date, slope, rating } = this.state;
+    const { course, date, slope, rating, comment } = this.state;
     const { fir, gir } = this.props;
     const totFir = calcFirGirTotal(fir);
     const totGir = calcFirGirTotal(gir);
@@ -121,7 +122,12 @@ class AddRoundForm extends PureComponent{
         <section>
           {round.map((h, i) => <HoleForm key={i} id={i} name={`${i}`} onSelect={this.handleChange} checkbox={this.handleCheckbox}/>)}
         </section>
-        
+
+        <div id="commentDiv">
+          <label id="commentLabel" htmlFor="comment">Comment</label>
+          <textarea id="comment" value={comment} name="comment" onChange={this.handleLocalState} placeholder="Add notes on round here if you wish"></textarea>
+        </div>
+
         <div id="buttonDiv">
           <button id="submitButton">Submit</button>
         </div>

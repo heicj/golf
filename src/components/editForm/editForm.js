@@ -98,7 +98,7 @@ class EditForm extends PureComponent{
  
 
   render(){
-    const { course, date, fir, gir, holesScore, player, putts, tee, totalFir, totalGir, totalPutts, totalScore, slope, rating } = this.state;
+    const { course, date, fir, gir, holesScore, player, putts, tee, totalFir, totalGir, totalPutts, totalScore, slope, rating, comment } = this.state;
    
     return (
       <form className="roundForm" onSubmit={this.handleSubmit}>
@@ -151,7 +151,11 @@ class EditForm extends PureComponent{
           </section> :
           null
         }
-        <button>Submit</button>
+
+        <textarea id="editTextArea" name="comment" onChange={this.handleLocalState} value={comment}>
+          {comment}
+        </textarea>
+        <button id="editSubmitButton">Submit</button>
         
       </form>
     );

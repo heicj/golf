@@ -79,3 +79,10 @@
   font-size: .75rem;
 }
 
+#commentView{
+  display: block;
+  text-align: center;
+  margin: 10px auto;
+  
+}
+
