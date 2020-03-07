@@ -43,6 +43,9 @@ class Round extends Component{
             <div className="title" id="labels">GIR</div>{roundStats.gir.map((g, i) => <div className="data" key={i} id={i}>{(g) ? '✓' : ''}</div>)}
             <div className="title" id="labels">Putts</div>{roundStats.putts.map((p, i) => <div className="data" key={i} id={i}>{p}</div>)}
           </div>
+          <div id="commentView">
+            {roundStats.comment}
+          </div>
           <div id='editButtons'>
             <div onClick={this.handleEdit}>Edit ✎</div>
             <div onClick={this.handleClick}>Delete Rd 🗑</div>
