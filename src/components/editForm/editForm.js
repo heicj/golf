@@ -152,10 +152,10 @@ class EditForm extends PureComponent{
           null
         }
 
-        <textarea name="comment" onChange={this.handleLocalState} value={comment}>
+        <textarea id="editTextArea" name="comment" onChange={this.handleLocalState} value={comment}>
           {comment}
         </textarea>
-        <button>Submit</button>
+        <button id="editSubmitButton">Submit</button>
         
       </form>
     );
