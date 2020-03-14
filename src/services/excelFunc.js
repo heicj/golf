@@ -133,12 +133,14 @@ export function excelFunc(rounds) {
     worksheet.cell(startPoint, 1, startPoint + 2, 19).style(headerFill); //fills background of header of each card
     worksheet.cell(startPoint + 3, 1, startPoint + 7, 19).style(bodyFill); //fills background of body of card
     worksheet.cell(startPoint + 3, 2, startPoint + 7, 19).style(centerAlign); //centers numbers in body cells
-    worksheet.cell(startPoint + 3, 1, startPoint + 7, 1).style(boldStyle); //formats labels for stats in column 1 to bold
+    worksheet.cell(startPoint + 3, 1, startPoint + 8, 1).style(boldStyle); //formats labels for stats in column 1 to bold
+    worksheet.cell(startPoint + 8, 1, startPoint + 8, 19).style(headerFill); //formats comment background same as header
     worksheet.cell(startPoint + 3, 1, startPoint + 3, 19).style(holeLabel);  //format hole numbers to bold and add border
     worksheet.cell(startPoint, 1, startPoint, 19).style(boldBorderTop); //top rd border
-    worksheet.cell(startPoint + 7, 1, startPoint + 7, 19).style(boldBorderBottom);//bottom rd border
-    worksheet.cell(startPoint, 1, startPoint + 7, 1).style(boldBorderLeft); //left rd border
-    worksheet.cell(startPoint, 19, startPoint + 7, 19).style(boldBorderRight); //right rd border
+    worksheet.cell(startPoint + 8, 1, startPoint + 8, 19).style(boldBorderBottom);//bottom rd border
+    worksheet.cell(startPoint, 1, startPoint + 8, 1).style(boldBorderLeft); //left rd border
+    worksheet.cell(startPoint, 19, startPoint + 8, 19).style(boldBorderRight); //right rd border
+  
 
     worksheet.cell(startPoint, 10).string(rd.course).style(centerAlign).style(rdTitle);
     worksheet.cell(startPoint + 1, 10).string(`Date: ${rd.date} Tee: ${rd.tee}`).style(centerAlign);
@@ -161,9 +163,11 @@ export function excelFunc(rounds) {
     worksheet.cell(startPoint + 5, 1).string('FIR');
     worksheet.cell(startPoint + 6, 1).string('GIR');
     worksheet.cell(startPoint + 7, 1).string('Putts');
+    worksheet.cell(startPoint + 8, 1).string('Comment');
+    worksheet.cell(startPoint + 8, 2).string(rd.comment);
 
     for(let j = 1; j < rd.holesScore.length + 1; j++){
-      worksheet.column(j).setWidth(8);
+      worksheet.column(j).setWidth(9);
       worksheet.cell(startPoint + 3, j + 1).number(j);
       worksheet.cell(startPoint + 4, j + 1).number(rd.holesScore[j - 1]);
       let fir = rd.fir[j - 1].toString();
@@ -174,12 +178,17 @@ export function excelFunc(rounds) {
 
     } 
 
-    startPoint = startPoint + 9;
+    startPoint = startPoint + 10;
     
   }
   
   workbook.writeToBuffer().then(function(buffer){
-    var file = new File([buffer], `${rounds[1].player}.xlsx`, { type: 'application/vnd.ms-excel' });
+    const date = new Date();
+    const month = date.getMonth();
+    const day = date.getDay();
+    const year = date.getFullYear();
+    const time = date.getTime();
+    var file = new File([buffer], `${rounds[1].player + month + day + year + time}.xlsx`, { type: 'application/vnd.ms-excel' });
     fileSaver.saveAs(file);
   });
 }
