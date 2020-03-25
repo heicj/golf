@@ -3,34 +3,23 @@ import { backupDates, backup } from './backupFuncs';
 import { connect } from 'react-redux';
 
 class Backup extends Component{
-  state = {
-    dates: []
-  };
-
-  // handler = (key, value) => {
-  //   let obj = {};
-  //   obj[key] = value;
-  //   this.setState(
-  //     obj
-  //   );
-  // };
-
+  
   handleBackup = () => {
     this.props.backup();
-    // backupDates(this.handler);
-  }
+  };
   
   componentDidMount(){
     this.props.backupDates();
-    // backupDates(this.handler);
   }
 
   render(){
-
+    const { dates } = this.props;
     return (
       <section>
         <button onClick={this.handleBackup}>Backup</button>
-        <div>hello backup</div>
+        <ul>
+          {dates.map((d, i) => <li key={i}>{d}</li>)}
+        </ul>
       </section>
     );
   }
