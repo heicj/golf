@@ -40,13 +40,12 @@ class Home extends PureComponent{
       stateObj[newKey] = obj[key];
       this.setState(stateObj);
     });
-  }
+  };
 
   componentDidMount(){
     // this.props.coursesPlayedList(['Charlie', 'Jeremy']);
     this.props.getStats('Charlie', this.handleCharlieStats);
     this.props.getStats('Jeremy', this.handleJeremyStats);
-   
   }
   render(){
     const { charlieAvgScore, charlieFirAvg, charlieGirAvg, charliePuttsAvg, charliehandicap, jeremyhandicap, jeremyAvgScore, jeremyFirAvg, jeremyGirAvg, jeremyPuttsAvg, charlieLowFir, charlieLowGir, charlieLowPutts, charlieLowScore, jeremyLowScore, jeremyLowGir, jeremyLowFir, jeremyLowPutts, charlieHighScore, charlieHighFir, charlieHighGir, charlieHighPutts, jeremyHighScore, jeremyHighFir, jeremyHighGir, jeremyHighPutts, charlieTotalRounds, jeremyTotalRounds } = this.state;

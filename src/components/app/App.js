@@ -11,6 +11,7 @@ import PrivateRoute from '../privateRoute/PrivateRoute';
 import { userSignin } from '../login/actions';
 import EditForm from '../editForm/EditForm';
 import Courses from '../coursesPlayed/CoursesPlayed';
+import Backup from '../backup/Backup';
 
 
 class App extends PureComponent{
@@ -34,6 +35,7 @@ class App extends PureComponent{
               <Route path='/rounds/:name' component={ViewRounds}/>
               <Route path='/editRound/:player/:id' component={EditForm}/>
               <Route path='/coursesPlayed' component={Courses}/>
+              <Route path='/backup' component={Backup}/>
               <Redirect to='/'/>
               
             </Switch>
