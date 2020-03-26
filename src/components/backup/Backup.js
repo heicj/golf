@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { backupDates, backup } from './backupFuncs';
+import { backupDates, backup, getDownloadData } from './backupFuncs';
 import { connect } from 'react-redux';
 
 class Backup extends Component{
@@ -10,16 +10,18 @@ class Backup extends Component{
   
   componentDidMount(){
     this.props.backupDates();
+    this.props.getDownloadData();
   }
 
   render(){
-    const { dates } = this.props;
+    const { dates, downloads } = this.props;
     return (
       <section>
         <button onClick={this.handleBackup}>Backup</button>
         <ul>
           {dates.map((d, i) => <li key={i}>{d}</li>)}
         </ul>
+        
       </section>
     );
   }
@@ -27,7 +29,8 @@ class Backup extends Component{
 
 export default connect(
   (state, props) => ({
-    dates: state.backupInfo
+    dates: state.backupInfo,
+    downloads: state.downloadInfo
   }), 
-  { backupDates, backup }
+  { backupDates, backup, getDownloadData }
 )(Backup);

@@ -1,19 +1,18 @@
 import { db } from '../../services/firebase';
-import { ADD_DATE, LOAD_DATES } from './reducers';
+import { ADD_DATE, LOAD_DATES, LOAD_DOWNLOAD_DATA } from './reducers';
 
 const players = db.ref('players');
 const backupRef = db.ref('backup');
+const downloadsRef = db.ref('downloads');
 
 export function backup(){
 
   return (dispatch, getState) => {
     
     const date = new Date().toLocaleDateString().split(',')[0].split('/').join('-');
-    
-  
+
     players.once('value').then(data => {
       const alldata = data.val();
-  
       backupRef.child(date).push(alldata);
     });
 
@@ -42,11 +41,31 @@ export function backupDates(){
           return a < b ? 1 : a > b ? -1 : 0;
         })
       });
-
-      // return cb('dates', datesArray);
-  
     });
-
   };
- 
+}
+
+//gets data about downloaded times
+export function getDownloadData(){
+
+  return (dispatch, getState) => {
+
+    dispatch({
+      type: LOAD_DOWNLOAD_DATA,
+      payload: downloadsRef.once('value').then(data => {
+        let allData = data.val();
+        let arr = [];
+        Object.keys(allData).map(date => {
+          let dateData = allData[date];
+          Object.keys(dateData).map(k => {
+            let obj = {};
+            obj[date] = dateData[k];
+            arr.push(obj);
+          });
+        });
+        return arr;
+      })
+    });
+    
+  };
 }

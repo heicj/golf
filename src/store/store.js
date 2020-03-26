@@ -7,7 +7,7 @@ import { auth } from '../components/login/reducers';
 import { name } from '../components/viewRounds/reducers';
 import { singleRound } from '../components/editForm/reducers';
 import { coursesPlayed } from '../components/coursesPlayed/reducers';
-import { backupInfo } from '../components/backup/reducers';
+import { backupInfo, downloadInfo } from '../components/backup/reducers';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -25,7 +25,8 @@ const reducer = combineReducers({
   name,
   singleRound,
   coursesPlayed,
-  backupInfo
+  backupInfo,
+  downloadInfo
 });
 
 const store = createStore(
