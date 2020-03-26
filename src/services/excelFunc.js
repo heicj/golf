@@ -1,7 +1,9 @@
 import excel4node from 'excel4node';
 import fileSaver from 'file-saver';
+import { db } from '../services/firebase';
 
 const workbook = new excel4node.Workbook();
+const downloadsRef = db.ref('downloads');
 
 var boldStyle = workbook.createStyle({
   font: {
@@ -182,13 +184,18 @@ export function excelFunc(rounds) {
     startPoint = startPoint + 10;
     
   }
-  
+
+  //date added to firebase to keep record of when downloads happen
+  const d = new Date();
+  const downloadDate = d.toLocaleDateString().split(',')[0].split('/').join('-');
+  const downloadTime = d.toLocaleTimeString();
+  downloadsRef.child(downloadDate).push(downloadTime);
+
   workbook.writeToBuffer().then(function(buffer){
-    const date = new Date();
-    const month = date.getMonth();
-    const day = date.getDay();
-    const year = date.getFullYear();
-    const time = date.getTime();
+    const month = d.getMonth();
+    const day = d.getDay();
+    const year = d.getFullYear();
+    const time = d.getTime();
     var file = new File([buffer], `${rounds[1].player + month + day + year + time}.xlsx`, { type: 'application/vnd.ms-excel' });
     fileSaver.saveAs(file);
   });
