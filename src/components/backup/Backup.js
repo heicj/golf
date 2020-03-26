@@ -21,7 +21,9 @@ class Backup extends Component{
         <ul>
           {dates.map((d, i) => <li key={i}>{d}</li>)}
         </ul>
-        
+        <ul>
+          {downloads.map((d, i) => <li key={i}>date: {d[0]}  time: {d[1]}</li>)}
+        </ul>
       </section>
     );
   }

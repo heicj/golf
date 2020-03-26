@@ -53,19 +53,23 @@ export function getDownloadData(){
     dispatch({
       type: LOAD_DOWNLOAD_DATA,
       payload: downloadsRef.once('value').then(data => {
+
         let allData = data.val();
         let arr = [];
+        
         Object.keys(allData).map(date => {
           let dateData = allData[date];
+          
           Object.keys(dateData).map(k => {
-            let obj = {};
-            obj[date] = dateData[k];
-            arr.push(obj);
+            let a = [];
+            a[0] = date;
+            a[1] = dateData[k];
+            arr.push(a);
           });
+        
         });
         return arr;
       })
     });
-    
   };
 }
