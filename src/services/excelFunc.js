@@ -188,7 +188,10 @@ export function excelFunc(rounds) {
   const d = new Date();
   const downloadDate = d.toLocaleDateString().split(',')[0].split('/').join('-');
   const downloadTime = d.toLocaleTimeString();
-  downloadsRef.child(downloadDate).push(downloadTime);
+  let obj = {};
+  obj['time'] = downloadTime;
+  obj['player'] = rounds[1].player;
+  downloadsRef.child(downloadDate).push(obj);
 
   workbook.writeToBuffer().then(function(buffer){
     const month = d.getMonth();
