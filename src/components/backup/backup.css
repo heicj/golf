@@ -1,0 +1,20 @@
+#mainSection{
+  display: flex;
+  width: 60%;
+  align-content: space-around;
+  margin: 0 auto;
+}
+
+.dataSection{
+  width: 50%;
+}
+
+.titles{
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin: 10px 
+}
+
+#backupButton{
+  margin: 10px;
+}
