@@ -63,7 +63,8 @@ export function getDownloadData(){
           Object.keys(dateData).map(k => {
             let a = [];
             a[0] = date;
-            a[1] = dateData[k];
+            a[1] = dateData[k].time;
+            a[2] = dateData[k].player;
             arr.push(a);
           });
         
