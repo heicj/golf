@@ -35,7 +35,12 @@ class Backup extends Component{
             <section className='dataSection'>
               <h2 className='titles'>LAST 10 DOWNLOADS</h2>
               <ol>
-                {downloads.reverse().slice(0, 10).map((d, i) => <li key={i}>date: {d[0]}  time: {d[1]}</li>)}
+                {downloads.reverse().slice(0, 10).map((d, i) => 
+                  <li key={i}>
+                    <div>date: {d[0]}</div>
+                    <div>time: {d[1]}</div>
+                    <div>player: {d[2]}</div>
+                  </li>)}
               </ol>
             </section>
             : null
