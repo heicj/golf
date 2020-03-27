@@ -17,7 +17,7 @@ class Backup extends Component{
   render(){
     const { dates, downloads } = this.props;
     return (
-      <section id='mainSection'>
+      <section id='mainBackupSection'>
         {
           dates ? 
             <section className='dataSection'>
