@@ -12,6 +12,7 @@ import { userSignin } from '../login/actions';
 import EditForm from '../editForm/EditForm';
 import Courses from '../coursesPlayed/CoursesPlayed';
 import Backup from '../backup/Backup';
+import Wishlist from '../wishlist/Wishlist';
 
 
 class App extends PureComponent{
@@ -36,6 +37,7 @@ class App extends PureComponent{
               <Route path='/editRound/:player/:id' component={EditForm}/>
               <Route path='/coursesPlayed' component={Courses}/>
               <Route path='/backup' component={Backup}/>
+              <Route path='/wishlist' component={Wishlist}/>
               <Redirect to='/'/>
               
             </Switch>
