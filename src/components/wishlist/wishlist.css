@@ -1,0 +1,49 @@
+#wishlistPage{
+  min-width: 340px;
+}
+
+#wishlistForm{
+  display: block;
+  width: 60%;
+  margin: 20px auto;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(5, 156, 124, 0.9);
+  border-radius: 10px;
+}
+
+.container{
+  justify-content: space-around;
+  display: flex;
+  width: 100%;
+}
+
+.wishlistInputs{
+  box-shadow: none;
+  width: 85%;
+}
+
+.wishlishLabelDivs{
+  text-align: right;
+  padding-right: 5px;
+  width: 10%;
+}
+
+#buttonDiv{
+  width: 100%;
+}
+
+#wishlistHeader{
+  text-align: center;
+  margin: 5px auto;
+  font-weight: bold;
+}
+
+#wishGridContainer{
+  display: grid;
+  width: 90%;
+  margin: 0 auto;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+  grid-template-columns: repeat(3, auto);
+}
