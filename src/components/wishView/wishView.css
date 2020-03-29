@@ -1,0 +1,18 @@
+.wishItem{
+  position: relative;
+  text-align: center;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(5, 156, 124, 0.9);
+  border-radius: 10px;
+}
+
+.wishWebLink{
+  font-size: small;
+}
+
+.deleteWish{
+  position: absolute;
+  right: 10px;
+  font-size: xx-small;
+}
