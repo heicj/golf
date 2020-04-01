@@ -1,0 +1,13 @@
+.singleRdGraphContainer{
+  position: relative;
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.singleRdHeader{
+  text-align: center;
+  margin: 0 auto;
+  font-weight: bold;
+  font-size: 1.5rem;
+}

@@ -59,24 +59,28 @@ export default class DataChart extends Component{
 
   render(){
     return (
-      <section id='chartContainer'>
-        {
-          this.state.CharlieData ? 
-            <Line
-              data={this.state.CharlieData}
-              options={this.state.charlieChartOptions}
-            /> :
-            null
-        }
-        {
-          this.state.JeremyData ?
-            <Line 
-              data={this.state.JeremyData}
-              options={this.state.jeremyChartOptions}
-            /> :
-            null
-        }
-      </section>
+      <div>
+        <section className='chartContainer'>
+          {
+            this.state.CharlieData ? 
+              <Line
+                data={this.state.CharlieData}
+                options={this.state.charlieChartOptions}
+              /> :
+              null
+          }
+        </section>
+        <section className='chartContainer'>
+          {
+            this.state.JeremyData ?
+              <Line 
+                data={this.state.JeremyData}
+                options={this.state.jeremyChartOptions}
+              /> :
+              null
+          }
+        </section>
+      </div>
     );
   }
 }

@@ -53,8 +53,8 @@ class Round extends Component{
           </div>
           <div id='editButtons'>
             <div onClick={this.handleEdit}>Edit ✎</div>
+            <div onClick={this.handleChart}>View Chart 📈</div>
             <div onClick={this.handleClick}>Delete Rd 🗑</div>
-            <div onClick={this.handleChart}>View Chart</div>
           </div>
         </section>
       </div>

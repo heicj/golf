@@ -1,4 +1,5 @@
 export const singleChartOptions = {
+  responsive: true,
   scales: {
     yAxes: [{
       ticks: {
@@ -16,7 +17,7 @@ export const singleChartOptions = {
   title: {
     display: true,
     fontSize: 16,
-    text: 'Charlie\'s Rounds'
+    // text: 'Round'
   },
   legend: {
     position: 'top'

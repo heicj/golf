@@ -1,4 +1,5 @@
 export const charlieChartOptions = {
+  responsive: true,
   scales: {
     yAxes: [{
       ticks: {
@@ -24,6 +25,7 @@ export const charlieChartOptions = {
 };
 
 export const jeremyChartOptions = {
+  responsive: true,
   scales: {
     yAxes: [{
       ticks: {

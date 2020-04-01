@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Line } from 'react-chartjs-2';
 import { singleChartOptions } from './options';
 import { getSingleRdGraphData } from './actions';
+import './singleChart.css';
 
-import { Line } from 'react-chartjs-2';
-import { connect } from 'react-redux';
 
 class ChartSingleRd extends Component{
   state = {
@@ -24,9 +25,9 @@ class ChartSingleRd extends Component{
 
   render(){
     return (
-      <section>
+      <section className='singleRdGraphContainer'>
 
-        <div>hello</div>
+        <div className='singleRdHeader'>{this.props.player}'s Round</div>
         { this.state.data ? 
           <Line 
             data={this.state.data}
