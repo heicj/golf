@@ -11,7 +11,7 @@ Chart.defaults.global.legend.display = false;
 
 export default class LineGraph extends PureComponent {
   
-  chartRef = React.createRef();
+  // chartRef = React.createRef();
   
   componentDidMount() {
     this.buildChart();
@@ -22,7 +22,8 @@ export default class LineGraph extends PureComponent {
     }
 
     buildChart = () => {
-      const myChartRef = this.chartRef.current.getContext('2d');
+      console.log(this.props)
+      const myChartRef = this.props.ref.current.getContext('2d');
       // const { data } = this.props;
 
       if(typeof myLineChart !== 'undefined') myLineChart.destroy();
@@ -51,7 +52,7 @@ export default class LineGraph extends PureComponent {
         <div>
           <canvas
             id="myChart"
-            ref={this.chartRef}
+            // ref={this.chartRef}
           />
         </div>
       )

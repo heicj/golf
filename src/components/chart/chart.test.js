@@ -96,12 +96,12 @@ describe('tests createGraphData function', () => {
 
   it('tests single round converstion', () => {
     const result = createGraphData([rd1]);
-    expect(result).toEqual(singleRoundResult);
+    expect(result.datasets[0].data).toEqual(singleRoundResult.datasets[0].data);
   });
 
   it('tests multi round result', () => {
     const result = createGraphData([rd1, rd2]);
-    expect(result).toEqual(multipleRoundResult);
+    expect(result.datasets[0].data).toEqual(multipleRoundResult.datasets[0].data);
   });
   
 });

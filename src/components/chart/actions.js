@@ -76,21 +76,25 @@ export function createGraphData(arr){
   sortedData.labels = labels;
   sortedData.datasets = [
     { 'label': 'FIR',
-      'backgroundColor': 'rgba(10, 20, 30, 20)',
-      'borderColor': 'rgba(10, 20, 30, 20)',
+      'fill': false,
+      'backgroundColor': 'rgba(255, 0, 0, 20)',
+      'borderColor': 'rgba(255, 0, 0, 20)',
       'data': fir
     },
     { 'label': 'GIR',
-      'backgroundColor': 'rgba(15, 25, 35, 25)', 
-      'borderColor': 'rgba(15, 25, 35, 25)',
+      'fill': false,
+      'backgroundColor': 'rgba(0, 255, 0, 20)', 
+      'borderColor': 'rgba(0, 255, 0, 20)',
       'data': gir
     },
     { 'label': 'Putts',
-      'backgroundColor': 'rgba(20, 25, 40, 30)', 
-      'borderColor': 'rgba(20, 25, 40, 30)', 
+      'fill': false,
+      'backgroundColor': 'rgba(0, 0, 255, 30)', 
+      'borderColor': 'rgba(0, 0, 255, 30)', 
       'data': putts
     },
     { 'label': 'Score',
+      'fill': false,
       'backgroundColor': 'rgba(50, 20, 60, 20)', 
       'borderColor': 'rgba(50, 20, 60, 20)',
       'data': score
