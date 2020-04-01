@@ -28,8 +28,8 @@ class Round extends Component{
     return (
       <div>
         <section className='round'>
-          <div>
-            <h1 id="course">{roundStats.course}</h1>
+          <h1 id="course">{roundStats.course}</h1>
+          <div className="rdDetailsContainer">
             <p className="rdDetails">{roundStats.date}</p>
             <p className="rdDetails">Rating: {roundStats.rating}</p>
             <p className="rdDetails">Slope: {roundStats.slope}</p>

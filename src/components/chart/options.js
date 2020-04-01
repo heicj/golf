@@ -4,7 +4,8 @@ export const charlieChartOptions = {
     yAxes: [{
       ticks: {
         suggestedMin: 0,
-        suggestedMax: 10
+        suggestedMax: 10,
+        fontSize: 6
       }
     }],
     xAxes:[{
@@ -20,7 +21,11 @@ export const charlieChartOptions = {
     text: 'Charlie\'s Rounds'
   },
   legend: {
-    position: 'top'
+    position: 'top',
+    labels: {
+      fontSize: 8,
+      boxWidth: 10
+    }
   }
 };
 
@@ -30,7 +35,8 @@ export const jeremyChartOptions = {
     yAxes: [{
       ticks: {
         suggestedMin: 0,
-        suggestedMax: 10
+        suggestedMax: 10,
+        fontSize: 6
       }
     }],
     xAxes:[{
@@ -46,6 +52,10 @@ export const jeremyChartOptions = {
     text: 'Jeremy\'s Rounds'
   },
   legend: {
-    position: 'top'
+    position: 'top',
+    labels: {
+      fontSize: 8,
+      boxWidth: 10
+    }
   }
-}
+};
