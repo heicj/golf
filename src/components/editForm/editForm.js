@@ -111,7 +111,7 @@ class EditForm extends PureComponent{
           <label htmlFor="date">
             Date: <input className='nameDate' type="date" name="date" onChange={this.handleLocalState} value={date}/>
           </label>&nbsp;
-          <label htmlFor="tee">Tee: &nbsp;
+          <label id='teeSelector' htmlFor="tee">Tee: &nbsp;
             <select name="tee" value={tee} onChange={this.handleLocalState}>
               <option value="white">White</option>
               <option value="red">Red</option>
