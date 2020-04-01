@@ -5,6 +5,12 @@ export const charlieChartOptions = {
         suggestedMin: 0,
         suggestedMax: 10
       }
+    }],
+    xAxes:[{
+      ticks: {
+        fontSize: 8,
+        maxRotation: 90
+      }
     }]
   },
   title: {
@@ -13,9 +19,9 @@ export const charlieChartOptions = {
     text: 'Charlie\'s Rounds'
   },
   legend: {
-    position: 'bottom'
+    position: 'top'
   }
-}
+};
 
 export const jeremyChartOptions = {
   scales: {
@@ -23,6 +29,12 @@ export const jeremyChartOptions = {
       ticks: {
         suggestedMin: 0,
         suggestedMax: 10
+      }
+    }],
+    xAxes:[{
+      ticks: {
+        fontSize: 8,
+        maxRotation: 90
       }
     }]
   },
@@ -32,6 +44,6 @@ export const jeremyChartOptions = {
     text: 'Jeremy\'s Rounds'
   },
   legend: {
-    position: 'bottom'
+    position: 'top'
   }
 }

@@ -1,3 +1,5 @@
+
+
 /*
 data structure will be
 
@@ -52,7 +54,7 @@ export function createGraphData(arr){
     //single round graph data graphs hole by hole data
     let round = arr[0];
     putts = round.putts;
-    score = round.holeScore;
+    score = round.holesScore;
     //changes true/false values into 1 or 0 and adds to arrays
     for(let i = 0; i < round.fir.length; i++){
       let holeFir = round.fir[i] ? 1 : 0;
@@ -77,24 +79,28 @@ export function createGraphData(arr){
   sortedData.datasets = [
     { 'label': 'FIR',
       'fill': false,
+      'lineTension': 0,
       'backgroundColor': 'rgba(255, 0, 0, 20)',
       'borderColor': 'rgba(255, 0, 0, 20)',
       'data': fir
     },
     { 'label': 'GIR',
       'fill': false,
+      'lineTension': 0,
       'backgroundColor': 'rgba(0, 255, 0, 20)', 
       'borderColor': 'rgba(0, 255, 0, 20)',
       'data': gir
     },
     { 'label': 'Putts',
       'fill': false,
+      'lineTension': 0,
       'backgroundColor': 'rgba(0, 0, 255, 30)', 
       'borderColor': 'rgba(0, 0, 255, 30)', 
       'data': putts
     },
     { 'label': 'Score',
       'fill': false,
+      'lineTension': 0,
       'backgroundColor': 'rgba(50, 20, 60, 20)', 
       'borderColor': 'rgba(50, 20, 60, 20)',
       'data': score

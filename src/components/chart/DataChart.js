@@ -60,12 +60,10 @@ export default class DataChart extends Component{
   render(){
     return (
       <section id='chartContainer'>
-        <div>hello chart</div>
         {
           this.state.CharlieData ? 
             <Line
               data={this.state.CharlieData}
-              ref={this.chartReference}
               options={this.state.charlieChartOptions}
             /> :
             null
