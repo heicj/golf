@@ -1,10 +1,9 @@
-
+//datasetOptions param for createGraphData function
+//is array structured as below in the order of FIR, GIR, PUTTS, SCore
+//these are the options to customize chart dataset view
 
 /*
-data structure will be
 
-data: {
-  labels: []
   datasets: [
     { label: 'FIR'
       backgroundColor: 
@@ -27,18 +26,10 @@ data: {
       data: []
     }
   ]
-}
-get rounds for player.
-
 */
 
-//make a function that takes an arr
-//turns it into format that can be given to graph component.
-//if array is one item aka just a round then it fills data arr
-//with each hole info. if arr given to it contains many rounds
-//then fills array with totals of each round.
 
-export function createGraphData(arr){
+export function createGraphData(arr, datasetOptions){
   let sortedData = {};
   let singleRound;
   let labels = [];
@@ -46,6 +37,7 @@ export function createGraphData(arr){
   let gir = [];
   let putts = [];
   let score = [];
+  let datasets = [];
 
   arr.length == 1 ? singleRound = true : false;
   singleRound ? labels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18] : [];
@@ -76,36 +68,27 @@ export function createGraphData(arr){
   }
 
   sortedData.labels = labels;
-  sortedData.datasets = [
-    { 'label': 'FIR',
-      'fill': false,
-      'lineTension': 0,
-      'backgroundColor': 'rgba(255, 0, 0, 20)',
-      'borderColor': 'rgba(255, 0, 0, 20)',
-      'data': fir
-    },
-    { 'label': 'GIR',
-      'fill': false,
-      'lineTension': 0,
-      'backgroundColor': 'rgba(0, 255, 0, 20)', 
-      'borderColor': 'rgba(0, 255, 0, 20)',
-      'data': gir
-    },
-    { 'label': 'Putts',
-      'fill': false,
-      'lineTension': 0,
-      'backgroundColor': 'rgba(0, 0, 255, 30)', 
-      'borderColor': 'rgba(0, 0, 255, 30)', 
-      'data': putts
-    },
-    { 'label': 'Score',
-      'fill': false,
-      'lineTension': 0,
-      'backgroundColor': 'rgba(50, 20, 60, 20)', 
-      'borderColor': 'rgba(50, 20, 60, 20)',
-      'data': score
+  for(let k = 0; k < datasetOptions.length; k++){
+    let options = datasetOptions[k];
+    if(k == 0) {
+      options.data = fir;
+      datasets.push(options);
     }
-  ];
+    if(k == 1) {
+      options.data = gir;
+      datasets.push(options);
+    }
+    if(k == 2){
+      options.data = putts;
+      datasets.push(options);
+    }
+    if(k == 3){
+      options.data = score;
+      datasets.push(options);
+    } 
+  }
+  
+  sortedData.datasets = datasets;
   
   return sortedData;
   

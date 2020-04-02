@@ -3,7 +3,7 @@ import { createGraphData } from './actions';
 
 const players = db.ref('players');
 
-export function getPlayerRounds(name, handler){
+export function getPlayerRounds(name, handler, datasetOptions){
   players.child(name).once('value').then(data => {
     const rounds = data.val();
     return  Object.keys(rounds).map(key => {
@@ -15,7 +15,7 @@ export function getPlayerRounds(name, handler){
     let sorted = arr.sort(function(a,b){
       return a.date > b.date ? 1 : a.date < b.date ? -1 : 0;
     });
-    let graphData = createGraphData(sorted);
+    let graphData = createGraphData(sorted, datasetOptions);
     handler(name, graphData);
   });
 }

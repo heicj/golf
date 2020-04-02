@@ -1,13 +1,15 @@
-.singleRdGraphContainer{
-  position: relative;
-    width: 50%;
-    height: auto;
+@media only screen and (max-width: 500px){
+  .singleRdGraphContainer{
+    position: relative;
+      width: 100%;
+      /* height: 1000px; */
+      margin: 0 auto;
+  }
+  
+  .singleRdHeader{
+    text-align: center;
     margin: 0 auto;
-}
-
-.singleRdHeader{
-  text-align: center;
-  margin: 0 auto;
-  font-weight: bold;
-  font-size: 1.5rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
 }

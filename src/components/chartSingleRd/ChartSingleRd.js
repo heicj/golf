@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Line } from 'react-chartjs-2';
-import { singleChartOptions } from './options';
+import { singleChartOptions, datasetOptions } from './options';
 import { getSingleRdGraphData } from './actions';
 import './singleChart.css';
 
@@ -9,7 +9,8 @@ import './singleChart.css';
 class ChartSingleRd extends Component{
   state = {
     // data: {},
-    singleChartOptions
+    singleChartOptions,
+    datasetOptions
   }
 
   stateHandler = (obj) => {
@@ -20,7 +21,7 @@ class ChartSingleRd extends Component{
   };
 
   componentDidMount(){
-    this.props.getSingleRdGraphData(this.props.player, this.props.id, this.stateHandler);
+    this.props.getSingleRdGraphData(this.props.player, this.props.id, this.stateHandler, this.state.datasetOptions);
   }
 
   render(){

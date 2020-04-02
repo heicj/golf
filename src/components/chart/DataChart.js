@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Line } from 'react-chartjs-2';
-import { charlieChartOptions, jeremyChartOptions } from './options';
+import { Line, Chart } from 'react-chartjs-2';
+import { charlieChartOptions, jeremyChartOptions, charlieSetOptions, jeremySetOptions } from './options';
 // import LineGraph  from '../lineGraph/LineGraph'
 import { getPlayerRounds } from './getDataFunc';
 import './chart.css';
 
 export default class DataChart extends Component{
-
   state = {
     // data: {
     //   labels: ['3-31-2020 chehalem glenn', '7-2-2020 old macdonald'],
@@ -37,6 +36,8 @@ export default class DataChart extends Component{
     //     }
     //   ]
     // },
+    charlieSetOptions,
+    jeremySetOptions,
     charlieChartOptions,
     jeremyChartOptions
    
@@ -50,21 +51,30 @@ export default class DataChart extends Component{
   };
 
   componentDidMount(){
-    getPlayerRounds('Charlie', this.handlePlayerState);
-    getPlayerRounds('Jeremy', this.handlePlayerState);
+    getPlayerRounds('Charlie', this.handlePlayerState, this.state.charlieSetOptions);
+    getPlayerRounds('Jeremy', this.handlePlayerState, this.state.jeremySetOptions);
   }
+
+  // componentWillMount(){
+  //   Chart.pluginService.register({
+  //     afterDraw: function(chart, easing){
+  //       chart.destroy();
+  //     }
+  //   })
+  // }
 
 
 
 
   render(){
+    const { CharlieData, JeremyData } = this.state;
     return (
       <div>
         <section className='chartContainer'>
           {
             this.state.CharlieData ? 
               <Line
-                data={this.state.CharlieData}
+                data={CharlieData}
                 options={this.state.charlieChartOptions}
               /> :
               null
@@ -74,7 +84,7 @@ export default class DataChart extends Component{
           {
             this.state.JeremyData ?
               <Line 
-                data={this.state.JeremyData}
+                data={JeremyData}
                 options={this.state.jeremyChartOptions}
               /> :
               null
