@@ -67,16 +67,6 @@ export default class DataChart extends Component{
     return (
       <div>
         <section className='chartContainer'>
-          <Selector
-            allValue="ALL"
-            firValue="Charlie FIR"
-            girValue="Charlie GIR"
-            puttsValue="Charlie Putts"
-            scoreValue="Charlie Score"
-            value={charlieSelectorChoice} 
-            name='charlieSelectorChoice' 
-            onSelect={this.selectorHandler}
-          />
           {
             this.state.CharlieData ? 
               <Line
@@ -97,18 +87,20 @@ export default class DataChart extends Component{
               /> :
               null
           }
+          <div className='charlieJeremySelectorContainer'>
+            <Selector
+              allValue="ALL"
+              firValue="Charlie FIR"
+              girValue="Charlie GIR"
+              puttsValue="Charlie Putts"
+              scoreValue="Charlie Score"
+              value={charlieSelectorChoice} 
+              name='charlieSelectorChoice' 
+              onSelect={this.selectorHandler}
+            />
+          </div>
         </section>
         <section className='chartContainer'>
-          <Selector
-            allValue="ALL"
-            firValue="Jeremy FIR"
-            girValue="Jeremy GIR"
-            puttsValue="Jeremy Putts"
-            scoreValue="Jeremy Score"
-            value={charlieSelectorChoice} 
-            name='jeremySelectorChoice' 
-            onSelect={this.selectorHandler}
-          />
           {
             this.state.JeremyData ?
               <Line 
@@ -129,6 +121,18 @@ export default class DataChart extends Component{
               /> :
               null
           }
+          <div className='charlieJeremySelectorContainer'>
+            <Selector
+              allValue="ALL"
+              firValue="Jeremy FIR"
+              girValue="Jeremy GIR"
+              puttsValue="Jeremy Putts"
+              scoreValue="Jeremy Score"
+              value={charlieSelectorChoice} 
+              name='jeremySelectorChoice' 
+              onSelect={this.selectorHandler}
+            />
+          </div>
         </section>
       </div>
     );
