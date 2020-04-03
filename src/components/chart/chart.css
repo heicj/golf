@@ -4,14 +4,16 @@
     width: 60%;
     height: auto;
     margin: 20px auto;
+    border: outset 1px;
   }
 }
 
 @media only screen and (max-width: 500px){
   .chartContainer{
     position: relative;
-    width: 90%;
+    width: 98%;
     height: auto;
-    margin: 20px auto;
+    margin: 1rem auto;
+    border: outset 1px;
   }
 }

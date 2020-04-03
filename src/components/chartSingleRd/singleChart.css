@@ -10,6 +10,22 @@
     text-align: center;
     margin: 0 auto;
     font-weight: bold;
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 501px){
+  .singleRdGraphContainer{
+    position: relative;
+      width: 60%;
+      /* height: 1000px; */
+      margin: 0 auto;
+  }
+  
+  .singleRdHeader{
+    text-align: center;
+    margin: 0 auto;
+    font-weight: bold;
     font-size: 1.5rem;
   }
 }

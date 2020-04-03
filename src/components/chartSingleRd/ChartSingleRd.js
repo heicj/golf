@@ -26,17 +26,19 @@ class ChartSingleRd extends Component{
 
   render(){
     return (
-      <section className='singleRdGraphContainer'>
-
+      <section>
         <div className='singleRdHeader'>{this.props.player}'s Round</div>
-        { this.state.data ? 
-          <Line 
-            data={this.state.data}
-            options={this.state.singleChartOptions}
-          /> :
-          null
+        <section className='singleRdGraphContainer'>
 
-        }
+          { this.state.data ? 
+            <Line 
+              data={this.state.data}
+              options={this.state.singleChartOptions}
+            /> :
+            null
+
+          }
+        </section>
       </section>
     );
   }
