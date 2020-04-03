@@ -6,17 +6,17 @@
     margin: 20px auto;
     border: outset 1px;
   }
-}
 
-/* @media only screen and (min-width: 501px) and (max-width: 800px){
-  .chartContainer{
-    position: relative;
-    width: 94%;
-    height: auto;
-    margin: 1rem auto;
-    border: outset 1px;
+  .charlieJeremySelectorContainer{
+    width: 100%;
+    display: flex;
   }
-} */
+
+  select:nth-child(1){
+    margin: 10px auto;
+    font-size: .7rem;
+  }
+}
 
 @media only screen and (max-width: 800px){
   .chartContainer{
@@ -25,5 +25,15 @@
     height: auto;
     margin: 1rem auto;
     border: outset 1px;
+  }
+
+  .charlieJeremySelectorContainer{
+    width: 100%;
+    display: flex;
+  }
+
+  select:nth-child(1){
+    margin: 10px auto;
+    font-size: .7rem;
   }
 }
