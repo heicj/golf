@@ -31,22 +31,23 @@ class ChartSingleRd extends Component{
   }
 
   render(){
+    const { selectorChoice } = this.state;
     return (
       <section>
         <div className='singleRdHeader'>{this.props.player}'s Round</div>
         <section className='singleRdGraphContainer'>
-          <Selector value={this.state.seletorChoice} name='selectorChoice' onSelect={this.selectorHandler}/>
+          <Selector value={selectorChoice} name='selectorChoice' onSelect={this.selectorHandler}/>
           { this.state.data ? 
             <Line 
               data={() => {
                 let copy = {};
                 Object.assign(copy, this.state.data);
                 let ds = copy.datasets;
-                if(this.state.selectorChoice == 'ALL') {
+                if(selectorChoice == 'ALL') {
                   return copy;
                 } else {
                   copy.datasets = ds.filter((s) => {
-                    return s.label == this.state.selectorChoice;
+                    return s.label == selectorChoice;
                   });
                   return copy;
                 }

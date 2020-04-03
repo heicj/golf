@@ -10,7 +10,7 @@ export const singleChartOptions = {
       },
       ticks: {
         suggestedMin: 0,
-        suggestedMax: 10,
+        suggestedMax: 2,
         fontSize: 6
       }
     }],
