@@ -17,14 +17,19 @@ class Round extends Component{
     history.push(`/editRound/${this.props.roundStats.player}/${this.props.roundStats.key}`);
   };
 
+  handleChart = () => {
+    const { history } = this.props;
+    history.push(`/chart/${this.props.roundStats.player}/${this.props.roundStats.key}`);
+  }
+
   render(){
     const { roundStats } = this.props;
     const holes = Array(18).fill('');
     return (
       <div>
         <section className='round'>
-          <div>
-            <h1 id="course">{roundStats.course}</h1>
+          <h1 id="course">{roundStats.course}</h1>
+          <div className="rdDetailsContainer">
             <p className="rdDetails">{roundStats.date}</p>
             <p className="rdDetails">Rating: {roundStats.rating}</p>
             <p className="rdDetails">Slope: {roundStats.slope}</p>
@@ -48,6 +53,7 @@ class Round extends Component{
           </div>
           <div id='editButtons'>
             <div onClick={this.handleEdit}>Edit ✎</div>
+            <div onClick={this.handleChart}>View Chart 📈</div>
             <div onClick={this.handleClick}>Delete Rd 🗑</div>
           </div>
         </section>

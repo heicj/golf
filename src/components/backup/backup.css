@@ -1,20 +1,80 @@
-#mainBackupSection{
-  display: flex;
-  width: 40%;
-  align-content: space-around;
-  margin: 0 auto;
+@media only screen and (max-width: 500px){
+  #mainBackupSection{
+    display: flex;
+    width: 90%;
+    align-content: space-around;
+    margin: 0 auto;
+    justify-content: space-around;
+  }
+  
+  .dataSection{
+    width: 40%;
+    border: outset 2px;
+    border-color: black;
+    border-radius: 5px;
+    text-align: center;
+    margin: 5px 0 5px 0;
+  }
+  
+  .titles{
+    font-weight: bold;
+    font-size: .8rem;
+    margin: 5px 0 5px 0; 
+  }
+
+  .dataOl{
+    font-size: 10px;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .downloadLi{
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  #backupButton{
+    margin: 5px;
+  }
 }
 
-.dataSection{
-  width: 50%;
-}
+@media only screen and (min-width: 501px){
+  #mainBackupSection{
+    display: flex;
+    width: 90%;
+    justify-content: space-around;
+    margin: 0 auto;
+  }
+  
+  .dataSection{
+    width: 40%;
+    margin-top: 2rem;
+    border: outset 2px;
+    border-color: black;
+    border-radius: 5px;
+    text-align: center;
+    justify-content: space-around;
+  }
+  
+  .titles{
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin: 10px 
+  }
 
-.titles{
-  font-weight: bold;
-  font-size: 1.3rem;
-  margin: 10px 
-}
+  .dataOl{
+    font-size: 1rem;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: space-around;
+  }
 
-#backupButton{
-  margin: 10px;
+  .downloadLi{
+    width: 30%;
+    margin: 0 auto;
+  }
+  
+  #backupButton{
+    margin: 10px;
+  }
 }
