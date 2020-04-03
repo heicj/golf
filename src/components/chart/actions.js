@@ -58,8 +58,9 @@ export function createGraphData(arr, datasetOptions){
     //if setting graph data for multiple rounds then totals for each round are used
     for(let j = 0; j < arr.length; j++){
       let r = arr[j];
-      let date = r.date.length > 1 ? r.date : 'NA';
-      labels.push(date + ' ' + r.course);
+      // let date = r.date.length > 1 ? r.date : 'NA';
+      // labels.push(date + ' ' + r.course);
+      labels.push(r.course);
       fir.push(r.totalFir);
       gir.push(r.totalGir);
       putts.push(r.totalPutts);
