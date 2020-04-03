@@ -17,7 +17,7 @@ export const charlieChartOptions = {
     }],
     xAxes:[{
       ticks: {
-        fontSize: 4,
+        fontSize: 6,
         maxRotation: 90
       }
     }]
@@ -55,7 +55,7 @@ export const jeremyChartOptions = {
     }],
     xAxes:[{
       ticks: {
-        fontSize: 4,
+        fontSize: 6,
         maxRotation: 90
       }
     }]

@@ -1,14 +1,14 @@
 @media only screen and (min-width: 801px){
   .chartContainer{
     position: relative;
-    width: 60%;
+    width: 70%;
     height: auto;
     margin: 20px auto;
     border: outset 1px;
   }
 }
 
-@media only screen and (min-width: 501px) and (max-width: 800px){
+/* @media only screen and (min-width: 501px) and (max-width: 800px){
   .chartContainer{
     position: relative;
     width: 94%;
@@ -16,9 +16,9 @@
     margin: 1rem auto;
     border: outset 1px;
   }
-}
+} */
 
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 800px){
   .chartContainer{
     position: relative;
     width: 98%;
