@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Line, Chart } from 'react-chartjs-2';
 import { charlieChartOptions, jeremyChartOptions, charlieSetOptions, jeremySetOptions } from './options';
 // import LineGraph  from '../lineGraph/LineGraph'
+import Selector from '../selector/Selector';
 import { getPlayerRounds } from './getDataFunc';
 import './chart.css';
 
@@ -39,7 +40,9 @@ export default class DataChart extends Component{
     charlieSetOptions,
     jeremySetOptions,
     charlieChartOptions,
-    jeremyChartOptions
+    jeremyChartOptions,
+    charlieSelectorChoice: 'ALL',
+    jeremySelectorChoice: 'ALL'
    
   };
   
@@ -55,40 +58,81 @@ export default class DataChart extends Component{
     getPlayerRounds('Jeremy', this.handlePlayerState, this.state.jeremySetOptions);
   }
 
-  // componentWillMount(){
-  //   Chart.pluginService.register({
-  //     afterDraw: function(chart, easing){
-  //       chart.destroy();
-  //     }
-  //   })
-  // }
-
-
-
+  selectorHandler = ({ target }) => {
+    this.setState({ [target.name ]: target.value });
+  }
 
   render(){
-    const { CharlieData, JeremyData } = this.state;
+    const { CharlieData, JeremyData, charlieSelectorChoice, jeremySelectorChoice } = this.state;
     return (
       <div>
         <section className='chartContainer'>
           {
             this.state.CharlieData ? 
               <Line
-                data={CharlieData}
+                data={() => {
+                  let copy = {};
+                  Object.assign(copy, CharlieData);
+                  let ds = copy.datasets;
+                  if(charlieSelectorChoice == 'ALL'){
+                    return copy;
+                  } else {
+                    copy.datasets = ds.filter((s) => {
+                      return s.label == charlieSelectorChoice;
+                    });
+                    return copy;
+                  }
+                }}
                 options={this.state.charlieChartOptions}
               /> :
               null
           }
+          <div className='charlieJeremySelectorContainer'>
+            <Selector
+              allValue="ALL"
+              firValue="Charlie FIR"
+              girValue="Charlie GIR"
+              puttsValue="Charlie Putts"
+              scoreValue="Charlie Score"
+              value={charlieSelectorChoice} 
+              name='charlieSelectorChoice' 
+              onSelect={this.selectorHandler}
+            />
+          </div>
         </section>
         <section className='chartContainer'>
           {
             this.state.JeremyData ?
               <Line 
-                data={JeremyData}
+                data={() => {
+                  let copy = {};
+                  Object.assign(copy, JeremyData);
+                  let ds = copy.datasets;
+                  if(jeremySelectorChoice == 'ALL'){
+                    return copy;
+                  } else {
+                    copy.datasets = ds.filter((s) => {
+                      return s.label == jeremySelectorChoice;
+                    });
+                    return copy;
+                  }
+                }}
                 options={this.state.jeremyChartOptions}
               /> :
               null
           }
+          <div className='charlieJeremySelectorContainer'>
+            <Selector
+              allValue="ALL"
+              firValue="Jeremy FIR"
+              girValue="Jeremy GIR"
+              puttsValue="Jeremy Putts"
+              scoreValue="Jeremy Score"
+              value={charlieSelectorChoice} 
+              name='jeremySelectorChoice' 
+              onSelect={this.selectorHandler}
+            />
+          </div>
         </section>
       </div>
     );
