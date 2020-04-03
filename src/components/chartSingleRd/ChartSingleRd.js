@@ -37,7 +37,16 @@ class ChartSingleRd extends Component{
         <div className='singleRdHeader'>{this.props.player}'s Round</div>
         <section className='singleRdGraphContainer'>
           <div id='selectorContainer'>
-            <Selector value={selectorChoice} name='selectorChoice' onSelect={this.selectorHandler}/>
+            <Selector
+              allValue="ALL"
+              firValue="FIR"
+              girValue="GIR"
+              puttsValue="Putts"
+              scoreValue="Score"
+              value={selectorChoice} 
+              name='selectorChoice' 
+              onSelect={this.selectorHandler}
+            />
           </div>
           { this.state.data ? 
             <Line 

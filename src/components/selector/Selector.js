@@ -3,15 +3,15 @@ import React, { Component } from 'react'
 export default class Selector extends Component{
 
   render(){
-    const { name, onSelect } = this.props;
+    const { name, onSelect, allValue, firValue, girValue, puttsValue, scoreValue } = this.props;
     return (
       <select name={name} onChange={onSelect}>
-        <option value="ALL">ALL</option>
-        <option value="FIR">FIR</option>
-        <option value="GIR">GIR</option>
-        <option value="Putts">PUTTS</option>
-        <option value="Score">SCORE</option>
+        <option value={allValue}>ALL</option>
+        <option value={firValue}>FIR</option>
+        <option value={girValue}>GIR</option>
+        <option value={puttsValue}>PUTTS</option>
+        <option value={scoreValue}>SCORE</option>
       </select>
-    )
+    );
   }
 }
