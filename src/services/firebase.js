@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 
-const dev = false;
+const dev = true;
 
 const config = {
   apiKey: process.env.API_KEY,

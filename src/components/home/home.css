@@ -1,22 +1,4 @@
 
-/* #mainSection{
-  text-align: center;
-  margin-top: 2rem;
-      
-  a{
-    font-style: italic;
-    font-size: 1rem;
-    padding: .5rem;
-  }
-}
-
-.statDiv{
-      margin-top: .5rem;
-      font-size: .7rem;
-
-} */
-
-/* need player box to be 95% width when below 500px */
 @media only screen and (max-width: 500px) {
   .playerBox {
     border: outset 3px;
@@ -24,7 +6,8 @@
     width: 95%;
     margin: 1rem auto;
     border-radius: 30px;
-    background-color: rgba(5, 156, 124, 0.9);
+    /* background-color: rgba(5, 156, 124, 0.9); */
+    background-color: var(--main-background-color)
   }
   #mainSection{
     text-align: center;
@@ -67,7 +50,8 @@
     width: 70%;
     margin: 1rem auto;
     border-radius: 30px;
-    background-color: rgba(5, 156, 124, 0.9);
+    /* background-color: rgba(5, 156, 124, 0.9); */
+    background-color: var(--main-background-color)
   }
 
   #mainSection{
@@ -104,18 +88,3 @@
   }
 }
 
-/* .player{
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.statsSection{
-  display: flex;
-  justify-content: space-around;
-  padding-top: 1rem;
-
-  h2{
-    font-weight: bold;
-    text-decoration: underline;
-  }
-} */
