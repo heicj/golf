@@ -4,7 +4,7 @@
     text-align: center;
     border-style: solid;
     border-width: 1px;
-    border-color: rgba(5, 156, 124, 0.9);
+    border-color: var(--main-background-color);
     border-radius: 10px;
   }
   
@@ -25,7 +25,7 @@
     text-align: center;
     border-style: solid;
     border-width: 1px;
-    border-color: rgba(5, 156, 124, 0.9);
+    border-color: var(--main-background-color);
     border-radius: 10px;
   }
   
