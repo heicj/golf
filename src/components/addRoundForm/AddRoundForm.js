@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { allData } from '../coursesPlayed/actions';
 import HoleForm from './HoleForm';
 import TeeSelector from './TeeSelector';
 import { nextHole, teeSelection, holeScore, resetHoleScore, addRound, puttScore, puttReset, toggleFir, firReset, toggleGir, girReset, calcFirGirTotal } from './actions';
@@ -10,7 +11,7 @@ import './addRoundForm.css';
 class AddRoundForm extends PureComponent{
 
   componentDidMount(){
-
+    this.props.allData();
   }
 
   state = {
@@ -83,7 +84,7 @@ class AddRoundForm extends PureComponent{
 
   render(){
     const { course, date, slope, rating, comment } = this.state;
-    const { fir, gir } = this.props;
+    const { fir, gir, coursesPlayed } = this.props;
     const totFir = calcFirGirTotal(fir);
     const totGir = calcFirGirTotal(gir);
     const round = Array(18).fill('');
@@ -99,7 +100,13 @@ class AddRoundForm extends PureComponent{
 
           <div id="courseDate">
             <label htmlFor="course">
-              Course:<input name="course" id="course" type="text" required onChange={this.handleLocalState} value={course}/>
+              Course:<input list="playedCourses" name="course" id="course" type="text" required onChange={this.handleLocalState} value={course}/>
+              <datalist id="playedCourses">
+                {coursesPlayed.map((c, i) => {
+                  let name = Object.keys(c);
+                  return <option key={i} value={name}/>;
+                })}
+              </datalist>
             </label>
             <label htmlFor="date">
               Date:<input id='dateInputField' type="date" name="date" id="date" required onChange={this.handleLocalState} value={date}/>
@@ -144,7 +151,8 @@ export default withRouter(connect(
     gir: state.gir,
     rdScore: state.holesScore,
     putts: state.putts,
+    coursesPlayed: state.coursesPlayed,
     name: props.match.params.name
   }),
-  { nextHole, teeSelection, holeScore, resetHoleScore, addRound, puttScore, puttReset, toggleFir, firReset, toggleGir, girReset }
+  { allData, nextHole, teeSelection, holeScore, resetHoleScore, addRound, puttScore, puttReset, toggleFir, firReset, toggleGir, girReset }
 )(AddRoundForm));
