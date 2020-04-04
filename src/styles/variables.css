@@ -6,3 +6,10 @@ $contentPadding: .5rem 1rem;
 
 $darkGreen: #2D882D;
 $lightGreen: #9EC09E;
+
+:root{
+  /* --main-background-color: rgba(5, 156, 124, 0.9); */
+  --main-background-color: rgba(45, 84, 94, .6);
+  --secondary-bg-color: rgba(18, 52, 59, .4);
+  --body-bg-color: #e6e6fa;
+}

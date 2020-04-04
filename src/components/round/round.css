@@ -40,7 +40,7 @@
     width: 95%;
     margin: 1rem auto;
     border-radius: 30px;
-    background-color: rgba(5, 156, 124, 0.9);
+    background-color: var(--main-background-color);
   }
   
   #rdStats{
@@ -133,7 +133,7 @@
     width: 90%;
     margin: 1rem auto;
     border-radius: 30px;
-    background-color: rgba(5, 156, 124, 0.9);
+    background-color: var(--main-background-color);
   }
   
   #rdStats{

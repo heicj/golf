@@ -16,7 +16,7 @@
       text-transform: uppercase;
       font-size: .7rem;
       height: 1rem;
-      background-color: rgba(5, 156, 124, 0.9);
+      background-color: var(--main-background-color);
     }
 }
 
@@ -37,7 +37,7 @@
   button{
     text-transform: uppercase;
     height: 2rem;
-    background-color: rgba(5, 156, 124, 0.9);
+    background-color: var(--main-background-color);
   }
 
 }
