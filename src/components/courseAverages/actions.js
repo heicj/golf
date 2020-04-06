@@ -1,3 +1,7 @@
+import { db } from '../../services/firebase';
+
+const players = db.ref('players');
+
 //function that returns averages for each course
 //1.one parameter is obj of rounds -> obj of rounds is what firebase returns
 //2. have initial obj for results
@@ -12,7 +16,7 @@
         //push the value of curr rd into the arr for each stat
 //4. return obj
 
-export function courseSortedStats(objOfRounds){
+function courseSortedStats(objOfRounds){
   let sortedObj = {};
   Object.keys(objOfRounds).reduce((a, c) => {
     let currentRd = objOfRounds[c];
@@ -35,3 +39,14 @@ export function courseSortedStats(objOfRounds){
   return sortedObj;
 }
 
+//takes name of player to get rounds for.
+//handler is used to set local state in component
+export function getCourseAvg(name, handler){
+  players.child(name).once('value').then(data => {
+    const rounds = data.val();
+    const reducedData = courseSortedStats(rounds);
+    handler(name, reducedData);
+  });
+}
+
+export const courseSortedStatsFunc = courseSortedStats;

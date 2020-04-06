@@ -15,6 +15,7 @@ import Backup from '../backup/Backup';
 import Wishlist from '../wishlist/Wishlist';
 import DataChart from '../chart/DataChart';
 import ChartSingleRd from '../chartSingleRd/ChartSingleRd';
+import CourseAverages from '../courseAverages/CourseAverages';
 
 
 class App extends PureComponent{
@@ -42,6 +43,7 @@ class App extends PureComponent{
               <Route path='/wishlist' component={Wishlist}/>
               <Route path='/charts' component={DataChart}/>
               <Route path='/chart/:player/:id' component={ChartSingleRd}/>
+              <Route path='/courseAverages' component={CourseAverages}/>
               <Redirect to='/'/>
               
             </Switch>

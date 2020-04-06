@@ -1,4 +1,4 @@
-import { courseSortedStats } from './actions';
+import { courseSortedStatsFunc } from './actions';
 
 describe('tests func that sorts stats by course', () => {
   const allRounds = {
@@ -52,23 +52,23 @@ describe('tests func that sorts stats by course', () => {
   };
 
   it('tests function', () => {
-    const results = courseSortedStats(allRounds);
+    const results = courseSortedStatsFunc(allRounds);
     expect(results).toEqual(expected);
   });
   
   it('tests that one course stat arr is right length', () => {
-    const results = courseSortedStats(allRounds);
+    const results = courseSortedStatsFunc(allRounds);
     expect(results.c1.fir.length).toEqual(2);
     expect(results.c1.fir).toEqual([5, 6]);
   });
   
   it('tests that property exists on result', () => {
-    const results = courseSortedStats(allRounds);
+    const results = courseSortedStatsFunc(allRounds);
     expect(results.c2.hasOwnProperty('putts')).toEqual(true);
   });
 
   it('tests results have both keys', () => {
-    const results = courseSortedStats(allRounds);
+    const results = courseSortedStatsFunc(allRounds);
     expect(Object.keys(results)).toEqual(['c1', 'c2']);
   });
 });
