@@ -22,54 +22,54 @@ export function getRounds(name){
     
 }
 
-export function getScoreAvg(name, stat, handler){
-  if(name === '') return;
-  players.child(name).once('value').then(data => {
-    const rounds = data.val();
-    const totalRounds = Object.keys(rounds).length;
-    let totalScore = 0;
-    Object.keys(rounds).map(key => {
-      let round = rounds[key];
-      let rdTotal = round[stat];
-      totalScore = totalScore + rdTotal;
-    });
-    return handler(totalScore / totalRounds);
-  });
-}
+// export function getScoreAvg(name, stat, handler){
+//   if(name === '') return;
+//   players.child(name).once('value').then(data => {
+//     const rounds = data.val();
+//     const totalRounds = Object.keys(rounds).length;
+//     let totalScore = 0;
+//     Object.keys(rounds).map(key => {
+//       let round = rounds[key];
+//       let rdTotal = round[stat];
+//       totalScore = totalScore + rdTotal;
+//     });
+//     return handler(totalScore / totalRounds);
+//   });
+// }
 
-export function getMinMax(name, stat, minMax, handler){
-  if(name === '') return;
-  if(minMax == 'min'){
-    players.child(name).once('value').then(data => {
-      const rounds = data.val();
-      let lowScore = 0;
-      let counter = 1;
+// export function getMinMax(name, stat, minMax, handler){
+//   if(name === '') return;
+//   if(minMax == 'min'){
+//     players.child(name).once('value').then(data => {
+//       const rounds = data.val();
+//       let lowScore = 0;
+//       let counter = 1;
   
-      Object.keys(rounds).map(key => {
-        let round = rounds[key];
-        if(counter == 1) lowScore = round[stat];
-        if(round[stat] < lowScore) lowScore = round[stat];
-        counter++;
-      });
-      return handler(lowScore);
-    });
-  }
-  if(minMax == 'max'){
-    players.child(name).once('value').then(data => {
-      const rounds = data.val();
-      let highScore = 0;
-      let counter = 1;
+//       Object.keys(rounds).map(key => {
+//         let round = rounds[key];
+//         if(counter == 1) lowScore = round[stat];
+//         if(round[stat] < lowScore) lowScore = round[stat];
+//         counter++;
+//       });
+//       return handler(lowScore);
+//     });
+//   }
+//   if(minMax == 'max'){
+//     players.child(name).once('value').then(data => {
+//       const rounds = data.val();
+//       let highScore = 0;
+//       let counter = 1;
   
-      Object.keys(rounds).map(key => {
-        let round = rounds[key];
-        if(counter == 1) highScore = round[stat];
-        if(round[stat] > highScore) highScore = round[stat];
-        counter++;
-      });
-      return handler(highScore);
-    });
-  }
-}
+//       Object.keys(rounds).map(key => {
+//         let round = rounds[key];
+//         if(counter == 1) highScore = round[stat];
+//         if(round[stat] > highScore) highScore = round[stat];
+//         counter++;
+//       });
+//       return handler(highScore);
+//     });
+//   }
+// }
 
 export function getStats(name, handler){
   players.child(name).once('value').then(data => {
