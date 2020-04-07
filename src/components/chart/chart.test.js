@@ -41,6 +41,29 @@ describe('tests createGraphData function', () => {
     key: '5678'
   };
 
+  const datasetsOptions = [
+    { label: 'FIR',
+      backgroundColor: 'yellow',
+      borderColor: 'yellow',
+      data: []
+    },
+    { label: 'GIR',
+      backgroundColor: 'green',
+      borderColor: 'green',
+      data: []
+    },
+    { label: 'Putts',
+      backgroundColor: 'white',
+      borderColor: 'red',
+      data: []
+    },
+    { label: 'Score',
+      backgroundColor: 'white',
+      borderColor: 'red',
+      data: []
+    }
+  ]
+
   const singleRoundResult = {
     labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
     datasets: [
@@ -95,13 +118,16 @@ describe('tests createGraphData function', () => {
  
 
   it('tests single round converstion', () => {
-    const result = createGraphData([rd1]);
+    const result = createGraphData([rd1], datasetsOptions);
     expect(result.datasets[0].data).toEqual(singleRoundResult.datasets[0].data);
   });
 
   it('tests multi round result', () => {
-    const result = createGraphData([rd1, rd2]);
+    const result = createGraphData([rd1, rd2], datasetsOptions);
     expect(result.datasets[0].data).toEqual(multipleRoundResult.datasets[0].data);
   });
   
+  it('dummy test', () => {
+    expect(2).toEqual(2);
+  });
 });
