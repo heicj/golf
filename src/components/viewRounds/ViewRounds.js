@@ -8,6 +8,9 @@ import { excelFunc } from '../../services/excelFunc';
 
 class ViewRounds extends Component{
 
+  state = {
+    page: 1
+  }
   componentDidMount(){
     const { name } = this.props;
     this.props.changeName(name);
@@ -27,10 +30,28 @@ class ViewRounds extends Component{
     this.props.excelFunc(rounds);
   }
 
+  handlePaging = ({ target }) => {
+
+    let name = target.id;
+    let page = this.state.page;
+    let maxPage = Math.ceil(this.props.rounds.length / 10);
+    if(name == 'minus'){
+      if(page <= 1) return;
+      let newPage = page - 1;
+      this.setState({ 'page': newPage });
+    }
+    if(name == 'plus'){
+      if(page == maxPage ) return;
+      let newPage = page + 1;
+      this.setState({ 'page': newPage });
+    }
+  }
+
   render(){
     const { rounds, deleteRd, name } = this.props;
     return (
       <section>
+        <div name='minus' id='minus' onClick={this.handlePaging}>PgDw</div><div>{this.state.page}</div><div name='plus' id='plus' onClick={this.handlePaging}>PdUp</div>
         <h2 id="playerH2">{this.props.name + "'s"} Rounds</h2>
         <div id="buttonDiv">
           <button onClick={this.handleClick}>DOWNLOAD {name}'s ROUNDS</button>
