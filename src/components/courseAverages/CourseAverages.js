@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getCourseAvg } from './actions';
 import CourseAvgRdView from '../courseAvgRdView/CourseAvgRdView';
+import './courseAverages.css';
 
 export default class CourseAverages extends Component{
   
@@ -24,31 +25,24 @@ export default class CourseAverages extends Component{
   render(){
     const { CharlieCourseAverages, JeremyCourseAverages } = this.state;
     return (
-      <section>
-        <div>hello world</div>
-        {
-          CharlieCourseAverages ?
-            <div>
-              <h1>Charlie</h1>
-              { 
-                Object.keys(CharlieCourseAverages).map(key => {
-                  return <CourseAvgRdView key={key} course={key} rd={CharlieCourseAverages[key]} />;
+      <section id='mainAvgContainer'>
+        <div className='playerAvgDiv'>
+          <h1 className='avgHeaders'>Charlie's Course Averages</h1>
+          { 
+            Object.keys(CharlieCourseAverages).map(key => {
+              return <CourseAvgRdView key={key} course={key} rd={CharlieCourseAverages[key]} />;
 
-                })
-              }
-            </div> : null
-        }
-        {
-          JeremyCourseAverages ?
-            <div>
-              <h1>Jeremy</h1>
-              {
-                Object.keys(JeremyCourseAverages).map(key => {
-                  return <CourseAvgRdView key={key} course={key} rd={JeremyCourseAverages[key]} />
-                })
-              }
-            </div> : null
-        }
+            })
+          }
+        </div> 
+        <div className='playerAvgDiv'>
+          <h1 className='avgHeaders'>Jeremy's Course Averages</h1>
+          {
+            Object.keys(JeremyCourseAverages).map(key => {
+              return <CourseAvgRdView key={key} course={key} rd={JeremyCourseAverages[key]} />
+            })
+          }
+        </div> 
       </section>
     );
   }
