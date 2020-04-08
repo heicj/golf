@@ -13,6 +13,7 @@ class ViewRounds extends Component{
   }
   componentDidMount(){
     const { name } = this.props;
+    this.setState({ 'page': 1 });
     this.props.changeName(name);
     this.props.getRounds(name);
     window.scrollTo(0, 0);  
@@ -22,6 +23,9 @@ class ViewRounds extends Component{
     if(prevProps.name !== this.props.name){
       this.props.changeName(this.props.name);
       this.props.getRounds(this.props.name);
+    }
+    if(prevState.page !== 1 && prevProps.name !== this.props.name){
+      this.setState({ 'page': 1 });
     }
   }
 
@@ -49,14 +53,19 @@ class ViewRounds extends Component{
 
   render(){
     const { rounds, deleteRd, name } = this.props;
+    const { page } = this.state;
     return (
       <section>
-        <div name='minus' id='minus' onClick={this.handlePaging}>PgDw</div><div>{this.state.page}</div><div name='plus' id='plus' onClick={this.handlePaging}>PdUp</div>
         <h2 id="playerH2">{this.props.name + "'s"} Rounds</h2>
         <div id="buttonDiv">
           <button onClick={this.handleClick}>DOWNLOAD {name}'s ROUNDS</button>
         </div>
-        {rounds.map((r, i) => <Round name={name}  deleteRound={deleteRd} key={i} id={r.key}  roundStats={r}/>)}
+        <div id='pageContainer'>
+          <div name='minus' id='minus' onClick={this.handlePaging}>Prev. Page</div>
+          <div>{this.state.page}/{Math.ceil(rounds.length / 10)}</div>
+          <div name='plus' id='plus' onClick={this.handlePaging}>Next Page</div>
+        </div>
+        {rounds.slice(page * 10 - 10, page * 10).map((r, i) => <Round name={name}  deleteRound={deleteRd} key={i} id={r.key}  roundStats={r}/>)}
       </section>
     );
   }

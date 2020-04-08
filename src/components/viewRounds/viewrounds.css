@@ -18,6 +18,15 @@
       height: 1rem;
       background-color: var(--main-background-color);
     }
+
+    #pageContainer{
+      display: flex;
+      justify-content: space-around;
+      width: 25%;
+      margin: 0 auto;
+      text-align: center;
+      font-size: .4rem;
+    }
 }
 
 @media only screen and (min-width: 501px){
@@ -38,6 +47,13 @@
     text-transform: uppercase;
     height: 2rem;
     background-color: var(--main-background-color);
+  }
+
+  #pageContainer{
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+    margin: 0 auto;
   }
 
 }
