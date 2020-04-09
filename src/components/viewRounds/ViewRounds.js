@@ -9,8 +9,10 @@ import { excelFunc } from '../../services/excelFunc';
 class ViewRounds extends Component{
 
   state = {
-    page: 1
-  }
+    page: 1,
+    perPage: 10
+  };
+
   componentDidMount(){
     const { name } = this.props;
     this.setState({ 'page': 1 });
@@ -38,34 +40,62 @@ class ViewRounds extends Component{
 
     let name = target.id;
     let page = this.state.page;
-    let maxPage = Math.ceil(this.props.rounds.length / 10);
+    let perPage = this.state.perPage;
+    let maxPage = Math.ceil(this.props.rounds.length / perPage);
     if(name == 'minus'){
       if(page <= 1) return;
       let newPage = page - 1;
       this.setState({ 'page': newPage });
     }
     if(name == 'plus'){
-      if(page == maxPage ) return;
+      if(page == maxPage) return;
       let newPage = page + 1;
       this.setState({ 'page': newPage });
     }
-  }
+    if(name == 'first') {
+      this.setState({ 'page': 1 });
+    }
+
+    if(name == 'last'){
+      this.setState({ 'page': maxPage });
+    } 
+  };
+
+  handleSelect = ({ target }) => {
+    this.setState({ 'page': 1 });
+    this.setState({ [target.name ]: target.value });
+  };
 
   render(){
     const { rounds, deleteRd, name } = this.props;
-    const { page } = this.state;
+    const { page, perPage } = this.state;
     return (
       <section>
         <h2 id="playerH2">{this.props.name + "'s"} Rounds</h2>
+        
         <div id="buttonDiv">
           <button onClick={this.handleClick}>DOWNLOAD {name}'s ROUNDS</button>
         </div>
-        <div id='pageContainer'>
+        
+        <div className='pageContainer'>
+          <div name='first' id='first' onClick={this.handlePaging}>First Page</div>
+          <div name='minus' id='minus' onClick={this.handlePaging}>Prev. Page</div>
+          <div>{this.state.page}/{Math.ceil(rounds.length / perPage)}</div>
+          <div name='plus' id='plus' onClick={this.handlePaging}>Next Page</div>
+          <div name='last' id='last' onClick={this.handlePaging}>Last Page</div>
+          <select id='perPage' name='perPage' onChange={this.handleSelect}>
+            <option value={5}>5</option>
+            <option value={10} selected>10</option>
+          </select>
+        </div>
+        
+        {rounds.slice((page * perPage) - perPage, (page * perPage)).map((r, i) => <Round name={name}  deleteRound={deleteRd} key={i} id={r.key}  roundStats={r}/>)}
+        
+        <div className='pageContainer'>
           <div name='minus' id='minus' onClick={this.handlePaging}>Prev. Page</div>
           <div>{this.state.page}/{Math.ceil(rounds.length / 10)}</div>
           <div name='plus' id='plus' onClick={this.handlePaging}>Next Page</div>
         </div>
-        {rounds.slice(page * 10 - 10, page * 10).map((r, i) => <Round name={name}  deleteRound={deleteRd} key={i} id={r.key}  roundStats={r}/>)}
       </section>
     );
   }

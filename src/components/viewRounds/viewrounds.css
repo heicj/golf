@@ -19,13 +19,14 @@
       background-color: var(--main-background-color);
     }
 
-    #pageContainer{
+    .pageContainer{
       display: flex;
       justify-content: space-around;
       width: 25%;
       margin: 0 auto;
       text-align: center;
       font-size: .4rem;
+      margin-bottom: 10px;
     }
 }
 
@@ -49,11 +50,12 @@
     background-color: var(--main-background-color);
   }
 
-  #pageContainer{
+  .pageContainer{
     display: flex;
     justify-content: space-around;
     width: 30%;
     margin: 0 auto;
+    margin-bottom: 30px;
   }
 
 }
