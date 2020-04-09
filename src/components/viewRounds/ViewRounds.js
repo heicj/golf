@@ -62,8 +62,14 @@ class ViewRounds extends Component{
   };
 
   handleSelect = ({ target }) => {
-    this.setState({ 'page': 1 });
-    this.setState({ [target.name ]: target.value });
+    // this.setState({ 'page': 1 });
+
+    let newPage = Math.ceil(((this.state.page * this.state.perPage) - (this.state.perPage - 1)) / target.value);
+  
+    this.setState({ 
+      [target.name ]: target.value,
+      'page': newPage
+    });
   };
 
   render(){
@@ -93,7 +99,7 @@ class ViewRounds extends Component{
         
         <div className='pageContainer'>
           <div name='minus' id='minus' onClick={this.handlePaging}>Prev. Page</div>
-          <div>{this.state.page}/{Math.ceil(rounds.length / 10)}</div>
+          <div>{this.state.page}/{Math.ceil(rounds.length / perPage)}</div>
           <div name='plus' id='plus' onClick={this.handlePaging}>Next Page</div>
         </div>
       </section>
