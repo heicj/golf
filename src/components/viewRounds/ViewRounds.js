@@ -63,8 +63,8 @@ class ViewRounds extends Component{
 
   handleSelect = ({ target }) => {
     // this.setState({ 'page': 1 });
-
-    let newPage = Math.ceil(((this.state.page * this.state.perPage) - (this.state.perPage - 1)) / target.value);
+    const { page, perPage } = this.state;
+    let newPage = Math.ceil(((page * perPage) - (perPage - 1)) / target.value);
   
     this.setState({ 
       [target.name ]: target.value,
@@ -84,11 +84,14 @@ class ViewRounds extends Component{
         </div>
         
         <div className='pageContainer'>
-          <div name='first' id='first' onClick={this.handlePaging}>First Page</div>
-          <div name='minus' id='minus' onClick={this.handlePaging}>Prev. Page</div>
-          <div>{this.state.page}/{Math.ceil(rounds.length / perPage)}</div>
-          <div name='plus' id='plus' onClick={this.handlePaging}>Next Page</div>
-          <div name='last' id='last' onClick={this.handlePaging}>Last Page</div>
+          <div className='pageControl' name='first' id='first' onClick={this.handlePaging}>First Page</div>
+          <div className='pageControl' name='minus' id='minus' onClick={this.handlePaging}>Prev Page</div>
+          <div id='pageIndicator'>{this.state.page}/{Math.ceil(rounds.length / perPage)}</div>
+          <div className='pageControl' name='plus' id='plus' onClick={this.handlePaging}>Next Page</div>
+          <div className='pageControl' name='last' id='last' onClick={this.handlePaging}>Last Page</div>
+        </div>
+        <div id='perPageSelector'>
+          <div>Rounds Per Page</div>
           <select id='perPage' name='perPage' onChange={this.handleSelect}>
             <option value={5}>5</option>
             <option value={10} selected>10</option>

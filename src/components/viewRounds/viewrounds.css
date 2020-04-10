@@ -22,11 +22,42 @@
     .pageContainer{
       display: flex;
       justify-content: space-around;
-      width: 25%;
+      width: 70%;
       margin: 0 auto;
       text-align: center;
       font-size: .4rem;
       margin-bottom: 10px;
+    }
+
+    .pageControl{
+      border: solid 1px;
+      border-radius: 5px;
+      margin: .2rem;
+      height: .8rem;
+      line-height: .8rem;
+      width: 15%;
+    }
+
+    #pageIndicator{
+      border-bottom: solid 1px;
+      height: .8rem;
+      line-height: .8rem;
+      margin: .2rem;
+      width: 7%;
+    }
+
+    #perPageSelector{
+      display: flex;
+      width: 40%;
+      justify-content: space-evenly;
+      height: .8rem;
+      line-height: .8rem;
+      font-size: .6rem;
+      margin: 0 auto;
+
+      select{
+        font-size: .5rem;
+      }
     }
 }
 
@@ -56,6 +87,37 @@
     width: 30%;
     margin: 0 auto;
     margin-bottom: 30px;
+  }
+
+  .pageControl{
+    border: solid 1px;
+    border-radius: 5px;
+    margin: .2rem;
+    height: 1rem;
+    line-height: .8rem;
+    width: 30%;
+  }
+
+  #pageIndicator{
+    border-bottom: solid 1px;
+    height: 1rem;
+    line-height: .8rem;
+    margin: .2rem;
+    width: 7%;
+  }
+
+  #perPageSelector{
+    display: flex;
+    width: 20%;
+    justify-content: space-evenly;
+    height: 1rem;
+    line-height: 1rem;
+    font-size: .8rem;
+    margin: 0 auto;
+
+    select{
+      font-size: .8rem;
+    }
   }
 
 }
