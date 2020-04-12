@@ -1,20 +1,61 @@
-import { db } from '../../services/firebase';
+// import { db } from '../../services/firebase';
 
-const players = db.ref('players');
+// const players = db.ref('players');
 
-//function that returns averages for each course
-//1.one parameter is obj of rounds -> obj of rounds is what firebase returns
-//2. have initial obj for results
-//  {
-//    courseName:  {fir:[], gir:[], putts: [], score:[]}
+//fir gir putts holesScore are stat names for a round
+//need func to take a round and putt the stat for each hole into
+//array for the particular stat
+// {
+//   oneFir: []
+//   oneGir: []
+//   onePutts: []
+//   oneScore: [],
+
+//   through hole 18.
 // }
 
-//3. check if obj has current course in it.
-      //if it doesn't 
-      //  add the course to the obj with the total fir, gir, putts, score 
-      //if it does
-        //push the value of curr rd into the arr for each stat
-//4. return obj
+function courseHoleAvg(objOfRounds){
+  const holeNumbers = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen'];
+  const stats = ['fir', 'gir', 'putts', 'holesScore'];
+  let eachHoleStats = {};
+  const numberOfRounds = Object.keys(objOfRounds).length;
+  let currRoundCount = 0;
+
+  Object.keys(objOfRounds).reduce((a, c) => {
+    let currentRd = objOfRounds[c];
+    let currName = currentRd.course.toLowerCase();
+    if(!eachHoleStats.hasOwnProperty(currName)){
+      eachHoleStats[currName] = {};
+      stats.forEach((stat) => {
+        for(let i = 0; i < holeNumbers.length; i++){
+          eachHoleStats[currName][holeNumbers[i] + stat] = [currentRd[stat][i]]
+        }
+      });
+      currRoundCount++;
+    } else {
+      stats.forEach((stat) => {
+        for(let i = 0; i < holeNumbers.length; i++){
+          eachHoleStats[currName][holeNumbers[i] + stat].push(currentRd[stat][i]);
+        }
+      });
+      currRoundCount++;
+    }
+  }, eachHoleStats);
+
+  if(currRoundCount == numberOfRounds){
+    Object.keys(eachHoleStats).map(name => {
+      let course = eachHoleStats[name];
+      Object.keys(course).map(stat => {
+        let statArray = course[stat];
+        let statTotal = statArray.reduce((a, c) => a += c);
+        let num = statArray.length;
+        eachHoleStats[name][stat + 'avg'] = (statTotal / num);
+      });
+    });
+  }
+  return eachHoleStats;
+}
+
 
 function courseSortedStats(objOfRounds){
   let sortedObj = {};
@@ -50,3 +91,4 @@ export function getCourseAvg(name, handler){
 }
 
 export const courseSortedStatsFunc = courseSortedStats;
+export const courseHoleAverage = courseHoleAvg;
