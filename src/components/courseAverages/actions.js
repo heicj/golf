@@ -1,3 +1,5 @@
+import { hole } from "../addRoundForm/reducers";
+
 // import { db } from '../../services/firebase';
 
 // const players = db.ref('players');
@@ -52,6 +54,20 @@ function courseHoleAvg(objOfRounds){
         eachHoleStats[name][stat + 'avg'] = (statTotal / num);
       });
     });
+
+    Object.keys(eachHoleStats).map(name => {
+      eachHoleStats[name].firavgInOrder = [];
+      eachHoleStats[name].giravgInOrder = [];
+      eachHoleStats[name].puttsavgInOrder = [];
+      eachHoleStats[name].holesScoreavgInOrder = [];
+
+      for(let i = 0; i < holeNumbers.length; i++){
+        eachHoleStats[name].firavgInOrder.push(eachHoleStats[name][holeNumbers[i] + 'fir' + 'avg']);
+        eachHoleStats[name].giravgInOrder.push(eachHoleStats[name][holeNumbers[i] + 'gir' + 'avg']);
+        eachHoleStats[name].puttsavgInOrder.push(eachHoleStats[name][holeNumbers[i] + 'putts' + 'avg']);
+        eachHoleStats[name].holesScoreavgInOrder.push(eachHoleStats[name][holeNumbers[i] + 'holesScore' + 'avg']);
+      }
+    })
   }
   return eachHoleStats;
 }

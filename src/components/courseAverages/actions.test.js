@@ -14,18 +14,6 @@ describe('tests func that sorts stats by course', () => {
       'totalScore': 80
     },
 
-    5678: {
-      'course': 'c2',
-      'fir': [true, true, false, false, false, true, true, false, false, false, false, false, false, false, false, false, false, false],
-      'totalFir': 2,
-      'gir': [true, false, false, false, false, false, false, false, true, true, false, false, false, false, false, false, false, false],
-      'totalGir': 3,
-      'putts': [3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-      'totalPutts': 38,
-      'holesScore': [4, 5, 6, 5, 5, 6, 4, 6, 6, 5, 5, 6, 4, 4, 4, 3, 3, 4],
-      'totalScore': 85
-    },
-
     4321: {
       'course': 'c1',
       'fir': [true, true, false, false, false, true, true, false, true, true, false, false, false, false, false, false, false, false],
@@ -37,6 +25,19 @@ describe('tests func that sorts stats by course', () => {
       'holesScore': [4, 5, 6, 5, 5, 6, 4, 4, 6, 5, 5, 4, 4, 4, 4, 3, 3, 4],
       'totalScore': 81
     },
+
+    5678: {
+      'course': 'c2',
+      'fir': [true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      'totalFir': 2,
+      'gir': [true, false, false, false, false, false, false, false, true, true, false, false, false, false, false, false, false, false],
+      'totalGir': 3,
+      'putts': [3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+      'totalPutts': 38,
+      'holesScore': [4, 5, 6, 5, 5, 6, 4, 6, 6, 5, 5, 6, 4, 4, 4, 3, 3, 4],
+      'totalScore': 85
+    },
+
 
     8765: {
       'course': 'c2',
@@ -125,5 +126,15 @@ describe('tests func that sorts stats by course', () => {
     const results = courseHoleAverage(allRounds);
     expect(results['c1'].onefiravg).toEqual(1);
     expect(results['c2'].onegiravg).toEqual(.5);
+  });
+
+  it('tests array of each hole averages', () => {
+    const results = courseHoleAverage(allRounds);
+    expect(results['c1'].firavgInOrder).toEqual([1, 1, .5, 0, 0, 1, 1, 0, .5, .5, 0, 0, 0, 0, 0, 0, 0, 0]);
+    expect(results['c1'].giravgInOrder).toEqual([1, 1, 1, .5, .5, .5, .5, .5, 1, 1, .5, .5, 0, 0, 0, 0, 0, 0]);
+    expect(results['c1'].puttsavgInOrder).toEqual([2, 2, 1.5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1.5, 1.5]);
+    expect(results['c1'].holesScoreavgInOrder).toEqual([4, 4.5, 6, 5, 4.5, 5, 4, 5, 5.5, 5, 5, 5, 4, 4, 4, 3, 3, 4]);
+
+    expect(results['c2'].firavgInOrder).toEqual([1, 1, 0, 0, 0, .5, .5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   });
 });
