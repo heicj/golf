@@ -40,6 +40,6 @@ export function getSingleRdGraphData(name, key, handler, options){
   players.child(name).child(key).once('value').then(data => {
     let rd = data.val();
     let chartData = createGraphData([rd], options);
-    handler(chartData);
+    handler([chartData, rd]);
   });
 }

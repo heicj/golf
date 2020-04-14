@@ -34,7 +34,7 @@ class ViewRounds extends Component{
   handleClick = () => {
     let rounds = this.props.rounds;
     this.props.excelFunc(rounds);
-  }
+  };
 
   handlePaging = ({ target }) => {
 

@@ -1,8 +1,8 @@
 import { hole } from "../addRoundForm/reducers";
 
-// import { db } from '../../services/firebase';
+import { db } from '../../services/firebase';
 
-// const players = db.ref('players');
+const players = db.ref('players');
 
 //fir gir putts holesScore are stat names for a round
 //need func to take a round and putt the stat for each hole into
@@ -28,6 +28,7 @@ function courseHoleAvg(objOfRounds){
     let currName = currentRd.course.toLowerCase();
     if(!eachHoleStats.hasOwnProperty(currName)){
       eachHoleStats[currName] = {};
+      
       stats.forEach((stat) => {
         for(let i = 0; i < holeNumbers.length; i++){
           eachHoleStats[currName][holeNumbers[i] + stat] = [currentRd[stat][i]]
@@ -51,7 +52,7 @@ function courseHoleAvg(objOfRounds){
         let statArray = course[stat];
         let statTotal = statArray.reduce((a, c) => a += c);
         let num = statArray.length;
-        eachHoleStats[name][stat + 'avg'] = (statTotal / num);
+        eachHoleStats[name][stat + 'avg'] = (statTotal / num).toFixed(2);
       });
     });
 
@@ -70,6 +71,14 @@ function courseHoleAvg(objOfRounds){
     })
   }
   return eachHoleStats;
+};
+
+export function getPlayerCoursePerHoleAvg(name, handler){
+  players.child(name).once('value').then(data => {
+    const rds = data.val();
+    const avgsPerHole = courseHoleAverage(rds);
+    handler(name, avgsPerHole);
+  });
 }
 
 

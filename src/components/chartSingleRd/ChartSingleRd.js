@@ -15,10 +15,12 @@ class ChartSingleRd extends Component{
     selectorChoice: 'ALL'
   }
 
-  stateHandler = (obj) => {
+  stateHandler = (arr) => {
     let stateDataObj = {};
     let key = 'data';
-    stateDataObj[key] = obj;
+    stateDataObj[key] = arr[0];
+    let key2 = 'rd';
+    stateDataObj[key2] = arr[1];
     this.setState(stateDataObj);
   };
 
