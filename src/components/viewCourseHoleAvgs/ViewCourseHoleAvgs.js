@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Round from '../round/Round';
 import { getPlayerCoursePerHoleAvg } from '../courseAverages/actions';
+import HoleAverages from '../holeAverages/HoleAverages';
 
 class ViewCourseHoleAvgs extends Component{
 
   state = {
-
+    player: {}
   };
 
   holeAvgHandler = (name, obj) => {
@@ -30,24 +30,19 @@ class ViewCourseHoleAvgs extends Component{
     return (
       <section>
         <div>Hello world</div>
+        {
+          Object.keys(this.state.player).map(key => {
+            let stats = {};
+            let rd = this.state.player[key];
+            stats.course = key;
+            stats.fir = rd.firavgInOrder;
+            stats.gir = rd.giravgInOrder;
+            stats.putts = rd.puttsavgInOrder;
+            stats.holesScore = rd.holesScoreavgInOrder;
 
-        {/* need new comonent to display hole avg, using Round
-        doesn't work. */}
-        {/* {
-          this.state.player ?
-          Object.keys(this.state.player).map(rdName => {
-            let rd = this.state.player[rdName];
-            let obj = {};
-            obj['fir'] = rd.firavgInOrder;
-            obj['gir'] = rd.giravgInOrder;
-            obj['putts'] = rd.puttsavgInOrder;
-            obj['holesScore'] = rd.holesScoreavgInOrder;
-            obj['course'] = rdName;
-  
-            return <Round key={rdName} id={rdName} roundStats={obj} />
-          }) : null
-
-        } */}
+            return <HoleAverages key={key} rdStats={stats}/>;
+          })
+        }
       </section>
     );
   }

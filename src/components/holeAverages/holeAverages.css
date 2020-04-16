@@ -1,0 +1,25 @@
+#avgGrid{
+  display: grid;
+  width: 95%;
+  height: 60%;
+  margin: 0 auto;
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
+  grid-template-columns: repeat(19, auto);
+  background-color: lightgray;
+  border-bottom: solid;
+
+  .title{
+    background-color: white;
+    text-align: center;
+    font-size: .6rem;  
+    font-weight: bold;
+  }
+
+  .data{
+    background-color: white;
+    text-align: center;
+    font-size: .75rem;  
+  }
+
+}
