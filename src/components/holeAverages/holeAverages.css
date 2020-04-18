@@ -1,25 +1,98 @@
-#avgGrid{
-  display: grid;
-  width: 95%;
-  height: 60%;
-  margin: 0 auto;
-  grid-column-gap: 2px;
-  grid-row-gap: 2px;
-  grid-template-columns: repeat(19, auto);
-  background-color: lightgray;
-  border-bottom: solid;
-
-  .title{
-    background-color: white;
+@media only screen and (max-width: 500px){
+  #holeAvgSection{
+    width: 98%;
+    margin: .5rem auto;
+    border: solid 1px;
+    border-radius: 20px;
+    background-color: var(--main-background-color);
+  }
+  
+  .courseName{
     text-align: center;
-    font-size: .6rem;  
+    text-transform: uppercase;
+    margin: .2rem;
     font-weight: bold;
+    font-size: .6rem;
   }
-
-  .data{
-    background-color: white;
+  
+  .timesPlayed{
     text-align: center;
-    font-size: .75rem;  
+    font-size: .5rem;
+    margin: .2rem;
   }
+  
+  #avgGrid{
+    display: grid;
+    width: 98%;
+    height: 60%;
+    margin: .2rem auto .75rem auto;
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
+    grid-template-columns: repeat(19, auto);
+    background-color: lightgray;
+    border-bottom: solid;
+  
+    .avgTitle{
+      background-color: white;
+      text-align: center;
+      font-size: .5rem;  
+      font-weight: bold;
+    }
+  
+    .data{
+      background-color: white;
+      text-align: center;
+      font-size: .5rem;  
+    }
+  
+  }
+}
 
+@media only screen and (min-width: 501px){
+
+  #holeAvgSection{
+    width: 80%;
+    margin: 1rem auto;
+    border: solid 1px;
+    border-radius: 30px;
+    background-color: var(--main-background-color);
+  }
+  
+  .courseName{
+    text-align: center;
+    text-transform: uppercase;
+    margin: .5rem;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  #timesPlayed{
+    text-align: center;
+  }
+  
+  #avgGrid{
+    display: grid;
+    width: 95%;
+    height: 60%;
+    margin: .5rem auto;
+    grid-column-gap: 2px;
+    grid-row-gap: 2px;
+    grid-template-columns: repeat(19, auto);
+    background-color: lightgray;
+    border-bottom: solid;
+  
+    .avgTitle{
+      background-color: white;
+      text-align: center;
+      font-size: 1rem;  
+      font-weight: bold;
+    }
+  
+    .data{
+      background-color: white;
+      text-align: center;
+      font-size: 1rem;  
+    }
+  
+  }
 }

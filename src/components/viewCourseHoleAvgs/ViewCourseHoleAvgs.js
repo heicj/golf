@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getPlayerCoursePerHoleAvg } from '../courseAverages/actions';
 import HoleAverages from '../holeAverages/HoleAverages';
+import './ViewCourseHoleAvgs.css';
 
 class ViewCourseHoleAvgs extends Component{
 
@@ -29,7 +30,7 @@ class ViewCourseHoleAvgs extends Component{
   render(){
     return (
       <section>
-        <div>Hello world</div>
+        <h1 id='holeAvgTitle'>{this.props.name}'s Hole Averages</h1>
         {
           Object.keys(this.state.player).map(key => {
             let stats = {};
@@ -39,7 +40,7 @@ class ViewCourseHoleAvgs extends Component{
             stats.gir = rd.giravgInOrder;
             stats.putts = rd.puttsavgInOrder;
             stats.holesScore = rd.holesScoreavgInOrder;
-
+            stats.timesPlayed = rd.oneholesScore.length;
             return <HoleAverages key={key} rdStats={stats}/>;
           })
         }
