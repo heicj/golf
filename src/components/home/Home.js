@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getStats } from './actions';
+import { getStats, getAveragesLastFiveRounds } from './actions';
 import { coursesPlayedList } from '../coursesPlayed/actions';
 import './home.css';
 
@@ -44,6 +44,7 @@ class Home extends PureComponent{
 
   componentDidMount(){
     // this.props.coursesPlayedList(['Charlie', 'Jeremy']);
+    getAveragesLastFiveRounds('Charlie');
     this.props.getStats('Charlie', this.handleCharlieStats);
     this.props.getStats('Jeremy', this.handleJeremyStats);
   }
