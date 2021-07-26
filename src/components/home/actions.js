@@ -157,7 +157,7 @@ export function getStats(name, handler){
 }
 
 
-export function getAveragesLastFiveRounds(name){
+export function getAveragesLastFiveRounds(name, cb){
   players.child(name).once('value').then(data => {
     let score = 0, fir = 0, gir = 0, putts = 0, avgScore, avgFir, avgGir, avgPutts;
 
@@ -186,6 +186,7 @@ export function getAveragesLastFiveRounds(name){
     lastFiveAverages.avgPutts = avgPutts;
 
     console.log(lastFiveAverages);
+    cb(lastFiveAverages);
   });
 }
 

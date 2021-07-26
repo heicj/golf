@@ -13,11 +13,13 @@ class Home extends PureComponent{
     charlieGirAvg: '',
     charliePuttsAvg: '',
     charlieHandicap: '',
+    charlieLastFiveAvgs: {},
     jeremyAvgScore: '',
     jeremyHandicap: '',
     jeremyFirAvg: '',
     jeremyGirAvg: '',
-    jeremyPuttsAvg: ''
+    jeremyPuttsAvg: '',
+    jeremyLastFiveAvgs: {}
   };
 
 
@@ -32,6 +34,14 @@ class Home extends PureComponent{
     });
   };
 
+  handleCharlieLastFiveAverages = (obj) => {
+    this.setState({ 'charlieLastFiveAvgs': obj });
+  };
+
+  handleJeremyLastFiveAverages = (obj) => {
+    this.setState({ 'jeremyLastFiveAvgs': obj });
+  }
+
   handleJeremyStats = (arr) => {
     arr.forEach(obj => {
       let stateObj = {};
@@ -44,12 +54,13 @@ class Home extends PureComponent{
 
   componentDidMount(){
     // this.props.coursesPlayedList(['Charlie', 'Jeremy']);
-    getAveragesLastFiveRounds('Charlie');
+    getAveragesLastFiveRounds('Charlie', this.handleCharlieLastFiveAverages);
+    getAveragesLastFiveRounds('Jeremy', this.handleJeremyLastFiveAverages);
     this.props.getStats('Charlie', this.handleCharlieStats);
     this.props.getStats('Jeremy', this.handleJeremyStats);
   }
   render(){
-    const { charlieAvgScore, charlieFirAvg, charlieGirAvg, charliePuttsAvg, charliehandicap, jeremyhandicap, jeremyAvgScore, jeremyFirAvg, jeremyGirAvg, jeremyPuttsAvg, charlieLowFir, charlieLowGir, charlieLowPutts, charlieLowScore, jeremyLowScore, jeremyLowGir, jeremyLowFir, jeremyLowPutts, charlieHighScore, charlieHighFir, charlieHighGir, charlieHighPutts, jeremyHighScore, jeremyHighFir, jeremyHighGir, jeremyHighPutts, charlieTotalRounds, jeremyTotalRounds } = this.state;
+    const { charlieAvgScore, charlieFirAvg, charlieGirAvg, charliePuttsAvg, charliehandicap, charlieLastFiveAvgs, jeremyhandicap, jeremyAvgScore, jeremyLastFiveAvgs, jeremyFirAvg, jeremyGirAvg, jeremyPuttsAvg, charlieLowFir, charlieLowGir, charlieLowPutts, charlieLowScore, jeremyLowScore, jeremyLowGir, jeremyLowFir, jeremyLowPutts, charlieHighScore, charlieHighFir, charlieHighGir, charlieHighPutts, jeremyHighScore, jeremyHighFir, jeremyHighGir, jeremyHighPutts, charlieTotalRounds, jeremyTotalRounds } = this.state;
     return (
       <div id="mainSection">
         <div className='playerBox'>
@@ -68,6 +79,13 @@ class Home extends PureComponent{
               <div className='statDiv'>Fir: {charlieFirAvg}</div>
               <div className='statDiv'>Gir: {charlieGirAvg}</div>
               <div className='statDiv'>Putts: {charliePuttsAvg}</div>
+            </div>
+            <div className='statColumn'>
+              <h2>Last 5 Rds Avgs</h2>
+              <div className='statDiv'>Score: {charlieLastFiveAvgs.avgScore}</div>
+              <div className='statDiv'>Fir: {charlieLastFiveAvgs.avgFir}</div>
+              <div className='statDiv'>Gir: {charlieLastFiveAvgs.avgGir}</div>
+              <div className='statDiv'>Putts: {charlieLastFiveAvgs.avgPutts}</div>
             </div>
             <div className='statColumn'>
               <h2>Best</h2>
@@ -101,6 +119,13 @@ class Home extends PureComponent{
               <div className='statDiv'>Fir: {jeremyFirAvg}</div>
               <div className='statDiv'>Gir: {jeremyGirAvg}</div>
               <div className='statDiv'>Putts: {jeremyPuttsAvg}</div>
+            </div>
+            <div className='statColumn'>
+              <h2>Last 5 Rds Avgs</h2>
+              <div className='statDiv'>Score: {jeremyLastFiveAvgs.avgScore}</div>
+              <div className='statDiv'>Fir: {jeremyLastFiveAvgs.avgFir}</div>
+              <div className='statDiv'>Gir: {jeremyLastFiveAvgs.avgGir}</div>
+              <div className='statDiv'>Putts: {jeremyLastFiveAvgs.avgPutts}</div>
             </div>
             <div className='statColumn'>
               <h2>Best</h2>
