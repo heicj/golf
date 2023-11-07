@@ -139,62 +139,62 @@ export const getPlayerStats = (name, handler) => {
   
 };
 
-export function getStats(name, handler){
-  dispatch => { type: LOAD_START }
-  players.child(name).once('value').then(data => {
-    const rounds = data.val();
-    let avgScore, avgFir, avgGir, avgPutts, highScore, highFir, highGir, highPutts, lowScore, lowFir, lowGir, lowPutts, totalScore = 0, totalFir = 0, totalGir = 0, totalPutts = 0;
+// export function getStats(name, handler){
+//   dispatch => { type: LOAD_START }
+//   players.child(name).once('value').then(data => {
+//     const rounds = data.val();
+//     let avgScore, avgFir, avgGir, avgPutts, highScore, highFir, highGir, highPutts, lowScore, lowFir, lowGir, lowPutts, totalScore = 0, totalFir = 0, totalGir = 0, totalPutts = 0;
     
-    let counter = 1;
-    const totalRounds = Object.keys(rounds).length;
-    Object.keys(rounds).forEach(key => {
-      let round = rounds[key];
-      if(counter == 1){
-        highScore = round.totalScore;
-        highFir = round.totalFir;
-        highGir = round.totalGir;
-        highPutts = round.totalPutts;
-        lowScore = round.totalScore;
-        lowFir = round.totalFir;
-        lowGir = round.totalGir;
-        lowPutts = round.totalPutts;
-        totalScore += round.totalScore;
-        totalFir += round.totalFir;
-        totalGir += round.totalGir;
-        totalPutts += round.totalPutts;
-        counter++;
-      } else {
-        if(round.totalScore > highScore) highScore = round.totalScore;
-        if(round.totalFir > highFir) highFir = round.totalFir;
-        if(round.totalGir > highGir) highGir = round.totalGir;
-        if(round.totalPutts > highPutts) highPutts = round.totalPutts;
+//     let counter = 1;
+//     const totalRounds = Object.keys(rounds).length;
+//     Object.keys(rounds).forEach(key => {
+//       let round = rounds[key];
+//       if(counter == 1){
+//         highScore = round.totalScore;
+//         highFir = round.totalFir;
+//         highGir = round.totalGir;
+//         highPutts = round.totalPutts;
+//         lowScore = round.totalScore;
+//         lowFir = round.totalFir;
+//         lowGir = round.totalGir;
+//         lowPutts = round.totalPutts;
+//         totalScore += round.totalScore;
+//         totalFir += round.totalFir;
+//         totalGir += round.totalGir;
+//         totalPutts += round.totalPutts;
+//         counter++;
+//       } else {
+//         if(round.totalScore > highScore) highScore = round.totalScore;
+//         if(round.totalFir > highFir) highFir = round.totalFir;
+//         if(round.totalGir > highGir) highGir = round.totalGir;
+//         if(round.totalPutts > highPutts) highPutts = round.totalPutts;
 
-        if(round.totalScore < lowScore) lowScore = round.totalScore;
-        if(round.totalFir < lowFir) lowFir = round.totalFir;
-        if(round.totalGir < lowGir) lowGir = round.totalGir;
-        if(round.totalPutts < lowPutts) lowPutts = round.totalPutts;
+//         if(round.totalScore < lowScore) lowScore = round.totalScore;
+//         if(round.totalFir < lowFir) lowFir = round.totalFir;
+//         if(round.totalGir < lowGir) lowGir = round.totalGir;
+//         if(round.totalPutts < lowPutts) lowPutts = round.totalPutts;
 
-        totalScore += round.totalScore;
-        totalFir += round.totalFir;
-        totalGir += round.totalGir;
-        totalPutts += round.totalPutts;
-      } 
-    });
-    avgScore = (totalScore / totalRounds).toFixed(2);
-    avgFir = (totalFir / totalRounds).toFixed(2);
-    avgGir = (totalGir / totalRounds).toFixed(2);
-    avgPutts = (totalPutts / totalRounds).toFixed(2);
-    const playerHandicap = handicap(rounds);
-    let stats = [
-      { 'AvgScore': avgScore }, { 'FirAvg': avgFir }, { 'GirAvg': avgGir }, { 'PuttsAvg': avgPutts },
-      { 'HighScore': highScore }, { 'HighFir': highFir }, { 'HighGir': highGir }, { 'HighPutts': highPutts },
-      { 'LowScore': lowScore }, { 'LowFir': lowFir }, { 'LowGir': lowGir }, { 'LowPutts': lowPutts }, { 'TotalRounds': totalRounds }, { 'handicap': playerHandicap }
-    ];
+//         totalScore += round.totalScore;
+//         totalFir += round.totalFir;
+//         totalGir += round.totalGir;
+//         totalPutts += round.totalPutts;
+//       } 
+//     });
+//     avgScore = (totalScore / totalRounds).toFixed(2);
+//     avgFir = (totalFir / totalRounds).toFixed(2);
+//     avgGir = (totalGir / totalRounds).toFixed(2);
+//     avgPutts = (totalPutts / totalRounds).toFixed(2);
+//     const playerHandicap = handicap(rounds);
+//     let stats = [
+//       { 'AvgScore': avgScore }, { 'FirAvg': avgFir }, { 'GirAvg': avgGir }, { 'PuttsAvg': avgPutts },
+//       { 'HighScore': highScore }, { 'HighFir': highFir }, { 'HighGir': highGir }, { 'HighPutts': highPutts },
+//       { 'LowScore': lowScore }, { 'LowFir': lowFir }, { 'LowGir': lowGir }, { 'LowPutts': lowPutts }, { 'TotalRounds': totalRounds }, { 'handicap': playerHandicap }
+//     ];
 
-    dispatch => { type: LOAD_END }
-    return handler(stats);
-  });
-}
+//     dispatch => { type: LOAD_END }
+//     return handler(stats);
+//   });
+// }
 
 
 export function getAveragesLastFiveRounds(name, cb){
@@ -219,6 +219,7 @@ export function getAveragesLastFiveRounds(name, cb){
     avgPutts = putts / 5;
 
     let lastFiveAverages = {};
+    lastFiveAverages.player = name;
 
     lastFiveAverages.avgScore = avgScore;
     lastFiveAverages.avgFir = avgFir;
