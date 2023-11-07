@@ -99,12 +99,52 @@ export function getRounds(name){
 //   }
 // }
 
+export const getPlayerStats = (name, handler) => {
+
+  let obj = {};
+  obj.player = name;
+
+  players.child(name).once('value').then(data => {
+    const rounds = data.val();
+    obj.rounds = rounds;
+    obj.totalRounds = Object.keys(rounds).length;
+    Object.keys(rounds).forEach(key => {
+
+      let round = rounds[key];
+        
+      if(!obj.highScore || round.totalScore > obj.highScore) obj.highScore = round.totalScore;
+      if(!obj.highFir || round.totalFir > obj.highFir) obj.highFir = round.totalFir;
+      if(!obj.highGir || round.totalGir > obj.highGir) obj.highGir = round.totalGir;
+      if(!obj.highPutts || round.totalPutts > obj.highPutts) obj.highPutts = round.totalPutts;
+        
+      if(!obj.lowScore || round.totalScore < obj.lowScore) obj.lowScore = round.totalScore;
+      if(!obj.lowFir || round.totalFir < obj.lowFir) obj.lowFir = round.totalFir;
+      if(!obj.lowGir || round.totalGir < obj.lowGir) obj.lowGir = round.totalGir;
+      if(!obj.lowPutts || round.totalPutts < obj.lowPutts) obj.lowPutts = round.totalPutts;
+        
+      obj.totalScore == undefined ? obj.totalScore = round.totalScore : obj.totalScore += round.totalScore;
+      obj.totalFir == undefined ? obj.totalFir = round.totalFir : obj.totalFir += round.totalFir;
+      obj.totalGir == undefined ? obj.totalGir = round.totalGir : obj.totalGir += round.totalGir;
+      obj.totalPutts == undefined ? obj.totalPutts = round.totalPutts : obj.totalPutts += round.totalPutts;
+
+      obj.avgScore = (obj.totalScore / obj.totalRounds).toFixed(2);
+      obj.avgFir = (obj.totalFir / obj.totalRounds).toFixed(2);
+      obj.avgGir = (obj.totalGir / obj.totalRounds).toFixed(2);
+      obj.avgPutts = (obj.totalPutts / obj.totalRounds).toFixed(2);
+      obj.playerHandicap = handicap(rounds);
+
+    });
+    return handler(obj);
+  });
+  
+};
+
 export function getStats(name, handler){
   dispatch => { type: LOAD_START }
   players.child(name).once('value').then(data => {
     const rounds = data.val();
     let avgScore, avgFir, avgGir, avgPutts, highScore, highFir, highGir, highPutts, lowScore, lowFir, lowGir, lowPutts, totalScore = 0, totalFir = 0, totalGir = 0, totalPutts = 0;
-   
+    
     let counter = 1;
     const totalRounds = Object.keys(rounds).length;
     Object.keys(rounds).forEach(key => {
@@ -185,7 +225,7 @@ export function getAveragesLastFiveRounds(name, cb){
     lastFiveAverages.avgGir = avgGir;
     lastFiveAverages.avgPutts = avgPutts;
 
-    console.log(lastFiveAverages);
+    // console.log(lastFiveAverages);
     cb(lastFiveAverages);
   });
 }

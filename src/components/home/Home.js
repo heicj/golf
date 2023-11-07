@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getStats, getAveragesLastFiveRounds } from './actions';
+import { getPlayerStats, getStats, getAveragesLastFiveRounds } from './actions';
 import { coursesPlayedList } from '../coursesPlayed/actions';
 import './home.css';
 
@@ -52,12 +52,18 @@ class Home extends PureComponent{
     });
   };
 
+  handleNew = (obj) => {
+    console.log(obj);
+  }
+
   componentDidMount(){
     // this.props.coursesPlayedList(['Charlie', 'Jeremy']);
     getAveragesLastFiveRounds('Charlie', this.handleCharlieLastFiveAverages);
     getAveragesLastFiveRounds('Jeremy', this.handleJeremyLastFiveAverages);
     this.props.getStats('Charlie', this.handleCharlieStats);
     this.props.getStats('Jeremy', this.handleJeremyStats);
+
+    this.props.getPlayerStats('Charlie', this.handleNew);
   }
   render(){
     const { charlieAvgScore, charlieFirAvg, charlieGirAvg, charliePuttsAvg, charliehandicap, charlieLastFiveAvgs, jeremyhandicap, jeremyAvgScore, jeremyLastFiveAvgs, jeremyFirAvg, jeremyGirAvg, jeremyPuttsAvg, charlieLowFir, charlieLowGir, charlieLowPutts, charlieLowScore, jeremyLowScore, jeremyLowGir, jeremyLowFir, jeremyLowPutts, charlieHighScore, charlieHighFir, charlieHighGir, charlieHighPutts, jeremyHighScore, jeremyHighFir, jeremyHighGir, jeremyHighPutts, charlieTotalRounds, jeremyTotalRounds } = this.state;
@@ -150,5 +156,5 @@ class Home extends PureComponent{
 
 export default connect(
   null,
-  { getStats, coursesPlayedList }
+  { getPlayerStats, getStats, coursesPlayedList }
 )(Home);
