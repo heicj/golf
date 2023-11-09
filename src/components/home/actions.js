@@ -112,15 +112,120 @@ export const getPlayerStats = (name, handler) => {
 
       let round = rounds[key];
         
-      if(!obj.highScore || round.totalScore > obj.highScore) obj.highScore = round.totalScore;
-      if(!obj.highFir || round.totalFir > obj.highFir) obj.highFir = round.totalFir;
-      if(!obj.highGir || round.totalGir > obj.highGir) obj.highGir = round.totalGir;
-      if(!obj.highPutts || round.totalPutts > obj.highPutts) obj.highPutts = round.totalPutts;
+      // if(!obj.highScore || round.totalScore > obj.highScore) obj.highScore = round.totalScore;
+
+      if(!obj.highScore){
+        obj.highScore = round.totalScore;
+        obj.highScoreRounds = [round];
+      } else {
+        if(round.totalScore > obj.highScore){
+          obj.highScore = round.totalScore;
+          obj.highScoreRounds = [];
+          obj.highScoreRounds.push(round);
+        } else if(round.totalScore == obj.highScore) {
+          obj.highScoreRounds.push(round);
+        }
+      }
+      // if(!obj.highFir || round.totalFir > obj.highFir) obj.highFir = round.totalFir;
+
+      if(!obj.highFir){
+        obj.highFir = round.totalFir;
+        obj.highFirRounds = [round];
+      } else {
+        if(round.totalFir > obj.highFir){
+          obj.highFir = round.totalFir;
+          obj.highFirRounds = [];
+          obj.highFirRounds.push(round);
+        } else if(round.totalFir == obj.highFir){
+          obj.highFirRounds.push(round);
+        }
+      }
+
+      // if(!obj.highGir || round.totalGir > obj.highGir) obj.highGir = round.totalGir;
+
+      if(!obj.highGir){
+        obj.highGir = round.totalGir;
+        obj.highGirRounds = [round];
+      } else {
+        if(round.totalGir > obj.highGir){
+          obj.highGir = round.totalGir;
+          obj.highGirRounds = [];
+          obj.highGirRounds.push(round);
+        } else if(round.totalGir == obj.highGir){
+          obj.highGirRounds.push(round);
+        }
+      }
+
+      // if(!obj.highPutts || round.totalPutts > obj.highPutts) obj.highPutts = round.totalPutts;
+      
+      if(!obj.highPutts){
+        obj.highPutts = round.totalPutts;
+        obj.highPuttsRounds = [round];
+      } else {
+        if(round.totalPutts > obj.highPutts){
+          obj.highPutts = round.totalPutts;
+          obj.highPuttsRounds = [];
+          obj.highPuttsRounds.push(round);
+        } else if(round.totalPutts == obj.highPutts){
+          obj.highPuttsRounds.push(round);
+        }
+      }
         
-      if(!obj.lowScore || round.totalScore < obj.lowScore) obj.lowScore = round.totalScore;
-      if(!obj.lowFir || round.totalFir < obj.lowFir) obj.lowFir = round.totalFir;
-      if(!obj.lowGir || round.totalGir < obj.lowGir) obj.lowGir = round.totalGir;
-      if(!obj.lowPutts || round.totalPutts < obj.lowPutts) obj.lowPutts = round.totalPutts;
+      // if(!obj.lowScore || round.totalScore < obj.lowScore) obj.lowScore = round.totalScore;
+      if(!obj.lowScore){
+        obj.lowScore = round.totalScore;
+        obj.lowScoreRounds = [round];
+      } else {
+        if(round.lowScore < obj.totalScore){
+          obj.lowScore = round.totalScore;
+          obj.lowScoreRounds = [];
+          obj.lowScoreRounds.push(round);
+        } else if(round.totalScore == obj.lowScore){
+          obj.lowScoreRounds.push(round);
+        }
+      }
+      
+      // if(!obj.lowFir || round.totalFir < obj.lowFir) obj.lowFir = round.totalFir;
+      if(!obj.lowFir){
+        obj.lowFir = round.totalFir;
+        obj.lowFirRounds = [round];
+      } else {
+        if(round.totalFir < obj.lowFir){
+          obj.lowFir = round.totalFir;
+          obj.lowFirRounds = [];
+          obj.lowFirRounds.push(round);
+        } else if(round.totalFir == obj.lowFir){
+          obj.lowFirRounds.push(round);
+        }
+      }
+
+      // if(!obj.lowGir || round.totalGir < obj.lowGir) obj.lowGir = round.totalGir;
+      if(!obj.lowGir){
+        obj.lowGir = round.totalGir;
+        obj.lowGirRounds = [round];
+      } else {
+        if(round.totalGir < obj.lowGir){
+          obj.lowGir = round.totalGir;
+          obj.lowGirRounds = [];
+          obj.lowGirRounds.push(round);
+        } else if(round.totalGir == obj.lowGir){
+          obj.lowGirRounds.push(round);
+        }
+      }
+
+      // if(!obj.lowPutts || round.totalPutts < obj.lowPutts) obj.lowPutts = round.totalPutts;
+      if(!obj.lowPutts){
+        obj.lowPutts = round.totalPutts;
+        obj.lowPuttsRounds = [round];
+      } else {
+        if(round.totalPutts < obj.lowPutts){
+          obj.lowPutts = round.totalPutts;
+          obj.lowPuttsRounds = [];
+          obj.lowPuttsRounds.push(round);
+        } else if(round.totalPutts == obj.lowPutts){
+          obj.lowPuttsRounds.push(round);
+        }
+      }
         
       obj.totalScore == undefined ? obj.totalScore = round.totalScore : obj.totalScore += round.totalScore;
       obj.totalFir == undefined ? obj.totalFir = round.totalFir : obj.totalFir += round.totalFir;
@@ -139,6 +244,44 @@ export const getPlayerStats = (name, handler) => {
   
 };
 
+
+
+export function getAveragesLastFiveRounds(name, cb){
+  players.child(name).once('value').then(data => {
+    let score = 0, fir = 0, gir = 0, putts = 0, avgScore, avgFir, avgGir, avgPutts;
+
+    let playersRounds = data.val();
+    let numberOfRounds = Object.keys(playersRounds).length;
+    let keysOfLastFiveRounds = Object.keys(playersRounds).slice(numberOfRounds - 5);
+
+    for(let i = 0; i < keysOfLastFiveRounds.length; i++){
+      let round = playersRounds[keysOfLastFiveRounds[i]];
+      score += round.totalScore;
+      fir += round.totalFir;
+      gir += round.totalGir;
+      putts += round.totalPutts;
+    }
+
+    avgScore = score / 5;
+    avgFir = fir / 5;
+    avgGir = gir / 5;
+    avgPutts = putts / 5;
+
+    let lastFiveAverages = {};
+    lastFiveAverages.player = name;
+
+    lastFiveAverages.avgScore = avgScore;
+    lastFiveAverages.avgFir = avgFir;
+    lastFiveAverages.avgGir = avgGir;
+    lastFiveAverages.avgPutts = avgPutts;
+
+    // console.log(lastFiveAverages);
+    cb(lastFiveAverages);
+  });
+}
+
+
+//old version of getStats
 // export function getStats(name, handler){
 //   dispatch => { type: LOAD_START }
 //   players.child(name).once('value').then(data => {
@@ -196,38 +339,4 @@ export const getPlayerStats = (name, handler) => {
 //   });
 // }
 
-
-export function getAveragesLastFiveRounds(name, cb){
-  players.child(name).once('value').then(data => {
-    let score = 0, fir = 0, gir = 0, putts = 0, avgScore, avgFir, avgGir, avgPutts;
-
-    let playersRounds = data.val();
-    let numberOfRounds = Object.keys(playersRounds).length;
-    let keysOfLastFiveRounds = Object.keys(playersRounds).slice(numberOfRounds - 5);
-
-    for(let i = 0; i < keysOfLastFiveRounds.length; i++){
-      let round = playersRounds[keysOfLastFiveRounds[i]];
-      score += round.totalScore;
-      fir += round.totalFir;
-      gir += round.totalGir;
-      putts += round.totalPutts;
-    }
-
-    avgScore = score / 5;
-    avgFir = fir / 5;
-    avgGir = gir / 5;
-    avgPutts = putts / 5;
-
-    let lastFiveAverages = {};
-    lastFiveAverages.player = name;
-
-    lastFiveAverages.avgScore = avgScore;
-    lastFiveAverages.avgFir = avgFir;
-    lastFiveAverages.avgGir = avgGir;
-    lastFiveAverages.avgPutts = avgPutts;
-
-    // console.log(lastFiveAverages);
-    cb(lastFiveAverages);
-  });
-}
 
