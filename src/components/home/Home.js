@@ -74,17 +74,33 @@ class Home extends PureComponent{
             </div>
             <div className='statColumn'>
               <h2>Best</h2>
-              <div className ='statDiv'>Score: {Charlie.lowScore}</div>
-              <div className ='statDiv'>FIR: {Charlie.highFir}</div>
-              <div className ='statDiv'>GIR: {Charlie.highGir}</div>
-              <div className ='statDiv'>Putts: {Charlie.lowPutts}</div>
+              <Link to={{ pathname: '/viewRounds', state: Charlie.lowScoreRounds }}>
+                <div className ='statDiv'>Score: {Charlie.lowScore}</div>
+              </Link>
+              <Link to={{ pathname: '/viewRounds', state: Charlie.highFirRounds }}>
+                <div className ='statDiv'>FIR: {Charlie.highFir}</div>
+              </Link>
+              <Link to={{ pathname: '/viewRounds', state: Charlie.highGirRounds }}>
+                <div className ='statDiv'>GIR: {Charlie.highGir}</div>
+              </Link>
+              <Link to={{ pathname: '/viewRounds', state: Charlie.LowPuttsRounds }}>
+                <div className ='statDiv'>Putts: {Charlie.lowPutts}</div>
+              </Link>
             </div>
             <div className='statColumn'>
               <h2>Worst</h2>
-              <div className ='statDiv'>Score: {Charlie.highScore}</div>
-              <div className ='statDiv'>FIR: {Charlie.lowFir}</div>
-              <div className ='statDiv'>GIR: {Charlie.lowGir}</div>
-              <div className ='statDiv'>Putts: {Charlie.highPutts}</div>
+              <Link to={{ pathname: '/viewRounds', state: Charlie.highScoreRounds }}>
+                <div className ='statDiv'>Score: {Charlie.highScore}</div>
+              </Link>
+              <Link to={{ pathname: '/viewRounds', state: Charlie.lowFirRounds }}>
+                <div className ='statDiv'>FIR: {Charlie.lowFir}</div>
+              </Link>
+              <Link to={{ pathname: '/viewRounds', state: Charlie.lowGirRounds }}> 
+                <div className ='statDiv'>GIR: {Charlie.lowGir}</div>
+              </Link>
+              <Link to={{ pathname: 'viewRounds', state: Charlie.highPuttsRounds }}> 
+                <div className ='statDiv'>Putts: {Charlie.highPutts}</div>
+              </Link>
             </div>
           </section>
         </div>
@@ -114,17 +130,33 @@ class Home extends PureComponent{
             </div>
             <div className='statColumn'>
               <h2>Best</h2>
-              <div className ='statDiv'>Score: {Jeremy.lowScore}</div>
-              <div className ='statDiv'>FIR: {Jeremy.highFir}</div>
-              <div className ='statDiv'>GIR: {Jeremy.highGir}</div>
-              <div className ='statDiv'>Putts: {Jeremy.lowPutts}</div>
+              <Link to={{ pathname: '/viewRounds', state: Jeremy.lowScoreRounds }}>
+                <div className ='statDiv'>Score: {Jeremy.lowScore}</div>
+              </Link>
+              <Link to={{ pathname: '/viewRounds', state: Jeremy.highFirRounds }}>
+                <div className ='statDiv'>FIR: {Jeremy.highFir}</div>
+              </Link>
+              <Link to={{ pathname: '/viewRounds', state: Jeremy.highGirRounds }}>
+                <div className ='statDiv'>GIR: {Jeremy.highGir}</div>
+              </Link>
+              <Link to={{ pathname: '/viewRounds', state: Jeremy.lowPuttsRounds }}>
+                <div className ='statDiv'>Putts: {Jeremy.lowPutts}</div>
+              </Link>
             </div>
             <div className='statColumn'>
               <h2>Worst</h2>
-              <div className ='statDiv'>Score: {Jeremy.highScore}</div>
-              <div className ='statDiv'>FIR: {Jeremy.lowFir}</div>
-              <div className ='statDiv'>GIR: {Jeremy.lowGir}</div>
-              <div className ='statDiv'>Putts: {Jeremy.highPutts}</div>
+              <Link to={{ pathname: '/viewRounds', state: Jeremy.highScoreRounds }}>
+                <div className ='statDiv'>Score: {Jeremy.highScore}</div>
+              </Link>
+              <Link to={{ pathname: '/viewRounds', state: Jeremy.lowFirRounds }}>
+                <div className ='statDiv'>FIR: {Jeremy.lowFir}</div>
+              </Link> 
+              <Link to={{ pathname: '/viewRounds', state: Jeremy.lowGirRounds }}>
+                <div className ='statDiv'>GIR: {Jeremy.lowGir}</div>
+              </Link>
+              <Link to={{ pathname: 'viewRounds', state: Jeremy.highPuttsRounds }}>
+                <div className ='statDiv'>Putts: {Jeremy.highPutts}</div>
+              </Link> 
             </div>
           </section>
         </div>
