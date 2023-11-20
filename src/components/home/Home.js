@@ -53,9 +53,9 @@ class Home extends PureComponent{
           <div className='rdTotals'>Total Rounds: {Charlie.totalRounds}</div>
           <div>Handicap: {Charlie.playerHandicap}</div>
           <div className='statDiv'>
-            <Link to={'/newRound/Charlie'}>Add Round</Link>
+            <Link id="main-link" to={'/newRound/Charlie'}>Add Round</Link>
             &nbsp;
-            <Link to={'/rounds/Charlie'}>View Rounds</Link>
+            <Link id="main-link" to={'/rounds/Charlie'}>View Rounds</Link>
           </div>
           <section className='statsSection'>
             <div className='statColumn'>
@@ -109,9 +109,9 @@ class Home extends PureComponent{
           <div className='rdTotals'>Total Rounds: {Jeremy.totalRounds}</div>
           <div>Handicap: {Jeremy.playerHandicap}</div>
           <div className='statDiv'>
-            <Link to={'/newRound/Jeremy'}>Add Round</Link>
+            <Link id="main-link" to={'/newRound/Jeremy'}>Add Round</Link>
             &nbsp;
-            <Link to={'/rounds/Jeremy'}>View Rounds</Link>
+            <Link id="main-link" to={'/rounds/Jeremy'}>View Rounds</Link>
           </div>
           <section className='statsSection'>
             <div className='statColumn'>
