@@ -13,7 +13,7 @@
     text-align: center;
     margin-top: 1rem;
         
-    a{
+    a#main-link{
       font-style: italic;
       font-size: .8rem;
       padding: .4rem;
@@ -58,7 +58,7 @@
     text-align: center;
     margin-top: 2rem;
         
-    a{
+    a#main-link{
       font-style: italic;
       font-size: 1rem;
       padding: .5rem;

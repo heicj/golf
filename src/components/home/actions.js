@@ -99,62 +99,151 @@ export function getRounds(name){
 //   }
 // }
 
-export function getStats(name, handler){
-  dispatch => { type: LOAD_START }
+export const getPlayerStats = (name, handler) => {
+
+  let obj = {};
+  obj.player = name;
+
   players.child(name).once('value').then(data => {
     const rounds = data.val();
-    let avgScore, avgFir, avgGir, avgPutts, highScore, highFir, highGir, highPutts, lowScore, lowFir, lowGir, lowPutts, totalScore = 0, totalFir = 0, totalGir = 0, totalPutts = 0;
-   
-    let counter = 1;
-    const totalRounds = Object.keys(rounds).length;
+    obj.rounds = rounds;
+    obj.totalRounds = Object.keys(rounds).length;
     Object.keys(rounds).forEach(key => {
+
       let round = rounds[key];
-      if(counter == 1){
-        highScore = round.totalScore;
-        highFir = round.totalFir;
-        highGir = round.totalGir;
-        highPutts = round.totalPutts;
-        lowScore = round.totalScore;
-        lowFir = round.totalFir;
-        lowGir = round.totalGir;
-        lowPutts = round.totalPutts;
-        totalScore += round.totalScore;
-        totalFir += round.totalFir;
-        totalGir += round.totalGir;
-        totalPutts += round.totalPutts;
-        counter++;
+        
+      // if(!obj.highScore || round.totalScore > obj.highScore) obj.highScore = round.totalScore;
+
+      if(!obj.highScore){
+        obj.highScore = round.totalScore;
+        obj.highScoreRounds = [round];
       } else {
-        if(round.totalScore > highScore) highScore = round.totalScore;
-        if(round.totalFir > highFir) highFir = round.totalFir;
-        if(round.totalGir > highGir) highGir = round.totalGir;
-        if(round.totalPutts > highPutts) highPutts = round.totalPutts;
+        if(round.totalScore > obj.highScore){
+          obj.highScore = round.totalScore;
+          obj.highScoreRounds = [];
+          obj.highScoreRounds.push(round);
+        } else if(round.totalScore == obj.highScore) {
+          obj.highScoreRounds.push(round);
+        }
+      }
+      // if(!obj.highFir || round.totalFir > obj.highFir) obj.highFir = round.totalFir;
 
-        if(round.totalScore < lowScore) lowScore = round.totalScore;
-        if(round.totalFir < lowFir) lowFir = round.totalFir;
-        if(round.totalGir < lowGir) lowGir = round.totalGir;
-        if(round.totalPutts < lowPutts) lowPutts = round.totalPutts;
+      if(!obj.highFir){
+        obj.highFir = round.totalFir;
+        obj.highFirRounds = [round];
+      } else {
+        if(round.totalFir > obj.highFir){
+          obj.highFir = round.totalFir;
+          obj.highFirRounds = [];
+          obj.highFirRounds.push(round);
+        } else if(round.totalFir == obj.highFir){
+          obj.highFirRounds.push(round);
+        }
+      }
 
-        totalScore += round.totalScore;
-        totalFir += round.totalFir;
-        totalGir += round.totalGir;
-        totalPutts += round.totalPutts;
-      } 
+      // if(!obj.highGir || round.totalGir > obj.highGir) obj.highGir = round.totalGir;
+
+      if(!obj.highGir){
+        obj.highGir = round.totalGir;
+        obj.highGirRounds = [round];
+      } else {
+        if(round.totalGir > obj.highGir){
+          obj.highGir = round.totalGir;
+          obj.highGirRounds = [];
+          obj.highGirRounds.push(round);
+        } else if(round.totalGir == obj.highGir){
+          obj.highGirRounds.push(round);
+        }
+      }
+
+      // if(!obj.highPutts || round.totalPutts > obj.highPutts) obj.highPutts = round.totalPutts;
+      
+      if(!obj.highPutts){
+        obj.highPutts = round.totalPutts;
+        obj.highPuttsRounds = [round];
+      } else {
+        if(round.totalPutts > obj.highPutts){
+          obj.highPutts = round.totalPutts;
+          obj.highPuttsRounds = [];
+          obj.highPuttsRounds.push(round);
+        } else if(round.totalPutts == obj.highPutts){
+          obj.highPuttsRounds.push(round);
+        }
+      }
+        
+      // if(!obj.lowScore || round.totalScore < obj.lowScore) obj.lowScore = round.totalScore;
+      if(!obj.lowScore){
+        obj.lowScore = round.totalScore;
+        obj.lowScoreRounds = [round];
+      } else {
+        if(round.lowScore < obj.totalScore){
+          obj.lowScore = round.totalScore;
+          obj.lowScoreRounds = [];
+          obj.lowScoreRounds.push(round);
+        } else if(round.totalScore == obj.lowScore){
+          obj.lowScoreRounds.push(round);
+        }
+      }
+      
+      // if(!obj.lowFir || round.totalFir < obj.lowFir) obj.lowFir = round.totalFir;
+      if(!obj.lowFir){
+        obj.lowFir = round.totalFir;
+        obj.lowFirRounds = [round];
+      } else {
+        if(round.totalFir < obj.lowFir){
+          obj.lowFir = round.totalFir;
+          obj.lowFirRounds = [];
+          obj.lowFirRounds.push(round);
+        } else if(round.totalFir == obj.lowFir){
+          obj.lowFirRounds.push(round);
+        }
+      }
+
+      // if(!obj.lowGir || round.totalGir < obj.lowGir) obj.lowGir = round.totalGir;
+      if(!obj.lowGir){
+        obj.lowGir = round.totalGir;
+        obj.lowGirRounds = [round];
+      } else {
+        if(round.totalGir < obj.lowGir){
+          obj.lowGir = round.totalGir;
+          obj.lowGirRounds = [];
+          obj.lowGirRounds.push(round);
+        } else if(round.totalGir == obj.lowGir){
+          obj.lowGirRounds.push(round);
+        }
+      }
+
+      // if(!obj.lowPutts || round.totalPutts < obj.lowPutts) obj.lowPutts = round.totalPutts;
+      if(!obj.lowPutts){
+        obj.lowPutts = round.totalPutts;
+        obj.lowPuttsRounds = [round];
+      } else {
+        if(round.totalPutts < obj.lowPutts){
+          obj.lowPutts = round.totalPutts;
+          obj.lowPuttsRounds = [];
+          obj.lowPuttsRounds.push(round);
+        } else if(round.totalPutts == obj.lowPutts){
+          obj.lowPuttsRounds.push(round);
+        }
+      }
+        
+      obj.totalScore == undefined ? obj.totalScore = round.totalScore : obj.totalScore += round.totalScore;
+      obj.totalFir == undefined ? obj.totalFir = round.totalFir : obj.totalFir += round.totalFir;
+      obj.totalGir == undefined ? obj.totalGir = round.totalGir : obj.totalGir += round.totalGir;
+      obj.totalPutts == undefined ? obj.totalPutts = round.totalPutts : obj.totalPutts += round.totalPutts;
+
+      obj.avgScore = (obj.totalScore / obj.totalRounds).toFixed(2);
+      obj.avgFir = (obj.totalFir / obj.totalRounds).toFixed(2);
+      obj.avgGir = (obj.totalGir / obj.totalRounds).toFixed(2);
+      obj.avgPutts = (obj.totalPutts / obj.totalRounds).toFixed(2);
+      obj.playerHandicap = handicap(rounds);
+
     });
-    avgScore = (totalScore / totalRounds).toFixed(2);
-    avgFir = (totalFir / totalRounds).toFixed(2);
-    avgGir = (totalGir / totalRounds).toFixed(2);
-    avgPutts = (totalPutts / totalRounds).toFixed(2);
-    const playerHandicap = handicap(rounds);
-    let stats = [
-      { 'AvgScore': avgScore }, { 'FirAvg': avgFir }, { 'GirAvg': avgGir }, { 'PuttsAvg': avgPutts },
-      { 'HighScore': highScore }, { 'HighFir': highFir }, { 'HighGir': highGir }, { 'HighPutts': highPutts },
-      { 'LowScore': lowScore }, { 'LowFir': lowFir }, { 'LowGir': lowGir }, { 'LowPutts': lowPutts }, { 'TotalRounds': totalRounds }, { 'handicap': playerHandicap }
-    ];
-
-    dispatch => { type: LOAD_END }
-    return handler(stats);
+    return handler(obj);
   });
-}
+  
+};
+
 
 
 export function getAveragesLastFiveRounds(name, cb){
@@ -179,14 +268,75 @@ export function getAveragesLastFiveRounds(name, cb){
     avgPutts = putts / 5;
 
     let lastFiveAverages = {};
+    lastFiveAverages.player = name;
 
     lastFiveAverages.avgScore = avgScore;
     lastFiveAverages.avgFir = avgFir;
     lastFiveAverages.avgGir = avgGir;
     lastFiveAverages.avgPutts = avgPutts;
 
-    console.log(lastFiveAverages);
+    // console.log(lastFiveAverages);
     cb(lastFiveAverages);
   });
 }
+
+
+//old version of getStats
+// export function getStats(name, handler){
+//   dispatch => { type: LOAD_START }
+//   players.child(name).once('value').then(data => {
+//     const rounds = data.val();
+//     let avgScore, avgFir, avgGir, avgPutts, highScore, highFir, highGir, highPutts, lowScore, lowFir, lowGir, lowPutts, totalScore = 0, totalFir = 0, totalGir = 0, totalPutts = 0;
+    
+//     let counter = 1;
+//     const totalRounds = Object.keys(rounds).length;
+//     Object.keys(rounds).forEach(key => {
+//       let round = rounds[key];
+//       if(counter == 1){
+//         highScore = round.totalScore;
+//         highFir = round.totalFir;
+//         highGir = round.totalGir;
+//         highPutts = round.totalPutts;
+//         lowScore = round.totalScore;
+//         lowFir = round.totalFir;
+//         lowGir = round.totalGir;
+//         lowPutts = round.totalPutts;
+//         totalScore += round.totalScore;
+//         totalFir += round.totalFir;
+//         totalGir += round.totalGir;
+//         totalPutts += round.totalPutts;
+//         counter++;
+//       } else {
+//         if(round.totalScore > highScore) highScore = round.totalScore;
+//         if(round.totalFir > highFir) highFir = round.totalFir;
+//         if(round.totalGir > highGir) highGir = round.totalGir;
+//         if(round.totalPutts > highPutts) highPutts = round.totalPutts;
+
+//         if(round.totalScore < lowScore) lowScore = round.totalScore;
+//         if(round.totalFir < lowFir) lowFir = round.totalFir;
+//         if(round.totalGir < lowGir) lowGir = round.totalGir;
+//         if(round.totalPutts < lowPutts) lowPutts = round.totalPutts;
+
+//         totalScore += round.totalScore;
+//         totalFir += round.totalFir;
+//         totalGir += round.totalGir;
+//         totalPutts += round.totalPutts;
+//       } 
+//     });
+//     avgScore = (totalScore / totalRounds).toFixed(2);
+//     avgFir = (totalFir / totalRounds).toFixed(2);
+//     avgGir = (totalGir / totalRounds).toFixed(2);
+//     avgPutts = (totalPutts / totalRounds).toFixed(2);
+//     const playerHandicap = handicap(rounds);
+//     let stats = [
+//       { 'AvgScore': avgScore }, { 'FirAvg': avgFir }, { 'GirAvg': avgGir }, { 'PuttsAvg': avgPutts },
+//       { 'HighScore': highScore }, { 'HighFir': highFir }, { 'HighGir': highGir }, { 'HighPutts': highPutts },
+//       { 'LowScore': lowScore }, { 'LowFir': lowFir }, { 'LowGir': lowGir }, { 'LowPutts': lowPutts }, { 'TotalRounds': totalRounds }, { 'handicap': playerHandicap }
+//     ];
+
+//     dispatch => { type: LOAD_END }
+//     return handler(stats);
+//   });
+// }
+
 
