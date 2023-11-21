@@ -125,7 +125,7 @@ export const getPlayerStats = (name, handler) => {
         } else if(round.totalScore == obj.highScore) {
           obj.highScoreRounds.push(round);
         }
-      }
+    }
       // if(!obj.highFir || round.totalFir > obj.highFir) obj.highFir = round.totalFir;
 
       if(!obj.highFir){
@@ -176,7 +176,7 @@ export const getPlayerStats = (name, handler) => {
         obj.lowScore = round.totalScore;
         obj.lowScoreRounds = [round];
       } else {
-        if(round.lowScore < obj.totalScore){
+        if(round.totalScore < obj.lowScore){
           obj.lowScore = round.totalScore;
           obj.lowScoreRounds = [];
           obj.lowScoreRounds.push(round);
