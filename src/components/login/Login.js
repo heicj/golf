@@ -22,7 +22,7 @@ class Login extends PureComponent{
     const { target: { elements } } = event;
     const { name, password } = elements;
 
-    if(name.value == 'charlie' || 'jeremy' && password.value == process.env.PASSWORD){
+    if(name.value == 'charlie' && password.value == process.env.PASSWORD || 'jeremy' && password.value == process.env.PASSWORD){
       this.props.userSignin();
       this.setState({ redirectToReferrer: true });
 
