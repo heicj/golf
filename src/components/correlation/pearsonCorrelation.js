@@ -35,6 +35,6 @@ export function pearsonCorrelation(arr1, arr2){
   const squareOfDenominator = Math.sqrt(denominator);
 
   const r = sumOfXMinusXbarTimesYMinusYBar / squareOfDenominator;
-  return r;
+  return r.toFixed(3);
 
 }
