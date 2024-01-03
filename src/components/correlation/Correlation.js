@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import CorrelationRelationshipDisplay from '../correlationRelationshipDisplay/CorrelationRelationshipDisplay';
+import CorrelationRanges from '../correlationRanges/CorrelationRanges';
 import { getRoundsNoRedux } from '../home/actions';
 import { getPlayerCorrelations } from './actions';
+import './correlation.css';
 
 class Correlation extends Component{
 
@@ -28,14 +31,17 @@ class Correlation extends Component{
   };
 
   render(){
-   const { Charlie, Jeremy } = this.state;
+    const { Charlie, Jeremy } = this.state;
     return (
-      <div>
-
-        <div>{Charlie.player}</div>
-        <div>{Charlie.firGirPhiCorr}</div>
-        <div>{Charlie.girPuttsPearsonCorrelation}</div>
-      </div>
+      <section id='correlation-main-section'>
+        <div>
+          <CorrelationRelationshipDisplay playerCorrelations={Charlie}/>
+          <CorrelationRelationshipDisplay playerCorrelations={Jeremy}/>
+        </div>
+        <div>
+          <CorrelationRanges/>
+        </div>
+      </section>
     );
   }
 }

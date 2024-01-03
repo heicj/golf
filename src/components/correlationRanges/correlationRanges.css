@@ -1,0 +1,11 @@
+#ranges-wrapper{
+  width: 50%;
+  margin: 1rem auto;
+  border: outset 3px;
+  border-radius: 30px;
+  background-color: var(--main-background-color);
+  text-align: center;
+  div{
+    padding: .4rem;
+  }
+}
