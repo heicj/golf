@@ -18,7 +18,7 @@ import ChartSingleRd from '../chartSingleRd/ChartSingleRd';
 import CourseAverages from '../courseAverages/CourseAverages';
 import ViewCourseHoleAvgs from '../viewCourseHoleAvgs/ViewCourseHoleAvgs';
 import ViewBestAndWorstRounds from '../viewBestAndWorstRounds/ViewBestAndWorstRounds';
-
+import Correlation from '../correlation/Correlation';
 
 class App extends PureComponent{
 
@@ -48,6 +48,7 @@ class App extends PureComponent{
               <Route path='/courseAverages' component={CourseAverages}/>
               <Route path='/holeAverages/:name' component={ViewCourseHoleAvgs}/>
               <Route path='/viewRounds' component={ViewBestAndWorstRounds}/>
+              <Route path='/correlations' component={Correlation}/>
               <Redirect to='/'/>
               
             </Switch>

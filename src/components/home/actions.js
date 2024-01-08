@@ -22,6 +22,21 @@ export function getRounds(name){
     
 }
 
+export function getRoundsNoRedux(name, cb){
+  players.child(name).once('value').then(data => {
+    const rounds = data.val();
+    return Object.keys(rounds).map(key => {
+      let round = rounds[key];
+      round.key = key;
+      return round;
+    });
+  }).then(arr => arr.sort(function(a, b){
+    return a.date < b.date ? 1 : a.date > b.date ? -1 : 0;
+
+  })).then(sortedArray => cb(sortedArray));
+  
+}
+
 // <----------
 
 //this getRoundsFunction when used in the action function getRounds 
