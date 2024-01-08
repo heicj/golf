@@ -1,5 +1,11 @@
 import { courseSortedStatsFunc, courseHoleAverage } from './actions';
 
+//test suite fails to run when running jest test
+//error: Your API key is invalid, please check you have copied it correctly.
+//because it is running the ./action file which connects with firebase
+//causes the error. Can move function testing to seperate file so that it doesn't try to run db or firebase connection
+//whichever one is causing the issue. 
+
 describe('tests func that sorts stats by course', () => {
   const allRounds = {
     1234: {
@@ -91,7 +97,7 @@ describe('tests func that sorts stats by course', () => {
   const allFullRounds = {
     fullRound1,
     fullRound2
-  }
+  };
 
   it('tests function', () => {
     const results = courseSortedStatsFunc(allRounds);
