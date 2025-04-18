@@ -18,4 +18,3 @@ export function changeName(name){
     payload: name
   };
 }
-

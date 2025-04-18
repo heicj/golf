@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getRounds } from '../home/actions';
 import { deleteRd, changeName } from './actions';
 import Round from '../round/Round';
+import { getCourseNamesFromArrayOfRounds } from './helperFunction';
 import './viewrounds.css';
 import { excelFunc } from '../../services/excelFunc';
 
@@ -18,10 +19,12 @@ class ViewRounds extends Component{
     this.setState({ 'page': 1 });
     this.props.changeName(name);
     this.props.getRounds(name);
-    window.scrollTo(0, 0);  
+    
   }
   
   componentDidUpdate(prevProps, prevState){
+    console.log(this.props.rounds);
+    getCourseNamesFromArrayOfRounds(this.props.rounds);
     if(prevProps.name !== this.props.name){
       this.props.changeName(this.props.name);
       this.props.getRounds(this.props.name);
@@ -78,6 +81,7 @@ class ViewRounds extends Component{
     return (
       <section>
         <h2 id="playerH2">{this.props.name + "'s"} Rounds</h2>
+        <button id='buttonDiv'>Sort Rounds By Location</button>
         
         <div id="buttonDiv">
           <button onClick={this.handleClick}>DOWNLOAD {name}'s ROUNDS</button>
