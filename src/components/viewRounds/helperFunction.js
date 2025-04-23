@@ -6,6 +6,5 @@ export function getCourseNamesFromArrayOfRounds(arr) {
       courseList[name] = name;
     }
   }
-  console.log(courseList);
   return courseList;
 }

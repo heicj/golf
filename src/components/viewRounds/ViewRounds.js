@@ -11,7 +11,8 @@ class ViewRounds extends Component{
 
   state = {
     page: 1,
-    perPage: 10
+    perPage: 10,
+    courseLocations: null
   };
 
   componentDidMount(){
@@ -23,8 +24,7 @@ class ViewRounds extends Component{
   }
   
   componentDidUpdate(prevProps, prevState){
-    console.log(this.props.rounds);
-    getCourseNamesFromArrayOfRounds(this.props.rounds);
+    
     if(prevProps.name !== this.props.name){
       this.props.changeName(this.props.name);
       this.props.getRounds(this.props.name);
@@ -34,13 +34,21 @@ class ViewRounds extends Component{
     }
   }
 
+  handleSortRoundsByLocation = () => {
+    if(this.state.courseLocations == null){
+      let courseLocations = getCourseNamesFromArrayOfRounds(this.props.rounds);
+      this.setState({ 'courseLocations': courseLocations });
+    } else {
+      this.setState({ 'courseLocations': null });
+    }
+  };
+
   handleClick = () => {
     let rounds = this.props.rounds;
     this.props.excelFunc(rounds);
   };
 
   handlePaging = ({ target }) => {
-
     let name = target.id;
     let page = this.state.page;
     let perPage = this.state.perPage;
@@ -77,12 +85,29 @@ class ViewRounds extends Component{
 
   render(){
     const { rounds, deleteRd, name } = this.props;
-    const { page, perPage } = this.state;
+    const { page, perPage, courseLocations } = this.state;
     return (
       <section>
         <h2 id="playerH2">{this.props.name + "'s"} Rounds</h2>
-        <button id='buttonDiv'>Sort Rounds By Location</button>
+        <div id="buttonDiv">
+          <button id='sortRoundsButton' onClick={this.handleSortRoundsByLocation}>Sort Rounds By Location</button>
+        </div>
         
+        { courseLocations != null ?
+          <div>
+            {
+              <section>
+                <div onClick={this.handleSortRoundsByLocation}>ALL ROUNDS</div>
+                { Object.keys(courseLocations).map((location) => {
+                  return <div>{location}</div>;
+                })
+                }
+              </section>
+            }
+          </div>
+          :
+          null
+        }
         <div id="buttonDiv">
           <button onClick={this.handleClick}>DOWNLOAD {name}'s ROUNDS</button>
         </div>
