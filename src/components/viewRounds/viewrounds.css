@@ -6,8 +6,23 @@
     margin-top: .75rem;
     margin-left: 2rem;
     }
+
+  #roundLocationContainer{
+    text-align: center;
+    align-content: center;
+  }
+
+  .courseLocationDiv{
+    width: 30%;
+    margin: .2rem auto .2rem auto;
+    padding: .3rem;
+  }
+
+  .courseLocationDiv:hover{
+    background-color: var(--main-background-color);
+  }
     
-    #buttonDiv{
+    .buttonDiv{
       width: 100%;
       margin: .7rem;
     }
@@ -68,6 +83,20 @@
   font-weight: bold;
   margin-top: 1rem;
   margin-left: 2rem;
+  }
+
+  #roundLocationContainer{
+    text-align: center;
+  }
+
+  .courseLocationDiv{
+    width: 30%;
+    margin: .2rem auto .2rem auto;
+    padding: .3rem;
+  }
+  
+  .courseLocationDiv:hover{
+    background-color: var(--main-background-color);
   }
   
   #buttonDiv{
