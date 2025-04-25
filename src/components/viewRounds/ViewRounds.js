@@ -115,10 +115,10 @@ class ViewRounds extends Component{
         { courseLocations != null ?
           <div>
             {
-              <section>
-                <div id='allRoundsDiv' onClick={this.handleSortRoundsByLocation}>ALL ROUNDS</div>
+              <section id='roundLocationContainer'>
+                <div id='allRoundsDiv' className='courseLocationDiv' onClick={this.handleSortRoundsByLocation}>ALL ROUNDS</div>
                 { Object.keys(courseLocations).map((location) => {
-                  return <div onClick={this.locationClick} id={location}>{location}</div>;
+                  return <div className='courseLocationDiv' onClick={this.locationClick} id={location}>{location}</div>;
                 })
                 }
               </section>
