@@ -50,11 +50,19 @@ class Header extends PureComponent{
                   </div>
                   &nbsp;
                   <div>
+                    <Link to='/rounds/Evan'>Evan's rounds</Link>
+                  </div>
+                  &nbsp;
+                  <div>
                     <Link to='/newRound/Charlie'>Charlie add round</Link>
                   </div>
                   &nbsp;
                   <div>
                     <Link to='/newRound/Jeremy'>Jeremy add round</Link>
+                  </div>
+                  &nbsp;
+                  <div>
+                    <Link to='/newRound/Evan'>Evan add round</Link>
                   </div>
                   &nbsp;
                   <div>
