@@ -10,8 +10,10 @@ class Home extends PureComponent{
   state = {
     Charlie: {},
     Jeremy: {},
+    Evan: {},
     charlieLastFiveAvgs: {},
-    jeremyLastFiveAvgs: {}
+    jeremyLastFiveAvgs: {},
+    evanLastFiveAvgs: {}
   };
 
   handleCharlieLastFiveAverages = (obj) => {
@@ -34,18 +36,20 @@ class Home extends PureComponent{
     let p = obj.player.toLowerCase() + 'LastFiveAvgs';
     o[p] = obj;
     this.setState(o);
-  }
+  };
 
   componentDidMount(){
     // this.props.coursesPlayedList(['Charlie', 'Jeremy']);
     getAveragesLastFiveRounds('Charlie', this.handleLastFiveRounds);
     getAveragesLastFiveRounds('Jeremy', this.handleLastFiveRounds);
+    getAveragesLastFiveRounds('Evan', this.handleLastFiveRounds);
 
     this.props.getPlayerStats('Charlie', this.handleStats);
     this.props.getPlayerStats('Jeremy', this.handleStats);
+    this.props.getPlayerStats('Evan', this.handleStats);
   }
   render(){
-    const { Charlie, Jeremy, charlieLastFiveAvgs, jeremyLastFiveAvgs } = this.state;
+    const { Charlie, Jeremy, Evan, charlieLastFiveAvgs, jeremyLastFiveAvgs, evanLastFiveAvgs } = this.state;
     return (
       <div id="mainSection">
         <div className='playerBox'>
@@ -160,6 +164,64 @@ class Home extends PureComponent{
             </div>
           </section>
         </div>
+
+        <div className='playerBox'>
+          <div className='player'>Evan</div>
+          <div className='rdTotals'>Total Rounds: {Evan.totalRounds}</div>
+          <div>Handicap: {Evan.playerHandicap}</div>
+          <div className='statDiv'>
+            <Link id="main-link" to={'/newRound/Evan'}>Add Round</Link>
+            &nbsp;
+            <Link id="main-link" to={'/rounds/Evan'}>View Rounds</Link>
+          </div>
+          <section className='statsSection'>
+            <div className='statColumn'>
+              <h2>Averages</h2>
+              <div className='statDiv'>Score: {Evan.avgScore}</div>
+              <div className='statDiv'>Fir: {Evan.avgFir}</div>
+              <div className='statDiv'>Gir: {Evan.avgGir}</div>
+              <div className='statDiv'>Putts: {Evan.avgPutts}</div>
+            </div>
+            <div className='statColumn'>
+              <h2>Last 5 Rds Avgs</h2>
+              <div className='statDiv'>Score: {evanLastFiveAvgs.avgScore}</div>
+              <div className='statDiv'>Fir: {evanLastFiveAvgs.avgFir}</div>
+              <div className='statDiv'>Gir: {evanLastFiveAvgs.avgGir}</div>
+              <div className='statDiv'>Putts: {evanLastFiveAvgs.avgPutts}</div>
+            </div>
+            <div className='statColumn'>
+              <h2>Best</h2>
+              <Link to={{ pathname: '/viewRounds', state: Evan.lowScoreRounds, statCategory: 'Low Score' }}>
+                <div className ='statDiv'>Score: {Evan.lowScore}</div>
+              </Link>
+              <Link to={{ pathname: '/viewRounds', state: Evan.highFirRounds, statCategory: 'High FIR' }}>
+                <div className ='statDiv'>FIR: {Evan.highFir}</div>
+              </Link>
+              <Link to={{ pathname: '/viewRounds', state: Evan.highGirRounds, statCategory: 'High GIR' }}>
+                <div className ='statDiv'>GIR: {Evan.highGir}</div>
+              </Link>
+              <Link to={{ pathname: '/viewRounds', state: Evan.lowPuttsRounds, statCategory: 'Low Putts' }}>
+                <div className ='statDiv'>Putts: {Evan.lowPutts}</div>
+              </Link>
+            </div>
+            <div className='statColumn'>
+              <h2>Worst</h2>
+              <Link to={{ pathname: '/viewRounds', state: Evan.highScoreRounds, statCategory: 'High Score' }}>
+                <div className ='statDiv'>Score: {Evan.highScore}</div>
+              </Link>
+              <Link to={{ pathname: '/viewRounds', state: Evan.lowFirRounds, statCategory: 'Low FIR' }}>
+                <div className ='statDiv'>FIR: {Evan.lowFir}</div>
+              </Link> 
+              <Link to={{ pathname: '/viewRounds', state: Evan.lowGirRounds, statCategory: 'Low GIR' }}>
+                <div className ='statDiv'>GIR: {Evan.lowGir}</div>
+              </Link>
+              <Link to={{ pathname: 'viewRounds', state: Evan.highPuttsRounds, statCategory: 'High Putts' }}>
+                <div className ='statDiv'>Putts: {Evan.highPutts}</div>
+              </Link> 
+            </div>
+          </section>
+        </div>
+
       </div>
     );
   }
