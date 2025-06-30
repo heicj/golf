@@ -12,12 +12,14 @@ class Correlation extends Component{
 
   state = {
     'Charlie': {},
-    'Jeremy': {}
+    'Jeremy': {},
+    'Evan': {}
   };
 
   componentDidMount(){
     getPlayerCorrelations('Charlie', this.handleState);
     getPlayerCorrelations('Jeremy', this.handleState);
+    getPlayerCorrelations('Evan', this.handleState);
     // console.log(charliecorr);
     // getRoundsNoRedux('Charlie', this.handleState);
     // getRoundsNoRedux('Jeremy', this.handleState);
@@ -31,12 +33,13 @@ class Correlation extends Component{
   };
 
   render(){
-    const { Charlie, Jeremy } = this.state;
+    const { Charlie, Jeremy, Evan } = this.state;
     return (
       <section id='correlation-main-section'>
         <div>
           <CorrelationRelationshipDisplay playerCorrelations={Charlie}/>
           <CorrelationRelationshipDisplay playerCorrelations={Jeremy}/>
+          <CorrelationRelationshipDisplay playerCorrelations={Evan}/>
         </div>
         <div>
           <CorrelationRanges/>
