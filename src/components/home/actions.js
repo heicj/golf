@@ -143,7 +143,7 @@ export const getPlayerStats = (name, handler) => {
     }
       // if(!obj.highFir || round.totalFir > obj.highFir) obj.highFir = round.totalFir;
 
-      if(!obj.highFir){
+      if(obj.highFir == undefined){
         obj.highFir = round.totalFir;
         obj.highFirRounds = [round];
       } else {
@@ -158,7 +158,7 @@ export const getPlayerStats = (name, handler) => {
 
       // if(!obj.highGir || round.totalGir > obj.highGir) obj.highGir = round.totalGir;
 
-      if(!obj.highGir){
+      if(obj.highGir == undefined){
         obj.highGir = round.totalGir;
         obj.highGirRounds = [round];
       } else {
@@ -173,7 +173,7 @@ export const getPlayerStats = (name, handler) => {
 
       // if(!obj.highPutts || round.totalPutts > obj.highPutts) obj.highPutts = round.totalPutts;
       
-      if(!obj.highPutts){
+      if(obj.highPutts == undefined){
         obj.highPutts = round.totalPutts;
         obj.highPuttsRounds = [round];
       } else {
@@ -187,7 +187,7 @@ export const getPlayerStats = (name, handler) => {
       }
         
       // if(!obj.lowScore || round.totalScore < obj.lowScore) obj.lowScore = round.totalScore;
-      if(!obj.lowScore){
+      if(obj.lowScore == undefined){
         obj.lowScore = round.totalScore;
         obj.lowScoreRounds = [round];
       } else {
@@ -201,7 +201,7 @@ export const getPlayerStats = (name, handler) => {
       }
       
       // if(!obj.lowFir || round.totalFir < obj.lowFir) obj.lowFir = round.totalFir;
-      if(!obj.lowFir){
+      if(obj.lowFir == undefined){
         obj.lowFir = round.totalFir;
         obj.lowFirRounds = [round];
       } else {
@@ -215,7 +215,7 @@ export const getPlayerStats = (name, handler) => {
       }
 
       // if(!obj.lowGir || round.totalGir < obj.lowGir) obj.lowGir = round.totalGir;
-      if(!obj.lowGir){
+      if(obj.lowGir == undefined){
         obj.lowGir = round.totalGir;
         obj.lowGirRounds = [round];
       } else {
@@ -229,7 +229,7 @@ export const getPlayerStats = (name, handler) => {
       }
 
       // if(!obj.lowPutts || round.totalPutts < obj.lowPutts) obj.lowPutts = round.totalPutts;
-      if(!obj.lowPutts){
+      if(obj.lowPutts == undefined){
         obj.lowPutts = round.totalPutts;
         obj.lowPuttsRounds = [round];
       } else {
