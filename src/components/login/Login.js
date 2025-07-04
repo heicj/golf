@@ -1,13 +1,13 @@
 import React, { PureComponent } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { appUsers } from '../../services/firebase';
 import { userSignin } from './actions';
 import './login.css';
 
 class Login extends PureComponent{
 
   componentDidMount(){
-    let user = null;
     if(localStorage.getItem('golfstats') == 'signedin'){
       this.setState({ redirectToReferrer: true });
     }
@@ -22,10 +22,9 @@ class Login extends PureComponent{
     const { target: { elements } } = event;
     const { name, password } = elements;
 
-    if(name.value == 'charlie' && password.value == process.env.PASSWORD || name.value == 'jeremy' && password.value == process.env.PASSWORD || name.value == 'evan' && password.value == process.env.PASSWORD){
+    if(appUsers.includes(name.value) && password.value == process.env.PASSWORD){
       this.props.userSignin();
       this.setState({ redirectToReferrer: true });
-
       localStorage.setItem('golfstats', 'signedin');
     }
   };

@@ -32,3 +32,5 @@ export const providers = firebase.auth;
 export const db = firebaseApp.database();
 
 export const storage = firebase.storage();
+
+export const appUsers = ['Charlie', 'Jeremy', 'Evan'];
