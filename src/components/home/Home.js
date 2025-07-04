@@ -43,6 +43,7 @@ class Home extends PureComponent{
     const { Charlie, Jeremy, Evan, charlieLastFiveAvgs, jeremyLastFiveAvgs, evanLastFiveAvgs } = this.state;
     return (
       <div id="mainSection">
+        
         <div className='playerBox'>
           <div className='player'>Charlie</div>
           <div className='rdTotals'>Total Rounds: {Charlie.totalRounds}</div>
