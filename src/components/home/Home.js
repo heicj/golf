@@ -9,9 +9,9 @@ import './home.css';
 class Home extends PureComponent{
 
   state = {
-    Charlie: {},
-    Jeremy: {},
-    Evan: {},
+    Charlie: { averagesLastFiveRounds: {} },
+    Jeremy: { averagesLastFiveRounds: {} },
+    Evan: { averagesLastFiveRounds: {} },
     charlieLastFiveAvgs: {},
     jeremyLastFiveAvgs: {},
     evanLastFiveAvgs: {}
@@ -35,7 +35,6 @@ class Home extends PureComponent{
 
     appUsers.forEach(user => {
       this.props.getPlayerStats(user, this.handleStats);
-      getAveragesLastFiveRounds(user, this.handleLastFiveRounds);
     });
   }
 
@@ -63,10 +62,10 @@ class Home extends PureComponent{
             </div>
             <div className='statColumn'>
               <h2>Last 5 Rds Avgs</h2>
-              <div className='statDiv'>Score: {charlieLastFiveAvgs.avgScore}</div>
-              <div className='statDiv'>Fir: {charlieLastFiveAvgs.avgFir}</div>
-              <div className='statDiv'>Gir: {charlieLastFiveAvgs.avgGir}</div>
-              <div className='statDiv'>Putts: {charlieLastFiveAvgs.avgPutts}</div>
+              <div className='statDiv'>Score: {Charlie.averagesLastFiveRounds.avgScore}</div>
+              <div className='statDiv'>Fir: {Charlie.averagesLastFiveRounds.avgFir}</div>
+              <div className='statDiv'>Gir: {Charlie.averagesLastFiveRounds.avgGir}</div>
+              <div className='statDiv'>Putts: {Charlie.averagesLastFiveRounds.avgPutts}</div>
             </div>
             <div className='statColumn'>
               <h2>Best</h2>
@@ -100,6 +99,7 @@ class Home extends PureComponent{
             </div>
           </section>
         </div>
+
         <div className='playerBox'>
           <div className='player'>Jeremy</div>
           <div className='rdTotals'>Total Rounds: {Jeremy.totalRounds}</div>
@@ -119,10 +119,10 @@ class Home extends PureComponent{
             </div>
             <div className='statColumn'>
               <h2>Last 5 Rds Avgs</h2>
-              <div className='statDiv'>Score: {jeremyLastFiveAvgs.avgScore}</div>
-              <div className='statDiv'>Fir: {jeremyLastFiveAvgs.avgFir}</div>
-              <div className='statDiv'>Gir: {jeremyLastFiveAvgs.avgGir}</div>
-              <div className='statDiv'>Putts: {jeremyLastFiveAvgs.avgPutts}</div>
+              <div className='statDiv'>Score: {Jeremy.averagesLastFiveRounds.avgScore}</div>
+              <div className='statDiv'>Fir: {Jeremy.averagesLastFiveRounds.avgFir}</div>
+              <div className='statDiv'>Gir: {Jeremy.averagesLastFiveRounds.avgGir}</div>
+              <div className='statDiv'>Putts: {Jeremy.averagesLastFiveRounds.avgPutts}</div>
             </div>
             <div className='statColumn'>
               <h2>Best</h2>
@@ -176,10 +176,10 @@ class Home extends PureComponent{
             </div>
             <div className='statColumn'>
               <h2>Last 5 Rds Avgs</h2>
-              <div className='statDiv'>Score: {evanLastFiveAvgs.avgScore}</div>
-              <div className='statDiv'>Fir: {evanLastFiveAvgs.avgFir}</div>
-              <div className='statDiv'>Gir: {evanLastFiveAvgs.avgGir}</div>
-              <div className='statDiv'>Putts: {evanLastFiveAvgs.avgPutts}</div>
+              <div className='statDiv'>Score: {Evan.averagesLastFiveRounds.avgScore}</div>
+              <div className='statDiv'>Fir: {Evan.averagesLastFiveRounds.avgFir}</div>
+              <div className='statDiv'>Gir: {Evan.averagesLastFiveRounds.avgGir}</div>
+              <div className='statDiv'>Putts: {Evan.averagesLastFiveRounds.avgPutts}</div>
             </div>
             <div className='statColumn'>
               <h2>Best</h2>
