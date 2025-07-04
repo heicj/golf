@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { appUsers } from '../../services/firebase';
 import { getPlayerStats, getStats, getAveragesLastFiveRounds } from './actions';
 import { coursesPlayedList } from '../coursesPlayed/actions';
 import './home.css';
@@ -14,14 +15,6 @@ class Home extends PureComponent{
     charlieLastFiveAvgs: {},
     jeremyLastFiveAvgs: {},
     evanLastFiveAvgs: {}
-  };
-
-  handleCharlieLastFiveAverages = (obj) => {
-    this.setState({ 'charlieLastFiveAvgs': obj });
-  };
-
-  handleJeremyLastFiveAverages = (obj) => {
-    this.setState({ 'jeremyLastFiveAvgs': obj });
   };
 
   handleStats = (obj) => {
@@ -39,15 +32,13 @@ class Home extends PureComponent{
   };
 
   componentDidMount(){
-    // this.props.coursesPlayedList(['Charlie', 'Jeremy']);
-    getAveragesLastFiveRounds('Charlie', this.handleLastFiveRounds);
-    getAveragesLastFiveRounds('Jeremy', this.handleLastFiveRounds);
-    getAveragesLastFiveRounds('Evan', this.handleLastFiveRounds);
 
-    this.props.getPlayerStats('Charlie', this.handleStats);
-    this.props.getPlayerStats('Jeremy', this.handleStats);
-    this.props.getPlayerStats('Evan', this.handleStats);
+    appUsers.forEach(user => {
+      this.props.getPlayerStats(user, this.handleStats);
+      getAveragesLastFiveRounds(user, this.handleLastFiveRounds);
+    });
   }
+
   render(){
     const { Charlie, Jeremy, Evan, charlieLastFiveAvgs, jeremyLastFiveAvgs, evanLastFiveAvgs } = this.state;
     return (
