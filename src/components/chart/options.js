@@ -74,6 +74,44 @@ export const jeremyChartOptions = {
   }
 };
 
+//sets options for evans chart
+//in dataChart component
+export const evanChartOptions = {
+  responsive: true,
+  scales: {
+    yAxes: [{
+      scaleLabel: {
+        display: true,
+        labelString: 'Strokes',
+        fontSize: 6
+      },
+      ticks: {
+        // suggestedMin: 0,
+        // suggestedMax: 10,
+        fontSize: 6
+      }
+    }],
+    xAxes:[{
+      ticks: {
+        fontSize: 6,
+        maxRotation: 90
+      }
+    }]
+  },
+  title: {
+    display: true,
+    fontSize: 16,
+    text: 'Evan\'s Rounds'
+  },
+  legend: {
+    position: 'top',
+    labels: {
+      fontSize: 6,
+      boxWidth: 8
+    }
+  }
+};
+
 //sets options for lines used in charlies
 //chart in datachart component
 export const charlieSetOptions = [
@@ -139,6 +177,43 @@ export const jeremySetOptions = [
     'borderColor': 'rgba(0, 0, 255, 30)', 
   },
   { 'label': 'Jeremy Score',
+    'fill': false,
+    'lineTension': 0,
+    'borderWidth': 1,
+    'pointRadius': 2,
+    'backgroundColor': 'rgba(50, 20, 60, 20)', 
+    'borderColor': 'rgba(50, 20, 60, 20)',
+  }
+];
+
+//sets options for lines used in evans
+//chart in datachart component
+export const evanSetOptions = [
+  { 'label': 'Evan FIR',
+    'fill': false,
+    'lineTension': 0,
+    'borderWidth': 1,
+    'pointRadius': 2,
+    'backgroundColor': 'rgba(255, 0, 0, 20)',
+    'borderColor': 'rgba(255, 0, 0, 20)',
+  },
+  { 'label': 'Evan GIR',
+    'fill': false,
+    'lineTension': 0,
+    'borderWidth': 1,
+    'pointRadius': 2,
+    'backgroundColor': 'rgba(0, 255, 0, 20)', 
+    'borderColor': 'rgba(0, 255, 0, 20)',
+  },
+  { 'label': 'Evan Putts',
+    'fill': false,
+    'lineTension': 0,
+    'borderWidth': 1,
+    'pointRadius': 2,
+    'backgroundColor': 'rgba(0, 0, 255, 30)', 
+    'borderColor': 'rgba(0, 0, 255, 30)', 
+  },
+  { 'label': 'Evan Score',
     'fill': false,
     'lineTension': 0,
     'borderWidth': 1,
