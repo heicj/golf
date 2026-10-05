@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Line, Chart } from 'react-chartjs-2';
-import { charlieChartOptions, jeremyChartOptions, charlieSetOptions, jeremySetOptions } from './options';
+import { charlieChartOptions, jeremyChartOptions, evanChartOptions, charlieSetOptions, jeremySetOptions, evanSetOptions } from './options';
 // import LineGraph  from '../lineGraph/LineGraph'
 import Selector from '../selector/Selector';
 import { getPlayerRounds } from './getDataFunc';
@@ -39,10 +39,13 @@ export default class DataChart extends Component{
     // },
     charlieSetOptions,
     jeremySetOptions,
+    evanSetOptions,
     charlieChartOptions,
     jeremyChartOptions,
+    evanChartOptions,
     charlieSelectorChoice: 'ALL',
-    jeremySelectorChoice: 'ALL'
+    jeremySelectorChoice: 'ALL',
+    evanSelectorChoice: 'ALL'
    
   };
   
@@ -56,6 +59,7 @@ export default class DataChart extends Component{
   componentDidMount(){
     getPlayerRounds('Charlie', this.handlePlayerState, this.state.charlieSetOptions);
     getPlayerRounds('Jeremy', this.handlePlayerState, this.state.jeremySetOptions);
+    getPlayerRounds('Evan', this.handlePlayerState, this.state.evanSetOptions);
   }
 
   selectorHandler = ({ target }) => {
@@ -63,7 +67,7 @@ export default class DataChart extends Component{
   }
 
   render(){
-    const { CharlieData, JeremyData, charlieSelectorChoice, jeremySelectorChoice } = this.state;
+    const { CharlieData, JeremyData, EvanData, charlieSelectorChoice, jeremySelectorChoice, evanSelectorChoice } = this.state;
     return (
       <div>
         <section className='chartContainer'>
@@ -100,6 +104,7 @@ export default class DataChart extends Component{
             />
           </div>
         </section>
+
         <section className='chartContainer'>
           {
             this.state.JeremyData ?
@@ -130,6 +135,41 @@ export default class DataChart extends Component{
               scoreValue="Jeremy Score"
               value={charlieSelectorChoice} 
               name='jeremySelectorChoice' 
+              onSelect={this.selectorHandler}
+            />
+          </div>
+        </section>
+
+        <section className='chartContainer'>
+          {
+            this.state.EvanData ? 
+              <Line
+                data={() => {
+                  let copy = {};
+                  Object.assign(copy, EvanData);
+                  let ds = copy.datasets;
+                  if(evanSelectorChoice == 'ALL'){
+                    return copy;
+                  } else {
+                    copy.datasets = ds.filter((s) => {
+                      return s.label == evanSelectorChoice;
+                    });
+                    return copy;
+                  }
+                }}
+                options={this.state.evanChartOptions}
+              /> :
+              null
+          }
+          <div className='charlieJeremySelectorContainer'>
+            <Selector
+              allValue="ALL"
+              firValue="Evan FIR"
+              girValue="Evan GIR"
+              puttsValue="Evan Putts"
+              scoreValue="Evan Score"
+              value={charlieSelectorChoice} 
+              name='evanSelectorChoice' 
               onSelect={this.selectorHandler}
             />
           </div>
