@@ -70,6 +70,10 @@ class Header extends PureComponent{
                   </div>
                   &nbsp;
                   <div>
+                    <Link to='/holeAverages/Evan'>Evan Hole Avgs</Link>
+                  </div>
+                  &nbsp;
+                  <div>
                     <Link to='/correlations'>Correlations</Link>
                   </div>
                   &nbsp;
