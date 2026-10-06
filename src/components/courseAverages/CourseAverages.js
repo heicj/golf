@@ -7,7 +7,8 @@ export default class CourseAverages extends Component{
   
   state = {
     CharlieCourseAverages: {},
-    JeremyCourseAverages: {}
+    JeremyCourseAverages: {},
+    EvanCourseAverages: {}
   };
 
   handleLocalState = (name, data) => {
@@ -15,15 +16,16 @@ export default class CourseAverages extends Component{
     let key = name + 'CourseAverages';
     stateObj[key] = data;
     this.setState(stateObj);
-  }
+  };
   
   componentDidMount(){
     getCourseAvg('Charlie', this.handleLocalState);
     getCourseAvg('Jeremy', this.handleLocalState);
+    getCourseAvg('Evan', this.handleLocalState);
   }
 
   render(){
-    const { CharlieCourseAverages, JeremyCourseAverages } = this.state;
+    const { CharlieCourseAverages, JeremyCourseAverages, EvanCourseAverages } = this.state;
     return (
       <section id='mainAvgContainer'>
         <div className='playerAvgDiv'>
@@ -40,6 +42,14 @@ export default class CourseAverages extends Component{
           {
             Object.keys(JeremyCourseAverages).map(key => {
               return <CourseAvgRdView key={key} course={key} rd={JeremyCourseAverages[key]} />
+            })
+          }
+        </div> 
+        <div className='playerAvgDiv'>
+          <h1 className='avgHeaders'>Evan's Course Averages</h1>
+          {
+            Object.keys(EvanCourseAverages).map(key => {
+              return <CourseAvgRdView key={key} course={key} rd={EvanCourseAverages[key]} />
             })
           }
         </div> 
