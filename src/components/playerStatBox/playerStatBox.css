@@ -1,0 +1,57 @@
+.statBoxContainer{
+  display: grid;
+  grid-template-areas:
+    'header header header header'
+    'avg last5 best worst';
+  grid-template-rows: auto;
+  /* grid-template-columns: auto; */
+  width: 95%;
+  margin: 1rem auto 1rem;
+  justify-content: center;
+  border-left: 4px solid #030164;
+  border-bottom: 2px solid #030164;
+  border-bottom-left-radius: 8px;
+}
+
+.stat-cell{
+  font-size: .7rem;
+}
+
+#playerArea{
+  grid-area: header;
+  display: flex;
+  justify-content: space-evenly;
+  font-size: .7rem;
+  >h2{
+    font-weight: bold;
+  }
+}
+
+#player-name-h2{
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+#playerAverages{
+  margin: .2rem;
+  grid-area: avg;
+}
+
+#playerLast5Avgs{
+  margin: .2rem;
+  grid-area: last5;
+}
+
+#playerBest{
+  margin: .2rem;
+  grid-area: best;
+}
+
+#playerWorst{
+  margin: .2rem;
+  grid-area: worst;
+}
+
+
+
+
