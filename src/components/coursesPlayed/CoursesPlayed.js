@@ -20,6 +20,7 @@ class Courses extends PureComponent{
             <div>Course</div>
             <div>Charlie</div>
             <div>Jeremy</div>
+            <div>Evan</div>
           </div>
           { coursesPlayed.map((course, i) => {
             let courseName = Object.keys(course)[0];
