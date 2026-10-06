@@ -11,6 +11,7 @@ export default class Course extends PureComponent{
           <div id='courseName' className='courseDivs'>{courseName}</div>
           <div className='courseDivs'>{players.includes('Charlie') ? '✓' : ''}</div>
           <div className='courseDivs'>{players.includes('Jeremy') ? '✓' : ''}</div>
+          <div className='courseDivs'>{players.includes('Evan') ? '✓' : ''}</div>
         </div>
       </section>
     );

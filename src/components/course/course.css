@@ -1,6 +1,6 @@
 #coursePlayedData{
   display: grid;
-  grid-template-columns: repeat(3, 33%);
+  grid-template-columns: repeat(4, 25%);
   justify-content: space-between;
   width: 50%;
   margin: 0 auto;
