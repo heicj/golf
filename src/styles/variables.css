@@ -10,4 +10,8 @@
   --body-bg-secondary-color: rgba(44, 104, 123, .6); 
   --body-bg-secondary-color-solid: rgba(44, 104, 123);
 
+  /* highlight colors used in linear-gradient  */
+  --linear-gradient-light: white;
+  --linear-gradient-dark: lightgrey;
+
 }

@@ -11,7 +11,9 @@
     justify-content: center;
     border-left: 4px solid #030164;
     border-bottom: 2px solid #030164;
-    border-bottom-left-radius: 8px;
+    border-radius: 8px;
+    background-image: linear-gradient(to right, var(--linear-gradient-dark), var(--linear-gradient-light));
+
   }
 
   .stat-cell{
@@ -74,7 +76,9 @@
     justify-content: center;
     border-left: 4px solid var(--body-bg-secondary-color-solid);
     border-bottom: 2px solid var(--body-bg-secondary-color-solid);
-    border-bottom-left-radius: 8px;
+    border-radius: 8px;
+    background-image: linear-gradient(to right, var(--linear-gradient-dark), var(--linear-gradient-light));
+
   }
 
   .stat-cell{
