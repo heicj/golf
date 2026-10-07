@@ -4,6 +4,14 @@
   /* new blue grey color scheme */
   --main-background-color: rgba(45, 84, 94, .6);
   --secondary-bg-color: rgba(18, 52, 59, .4);
-  --body-bg-color: lightgoldenrodyellow;
+  /* --body-bg-color: lightgoldenrodyellow; */
+
+  --body-bg-color: rgba(140, 199, 196);
+  --body-bg-secondary-color: rgba(44, 104, 123, .6); 
+  --body-bg-secondary-color-solid: rgba(44, 104, 123);
+
+  /* highlight colors used in linear-gradient  */
+  --linear-gradient-light: white;
+  --linear-gradient-dark: lightgrey;
 
 }
