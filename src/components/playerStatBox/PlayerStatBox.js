@@ -16,10 +16,10 @@ export default class PlayerStatBox extends PureComponent {
             <div>Handicap: {playerStats.playerHandicap}</div>
           </div>
           <div>
-            <div>
+            <div className='link-wrapper'>
               <Link id="main-link" to={`/newRound/${playerName}`}>Add Round</Link>
             </div>
-            <div>
+            <div className='link-wrapper'>
               <Link id="main-link" to={`/rounds/${playerName}`}>View Rounds</Link>
             </div>
           </div>
