@@ -27,7 +27,7 @@ class Round extends Component{
     const holes = Array(18).fill('');
     return (
       <div>
-        <section className='round'>
+        <section className='round gradient-background'>
           <h1 id="course">{roundStats.course}</h1>
           <div className="rdDetailsContainer">
             <p className="rdDetails">{roundStats.date}</p>
