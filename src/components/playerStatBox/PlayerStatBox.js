@@ -44,18 +44,34 @@ export default class PlayerStatBox extends PureComponent {
 
         <div id='playerBest'>
           <h2>Best</h2>
-          <div className='stat-cell'>Score: {playerStats.lowScore}</div>
-          <div className='stat-cell'>Fir: {playerStats.highFir}</div>
-          <div className='stat-cell'>Gir: {playerStats.highGir}</div>
-          <div className='stat-cell'>Putts: {playerStats.lowPutts}</div>
+          <Link to={{ pathname: '/viewRounds', state: playerStats.lowScoreRounds, statCategory: 'Low Score' }}>
+            <div className='stat-cell'>Score: {playerStats.lowScore}</div>
+          </Link>
+          <Link to={{ pathname: '/viewRounds', state: playerStats.highFirRounds, statCategory: 'High FIR' }}>
+            <div className='stat-cell'>Fir: {playerStats.highFir}</div>
+          </Link>
+          <Link to={{ pathname: '/viewRounds', state: playerStats.highGirRounds, statCategory: 'High GIR' }}>
+            <div className='stat-cell'>Gir: {playerStats.highGir}</div>
+          </Link>
+          <Link to={{ pathname: '/viewRounds', state: playerStats.lowPuttsRounds, statCategory: 'Low Putts' }}>
+            <div className='stat-cell'>Putts: {playerStats.lowPutts}</div>
+          </Link>
         </div>
 
         <div id='playerWorst'>
           <h2>Worst</h2>
-          <div className='stat-cell'>Score: {playerStats.highScore}</div>
-          <div className='stat-cell'>Fir: {playerStats.lowFir}</div>
-          <div className='stat-cell'>Gir: {playerStats.lowGir}</div>
-          <div className='stat-cell'>Putts: {playerStats.highPutts}</div>
+          <Link to={{ pathname: '/viewRounds', state: playerStats.highScoreRounds, statCategory: 'High Score' }}>
+            <div className='stat-cell'>Score: {playerStats.highScore}</div>
+          </Link>
+          <Link to={{ pathname: '/viewRounds', state: playerStats.lowFirRounds, statCategory: 'Low FIR' }}>
+            <div className='stat-cell'>Fir: {playerStats.lowFir}</div>
+          </Link>
+          <Link to={{ pathname: '/viewRounds', state: playerStats.lowGirRounds, statCategory: 'Low GIR' }}>
+            <div className='stat-cell'>Gir: {playerStats.lowGir}</div>
+          </Link>
+          <Link to={{ pathname: '/viewRounds', state: playerStats.highPuttsRounds, statCategory: 'High Putts' }}>
+            <div className='stat-cell'>Putts: {playerStats.highPutts}</div>
+          </Link>
         </div>
       </section>
     );
