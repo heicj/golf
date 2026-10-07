@@ -43,13 +43,13 @@ a:hover{
   margin: 0 0 .2rem 0;
 }
 
-#menuLinks{
+/* #menuLinks{
   position: absolute;
   top: 1.75rem;
   width: 100px;
   left: 5px;
   /* background-color:  white; */
-  background-image: radial-gradient(var(--linear-gradient-light) 50%, var(--linear-gradient-dark));
+  /* background-image: radial-gradient(var(--linear-gradient-light) 50%, var(--linear-gradient-dark));
   display: block;
-  justify-content: space-around;
-}
+  justify-content: space-around; */
+/* } */ 

@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import MenuLinks from '../menuLinks/MenuLinks';
 import './header.css';
 import { signOut } from '../login/actions';
 
@@ -12,6 +13,7 @@ class Header extends PureComponent{
   };
 
   handleClick = () => {
+    // document.getElementById('menuLinks').style.width = '250px';
     this.setState({
       'menu': !this.state.menu,
     });
@@ -35,52 +37,10 @@ class Header extends PureComponent{
               <div className='menu'></div>
               <div className='menu'></div>
               <div className='menu'></div>
+              {/* <MenuLinks/> */}
               { menu ?
-                <section id='menuLinks'>
-                  <div>
-                    <Link to='/home'>Home</Link> 
-                  </div>
-                  &nbsp;
-                  <div>
-                    <Link to='/coursesPlayed'>Courses Played</Link>
-                  </div>
-                  &nbsp;
-                  <div>
-                    <Link to='/backup'>Backup</Link>
-                  </div>
-                  &nbsp;
-                  <div>
-                    <Link to='wishlist'>Wishlist</Link>
-                  </div>
-                  &nbsp;
-                  <div>
-                    <Link to='/charts'>Charts</Link>
-                  </div>
-                  &nbsp;
-                  <div>
-                    <Link to='/courseAverages'>Course Avgs</Link>
-                  </div>
-                  &nbsp;
-                  <div>
-                    <Link to='/holeAverages/Charlie'>Charlie Hole Avgs</Link>
-                  </div>
-                  &nbsp;
-                  <div>
-                    <Link to='/holeAverages/Jeremy'>Jeremy Hole Avgs</Link>
-                  </div>
-                  &nbsp;
-                  <div>
-                    <Link to='/holeAverages/Evan'>Evan Hole Avgs</Link>
-                  </div>
-                  &nbsp;
-                  <div>
-                    <Link to='/correlations'>Correlations</Link>
-                  </div>
-                  &nbsp;
-                  <div>
-                    <Link onClick={this.handleLogOut} to='/'>Sign Out</Link>
-                  </div>
-                </section> :
+                <MenuLinks/>
+                :
                 null}
             </div>
             
