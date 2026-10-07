@@ -49,7 +49,7 @@ a:hover{
   width: 100px;
   left: 5px;
   /* background-color:  white; */
-  background-image: linear-gradient(to right, var(--linear-gradient-dark), var(--linear-gradient-light));
+  background-image: radial-gradient(var(--linear-gradient-light) 50%, var(--linear-gradient-dark));
   display: block;
   justify-content: space-around;
 }

@@ -132,11 +132,11 @@ class ViewRounds extends Component{
         </div>
         
         <div className='pageContainer'>
-          <div className='pageControl' name='first' id='first' onClick={this.handlePaging}>First Page</div>
-          <div className='pageControl' name='minus' id='minus' onClick={this.handlePaging}>Prev Page</div>
+          <div className='pageControl gradient-background' name='first' id='first' onClick={this.handlePaging}>First Page</div>
+          <div className='pageControl gradient-background' name='minus' id='minus' onClick={this.handlePaging}>Prev Page</div>
           <div id='pageIndicator'>{this.state.page}/{Math.ceil(rounds.length / perPage)}</div>
-          <div className='pageControl' name='plus' id='plus' onClick={this.handlePaging}>Next Page</div>
-          <div className='pageControl' name='last' id='last' onClick={this.handlePaging}>Last Page</div>
+          <div className='pageControl gradient-background' name='plus' id='plus' onClick={this.handlePaging}>Next Page</div>
+          <div className='pageControl gradient-background' name='last' id='last' onClick={this.handlePaging}>Last Page</div>
         </div>
         <div id='perPageSelector'>
           <div>Rounds Per Page</div>

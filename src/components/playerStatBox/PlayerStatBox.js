@@ -8,7 +8,7 @@ export default class PlayerStatBox extends PureComponent {
   render(){
     const { playerStats, playerName } = this.props;
     return (
-      <section className='statBoxContainer'>
+      <section className='statBoxContainer gradient-background'>
         <div id='playerArea'>
           <div>
             <h2 id='player-name-h2'>{playerName}</h2>

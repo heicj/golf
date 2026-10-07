@@ -17,7 +17,7 @@ body {
   /* background-color: white; */
   /* background-color: var(--body-bg-color); */
   background-image: linear-gradient(to right, var(--body-bg-color) 20%, var(--body-bg-secondary-color));
-
+  
 }
 
 a:visited{
@@ -28,5 +28,9 @@ a:visited{
   position: absolute !important;
   clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
   clip: rect(1px, 1px, 1px, 1px);
+}
+
+.gradient-background{
+  background-image: radial-gradient(var(--linear-gradient-light) 40%, var(--linear-gradient-dark));
 }
 
