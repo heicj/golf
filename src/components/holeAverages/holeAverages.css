@@ -2,10 +2,13 @@
   #holeAvgSection{
     width: 98%;
     margin: .5rem auto;
-    border: solid 1px;
-    border-radius: 20px;
-    background-color: var(--main-background-color);
-  }
+    /* border: solid 1px; */
+    border-left: 4px solid #030164;
+    border-bottom: 2px solid #030164;
+    border-radius: 8px;
+    /* background-color: var(--main-background-color); */
+    background-image: radial-gradient(var(--linear-gradient-light) 40%, var(--linear-gradient-dark)); 
+   }
   
   .courseName{
     text-align: center;
@@ -30,7 +33,7 @@
     grid-row-gap: 1px;
     grid-template-columns: repeat(19, auto);
     background-color: lightgray;
-    border-bottom: solid;
+    /* border-bottom: solid; */
   
     .avgTitle{
       background-color: white;
