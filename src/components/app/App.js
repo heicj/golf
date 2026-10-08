@@ -20,6 +20,8 @@ import ViewCourseHoleAvgs from '../viewCourseHoleAvgs/ViewCourseHoleAvgs';
 import ViewBestAndWorstRounds from '../viewBestAndWorstRounds/ViewBestAndWorstRounds';
 import Correlation from '../correlation/Correlation';
 
+import MenuLinks from '../menuLinks/MenuLinks';
+
 class App extends PureComponent{
 
   componentDidMount(){
@@ -29,10 +31,17 @@ class App extends PureComponent{
     }
   }
   render(){
+    const { menuView } = this.props;
     return (
       <div>
         <Router>
           <div>
+            {
+              menuView ?
+                <MenuLinks/>
+                :
+                null
+            }
             <Header/>
             <Switch>
               <Route exact path='/' component={Login}/>
@@ -60,6 +69,8 @@ class App extends PureComponent{
 }
 
 export default connect(
-  null,
+  state => ({
+    menuView: state.menuVisibility
+  }),
   { userSignin }
 )(App);
