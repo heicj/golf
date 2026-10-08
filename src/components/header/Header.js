@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import MenuLinks from '../menuLinks/MenuLinks';
+import { toggleMenu } from './actions';
 import './header.css';
 import { signOut } from '../login/actions';
 
@@ -14,6 +15,7 @@ class Header extends PureComponent{
 
   handleClick = () => {
     // document.getElementById('menuLinks').style.width = '250px';
+    this.props.toggleMenu();
     this.setState({
       'menu': !this.state.menu,
     });
@@ -37,7 +39,6 @@ class Header extends PureComponent{
               <div className='menu'></div>
               <div className='menu'></div>
               <div className='menu'></div>
-              {/* <MenuLinks/> */}
               { menu ?
                 <MenuLinks/>
                 :
@@ -59,5 +60,5 @@ export default withRouter(connect(
   state => ({
     auth: state.auth
   }),
-  { signOut }
+  { signOut, toggleMenu }
 )(Header));
