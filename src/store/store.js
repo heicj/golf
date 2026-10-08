@@ -10,6 +10,7 @@ import { coursesPlayed } from '../components/coursesPlayed/reducers';
 import { backupInfo, downloadInfo } from '../components/backup/reducers';
 import { wishlist } from '../components/wishlist/reducers';
 import { loading } from '../components/app/reducers';
+import { menuVisibility } from '../components/header/reducers';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -30,7 +31,8 @@ const reducer = combineReducers({
   coursesPlayed,
   backupInfo,
   downloadInfo,
-  wishlist
+  wishlist,
+  menuVisibility
 });
 
 const store = createStore(
