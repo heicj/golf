@@ -22,7 +22,7 @@
 #menuDiv{
   position: absolute;
   bottom: 0px;
-  left: 5px;
+  left: 10px;
   z-index: 1;
 
 }
@@ -42,7 +42,7 @@ a:hover{
   border-radius: 20px;
   width: 35px;
   height: 5px;
-  background-color: black;
+  background-image: radial-gradient(var(--linear-gradient-light) 50%, var(--linear-gradient-dark));
   margin: 0 0 .2rem 0;
 }
 
