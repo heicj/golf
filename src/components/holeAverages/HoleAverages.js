@@ -6,7 +6,7 @@ export default class HoleAverages extends Component {
     const { rdStats } = this.props;
     const holes = Array(18).fill('');
     return (
-      <section id='holeAvgSection'>
+      <section id='holeAvgSection' className='gradient-background'>
         <div className='courseName'>{rdStats.course}</div>
         
         <div className='timesPlayed'>Times Played: {rdStats.timesPlayed}</div>
