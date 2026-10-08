@@ -1,12 +1,15 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { toggleMenu } from '../header/actions';
 import './menuLinks.css';
 
-export default class MenuLinks extends PureComponent{
+class MenuLinks extends PureComponent{
 
+  
   render(){
     return (
-      <section id="menuLinks">
+      <section onClick={this.props.toggleMenu}  id="menuLinks">
         <div className='menu-link-wrapper'>
           <Link to='/home'>Home</Link> 
         </div>
@@ -54,3 +57,10 @@ export default class MenuLinks extends PureComponent{
     );
   }
 }
+
+export default connect(
+  state => ({
+    menuView: state.menuVisibility
+  }),
+  { toggleMenu }
+)(MenuLinks);
