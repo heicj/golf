@@ -129,7 +129,6 @@ const boldBorderRight = workbook.createStyle({
 export function excelFunc(rounds) {
   const worksheet = workbook.addWorksheet(`${rounds[1].player}'s rounds`);
   let startPoint = 1;
-
   for(let i = 0; i < rounds.length; i++){
     const rd = rounds[i];
     //cell arguments -> cell(row, column)
