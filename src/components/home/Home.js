@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import  PlayerStatBox from '../playerStatBox/PlayerStatBox';
+import MenuLinks from '../menuLinks/MenuLinks';
 import { appUsers } from '../../services/firebase';
 import { getPlayerStats, getStats, getAveragesLastFiveRounds } from './actions';
 import { coursesPlayedList } from '../coursesPlayed/actions';
@@ -41,17 +42,27 @@ class Home extends PureComponent{
 
   render(){
     const { Charlie, Jeremy, Evan } = this.state;
+    const { menuView } = this.props;
     return (
       <div id="mainSection">
+        {
+          menuView ?
+            <MenuLinks/>
+            :
+            null
+        }
         <PlayerStatBox playerStats={Charlie} playerName={'Charlie'}/>
         <PlayerStatBox playerStats={Jeremy} playerName={'Jeremy'}/>
         <PlayerStatBox playerStats={Evan} playerName={'Evan'}/>
+    
       </div>
     );
   }
 }
 
 export default connect(
-  null,
+  state => ({
+    menuView: state.menuVisibility
+  }),
   { getPlayerStats, getStats, coursesPlayedList }
 )(Home);
