@@ -39,10 +39,10 @@ class Header extends PureComponent{
               <div className='menu'></div>
               <div className='menu'></div>
               <div className='menu'></div>
-              { menu ?
+              {/* { menu ?
                 <MenuLinks/>
                 :
-                null}
+                null} */}
             </div>
             
             : 
@@ -58,7 +58,8 @@ class Header extends PureComponent{
 
 export default withRouter(connect(
   state => ({
-    auth: state.auth
+    auth: state.auth,
+    menuView: state.menuVisibility
   }),
   { signOut, toggleMenu }
 )(Header));
