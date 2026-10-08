@@ -16,7 +16,9 @@ body {
   color: #222;
   /* background-color: white; */
   /* background-color: var(--body-bg-color); */
-  background-image: linear-gradient(to right, var(--body-bg-color) 20%, var(--body-bg-secondary-color));
+  /* background-image: linear-gradient(to right, var(--body-bg-color) 20%, var(--body-bg-secondary-color)); */
+  background-image: linear-gradient(#a2ac4a, white);
+  background-repeat: no-repeat;
   
 }
 
