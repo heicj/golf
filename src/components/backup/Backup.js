@@ -25,7 +25,7 @@ class Backup extends Component{
        
               <button id='backupButton' onClick={this.handleBackup}>Backup</button>
               <ol className='dataOl'>
-                {dates.slice(0, 10).map((d, i) => <li key={i}>{d}</li>)}
+                {dates.slice(0, 10).map((d, i) => <li className="backupLi" key={i}>{d}</li>)}
               </ol>
             </section>
             : null  
