@@ -10,7 +10,7 @@
   background-image: radial-gradient(var(--linear-gradient-light) 50%, var(--linear-gradient-dark));
   display: block;
   justify-content: space-around; 
-
+  z-index: 100;
   animation: slideIn .5s forwards;
 }
 
