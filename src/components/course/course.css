@@ -1,18 +1,47 @@
-#coursePlayedData{
-  display: grid;
-  grid-template-columns: repeat(4, 25%);
-  justify-content: space-between;
-  width: 50%;
-  margin: 0 auto;
-  text-align: center;
-  border-bottom: 1px solid black;
+@media only screen and (max-width: 500px){
+  #coursePlayedData{
+    font-size: .8rem;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    height: 40px;
+    place-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 1rem auto 1rem auto;
+    text-align: center;
+    border-bottom: 1px solid black;
+  }
+
+  #courseName{
+    margin-left: 0;
+  }
+
+  .courseDivs{
+    text-align: center;
+    margin: 0 auto;
+  }
 }
 
-#courseName{
-  margin-left: 0;
-}
+@media only screen and (min-width: 501px){
 
-.courseDivs{
-  text-align: center;
-  margin: 0 auto;
+  #coursePlayedData{
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    height: 50px;
+    place-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    border-bottom: 1px solid black;
+  }
+
+  #courseName{
+    margin-left: 0;
+  }
+
+  .courseDivs{
+    text-align: center;
+    margin: 0 auto;
+  }
 }
