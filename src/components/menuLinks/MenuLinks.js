@@ -23,7 +23,7 @@ class MenuLinks extends PureComponent{
         </div>
                   &nbsp;
         <div className='menu-link-wrapper'>
-          <Link to='wishlist'>Wishlist</Link>
+          <Link to='/wishlist'>Wishlist</Link>
         </div>
                   &nbsp;
         <div className='menu-link-wrapper'>
