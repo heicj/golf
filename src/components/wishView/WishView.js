@@ -17,7 +17,7 @@ export default class WishView extends Component{
     return (
       <div className='wishItem'>
         <div className='deleteWish' onClick={this.handleDelete}>Delete</div>
-        <div>{wishCourse.course}</div>
+        <div className='wish-view-course-name'>{wishCourse.course}</div>
         <div>{wishCourse.city}</div>
         <div>{wishCourse.state}</div>
         <div>{wishCourse.country}</div>
