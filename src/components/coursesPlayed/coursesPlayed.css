@@ -1,24 +1,57 @@
-#courseHeader{
-  margin: 1.5rem auto;
-  text-align: center;
-  font-size: 3rem;
+@media only screen and (max-width: 500px){
+  
+  #courseHeader{
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1.5rem auto;
+    text-align: center;
+  }
+  
+  #coursePlayedHeaders{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin: 5px auto;
+    font-weight: bold;
+  }
+  
+  #listSection{
+    margin: 2em;
+    /* border: outset 5px; */
+    border-left: 4px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    width: 95%;
+    margin: 1rem auto;
+    background-image: radial-gradient(var(--linear-gradient-light) 40%, var(--linear-gradient-dark));
+  }
 }
 
-#coursePlayedHeaders{
-  display: flex;
-  justify-content: space-around;
-  width: 50%;
-  margin: 5px auto;
-  font-weight: bold;
-}
+@media only screen and (min-width: 501px){
+  #courseHeader{
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1.5rem auto;
+    text-align: center;
+  }
+  
+  #coursePlayedHeaders{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin: 5px auto;
+    font-weight: bold;
+  }
+  
+  #listSection{
+    margin: 2em;
+    border: outset 5px;
+    padding: 1rem;
+    width: 50%;
+    margin: 1rem auto;
+    border-radius: 30px;
+    background-image: radial-gradient(var(--linear-gradient-light) 40%, var(--linear-gradient-dark));
 
-#listSection{
-  min-width: 420px;
-  margin: 2em;
-  border: outset 5px;
-  padding: 1rem;
-  width: 90%;
-  margin: 1rem auto;
-  border-radius: 30px;
-  background-color: var(--main-background-color);
+  }
 }
