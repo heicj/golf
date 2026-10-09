@@ -5,7 +5,7 @@ export default class CorrelationRanges extends Component {
 
   render(){
     return (
-      <section id="ranges-wrapper">
+      <section className='gradient-background' id="ranges-wrapper">
         <div>+.70 or higher 	Very strong positive relationship</div>
         <div>+.40 to +.69 	Strong positive relationship</div>
         <div>+.30 to +.39 	Moderate positive relationship</div>

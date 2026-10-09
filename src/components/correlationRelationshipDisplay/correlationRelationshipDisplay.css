@@ -4,9 +4,7 @@
   justify-content: space-around;
   margin: 1rem auto;
   text-align: center;
-  border: outset 3px;
-  border-radius: 30px;
-  background-color: var(--main-background-color);
+  
 }
 
 .wrapper-div{
@@ -15,7 +13,10 @@
 }
 
 .headers{
-  font-size: 1.1rem;
+  font-size: 1rem;
+}
+
+.player-correlation-number{
   font-weight: bold;
 }
 
