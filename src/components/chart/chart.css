@@ -4,7 +4,10 @@
     width: 70%;
     height: auto;
     margin: 20px auto;
-    border: outset 1px;
+    border-left: 4px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
+    border-radius: 8px;
+    background-image: radial-gradient(var(--linear-gradient-light) 40%, var(--linear-gradient-dark));
   }
 
   .charlieJeremySelectorContainer{
@@ -24,7 +27,10 @@
     width: 98%;
     height: auto;
     margin: 1rem auto;
-    border: outset 1px;
+    border-left: 4px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
+    border-radius: 8px;
+    background-image: radial-gradient(var(--linear-gradient-light) 40%, var(--linear-gradient-dark));
   }
 
   .charlieJeremySelectorContainer{
