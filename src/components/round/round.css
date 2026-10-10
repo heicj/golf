@@ -29,18 +29,10 @@
       }
   
   .round{
-    /* min-width: 420px; */
     margin: 2em;
     font-size: small;
-    /* border: 1px solid;
-    padding: 10px;
-    box-shadow: 5px 10px rgb(240, 235, 235); */
-    border: outset 2px;
-    /* padding: 1rem; */
     width: 95%;
     margin: 1rem auto;
-    border-radius: 30px;
-    background-color: var(--main-background-color);
   }
   
   #rdStats{
@@ -123,17 +115,10 @@
   }
   
   .round{
-    /* min-width: 420px; */
     margin: 2em;
-    /* border: 1px solid;
-    padding: 10px;
-    box-shadow: 5px 10px rgb(240, 235, 235); */
-    border: outset 5px;
     padding: 1rem;
     width: 90%;
     margin: 1rem auto;
-    border-radius: 30px;
-    background-color: var(--main-background-color);
   }
   
   #rdStats{
