@@ -23,6 +23,7 @@
   
   #buttonDiv{
       text-align: center;
+      margin: .5rem;
   
       #submitButton{
         width: 50%;
@@ -30,7 +31,8 @@
         font-weight: bold;
         font-size: 1rem;
         text-transform: uppercase;
-        
+        background-image: linear-gradient(180deg, var(--linear-gradient-light), var(--linear-gradient-dark));
+        border-radius: 5px;
       }
     }
   
@@ -152,6 +154,7 @@
   
   #buttonDiv{
       text-align: center;
+      margin: .5rem;
   
       #submitButton{
         width: 50%;
@@ -159,7 +162,8 @@
         font-weight: bold;
         font-size: 1rem;
         text-transform: uppercase;
-        
+        background-image: linear-gradient(180deg, var(--linear-gradient-light), var(--linear-gradient-dark));
+        border-radius: 5px;
       }
     }
   

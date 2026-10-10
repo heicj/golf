@@ -94,8 +94,6 @@ class AddRoundForm extends PureComponent{
           <div id='formTop'>
             <h2 id="titleNewRound">Enter New Round</h2>
             <h3>{this.props.name}</h3>
-            <p>Fir total: {totFir}</p>
-            <p>Gir total: {totGir}</p>
           </div>
 
           <div id="courseDate">
