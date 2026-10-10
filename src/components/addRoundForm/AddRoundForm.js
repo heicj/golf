@@ -89,7 +89,7 @@ class AddRoundForm extends PureComponent{
     const totGir = calcFirGirTotal(gir);
     const round = Array(18).fill('');
     return (
-      <form className="roundForm" onSubmit={this.handleSubmit}>
+      <form className="roundForm gradient-background" onSubmit={this.handleSubmit}>
         <section>
           <div id='formTop'>
             <h2 id="titleNewRound">Enter New Round</h2>
