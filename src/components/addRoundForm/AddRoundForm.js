@@ -100,7 +100,7 @@ class AddRoundForm extends PureComponent{
             <label htmlFor="course">
               <form>
 
-              Course:<input list="playedCourses" name="course" id="course" type="text" required onChange={this.handleLocalState} value={course}/>
+              Course:<input list="playedCourses" name="course" id="course" type="text" required onChange={this.handleLocalState} value={course} onFocus="this.showPicker()"/>
                 <datalist id="playedCourses">
                   {coursesPlayed.map((c, i) => {
                     let name = Object.keys(c);
