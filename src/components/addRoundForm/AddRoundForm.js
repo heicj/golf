@@ -104,7 +104,7 @@ class AddRoundForm extends PureComponent{
                 <datalist id="playedCourses">
                   {coursesPlayed.map((c, i) => {
                     let name = Object.keys(c);
-                    return <option key={i} value={name}/>;
+                    return (<option key={i} value={name}></option>);
                   })}
                 </datalist>
               </form>
