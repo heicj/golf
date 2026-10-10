@@ -98,13 +98,16 @@ class AddRoundForm extends PureComponent{
 
           <div id="courseDate">
             <label htmlFor="course">
+              <form>
+
               Course:<input list="playedCourses" name="course" id="course" type="text" required onChange={this.handleLocalState} value={course}/>
-              <datalist id="playedCourses">
-                {coursesPlayed.map((c, i) => {
-                  let name = Object.keys(c);
-                  return <option key={i} value={name}/>;
-                })}
-              </datalist>
+                <datalist id="playedCourses">
+                  {coursesPlayed.map((c, i) => {
+                    let name = Object.keys(c);
+                    return <option key={i} value={name}/>;
+                  })}
+                </datalist>
+              </form>
             </label>
             <label htmlFor="date">
               Date:<input id='dateInputField' type="date" name="date" id="date" required onChange={this.handleLocalState} value={date}/>
